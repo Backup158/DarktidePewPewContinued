@@ -11,10 +11,12 @@ Author: tinybike (GlaresAtKoalas on Nexus)
         boltpistol_p1_m1:       Godwyn-Branx Pattern Bolt Pistol (Godwyn-Branx Mk IV Bolt Pistol); Secrets of the Machine God, 2024-06-25
         shotgun_p2_m1:          Ironhelm “Hacker” Mk IV Assault Shotgun (Crucis Mk XI Double-Barrelled Shotgun); Secrets of the Machine God, 2024-06-25
         heavy_stubber_p2_m1-3:  Krourk Mk IIa/Gorgonum Mk IIIa/Achlys Mk II Ogryn Heavy Stubber; Grim Protocols, 2024-12-03
-    Note: Above weapons were renamed in Unlocked and Loaded. New names are in parentheses.
+        Note: Above weapons were renamed in Unlocked and Loaded. New names are in parentheses.
     Added sounds for:
         force_sword_2h_loop:    Force Greatswords; Grim Protocols, 2024-12-03
-    Note: Relic Blades (2h power sword) uses the same sound as regular power sword
+        Note: Relic Blades (2h power sword) uses the same sound as regular power sword
+    Updated localization codes to comply with Unlocked and Loaded.
+        Also made some changes so you don't have to guess what lasbeam bfg is or whatever
     Sorted names by alphabetical/code order
     Added some comments for documentation
         I know this makes it messier, but I'm clearly labelling things because I didn't know why entries were missing for way too long (10 minutes lol)
