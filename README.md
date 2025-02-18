@@ -1,2 +1,2 @@
-# DarktidePewPewUpdate
-Warhammer 40,000: Darktide Mod. PewPew updated.
+[Original PewPew mod](https://www.nexusmods.com/warhammer40kdarktide/mods/174)
+[NexusMods page](https://www.nexusmods.com/warhammer40kdarktide/mods/477)
