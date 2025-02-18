@@ -1,5 +1,6 @@
 local mod = get_mod("PewPew")
-
+mod_version = "1.4"
+mod:info('PewPew (Updated) v' .. mod_version .. ' loaded uwu nya :3')
 --[[
 Mod: PewPew
 Description: Change ranged weapon sounds and projectile visual effects
@@ -52,15 +53,15 @@ local RANGED_SHOOTING_SOUND_EFFECTS = {
     weapon_autopistol_auto =    { braced="weapon_autopistol_auto", pre_loop_shot="weapon_autopistol", single_shot="weapon_autopistol" }, -- equivalent to autopistol_p1_m1
     -- Bolter
     --      The way update_single_shot_sound_effects operates, this is automatically added from PewPew_data.lua
-    --      play_weapon_bolter
     --      the id in the code is bolter_p1_m1 but weapon id doesn't matter here, only the sound id
     --          The weapon_id chosen here is to identify the sounds for the options
     -- Boltpistol
-    --      See PewPew_data.lua
+    --      Same as Bolter
     -- Infantry Lasgun
     --      Same as Bolter
     -- Helbore Lasgun
-    lasgun_p2_charge =          { braced="lasgun_p2_charge", pre_loop_shot="weapon_silence", single_shot=nil },
+    lasgun_p2_charge =          { braced="lasgun_p2_charge", pre_loop_shot="weapon_silence", single_shot=nil }, -- equivalent to lasgun_p2_m1_charge
+    -- Bolter
     lasgun_p2_m2_charge =       { braced="lasgun_p2_m2_charge", pre_loop_shot="weapon_silence", single_shot=nil },
     lasgun_p2_m3_charge =       { braced="lasgun_p2_m3_charge", pre_loop_shot="weapon_silence", single_shot=nil },
     -- Recon Lasgun
@@ -68,7 +69,7 @@ local RANGED_SHOOTING_SOUND_EFFECTS = {
     lasgun_p3_m2_fire_auto =    { braced="lasgun_p3_m2_fire_auto", pre_loop_shot="lasgun_p3_m2_fire_single", single_shot=nil },
     lasgun_p3_m3_fire_auto =    { braced="lasgun_p3_m3_fire_auto", pre_loop_shot="lasgun_p3_m3_fire_single", single_shot=nil },
     -- Laspistol
-    --      See PewPew_data.lua
+    --      Same as Bolter
     -- Grenade Gauntlet
     --      Same as Bolter
     -- Heavy Stubber
@@ -93,10 +94,12 @@ local RANGED_SHOOTING_SOUND_EFFECTS = {
     forcestaff_warp_fire =      { braced="forcestaff_warp_fire", pre_loop_shot="weapon_silence", single_shot="psyker_smite_fire" },
     forcestaff_warp_fire_charge_loop = { braced="forcestaff_warp_fire_charge_loop", pre_loop_shot="weapon_silence", single_shot=nil },
     forcestaff_p4_charge_loop = { braced="forcestaff_p4_charge_loop", pre_loop_shot="weapon_silence", single_shot=nil },
+    -- Psyker Blitz
+    --  Smite
     psyker_chain_lightning =    { braced="psyker_chain_lightning_heavy", pre_loop_shot="weapon_silence", single_shot=nil },
     psyker_chain_lightning_charge = { braced="psyker_chain_lightning_charge", pre_loop_shot="weapon_silence", single_shot=nil },
+    --  Brain Burst/Rupture
     psyker_smite_charge =       { braced="psyker_smite_charge", pre_loop_shot="weapon_silence", single_shot=nil },
-    --psyker_smite_charge =       { braced="psyker_smite_charge", pre_loop_shot="weapon_silence", single_shot="psyker_smite_fire" }, -- thought this would add something but idk
     psyker_headpop_hands =      { braced="psyker_headpop_hands", pre_loop_shot="weapon_silence", single_shot=nil },
     -- Flamer
     flamethrower_fire_loop =    { braced=nil, pre_loop_shot="weapon_silence", single_shot=nil },
@@ -108,14 +111,14 @@ local RANGED_SHOOTING_SOUND_EFFECTS = {
     --  Thunderhammer
     thunder_hammer_powered_loop = { braced="thunder_hammer_powered_loop", pre_loop_shot="weapon_silence", single_shot=nil },
     --  Force Sword
-    force_sword_loop =          { braced="force_sword_loop", pre_loop_shot="weapon_silence", single_shot=nil }, -- 1h
-    force_sword_2h_loop =          { braced="force_2h_sword_loop", pre_loop_shot="weapon_silence", single_shot=nil }, -- 2h
-    --  Power Sword (1h Vet)
+    force_sword_loop =          { braced="force_sword_loop", pre_loop_shot="weapon_silence", single_shot=nil },
+    force_sword_2h_loop =          { braced="force_2h_sword_loop", pre_loop_shot="weapon_silence", single_shot=nil },
+    --  Power Sword (1h Vet, 2h Zealot uses the same sound)
     power_sword_loop =          { braced="power_sword_loop", pre_loop_shot="weapon_silence", single_shot=nil },
-    --  Power Maul (1h Ogryn)
+    --  Power Maul (1h Ogryn, 2h Zealot uses the same sound)
     ogryn_power_maul_1h_loop =  { braced="ogryn_power_maul_1h_loop", pre_loop_shot="weapon_silence", single_shot=nil },
 }
--- fully_charged in ranged_single_shot
+-- fully_charged entries for weapons in ranged_single_shot table
 local CHARGED_SINGLE_SHOT_SFX = {
     -- Helbore Lasgun
     lasgun_p2_m1 = "lasgun_p2_m1_charged",
@@ -123,7 +126,7 @@ local CHARGED_SINGLE_SHOT_SFX = {
     lasgun_p2_m3 = "lasgun_p2_m3_charged",
     -- Plasmagun
     plasmagun_p1_m1 = "weapon_plasmagun_charged",
-    plasmagun_p1_m2 = "weapon_plasmagun_charged", -- Unreleased
+    --plasmagun_p1_m2 = "weapon_plasmagun_charged", -- Unreleased
 }
 
 local function load_resource(package_name, cb)
