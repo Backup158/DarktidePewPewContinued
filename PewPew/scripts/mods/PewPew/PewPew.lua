@@ -1,6 +1,6 @@
 local mod = get_mod("PewPew")
-mod_version = "1.4"
-mod:info('PewPew (Updated) v' .. mod_version .. ' loaded uwu nya :3')
+mod_version = "1.4.2"
+mod:info('PewPewPew v' .. mod_version .. ' loaded uwu nya :3')
 --[[
 Mod: PewPew
 Description: Change ranged weapon sounds and projectile visual effects

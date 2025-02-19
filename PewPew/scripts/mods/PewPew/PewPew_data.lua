@@ -96,6 +96,7 @@ local SINGLE_SHOT_SOUND_EFFECTS_OPTIONS = {
 	{ text="lasgun_p2_m2" },
 	{ text="lasgun_p2_m3" },
 	{ text="psyker_smite_fire" },
+	{ text="psyker_throw_knife" },
 	{ text="combat_weapon_shotgun" }, -- shotgun_p1_m1
 	{ text="shotgun_p1_m2" },
 	{ text="shotgun_p1_m3" },
@@ -111,6 +112,7 @@ local SINGLE_SHOT_SOUND_EFFECTS_OPTIONS = {
 	{ text="ogryn_thumper_p1_m2" },
 	{ text="weapon_plasmagun" }, -- plasmagun_p1_m1
 	{ text="weapon_rippergun" }, -- ogryn_rippergun_p1_m1
+	{ text="zealot_throw_knife" },
 }
 for i, option in ipairs(SINGLE_SHOT_SOUND_EFFECTS_OPTIONS) do
 	SINGLE_SHOT_SOUND_EFFECTS_OPTIONS[i].value = SINGLE_SHOT_SOUND_EFFECTS_OPTIONS[i].text
@@ -175,8 +177,14 @@ mod.single_shot_sound_effects_widgets = {
 	-- { setting_id="bolter_p1_m2", default_value="weapon_bolter" }, -- Unreleased
 	-- { setting_id="bolter_p1_m3", default_value="weapon_bolter" }, -- Unreleased
 	{ setting_id="boltpistol_p1_m1", default_value="bolt_pistol_p1_m1_single" },
+	-- { setting_id="bot_zola_laspistol", default_value="weapon_laspistol" },
+	-- { setting_id="bot_laspistol_killshot", default_value="weapon_laspistol" },
+	-- { setting_id="bot_lasgun_killshot", default_value="weapon_lasgun_p1_m1" },
+	-- { setting_id="bot_autogun_killshot", default_value="autogun_p3_m1_single" },
 	{ setting_id="forcestaff_p1_m1", default_value="psyker_smite_fire" },
 	{ setting_id="forcestaff_p4_m1", default_value="psyker_smite_fire" },
+	-- { setting_id="high_bot_autogun_killshot", default_value="autogun_p3_m1_single" },
+	-- { setting_id="high_bot_lasgun_killshot", default_value="weapon_lasgun_p1_m1" },
 	{ setting_id="laspistol_p1_m1", default_value="weapon_laspistol" },
 	-- { setting_id="laspistol_p1_m2", default_value="laspistol_p1_m2" }, -- Unreleased
 	{ setting_id="laspistol_p1_m3", default_value="laspistol_p1_m3" },
@@ -199,6 +207,7 @@ mod.single_shot_sound_effects_widgets = {
 	{ setting_id="plasmagun_p1_m1", default_value="weapon_plasmagun" },
 	-- { setting_id="plasmagun_p1_m2", default_value="weapon_plasmagun" }, -- Unreleased
 	{ setting_id="psyker_smite", default_value="psyker_smite_fire" },
+	{ setting_id="psyker_throwing_knives", default_value="psyker_throw_knife" },
 	{ setting_id="shotgun_p1_m1", default_value="combat_weapon_shotgun" },
 	{ setting_id="shotgun_p1_m2", default_value="shotgun_p1_m2" },
 	{ setting_id="shotgun_p1_m3", default_value="shotgun_p1_m3" },
@@ -206,10 +215,7 @@ mod.single_shot_sound_effects_widgets = {
 	{ setting_id="stubrevolver_p1_m1", default_value="stub_revolver" },
 	{ setting_id="stubrevolver_p1_m2", default_value="stub_revolver_p1_m2" },
 	-- { setting_id="stubrevolver_p1_m3", default_value="stub_revolver_p1_m3" }, -- Unreleased
-	-- { setting_id="bot_zola_laspistol", default_value="weapon_laspistol" },
-	-- { setting_id="bot_laspistol_killshot", default_value="weapon_laspistol" },
-	-- { setting_id="bot_lasgun_killshot", default_value="weapon_lasgun_p1_m1" },
-	-- { setting_id="bot_autogun_killshot", default_value="autogun_p3_m1_single" },
+	{ setting_id="zealot_throwing_knives", default_value="zealot_throw_knife" },
 }
 for i, sound_effects_widget in ipairs(mod.sound_effects_widgets) do
 	mod.sound_effects_widgets[i].type = "dropdown"

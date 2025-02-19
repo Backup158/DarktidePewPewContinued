@@ -7,7 +7,7 @@
 --	loc_weapon_px_mx brings up the old localizations from before Unlocked and Loaded
 local localizations = {
 	mod_title = { en="PewPew" },
-	mod_description = { en="Change ranged weapon sounds and projectile visual effects" },
+	mod_description = { en="Change ranged weapon sounds and projectile visual effects (Continued). PewPewPew!" },
 	line_effects_id = { en="Visual Effects" },
 	sound_effects_id = { en="Fully Automatic Fire SFX" },
 	single_shot_sound_effects_id = { en="Single Shot SFX" },
@@ -77,7 +77,6 @@ local localizations = {
 	-- bot_lasgun_killshot = { en=Localize("loc_bot_lasgun_killshot") },
 	-- bot_laspistol_killshot = { en=Localize("loc_bot_laspistol_killshot") },
 	-- bot_zola_laspistol = { en=Localize("loc_bot_zola_laspistol") },
-	psyker_smite = { en="Psyker 'Smite'" },
 	forcestaff_p1_m1 = { en=Localize("loc_weapon_pattern_forcestaff_p1_m1").." "..Localize("loc_weapon_mark_forcestaff_p1_m1").." "..Localize("loc_weapon_family_forcestaff_p1_m1") .. " Primary Fire" },
 	forcestaff_p4_m1 = { en=Localize("loc_weapon_pattern_forcestaff_p4_m1").." "..Localize("loc_weapon_mark_forcestaff_p4_m1").." "..Localize("loc_weapon_family_forcestaff_p4_m1") },
 	lasgun_p1_m1 = { en=Localize("loc_weapon_pattern_lasgun_p1_m1").." "..Localize("loc_weapon_mark_lasgun_p1_m1").." "..Localize("loc_weapon_family_lasgun_p1_m1") },
@@ -105,6 +104,9 @@ local localizations = {
 	-- stubrevolver_p1_m3 = { en=Localize("loc_stubrevolver_p1_m3") }, -- Unreleased
 	plasmagun_p1_m1 = { en=Localize("loc_weapon_pattern_plasmagun_p1_m1").." "..Localize("loc_weapon_mark_plasmagun_p1_m1").." "..Localize("loc_weapon_family_plasmagun_p1_m1") },
 	-- plasmagun_p1_m2 = { en=Localize("loc_plasmagun_p1_m2") }, -- Unreleased
+	psyker_smite = { en="Psyker 'Smite'" },
+	psyker_throwing_knives = { en="Psyker "..Localize("loc_ability_psyker_blitz_throwing_knives") },
+	zealot_throwing_knives = { en="Zealot "..Localize("loc_ability_zealot_throwing_knifes") },
 
 	-- ######################
 	-- LOOPING RANGED SFX
@@ -189,6 +191,8 @@ local localizations = {
 	-- stub_revolver_p1_m3 = { en=Localize("loc_stubrevolver_p1_m3") },
 	weapon_plasmagun = { en=Localize("loc_weapon_pattern_plasmagun_p1_m1").." "..Localize("loc_weapon_mark_plasmagun_p1_m1").." "..Localize("loc_weapon_family_plasmagun_p1_m1") },
 	psyker_smite_fire = { en="Psyker Force Staff Primary Fire" },
+	psyker_throw_knife = { en="Psyker "..Localize("loc_ability_psyker_blitz_throwing_knives") },
+	zealot_throw_knife = { en="Zealot "..Localize("loc_ability_zealot_throwing_knifes") },
 }
 
 return localizations
