@@ -56,12 +56,12 @@ local localizations = {
 	lasgun_p3_m1 = { en=Localize("loc_weapon_pattern_lasgun_p3_m1").." "..Localize("loc_weapon_mark_lasgun_p3_m1").." "..Localize("loc_weapon_family_lasgun_p3_m1") },
 	lasgun_p3_m2 = { en=Localize("loc_weapon_pattern_lasgun_p3_m2").." "..Localize("loc_weapon_mark_lasgun_p3_m2").." "..Localize("loc_weapon_family_lasgun_p3_m2") },
 	lasgun_p3_m3 = { en=Localize("loc_weapon_pattern_lasgun_p3_m3").." "..Localize("loc_weapon_mark_lasgun_p3_m3").." "..Localize("loc_weapon_family_lasgun_p3_m3") },
-	ogryn_heavy_stubber_p1_m1 = { en=Localize("loc_weapon_pattern_ogryn_heavystubber_p1_m1").." "..Localize("loc_weapon_mark_ogryn_heavystubber_p1_m1").." "..Localize("loc_weapon_family_ogryn_heavystubber_p1_m1") },
-	ogryn_heavy_stubber_p1_m2 = { en=Localize("loc_weapon_pattern_ogryn_heavystubber_p1_m2").." "..Localize("loc_weapon_mark_ogryn_heavystubber_p1_m2").." "..Localize("loc_weapon_family_ogryn_heavystubber_p1_m2") },
-	ogryn_heavy_stubber_p1_m3 = { en=Localize("loc_weapon_pattern_ogryn_heavystubber_p1_m3").." "..Localize("loc_weapon_mark_ogryn_heavystubber_p1_m3").." "..Localize("loc_weapon_family_ogryn_heavystubber_p1_m3") },
-	ogryn_heavy_stubber_p2_m1 = { en=Localize("loc_weapon_pattern_ogryn_heavystubber_p2_m1").." "..Localize("loc_weapon_mark_ogryn_heavystubber_p2_m1").." "..Localize("loc_weapon_family_ogryn_heavystubber_p2_m1") },
-	ogryn_heavy_stubber_p2_m2 = { en=Localize("loc_weapon_pattern_ogryn_heavystubber_p2_m2").." "..Localize("loc_weapon_mark_ogryn_heavystubber_p2_m2").." "..Localize("loc_weapon_family_ogryn_heavystubber_p2_m2") },
-	ogryn_heavy_stubber_p2_m3 = { en=Localize("loc_weapon_pattern_ogryn_heavystubber_p2_m3").." "..Localize("loc_weapon_mark_ogryn_heavystubber_p2_m3").." "..Localize("loc_weapon_family_ogryn_heavystubber_p2_m3") },
+	ogryn_heavystubber_p1_m1 = { en=Localize("loc_weapon_pattern_ogryn_heavystubber_p1_m1").." "..Localize("loc_weapon_mark_ogryn_heavystubber_p1_m1").." "..Localize("loc_weapon_family_ogryn_heavystubber_p1_m1") },
+	ogryn_heavystubber_p1_m2 = { en=Localize("loc_weapon_pattern_ogryn_heavystubber_p1_m2").." "..Localize("loc_weapon_mark_ogryn_heavystubber_p1_m2").." "..Localize("loc_weapon_family_ogryn_heavystubber_p1_m2") },
+	ogryn_heavystubber_p1_m3 = { en=Localize("loc_weapon_pattern_ogryn_heavystubber_p1_m3").." "..Localize("loc_weapon_mark_ogryn_heavystubber_p1_m3").." "..Localize("loc_weapon_family_ogryn_heavystubber_p1_m3") },
+	ogryn_heavystubber_p2_m1 = { en=Localize("loc_weapon_pattern_ogryn_heavystubber_p2_m1").." "..Localize("loc_weapon_mark_ogryn_heavystubber_p2_m1").." "..Localize("loc_weapon_family_ogryn_heavystubber_p2_m1") },
+	ogryn_heavystubber_p2_m2 = { en=Localize("loc_weapon_pattern_ogryn_heavystubber_p2_m2").." "..Localize("loc_weapon_mark_ogryn_heavystubber_p2_m2").." "..Localize("loc_weapon_family_ogryn_heavystubber_p2_m2") },
+	ogryn_heavystubber_p2_m3 = { en=Localize("loc_weapon_pattern_ogryn_heavystubber_p2_m3").." "..Localize("loc_weapon_mark_ogryn_heavystubber_p2_m3").." "..Localize("loc_weapon_family_ogryn_heavystubber_p2_m3") },
 	
 	-- ######################
 	-- Single-shot ranged weapon labels
@@ -124,9 +124,6 @@ local localizations = {
 	heavy_stubber_auto = { en=Localize("loc_weapon_pattern_ogryn_heavystubber_p1_m1").." "..Localize("loc_weapon_mark_ogryn_heavystubber_p1_m1").." "..Localize("loc_weapon_family_ogryn_heavystubber_p1_m1") .. " Auto" },
 	heavy_stubber_p1_m2_auto = { en=Localize("loc_weapon_pattern_ogryn_heavystubber_p1_m2").." "..Localize("loc_weapon_mark_ogryn_heavystubber_p1_m2").." "..Localize("loc_weapon_family_ogryn_heavystubber_p1_m2") .. " Auto" },
 	heavy_stubber_p1_m3_auto = { en=Localize("loc_weapon_pattern_ogryn_heavystubber_p1_m3").." "..Localize("loc_weapon_mark_ogryn_heavystubber_p1_m3").." "..Localize("loc_weapon_family_ogryn_heavystubber_p1_m3") .. " Auto" },
-	heavy_stubber_p2_m1_auto = { en=Localize("loc_weapon_pattern_ogryn_heavystubber_p2_m1").." "..Localize("loc_weapon_mark_ogryn_heavystubber_p2_m1").." "..Localize("loc_weapon_family_ogryn_heavystubber_p2_m1") .. " Auto" },
-	heavy_stubber_p2_m2_auto = { en=Localize("loc_weapon_pattern_ogryn_heavystubber_p2_m2").." "..Localize("loc_weapon_mark_ogryn_heavystubber_p2_m2").." "..Localize("loc_weapon_family_ogryn_heavystubber_p2_m2") .. " Auto" },
-	heavy_stubber_p2_m3_auto = { en=Localize("loc_weapon_pattern_ogryn_heavystubber_p2_m3").." "..Localize("loc_weapon_mark_ogryn_heavystubber_p2_m3").." "..Localize("loc_weapon_family_ogryn_heavystubber_p2_m3") .. " Auto" },
 	psyker_chain_lightning = { en="Psyker Chain Lightning" },
 	-- Charging FX
 	-- 	Helbore
@@ -177,6 +174,9 @@ local localizations = {
 	laspistol_p1_m3 = { en=Localize("loc_weapon_pattern_laspistol_p1_m3").." "..Localize("loc_weapon_mark_laspistol_p1_m3").." "..Localize("loc_weapon_family_laspistol_p1_m3") },
 	weapon_rippergun = { en=Localize("loc_weapon_pattern_ogryn_rippergun_p1_m1").." "..Localize("loc_weapon_mark_ogryn_rippergun_p1_m1").." "..Localize("loc_weapon_family_ogryn_rippergun_p1_m1") },
 	ogryn_gauntlet_fire = { en=Localize("loc_weapon_pattern_ogryn_gauntlet_p1_m1").." "..Localize("loc_weapon_mark_ogryn_gauntlet_p1_m1").." "..Localize("loc_weapon_family_ogryn_gauntlet_p1_m1") },
+	heavy_stubber_p2_m1_punch_first = { en=Localize("loc_weapon_pattern_ogryn_heavystubber_p2_m1").." "..Localize("loc_weapon_mark_ogryn_heavystubber_p2_m1").." "..Localize("loc_weapon_family_ogryn_heavystubber_p2_m1") },
+	heavy_stubber_p2_m2_punch_first = { en=Localize("loc_weapon_pattern_ogryn_heavystubber_p2_m2").." "..Localize("loc_weapon_mark_ogryn_heavystubber_p2_m2").." "..Localize("loc_weapon_family_ogryn_heavystubber_p2_m2") },
+	heavy_stubber_p2_m3_punch_first = { en=Localize("loc_weapon_pattern_ogryn_heavystubber_p2_m3").." "..Localize("loc_weapon_mark_ogryn_heavystubber_p2_m3").." "..Localize("loc_weapon_family_ogryn_heavystubber_p2_m3") },
 	ogryn_thumper_p1_m1 = { en=Localize("loc_weapon_pattern_ogryn_thumper_p1_m1").." "..Localize("loc_weapon_mark_ogryn_thumper_p1_m1").." "..Localize("loc_weapon_family_ogryn_thumper_p1_m1") },
 	ogryn_thumper_p1_m2 = { en=Localize("loc_weapon_pattern_ogryn_thumper_p1_m2").." "..Localize("loc_weapon_mark_ogryn_thumper_p1_m2").." "..Localize("loc_weapon_family_ogryn_thumper_p1_m2") },
 	combat_weapon_shotgun = { en=Localize("loc_weapon_pattern_shotgun_p1_m1").." "..Localize("loc_weapon_mark_shotgun_p1_m1").." "..Localize("loc_weapon_family_shotgun_p1_m1") },
@@ -188,7 +188,7 @@ local localizations = {
 	stub_revolver_p1_m2 = { en=Localize("loc_weapon_pattern_stubrevolver_p1_m2").." "..Localize("loc_weapon_mark_stubrevolver_p1_m2").." "..Localize("loc_weapon_family_stubrevolver_p1_m2") },
 	-- stub_revolver_p1_m3 = { en=Localize("loc_stubrevolver_p1_m3") },
 	weapon_plasmagun = { en=Localize("loc_weapon_pattern_plasmagun_p1_m1").." "..Localize("loc_weapon_mark_plasmagun_p1_m1").." "..Localize("loc_weapon_family_plasmagun_p1_m1") },
-	psyker_smite_fire = { en="Psyker 'Smite' Fire" },
+	psyker_smite_fire = { en="Psyker Force Staff Primary Fire" },
 }
 
 return localizations

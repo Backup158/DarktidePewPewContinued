@@ -49,9 +49,6 @@ local SOUND_EFFECTS_OPTIONS = {
 	{ text="heavy_stubber_auto" },
 	{ text="heavy_stubber_p1_m2_auto" },
 	{ text="heavy_stubber_p1_m3_auto" },
-	{ text="heavy_stubber_p2_m1_auto" },
-	{ text="heavy_stubber_p2_m2_auto" },
-	{ text="heavy_stubber_p2_m3_auto" },
 	{ text="psyker_chain_lightning" },
 	--charging fx
 	{ text="psyker_chain_lightning_charge" },
@@ -107,6 +104,9 @@ local SINGLE_SHOT_SOUND_EFFECTS_OPTIONS = {
 	{ text="stub_revolver_p1_m2" },
 	-- { text="stub_revolver_p1_m3" }, -- Unreleased
 	{ text="ogryn_gauntlet_fire" },
+	{ text="heavy_stubber_p2_m1_punch_first" },
+	{ text="heavy_stubber_p2_m2_punch_first" },
+	{ text="heavy_stubber_p2_m3_punch_first" },
 	{ text="ogryn_thumper_p1_m1" },
 	{ text="ogryn_thumper_p1_m2" },
 	{ text="weapon_plasmagun" }, -- plasmagun_p1_m1
@@ -140,6 +140,12 @@ for i, line_effects_widget in ipairs(mod.line_effects_widgets) do
 	mod.line_effects_widgets[i].default_value = line_effects_widget.setting_id
 	mod.line_effects_widgets[i].options = table.clone(LINE_EFFECTS_OPTIONS)
 end
+
+-- ######################
+-- Sound Effect Widget Options: Automatic and Single
+--	setting_id:	Weapon's name in the code
+--	default_value: the corresponding audio from SOUND_EFFECTS_OPTIONS or SINGLE_SHOT_SOUND_EFFECTS_OPTIONS
+-- ######################
 mod.sound_effects_widgets = {
 	{ setting_id="autopistol_p1_m1", default_value="weapon_autopistol_auto" },
 	-- { setting_id="autopistol_p1_m2", default_value="weapon_autopistol_auto" }, -- Unreleased
@@ -157,12 +163,9 @@ mod.sound_effects_widgets = {
 	{ setting_id="lasgun_p3_m1", default_value="lasgun_p3_m1_fire_auto" },
 	{ setting_id="lasgun_p3_m2", default_value="lasgun_p3_m2_fire_auto" },
 	{ setting_id="lasgun_p3_m3", default_value="lasgun_p3_m3_fire_auto" },
-	{ setting_id="ogryn_heavy_stubber_p1_m1", default_value="heavy_stubber_auto" },
-	{ setting_id="ogryn_heavy_stubber_p1_m2", default_value="heavy_stubber_p1_m2_auto" },
-	{ setting_id="ogryn_heavy_stubber_p1_m3", default_value="heavy_stubber_p1_m3_auto" },
-	{ setting_id="ogryn_heavy_stubber_p2_m1", default_value="heavy_stubber_p2_m1_auto" },
-	{ setting_id="ogryn_heavy_stubber_p2_m2", default_value="heavy_stubber_p2_m2_auto" },
-	{ setting_id="ogryn_heavy_stubber_p2_m3", default_value="heavy_stubber_p2_m3_auto" },
+	{ setting_id="ogryn_heavystubber_p1_m1", default_value="heavy_stubber_auto" },
+	{ setting_id="ogryn_heavystubber_p1_m2", default_value="heavy_stubber_p1_m2_auto" },
+	{ setting_id="ogryn_heavystubber_p1_m3", default_value="heavy_stubber_p1_m3_auto" },
 }
 mod.single_shot_sound_effects_widgets = {
 	{ setting_id="autogun_p3_m1", default_value="autogun_p3_m1_single" },
@@ -184,6 +187,9 @@ mod.single_shot_sound_effects_widgets = {
 	{ setting_id="lasgun_p2_m2", default_value="lasgun_p2_m2" },
 	{ setting_id="lasgun_p2_m3", default_value="lasgun_p2_m3" },
 	{ setting_id="ogryn_gauntlet_p1_m1", default_value="ogryn_gauntlet_fire" },
+	{ setting_id="ogryn_heavystubber_p2_m1", default_value="heavy_stubber_p2_m1_punch_first" },
+	{ setting_id="ogryn_heavystubber_p2_m2", default_value="heavy_stubber_p2_m2_punch_first" },
+	{ setting_id="ogryn_heavystubber_p2_m3", default_value="heavy_stubber_p2_m3_punch_first" },
 	{ setting_id="ogryn_rippergun_p1_m1", default_value="weapon_rippergun" },
 	{ setting_id="ogryn_rippergun_p1_m2", default_value="weapon_rippergun" },
 	{ setting_id="ogryn_rippergun_p1_m3", default_value="weapon_rippergun" },

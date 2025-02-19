@@ -78,9 +78,7 @@ local RANGED_SHOOTING_SOUND_EFFECTS = {
     heavy_stubber_p1_m2_auto =  { braced="heavy_stubber_p1_m2_auto", pre_loop_shot="heavy_stubber_p1_m2_punch_first", single_shot=nil },
     heavy_stubber_p1_m3_auto =  { braced="heavy_stubber_p1_m3_auto", pre_loop_shot="heavy_stubber_p1_m3_punch_first", single_shot=nil },
     --  Single
-    heavy_stubber_p2_m1_auto = { braced="heavy_stubber_p2_m1_fire_auto", pre_loop_shot="heavy_stubber_p2_m1_punch_first", single_shot=nil },
-	heavy_stubber_p2_m2_auto = { braced="heavy_stubber_p2_m2_fire_auto", pre_loop_shot="heavy_stubber_p2_m2_punch_first", single_shot=nil },
-	heavy_stubber_p2_m3_auto = { braced="heavy_stubber_p2_m3_fire_auto", pre_loop_shot="heavy_stubber_p2_m3_punch_first", single_shot=nil },
+    --      Same as Bolter
     -- Rippergun
     --      Same as Bolter
     -- Thumper
@@ -89,7 +87,6 @@ local RANGED_SHOOTING_SOUND_EFFECTS = {
     -- Shotgun
     --      Combat and Double Barrel
     --      Same as Bolter
-    --      See PewPew_data.lua
     -- Psyker Warp stuff
     forcestaff_warp_fire =      { braced="forcestaff_warp_fire", pre_loop_shot="weapon_silence", single_shot="psyker_smite_fire" },
     forcestaff_warp_fire_charge_loop = { braced="forcestaff_warp_fire_charge_loop", pre_loop_shot="weapon_silence", single_shot=nil },
