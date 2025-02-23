@@ -31,6 +31,7 @@ end
 --	Given the sound effect option name, it calls the sound event with the same name after "wwise/events/weapon/play_"
 --	You might assume every weapon's sounds would use the same name format as the formatting used for the weapons themselves
 -- 	Haha, no. Some weapons have the first mark as just weapon_<name>, such as the twin linked heavy stubber
+--		'heavy_stubber_auto' instead of 'heavy_stubber_p1_m1_auto'
 --	So to streamline finding the sounds, these variable names match Fatshark's internal naming scheme for weapon sound effects
 -- ######################
 local SOUND_EFFECTS_OPTIONS = {

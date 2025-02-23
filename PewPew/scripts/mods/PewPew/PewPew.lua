@@ -30,6 +30,7 @@ local PlayerCharacterSoundEventAliases = require("scripts/settings/sound/player_
 
 local original_player_line_effects = table.clone(PlayerLineEffects)
 
+-- ##################################################################################
 -- Finding Effect Names
 --  weapon_id = "wwise/events/weapon/play_<STRING_TO_STEAL>",
 --      autogun_p1_m1 = "wwise/events/weapon/play_autogun_p1_m1_first",
@@ -38,6 +39,7 @@ local original_player_line_effects = table.clone(PlayerLineEffects)
 --  pre_loop_shot:  ranged_pre_loop_shot
 --      note: default = "wwise/events/weapon/play_weapon_silence",
 --  single_shot:    ranged_single_shot (if automatic. otherwise, done automatically by looping through PewPew_data's list. See Bolter)
+-- ##################################################################################
 local RANGED_SHOOTING_SOUND_EFFECTS = {
     -- Autoguns
     --  Yes, one of them says single instead of first. Blame Fatshark
@@ -134,9 +136,22 @@ local function load_resource(package_name, cb)
     end
 end
 
+-- ##################################################################################
 -- Projectile visual effects
+--	See @scripts/settings/effects/player_line_effects.lua
+--  These are called from @scripts/settings/equipment/weapon_templates/<family>/<weapon>.lua
+--      in 'weapon_template.actions' table
+--          in 'action_shoot_hip' and 'action_shoot' tables
+--              there is 'fx' table
+--              this 'fx' table assigns the line effect
+--              This is different for shotguns, because they don't have line effects assigned
+--              They only use generic ranged shooting trails, which are normally added on top of the weapon's line effect
+--      These tables also contain values such as ammo used per shot, handling timings, etc
+--      Which likely means these are immutable by mods
+-- ##################################################################################
 local function update_line_effects(line_effects_to_be_changed)
     local new_line_effects = mod:get(line_effects_to_be_changed)
+    -- Assigning the new values. Values are found from the local copy of the original line effects
     PlayerLineEffects[line_effects_to_be_changed].vfx_width = original_player_line_effects[new_line_effects].vfx_width
     PlayerLineEffects[line_effects_to_be_changed].keep_aligned = original_player_line_effects[new_line_effects].keep_aligned
     PlayerLineEffects[line_effects_to_be_changed].link = original_player_line_effects[new_line_effects].link
@@ -149,6 +164,14 @@ local function update_line_effects(line_effects_to_be_changed)
     load_resource(original_player_line_effects[new_line_effects].vfx_crit, function (loaded_package_name)
         PlayerLineEffects[line_effects_to_be_changed].vfx_crit = loaded_package_name
     end)
+    -- Some of these tables may not exist
+    --  Handles moving vfx table
+    if type(original_player_line_effects[new_line_effects].moving_sfx) == "table" then
+        PlayerLineEffects[line_effects_to_be_changed].moving_sfx = table.clone(original_player_line_effects[new_line_effects].moving_sfx)
+    else
+        PlayerLineEffects[line_effects_to_be_changed].moving_sfx = nil
+    end
+    --  Handles emitters table
     if type(original_player_line_effects[new_line_effects].emitters) == "table" then
         load_resource(original_player_line_effects[new_line_effects].emitters.vfx.default, function (loaded_package_name)
             load_resource(original_player_line_effects[new_line_effects].emitters.vfx.start, function (loaded_package_name)
@@ -158,6 +181,7 @@ local function update_line_effects(line_effects_to_be_changed)
     else
         PlayerLineEffects[line_effects_to_be_changed].emitters = nil
     end
+    --  Handles emitters_crit table
     if type(original_player_line_effects[new_line_effects].emitters_crit) == "table" then
         load_resource(original_player_line_effects[new_line_effects].emitters_crit.vfx.default, function (loaded_package_name)
             load_resource(original_player_line_effects[new_line_effects].emitters_crit.vfx.start, function (loaded_package_name)
@@ -166,11 +190,6 @@ local function update_line_effects(line_effects_to_be_changed)
         end)
     else
         PlayerLineEffects[line_effects_to_be_changed].emitters_crit = nil
-    end
-    if type(original_player_line_effects[new_line_effects].moving_sfx) == "table" then
-        PlayerLineEffects[line_effects_to_be_changed].moving_sfx = table.clone(original_player_line_effects[new_line_effects].moving_sfx)
-    else
-        PlayerLineEffects[line_effects_to_be_changed].moving_sfx = nil
     end
 end
 
