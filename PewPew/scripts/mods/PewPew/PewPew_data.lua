@@ -20,6 +20,25 @@ local LINE_EFFECTS_OPTIONS = {
 	{ text="boltshell" },
 	{ text="plasma_beam" },
 }
+--	See @scripts/settings/effects/minion_line_effects.lua
+local ENEMY_LINE_EFFECTS = {
+	{ text="renegade_twin_captain_las_pistol_lasbeam" },
+	{ text="renegade_lasbeam" },
+	{ text="renegade_gunner_lasbeam" },
+	{ text="renegade_sniper_lasbeam" },
+	{ text="renegade_assault_lasbeam" },
+	{ text="cultist_autogun_bullet" },
+	{ text="renegade_heavy_stubber_bullet" },
+	{ text="renegade_pellet" },
+	{ text="renegade_captain_pellet" },
+	{ text="renegade_captain_boltshell" },
+	{ text="renegade_captain_plasma_beam" },
+}
+for _, v in pairs(ENEMY_LINE_EFFECTS) do
+	table.insert(LINE_EFFECTS_OPTIONS, v)
+end
+
+-- Essentially doing value = text = "string" to use the same name for id and localization id
 for i, option in ipairs(LINE_EFFECTS_OPTIONS) do
 	LINE_EFFECTS_OPTIONS[i].value = LINE_EFFECTS_OPTIONS[i].text
 end
@@ -120,6 +139,7 @@ for i, option in ipairs(SINGLE_SHOT_SOUND_EFFECTS_OPTIONS) do
 end
 
 mod.line_effects_widgets = {
+	-- Player
 	{ setting_id="lasbeam" },
 	{ setting_id="lasbeam_pistol" },
 	{ setting_id="lasbeam_pistol_ads" },
@@ -137,6 +157,18 @@ mod.line_effects_widgets = {
 	{ setting_id="ripper_trail" },
 	{ setting_id="boltshell" },
 	{ setting_id="plasma_beam" },
+	-- Minion
+	{ setting_id="renegade_twin_captain_las_pistol_lasbeam" },
+	{ setting_id="renegade_lasbeam" },
+	{ setting_id="renegade_gunner_lasbeam" },
+	{ setting_id="renegade_sniper_lasbeam" },
+	{ setting_id="renegade_assault_lasbeam" },
+	{ setting_id="cultist_autogun_bullet" },
+	{ setting_id="renegade_heavy_stubber_bullet" },
+	{ setting_id="renegade_pellet" },
+	{ setting_id="renegade_captain_pellet" },
+	{ setting_id="renegade_captain_boltshell" },
+	{ setting_id="renegade_captain_plasma_beam" },
 }
 for i, line_effects_widget in ipairs(mod.line_effects_widgets) do
 	mod.line_effects_widgets[i].type = "dropdown"
