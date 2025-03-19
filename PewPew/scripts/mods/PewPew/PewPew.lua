@@ -1,30 +1,15 @@
 local mod = get_mod("PewPew")
 mod_version = "1.4.2"
+mod_debug = false
 mod:info('PewPewPew v' .. mod_version .. ' loaded uwu nya :3')
 --[[
 Mod: PewPew
 Description: Change ranged weapon sounds and projectile visual effects
 Author: tinybike (GlaresAtKoalas on Nexus)
     2025-02-17 updates by Backup158
-    Added support (and uncommented existing hidden support) for:
-        laspistol_p1_m3:        Kantrael Mk X Heavy Laspistol; Patch 16, Traitor's Curse pt 2, 2023-12-06
-        stub_revolver_p1_m2:    Agripinaa Mk XIV Quickdraw Stub Revolver; Patch 16, Traitor's Curse pt 2, 2023-12-06
-        boltpistol_p1_m1:       Godwyn-Branx Pattern Bolt Pistol (Godwyn-Branx Mk IV Bolt Pistol); Secrets of the Machine God, 2024-06-25
-        shotgun_p2_m1:          Ironhelm “Hacker” Mk IV Assault Shotgun (Crucis Mk XI Double-Barrelled Shotgun); Secrets of the Machine God, 2024-06-25
-        heavy_stubber_p2_m1-3:  Krourk Mk IIa/Gorgonum Mk IIIa/Achlys Mk II Ogryn Heavy Stubber; Grim Protocols, 2024-12-03
-        Note: Above weapons were renamed in Unlocked and Loaded. New names are in parentheses.
-    Added sounds for:
-        force_sword_2h_loop:    Force Greatswords; Grim Protocols, 2024-12-03
-        Note: Relic Blades (2h power sword) uses the same sound as regular power sword
-    Updated localization codes to comply with Unlocked and Loaded.
-        Also made some changes so you don't have to guess what lasbeam bfg is or whatever
-    Sorted names by alphabetical/code order
-    Added some comments for documentation
-        I know this makes it messier, but I'm clearly labelling things because I didn't know why entries were missing for way too long (10 minutes lol)
-    TODO: WTF IS psyker_smite_fire? Supposed to be brain burst and staff primary fire but the sounds don't get changed?
-        Add options to change charging sfx to others? I'm kinda lazy and don't want to do that
 ]]
 
+-- The required files for PlayerLineEffects and MinionLineEffects each contain a declaration of a line_effects table, then returns that table
 local PlayerLineEffects = require("scripts/settings/effects/player_line_effects")
 local MinionLineEffects = require("scripts/settings/effects/minion_line_effects")
 local PlayerCharacterSoundEventAliases = require("scripts/settings/sound/player_character_sound_event_aliases")
@@ -178,127 +163,77 @@ end
 -- ##################################################################################
 local function update_line_effects(line_effects_to_be_changed)
     local new_line_effects = mod:get(line_effects_to_be_changed)
-    local SourcedLineEffects = PlayerLineEffects
     local original_line_effects = original_player_line_effects
 
     local changed_effect_is_minion = table_contains(ENEMY_LINE_EFFECTS, new_line_effects)
     if changed_effect_is_minion then
-        SourcedLineEffects = MinionLineEffects
         original_line_effects = original_minion_line_effects
-        mod:notify(tostring(new_line_effects).." is a fuck!")
+        if mod_debug then mod:notify(tostring(new_line_effects).." is a fuck!") end
     else
-        mod:notify(tostring(new_line_effects).." is player")
+        if mod_debug then mod:notify(tostring(new_line_effects).." is player") end
     end
-
+    
     -- Assigning the new values. Values are found from the local copy of the original line effects
-    -- Some enemy effects don't have alignment checks
-    if SourcedLineEffects.keep_aligned then 
-        SourcedLineEffects[line_effects_to_be_changed].keep_aligned = original_line_effects[new_line_effects].keep_aligned
+    --  Making an exception for scab sniper width, because that shit is literally 50 times bigger than the normal width lmfao
+    if original_line_effects[new_line_effects].vfx_width then
+        if new_line_effects ~= "renegade_sniper_lasbeam" then
+            PlayerLineEffects[line_effects_to_be_changed].vfx_width = original_line_effects[new_line_effects].vfx_width
+        else
+            PlayerLineEffects[line_effects_to_be_changed].vfx_width = original_player_line_effects[line_effects_to_be_changed].vfx_width
+        end
     end
-    -- Only some enemies have vfx width
-    --  renegade_sniper_lasbeam and renegade_captain_plasma_beam
-    if SourcedLineEffects.vfx_width then 
-        SourcedLineEffects[line_effects_to_be_changed].vfx_width = original_line_effects[new_line_effects].vfx_width
-    end
-    -- Only players have links
-    if SourcedLineEffects.link then
-        SourcedLineEffects[line_effects_to_be_changed].link = original_line_effects[new_line_effects].link
-    end
-    -- Some enemy weapons are missing vfx???
-    --  cultist_autogun_bullet and renegade_heavy_stubber_bullet
-    if SourcedLineEffects.vfx then
+    PlayerLineEffects[line_effects_to_be_changed].keep_aligned = original_line_effects[new_line_effects].keep_aligned
+    PlayerLineEffects[line_effects_to_be_changed].link = original_line_effects[new_line_effects].link
+    
+    if original_line_effects[new_line_effects].vfx then
         load_resource(original_line_effects[new_line_effects].vfx, function (loaded_package_name)
-            SourcedLineEffects[line_effects_to_be_changed].vfx = loaded_package_name
+            PlayerLineEffects[line_effects_to_be_changed].vfx = loaded_package_name
         end)
+    else 
+        PlayerLineEffects[line_effects_to_be_changed].vfx = original_player_line_effects[line_effects_to_be_changed].vfx
     end
-    -- Player is missing some because it comes from elsewhere
-    --  the bullet ones
-    if SourcedLineEffects.sfx then
+    if original_line_effects[new_line_effects].sfx then
         load_resource(original_line_effects[new_line_effects].sfx, function (loaded_package_name)
-            SourcedLineEffects[line_effects_to_be_changed].sfx = loaded_package_name
+            PlayerLineEffects[line_effects_to_be_changed].sfx = loaded_package_name
         end)
+    else 
+        PlayerLineEffects[line_effects_to_be_changed].sfx = original_player_line_effects[line_effects_to_be_changed].sfx
     end
-    -- Only players do crits
-    if SourcedLineEffects.vfx_crit then
+    if original_line_effects[new_line_effects].vfx_crit then
         load_resource(original_line_effects[new_line_effects].vfx_crit, function (loaded_package_name)
-            SourcedLineEffects[line_effects_to_be_changed].vfx_crit = loaded_package_name
+            PlayerLineEffects[line_effects_to_be_changed].vfx_crit = loaded_package_name
         end)
+    else 
+        PlayerLineEffects[line_effects_to_be_changed].vfx_crit = original_player_line_effects[line_effects_to_be_changed].vfx_crit
     end
     -- Some of these tables may not exist
     --  Handles moving vfx table
-    if SourcedLineEffects.moving_sfx then
-        if type(original_line_effects[new_line_effects].moving_sfx) == "table" then
-            SourcedLineEffects[line_effects_to_be_changed].moving_sfx = table.clone(original_line_effects[new_line_effects].moving_sfx)
-        else
-            SourcedLineEffects[line_effects_to_be_changed].moving_sfx = nil
-        end
-    end
-    --  Handles emitters table
-    if SourcedLineEffects.emitters then
-        if type(original_line_effects[new_line_effects].emitters) == "table" then
-            load_resource(original_line_effects[new_line_effects].emitters.vfx.default, function (loaded_package_name)
-                load_resource(original_line_effects[new_line_effects].emitters.vfx.start, function (loaded_package_name)
-                    SourcedLineEffects[line_effects_to_be_changed].emitters = table.clone(original_line_effects[mod:get(line_effects_to_be_changed)].emitters)
-                end)
-            end)
-        else
-            SourcedLineEffects[line_effects_to_be_changed].emitters = nil
-        end
-    end
-    --  Handles emitters_crit table
-    if SourcedLineEffects.emitters_crit then
-        if type(original_line_effects[new_line_effects].emitters_crit) == "table" then
-            load_resource(original_line_effects[new_line_effects].emitters_crit.vfx.default, function (loaded_package_name)
-                load_resource(original_line_effects[new_line_effects].emitters_crit.vfx.start, function (loaded_package_name)
-                    SourcedLineEffects[line_effects_to_be_changed].emitters_crit = table.clone(original_line_effects[mod:get(line_effects_to_be_changed)].emitters_crit)
-                end)
-            end)
-        else
-            SourcedLineEffects[line_effects_to_be_changed].emitters_crit = nil
-        end
-    end
-    --[[
-    -- Assigning the new values. Values are found from the local copy of the original line effects
-    PlayerLineEffects[line_effects_to_be_changed].vfx_width = original_player_line_effects[new_line_effects].vfx_width
-    PlayerLineEffects[line_effects_to_be_changed].keep_aligned = original_player_line_effects[new_line_effects].keep_aligned
-    PlayerLineEffects[line_effects_to_be_changed].link = original_player_line_effects[new_line_effects].link
-    load_resource(original_player_line_effects[new_line_effects].vfx, function (loaded_package_name)
-        PlayerLineEffects[line_effects_to_be_changed].vfx = loaded_package_name
-    end)
-    load_resource(original_player_line_effects[new_line_effects].sfx, function (loaded_package_name)
-        PlayerLineEffects[line_effects_to_be_changed].sfx = loaded_package_name
-    end)
-    load_resource(original_player_line_effects[new_line_effects].vfx_crit, function (loaded_package_name)
-        PlayerLineEffects[line_effects_to_be_changed].vfx_crit = loaded_package_name
-    end)
-    -- Some of these tables may not exist
-    --  Handles moving vfx table
-    if type(original_player_line_effects[new_line_effects].moving_sfx) == "table" then
-        PlayerLineEffects[line_effects_to_be_changed].moving_sfx = table.clone(original_player_line_effects[new_line_effects].moving_sfx)
+    if type(original_line_effects[new_line_effects].moving_sfx) == "table" then
+        PlayerLineEffects[line_effects_to_be_changed].moving_sfx = table.clone(original_line_effects[new_line_effects].moving_sfx)
     else
         PlayerLineEffects[line_effects_to_be_changed].moving_sfx = nil
     end
     --  Handles emitters table
-    if type(original_player_line_effects[new_line_effects].emitters) == "table" then
-        load_resource(original_player_line_effects[new_line_effects].emitters.vfx.default, function (loaded_package_name)
-            load_resource(original_player_line_effects[new_line_effects].emitters.vfx.start, function (loaded_package_name)
-                PlayerLineEffects[line_effects_to_be_changed].emitters = table.clone(original_player_line_effects[mod:get(line_effects_to_be_changed)].emitters)
+    if type(original_line_effects[new_line_effects].emitters) == "table" then
+        load_resource(original_line_effects[new_line_effects].emitters.vfx.default, function (loaded_package_name)
+            load_resource(original_line_effects[new_line_effects].emitters.vfx.start, function (loaded_package_name)
+                PlayerLineEffects[line_effects_to_be_changed].emitters = table.clone(original_line_effects[new_line_effects].emitters)
             end)
         end)
     else
         PlayerLineEffects[line_effects_to_be_changed].emitters = nil
     end
     --  Handles emitters_crit table
-    if type(original_player_line_effects[new_line_effects].emitters_crit) == "table" then
-        load_resource(original_player_line_effects[new_line_effects].emitters_crit.vfx.default, function (loaded_package_name)
-            load_resource(original_player_line_effects[new_line_effects].emitters_crit.vfx.start, function (loaded_package_name)
-                PlayerLineEffects[line_effects_to_be_changed].emitters_crit = table.clone(original_player_line_effects[mod:get(line_effects_to_be_changed)].emitters_crit)
+    if type(original_line_effects[new_line_effects].emitters_crit) == "table" then
+        load_resource(original_line_effects[new_line_effects].emitters_crit.vfx.default, function (loaded_package_name)
+            load_resource(original_line_effects[new_line_effects].emitters_crit.vfx.start, function (loaded_package_name)
+                PlayerLineEffects[line_effects_to_be_changed].emitters_crit = table.clone(original_line_effects[new_line_effects].emitters_crit)
             end)
         end)
     else
         PlayerLineEffects[line_effects_to_be_changed].emitters_crit = nil
     end
-    ]]
+    
 end
 
 -- Sound effects
@@ -338,7 +273,7 @@ local function update_sound_effects(weapon_to_be_changed)
     end
 end
 
-function update_single_shot_sound_effects(weapon_to_be_changed)
+local function update_single_shot_sound_effects(weapon_to_be_changed)
     local new_ranged_shooting_sfx = mod:get(weapon_to_be_changed)
     local play_ranged_single_shot = "wwise/events/weapon/play_" .. new_ranged_shooting_sfx
     if type(PlayerCharacterSoundEventAliases.ranged_single_shot.events[weapon_to_be_changed]) == "table" then
@@ -362,10 +297,19 @@ function update_single_shot_sound_effects(weapon_to_be_changed)
         if play_ranged_single_shot ~= PlayerCharacterSoundEventAliases.ranged_single_shot.events[weapon_to_be_changed] then
             load_resource(play_ranged_single_shot, function (loaded_package_name)
                 PlayerCharacterSoundEventAliases.ranged_single_shot.events[weapon_to_be_changed] = loaded_package_name
+                -- arbitarary wwise event of non required file: crash. <<Script Error>>scripts/network_lookup/network_lookup.lua:475: [NetworkLookup] Table player_character_sounds does not contain key: wwise/events/minions/play_loc_captain_twin_male_a__mission_twins_arrival_04_a_01_ambisonics<</Script Error>>
+                --PlayerCharacterSoundEventAliases.ranged_single_shot.events[weapon_to_be_changed] = "wwise/events/minions/play_loc_captain_twin_male_a__mission_twins_arrival_04_a_01_ambisonics"
+                -- another wwise event in the player character sounds
+                --  Voices have no sound unless played by the correct current voice (and when they do play, they are quiet)
+                --PlayerCharacterSoundEventAliases.ranged_single_shot.events[weapon_to_be_changed] = PlayerCharacterSoundEventAliases.attack_long_vce.events.psyker_female_b
+                -- wwise event in PCSEA: Success!
+                --  BUT IT MAY EARRAPE YOU
+                --PlayerCharacterSoundEventAliases.ranged_single_shot.events[weapon_to_be_changed] = PlayerCharacterSoundEventAliases.ability_shout.events.veteran_combat_ability
             end)
         end
     end
 end
+
 
 for _, line_effects_widget in ipairs(mod.line_effects_widgets) do
     update_line_effects(line_effects_widget.setting_id)
@@ -376,6 +320,7 @@ end
 for _, single_shot_sound_effects_widget in ipairs(mod.single_shot_sound_effects_widgets) do
     update_single_shot_sound_effects(single_shot_sound_effects_widget.setting_id)
 end
+
 
 mod.on_setting_changed = function (setting_id)
     if table.find_by_key(mod.line_effects_widgets, "setting_id", setting_id) ~= nil then

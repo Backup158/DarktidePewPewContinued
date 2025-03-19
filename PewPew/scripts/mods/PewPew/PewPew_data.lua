@@ -138,6 +138,10 @@ for i, option in ipairs(SINGLE_SHOT_SOUND_EFFECTS_OPTIONS) do
 	SINGLE_SHOT_SOUND_EFFECTS_OPTIONS[i].value = SINGLE_SHOT_SOUND_EFFECTS_OPTIONS[i].text
 end
 
+-- ######################
+-- Line Effects Widgets
+-- 	Bullet trails to change
+-- ######################
 mod.line_effects_widgets = {
 	-- Player
 	{ setting_id="lasbeam" },
@@ -158,17 +162,17 @@ mod.line_effects_widgets = {
 	{ setting_id="boltshell" },
 	{ setting_id="plasma_beam" },
 	-- Minion
-	{ setting_id="renegade_twin_captain_las_pistol_lasbeam" },
-	{ setting_id="renegade_lasbeam" },
-	{ setting_id="renegade_gunner_lasbeam" },
-	{ setting_id="renegade_sniper_lasbeam" },
-	{ setting_id="renegade_assault_lasbeam" },
-	{ setting_id="cultist_autogun_bullet" },
-	{ setting_id="renegade_heavy_stubber_bullet" },
-	{ setting_id="renegade_pellet" },
-	{ setting_id="renegade_captain_pellet" },
-	{ setting_id="renegade_captain_boltshell" },
-	{ setting_id="renegade_captain_plasma_beam" },
+	--{ setting_id="renegade_twin_captain_las_pistol_lasbeam" },
+	--{ setting_id="renegade_lasbeam" },
+	--{ setting_id="renegade_gunner_lasbeam" },
+	--{ setting_id="renegade_sniper_lasbeam" },
+	--{ setting_id="renegade_assault_lasbeam" },
+	--{ setting_id="cultist_autogun_bullet" },
+	--{ setting_id="renegade_heavy_stubber_bullet" },
+	--{ setting_id="renegade_pellet" },
+	--{ setting_id="renegade_captain_pellet" },
+	--{ setting_id="renegade_captain_boltshell" },
+	--{ setting_id="renegade_captain_plasma_beam" },
 }
 for i, line_effects_widget in ipairs(mod.line_effects_widgets) do
 	mod.line_effects_widgets[i].type = "dropdown"

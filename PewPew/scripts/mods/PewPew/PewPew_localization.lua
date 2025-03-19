@@ -36,6 +36,17 @@ local localizations = {
 	ripper_trail = { en="Ripper Trail" },
 	boltshell = { en="Bolt Shell" },
 	plasma_beam = { en="Plasma Beam" },
+	renegade_twin_captain_las_pistol_lasbeam = { en="Scab Captain Laspistol Beam" },
+	renegade_lasbeam = { en="Scab Rifleman Las Beam" },
+	renegade_gunner_lasbeam = { en="Scab Gunner Las Beam" },
+	renegade_sniper_lasbeam = { en="Scab Sniper Las Beam" },
+	renegade_assault_lasbeam = { en="Scab Assault Las Beam" },
+	cultist_autogun_bullet = { en="Dreg Autogun Bullet" },
+	renegade_heavy_stubber_bullet = { en="Reaper Heavy Stubber Bullet" },
+	renegade_pellet = { en="Scab Shotgunner Pellet/Slug" },
+	renegade_captain_pellet = { en="Scab Captain Pellet Trail" },
+	renegade_captain_boltshell = { en="Scab Captain Bolt Shell" },
+	renegade_captain_plasma_beam = { en="Rodin Karnak Flaming Plasma Beam" },
 
 	-- ######################
 	-- Automatic ranged weapon labels
