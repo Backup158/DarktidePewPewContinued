@@ -4,6 +4,7 @@
 --	This would require major refactors with not much benefit as far as I can tell
 --	en=Localize("loc_weapon_pattern_<PLACEHOLDER>").." "..Localize("loc_weapon_mark_<PLACEHOLDER>").." "..Localize("loc_weapon_family_<PLACEHOLDER>")
 --		and no, reassigning localizations for single shot doesn't work...
+--		You'd have to assign that to a variable first, and there's still so many exceptions I'd just say fuck it
 --	loc_weapon_px_mx brings up the old localizations from before Unlocked and Loaded
 local localizations = {
 	mod_title = { en="PewPew" },
@@ -37,10 +38,10 @@ local localizations = {
 	boltshell = { en="Bolt Shell" },
 	plasma_beam = { en="Plasma Beam" },
 	renegade_twin_captain_las_pistol_lasbeam = { en="Scab Captain Laspistol Beam" },
-	renegade_lasbeam = { en="Scab Rifleman Las Beam" },
+	renegade_lasbeam = { en="Scab Shooter Las Beam" },
 	renegade_gunner_lasbeam = { en="Scab Gunner Las Beam" },
 	renegade_sniper_lasbeam = { en="Scab Sniper Las Beam" },
-	renegade_assault_lasbeam = { en="Scab Assault Las Beam" },
+	renegade_assault_lasbeam = { en="Scab Stalker Las Beam" },
 	cultist_autogun_bullet = { en="Dreg Autogun Bullet" },
 	renegade_heavy_stubber_bullet = { en="Reaper Heavy Stubber Bullet" },
 	renegade_pellet = { en="Scab Shotgunner Pellet/Slug" },
@@ -183,7 +184,7 @@ local localizations = {
 	lasgun_p2_m2 = { en=Localize("loc_weapon_pattern_lasgun_p2_m2").." "..Localize("loc_weapon_mark_lasgun_p2_m2").." "..Localize("loc_weapon_family_lasgun_p2_m2") },
 	lasgun_p2_m3 = { en=Localize("loc_weapon_pattern_lasgun_p2_m3").." "..Localize("loc_weapon_mark_lasgun_p2_m3").." "..Localize("loc_weapon_family_lasgun_p2_m3") },
 	weapon_laspistol = { en=Localize("loc_weapon_pattern_laspistol_p1_m1").." "..Localize("loc_weapon_mark_laspistol_p1_m1").." "..Localize("loc_weapon_family_laspistol_p1_m1") },
-	-- laspistol_p1_m2 = { en=Localize("loc_laspistol_p1_m2") },
+	-- laspistol_p1_m2 = { en=Localize("loc_laspistol_p1_m2") }, -- Unreleased
 	laspistol_p1_m3 = { en=Localize("loc_weapon_pattern_laspistol_p1_m3").." "..Localize("loc_weapon_mark_laspistol_p1_m3").." "..Localize("loc_weapon_family_laspistol_p1_m3") },
 	weapon_rippergun = { en=Localize("loc_weapon_pattern_ogryn_rippergun_p1_m1").." "..Localize("loc_weapon_mark_ogryn_rippergun_p1_m1").." "..Localize("loc_weapon_family_ogryn_rippergun_p1_m1") },
 	ogryn_gauntlet_fire = { en=Localize("loc_weapon_pattern_ogryn_gauntlet_p1_m1").." "..Localize("loc_weapon_mark_ogryn_gauntlet_p1_m1").." "..Localize("loc_weapon_family_ogryn_gauntlet_p1_m1") },
@@ -199,9 +200,10 @@ local localizations = {
 	--stub_revolver = { en=Localize("loc_stub_revolver") }, -- For some reason this shows up as 'Chambered'
 	stub_revolver = { en=Localize("loc_weapon_pattern_stubrevolver_p1_m1").." "..Localize("loc_weapon_mark_stubrevolver_p1_m1").." "..Localize("loc_weapon_family_stubrevolver_p1_m1") },
 	stub_revolver_p1_m2 = { en=Localize("loc_weapon_pattern_stubrevolver_p1_m2").." "..Localize("loc_weapon_mark_stubrevolver_p1_m2").." "..Localize("loc_weapon_family_stubrevolver_p1_m2") },
-	-- stub_revolver_p1_m3 = { en=Localize("loc_stubrevolver_p1_m3") },
+	-- stub_revolver_p1_m3 = { en=Localize("loc_stubrevolver_p1_m3") }, -- Unreleased
 	weapon_plasmagun = { en=Localize("loc_weapon_pattern_plasmagun_p1_m1").." "..Localize("loc_weapon_mark_plasmagun_p1_m1").." "..Localize("loc_weapon_family_plasmagun_p1_m1") },
 	psyker_smite_fire = { en="Psyker Force Staff Primary Fire" },
+	-- The only localization lines related to these are the talent names, so you can get uwu flashbanged
 	psyker_throw_knife = { en="Psyker "..Localize("loc_ability_psyker_blitz_throwing_knives") },
 	zealot_throw_knife = { en="Zealot "..Localize("loc_ability_zealot_throwing_knifes") },
 }
