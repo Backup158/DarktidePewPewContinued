@@ -14,27 +14,8 @@ local PlayerLineEffects = require("scripts/settings/effects/player_line_effects"
 local MinionLineEffects = require("scripts/settings/effects/minion_line_effects")
 local PlayerCharacterSoundEventAliases = require("scripts/settings/sound/player_character_sound_event_aliases")
 
--- The function used for deep copying a table
---  Thank you random guy on github
-local function deepCopy(obj, seen)
-    -- Handle non-tables and previously-seen tables.
-    if type(obj) ~= 'table' then return obj end
-    if seen and seen[obj] then return seen[obj] end
-  
-    -- New table; mark it as seen and copy recursively.
-    local s = seen or {}
-    local res = {}
-    s[obj] = res
-    for k, v in pairs(obj) do res[deepCopy(k, s)] = deepCopy(v, s) end
-    return setmetatable(res, getmetatable(obj))
-end
--- Deep copies the original line values
---  Regular cloning is a shallow copy, and any subtables are still passed by reference
---  So half the elements (mostly vfx) are being edited, even with this "original" copy
---local original_player_line_effects = table.clone(PlayerLineEffects)
---local original_minion_line_effects = table.clone(MinionLineEffects)
-local original_player_line_effects = deepCopy(PlayerLineEffects)
-local original_minion_line_effects = deepCopy(MinionLineEffects)
+local original_player_line_effects = table.clone(PlayerLineEffects)
+local original_minion_line_effects = table.clone(MinionLineEffects)
 
 -- Checks if value exists in table
 function table_contains(table, x)
