@@ -14,8 +14,27 @@ local PlayerLineEffects = require("scripts/settings/effects/player_line_effects"
 local MinionLineEffects = require("scripts/settings/effects/minion_line_effects")
 local PlayerCharacterSoundEventAliases = require("scripts/settings/sound/player_character_sound_event_aliases")
 
-local original_player_line_effects = table.clone(PlayerLineEffects)
-local original_minion_line_effects = table.clone(MinionLineEffects)
+-- The function used for deep copying a table
+--  Thank you random guy on github
+local function deepCopy(obj, seen)
+    -- Handle non-tables and previously-seen tables.
+    if type(obj) ~= 'table' then return obj end
+    if seen and seen[obj] then return seen[obj] end
+  
+    -- New table; mark it as seen and copy recursively.
+    local s = seen or {}
+    local res = {}
+    s[obj] = res
+    for k, v in pairs(obj) do res[deepCopy(k, s)] = deepCopy(v, s) end
+    return setmetatable(res, getmetatable(obj))
+end
+-- Deep copies the original line values
+--  Regular cloning is a shallow copy, and any subtables are still passed by reference
+--  So half the elements (mostly vfx) are being edited, even with this "original" copy
+--local original_player_line_effects = table.clone(PlayerLineEffects)
+--local original_minion_line_effects = table.clone(MinionLineEffects)
+local original_player_line_effects = deepCopy(PlayerLineEffects)
+local original_minion_line_effects = deepCopy(MinionLineEffects)
 
 -- Checks if value exists in table
 function table_contains(table, x)
@@ -162,24 +181,33 @@ end
 --      Which likely means these are immutable by mods
 -- ##################################################################################
 local function update_line_effects(line_effects_to_be_changed)
+    -- Get name of new effect we want to replace the current one with
     local new_line_effects = mod:get(line_effects_to_be_changed)
-    local original_line_effects = original_player_line_effects
 
     local changed_effect_is_minion = table_contains(ENEMY_LINE_EFFECTS, new_line_effects)
+    -- Makes a local copy of the original effects for faster access
+    local original_line_effects
+    --  Not used as a destination (?) for assignment, so pass by reference is fine
     if changed_effect_is_minion then
         original_line_effects = original_minion_line_effects
         if mod_debug then mod:notify(tostring(new_line_effects).." is a fuck!") end
     else
+        original_line_effects = original_player_line_effects
         if mod_debug then mod:notify(tostring(new_line_effects).." is player") end
     end
     
-    -- Assigning the new values. Values are found from the local copy of the original line effects
-    --  Making an exception for scab sniper width, because that shit is literally 50 times bigger than the normal width lmfao
+    -- Assigning the new values
+    --  Values are taken from the local copy of the original line effects
+    --  If there is no new value, use the value from the default
     if original_line_effects[new_line_effects].vfx_width then
-        if new_line_effects ~= "renegade_sniper_lasbeam" then
-            PlayerLineEffects[line_effects_to_be_changed].vfx_width = original_line_effects[new_line_effects].vfx_width
-        else
+        --  Making an exception for scab sniper width, because that shit is literally 50 times bigger than the normal width lmfao
+        --  Instead, it will use the original width at the default value
+        if new_line_effects == "renegade_sniper_lasbeam" then
+            if mod_debug then mod:echo(tostring(new_line_effects).." is player") end
             PlayerLineEffects[line_effects_to_be_changed].vfx_width = original_player_line_effects[line_effects_to_be_changed].vfx_width
+            -- PlayerLineEffects[line_effects_to_be_changed].vfx_width = nil -- Intentionally making it blank
+        else
+            PlayerLineEffects[line_effects_to_be_changed].vfx_width = original_line_effects[new_line_effects].vfx_width
         end
     end
     PlayerLineEffects[line_effects_to_be_changed].keep_aligned = original_line_effects[new_line_effects].keep_aligned
@@ -310,15 +338,16 @@ local function update_single_shot_sound_effects(weapon_to_be_changed)
     end
 end
 
-
-for _, line_effects_widget in ipairs(mod.line_effects_widgets) do
-    update_line_effects(line_effects_widget.setting_id)
-end
-for _, sound_effects_widget in ipairs(mod.sound_effects_widgets) do
-    update_sound_effects(sound_effects_widget.setting_id)
-end
-for _, single_shot_sound_effects_widget in ipairs(mod.single_shot_sound_effects_widgets) do
-    update_single_shot_sound_effects(single_shot_sound_effects_widget.setting_id)
+mod.on_all_mods_loaded = function (setting_id)
+    for _, line_effects_widget in ipairs(mod.line_effects_widgets) do
+        update_line_effects(line_effects_widget.setting_id)
+    end
+    for _, sound_effects_widget in ipairs(mod.sound_effects_widgets) do
+        update_sound_effects(sound_effects_widget.setting_id)
+    end
+    for _, single_shot_sound_effects_widget in ipairs(mod.single_shot_sound_effects_widgets) do
+        update_single_shot_sound_effects(single_shot_sound_effects_widget.setting_id)
+    end
 end
 
 
