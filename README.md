@@ -1,3 +1,4 @@
+# PewPewPew
 [Original PewPew mod](https://www.nexusmods.com/warhammer40kdarktide/mods/174)
 
 This mod is a replacer plugin for the old PewPew. I have kept the core functionality the same and simply added missing options from game updates.
