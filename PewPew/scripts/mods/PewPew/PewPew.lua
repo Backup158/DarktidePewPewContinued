@@ -1,5 +1,5 @@
 local mod = get_mod("PewPew")
-mod_version = "1.4.2"
+mod_version = "1.5.0"
 mod_debug = false
 mod:info('PewPewPew v' .. mod_version .. ' loaded uwu nya :3')
 --[[
@@ -179,7 +179,9 @@ local function update_line_effects(line_effects_to_be_changed)
     
     -- Assigning the new values
     --  Values are taken from the local copy of the original line effects
-    --  If there is no new value, use the value from the default
+    --  If there is no new value, use the value from the default line effect
+    --      This is because enemy line effects don't have things such as width
+    --      If width is nil, the effect doesn't show up
     if original_line_effects[new_line_effects].vfx_width then
         --  Making an exception for scab sniper width, because that shit is literally 50 times bigger than the normal width lmfao
         --  Instead, it will use the original width at the default value
