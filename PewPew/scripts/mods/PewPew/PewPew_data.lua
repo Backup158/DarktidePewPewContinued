@@ -270,6 +270,7 @@ return {
 	allow_rehooking = true,
 	options = {
 		widgets = {
+			{ setting_id="enable_debug_mode", type="checkbox", default_value = false, },
 			{ setting_id="line_effects_id", type="group", sub_widgets=mod.line_effects_widgets },
 			{ setting_id="sound_effects_id", type="group", sub_widgets=mod.sound_effects_widgets },
 			{ setting_id="single_shot_sound_effects_id", type="group", sub_widgets=mod.single_shot_sound_effects_widgets },

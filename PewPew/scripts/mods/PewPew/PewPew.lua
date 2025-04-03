@@ -1,6 +1,6 @@
 local mod = get_mod("PewPew")
 mod_version = "1.5.0"
-mod_debug = false
+mod_debug = mod:get("enable_debug_mode")
 mod:info('PewPewPew v' .. mod_version .. ' loaded uwu nya :3')
 --[[
 Mod: PewPew

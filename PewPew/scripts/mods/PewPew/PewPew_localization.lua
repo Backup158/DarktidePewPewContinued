@@ -9,6 +9,10 @@
 local localizations = {
 	mod_title = { en="PewPew" },
 	mod_description = { en="Change ranged weapon sounds and projectile visual effects (Continued). PewPewPew!" },
+
+	enable_debug_mode = { en = "Debug Mode", },
+	enable_debug_mode_description = { en = "Enables verbose logging trail effect", },
+
 	line_effects_id = { en="Visual Effects" },
 	sound_effects_id = { en="Fully Automatic Fire SFX" },
 	single_shot_sound_effects_id = { en="Single Shot SFX" },
