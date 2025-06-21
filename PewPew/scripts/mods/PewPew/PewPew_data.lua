@@ -21,7 +21,7 @@ local LINE_EFFECTS_OPTIONS = {
 	{ text="plasma_beam" },
 }
 
-for _, v in pairs(mod.ENEMY_LINE_EFFECTS) do
+for _, v in ipairs(mod.ENEMY_LINE_EFFECTS) do
 	table.insert(LINE_EFFECTS_OPTIONS, v)
 end
 
