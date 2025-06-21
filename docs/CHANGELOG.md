@@ -1,0 +1,5 @@
+# v1.5.1
+2025-06-21
+
+- Started keeping a changelog
+- Created function for basic localizations to be done through a loop

@@ -60,56 +60,15 @@ local localizations = {
 	renegade_captain_pellet = { en="Scab Captain Pellet Trail" },
 	renegade_captain_boltshell = { en="Scab Captain Bolt Shell" },
 	renegade_captain_plasma_beam = { en="Rodin Karnak Flaming Plasma Beam" },
-
-	-- ######################
-	-- Automatic ranged weapon labels
-	-- ######################
-	forcestaff_p2_m1 = { en=Localize("loc_weapon_pattern_forcestaff_p2_m1").." "..Localize("loc_weapon_mark_forcestaff_p2_m1").." "..Localize("loc_weapon_family_forcestaff_p2_m1") .. " Secondary Fire" },
-	--forcestaff_p2_m2 = { en=Localize("loc_forcestaff_p2_m2") }, -- Unreleased
-	forcestaff_p3_m1 = { en=Localize("loc_weapon_pattern_forcestaff_p3_m1").." "..Localize("loc_weapon_mark_forcestaff_p3_m1").." "..Localize("loc_weapon_family_forcestaff_p3_m1") .. " Secondary Fire" },
 	
 	-- ######################
 	-- Single-shot ranged weapon labels
 	-- ######################
-	autogun_p3_m1 = { en=Localize("loc_weapon_pattern_autogun_p3_m1").." "..Localize("loc_weapon_mark_autogun_p3_m1").." "..Localize("loc_weapon_family_autogun_p3_m1") },
-	autogun_p3_m2 = { en=Localize("loc_weapon_pattern_autogun_p3_m2").." "..Localize("loc_weapon_mark_autogun_p3_m2").." "..Localize("loc_weapon_family_autogun_p3_m2") },
-	autogun_p3_m3 = { en=Localize("loc_weapon_pattern_autogun_p3_m3").." "..Localize("loc_weapon_mark_autogun_p3_m3").." "..Localize("loc_weapon_family_autogun_p3_m3") },
-	bolter_p1_m1 = { en=Localize("loc_weapon_pattern_bolter_p1_m1").." "..Localize("loc_weapon_mark_bolter_p1_m1").." "..Localize("loc_weapon_family_bolter_p1_m1") },
-	-- bolter_p1_m2 = { en=Localize("loc_bolter_p1_m2") }, -- Unreleased
-	-- bolter_p1_m3 = { en=Localize("loc_bolter_p1_m3") }, -- Unreleased
-	boltpistol_p1_m1 = { en=Localize("loc_weapon_pattern_boltpistol_p1_m1").." "..Localize("loc_weapon_mark_boltpistol_p1_m1").." "..Localize("loc_weapon_family_boltpistol_p1_m1") },
 	-- bot_autogun_killshot = { en=Localize("loc_bot_autogun_killshot") },
 	-- bot_lasgun_killshot = { en=Localize("loc_bot_lasgun_killshot") },
 	-- bot_laspistol_killshot = { en=Localize("loc_bot_laspistol_killshot") },
 	-- bot_zola_laspistol = { en=Localize("loc_bot_zola_laspistol") },
-	forcestaff_p1_m1 = { en=Localize("loc_weapon_pattern_forcestaff_p1_m1").." "..Localize("loc_weapon_mark_forcestaff_p1_m1").." "..Localize("loc_weapon_family_forcestaff_p1_m1") .. " Primary Fire" },
-	forcestaff_p4_m1 = { en=Localize("loc_weapon_pattern_forcestaff_p4_m1").." "..Localize("loc_weapon_mark_forcestaff_p4_m1").." "..Localize("loc_weapon_family_forcestaff_p4_m1") },
-	lasgun_p1_m1 = { en=Localize("loc_weapon_pattern_lasgun_p1_m1").." "..Localize("loc_weapon_mark_lasgun_p1_m1").." "..Localize("loc_weapon_family_lasgun_p1_m1") },
-	lasgun_p1_m2 = { en=Localize("loc_weapon_pattern_lasgun_p1_m2").." "..Localize("loc_weapon_mark_lasgun_p1_m2").." "..Localize("loc_weapon_family_lasgun_p1_m2") },
-	lasgun_p1_m3 = { en=Localize("loc_weapon_pattern_lasgun_p1_m3").." "..Localize("loc_weapon_mark_lasgun_p1_m3").." "..Localize("loc_weapon_family_lasgun_p1_m3") },
-	lasgun_p2_m1 = { en=Localize("loc_weapon_pattern_lasgun_p2_m1").." "..Localize("loc_weapon_mark_lasgun_p2_m1").." "..Localize("loc_weapon_family_lasgun_p2_m1") },
-	lasgun_p2_m2 = { en=Localize("loc_weapon_pattern_lasgun_p2_m2").." "..Localize("loc_weapon_mark_lasgun_p2_m2").." "..Localize("loc_weapon_family_lasgun_p2_m2") },
-	lasgun_p2_m3 = { en=Localize("loc_weapon_pattern_lasgun_p2_m3").." "..Localize("loc_weapon_mark_lasgun_p2_m3").." "..Localize("loc_weapon_family_lasgun_p2_m3") },
-	laspistol_p1_m1 = { en=Localize("loc_weapon_pattern_laspistol_p1_m1").." "..Localize("loc_weapon_mark_laspistol_p1_m1").." "..Localize("loc_weapon_family_laspistol_p1_m1") },
-	-- laspistol_p1_m2 = { en=Localize("loc_laspistol_p1_m2") }, -- Unreleased
-	laspistol_p1_m3 = { en=Localize("loc_weapon_pattern_laspistol_p1_m3").." "..Localize("loc_weapon_mark_laspistol_p1_m3").." "..Localize("loc_weapon_family_laspistol_p1_m3") },
-	ogryn_gauntlet_p1_m1 = { en=Localize("loc_weapon_pattern_ogryn_gauntlet_p1_m1").." "..Localize("loc_weapon_mark_ogryn_gauntlet_p1_m1").." "..Localize("loc_weapon_family_ogryn_gauntlet_p1_m1") },
-	ogryn_thumper_p1_m1 = { en=Localize("loc_weapon_pattern_ogryn_thumper_p1_m1").." "..Localize("loc_weapon_mark_ogryn_thumper_p1_m1").." "..Localize("loc_weapon_family_ogryn_thumper_p1_m1") },
-	ogryn_thumper_p1_m2 = { en=Localize("loc_weapon_pattern_ogryn_thumper_p1_m2").." "..Localize("loc_weapon_mark_ogryn_thumper_p1_m2").." "..Localize("loc_weapon_family_ogryn_thumper_p1_m2") },
-	-- ogryn_thumper_p1_m3 = { en=Localize("loc_ogryn_thumper_p1_m3") }, -- Unreleased
-	ogryn_rippergun_p1_m1 = { en=Localize("loc_weapon_pattern_ogryn_rippergun_p1_m1").." "..Localize("loc_weapon_mark_ogryn_rippergun_p1_m1").." "..Localize("loc_weapon_family_ogryn_rippergun_p1_m1") },
-	ogryn_rippergun_p1_m2 = { en=Localize("loc_weapon_pattern_ogryn_rippergun_p1_m2").." "..Localize("loc_weapon_mark_ogryn_rippergun_p1_m2").." "..Localize("loc_weapon_family_ogryn_rippergun_p1_m2") },
-	ogryn_rippergun_p1_m3 = { en=Localize("loc_weapon_pattern_ogryn_rippergun_p1_m3").." "..Localize("loc_weapon_mark_ogryn_rippergun_p1_m3").." "..Localize("loc_weapon_family_ogryn_rippergun_p1_m3") },
-	shotgun_p1_m1 = { en=Localize("loc_weapon_pattern_shotgun_p1_m1").." "..Localize("loc_weapon_mark_shotgun_p1_m1").." "..Localize("loc_weapon_family_shotgun_p1_m1") },
-	shotgun_p1_m2 = { en=Localize("loc_weapon_pattern_shotgun_p1_m2").." "..Localize("loc_weapon_mark_shotgun_p1_m2").." "..Localize("loc_weapon_family_shotgun_p1_m2") },
-	shotgun_p1_m3 = { en=Localize("loc_weapon_pattern_shotgun_p1_m3").." "..Localize("loc_weapon_mark_shotgun_p1_m3").." "..Localize("loc_weapon_family_shotgun_p1_m3") },
-	shotgun_p2_m1 = { en=Localize("loc_weapon_pattern_shotgun_p2_m1").." "..Localize("loc_weapon_mark_shotgun_p2_m1").." "..Localize("loc_weapon_family_shotgun_p2_m1") },
-	stubrevolver_p1_m1 = { en=Localize("loc_weapon_pattern_stubrevolver_p1_m1").." "..Localize("loc_weapon_mark_stubrevolver_p1_m1").." "..Localize("loc_weapon_family_stubrevolver_p1_m1") },
-	stubrevolver_p1_m2 = { en=Localize("loc_weapon_pattern_stubrevolver_p1_m2").." "..Localize("loc_weapon_mark_stubrevolver_p1_m2").." "..Localize("loc_weapon_family_stubrevolver_p1_m2") },
-	-- stubrevolver_p1_m3 = { en=Localize("loc_stubrevolver_p1_m3") }, -- Unreleased
-	plasmagun_p1_m1 = { en=Localize("loc_weapon_pattern_plasmagun_p1_m1").." "..Localize("loc_weapon_mark_plasmagun_p1_m1").." "..Localize("loc_weapon_family_plasmagun_p1_m1") },
-	-- plasmagun_p1_m2 = { en=Localize("loc_plasmagun_p1_m2") }, -- Unreleased
-	psyker_smite = { en="Psyker 'Smite'" },
+	psyker_smite = { en="Psyker \"Smite\"" },
 	psyker_throwing_knives = { en="Psyker "..Localize("loc_ability_psyker_blitz_throwing_knives") },
 	zealot_throwing_knives = { en="Zealot "..Localize("loc_ability_zealot_throwing_knifes") },
 
@@ -131,7 +90,7 @@ local localizations = {
 	heavy_stubber_auto = { en=Localize("loc_weapon_pattern_ogryn_heavystubber_p1_m1").." "..Localize("loc_weapon_mark_ogryn_heavystubber_p1_m1").." "..Localize("loc_weapon_family_ogryn_heavystubber_p1_m1") .. " Auto" },
 	heavy_stubber_p1_m2_auto = { en=Localize("loc_weapon_pattern_ogryn_heavystubber_p1_m2").." "..Localize("loc_weapon_mark_ogryn_heavystubber_p1_m2").." "..Localize("loc_weapon_family_ogryn_heavystubber_p1_m2") .. " Auto" },
 	heavy_stubber_p1_m3_auto = { en=Localize("loc_weapon_pattern_ogryn_heavystubber_p1_m3").." "..Localize("loc_weapon_mark_ogryn_heavystubber_p1_m3").." "..Localize("loc_weapon_family_ogryn_heavystubber_p1_m3") .. " Auto" },
-	psyker_chain_lightning = { en="Psyker Chain Lightning" },
+	psyker_chain_lightning = { en="Psyker Smite (Chain Lightning)" },
 	-- Charging FX
 	-- 	Helbore
 	--lasgun_p2_charge = { en="Lasgun P2 Charge" },
@@ -143,7 +102,7 @@ local localizations = {
 	--psyker_chain_lightning_charge = { en="Psyker Chain Lightning Charge" },
 	psyker_chain_lightning_charge = { en="Psyker Smite Charge" },
 	--		Brain Burst/Rupture and staff primary
-	psyker_smite_charge = { en="Psyker 'Smite' Charge" },
+	psyker_smite_charge = { en="Psyker \"Smite\" Charge" },
 	--psyker_headpop_hands = { en="Psyker Headpop Hands" },
 	psyker_headpop_hands = { en="Psyker Brain Burst/Rupture Charge" },
 	-- 		Staff
@@ -164,7 +123,7 @@ local localizations = {
 	-- ######################
 	-- SINGLE-SHOT RANGED SFX
 	-- ######################
-	weapon_autopistol = { en=Localize("loc_weapon_pattern_autopistol_p1_m1").." "..Localize("loc_weapon_mark_autopistol_p1_m1").." "..Localize("loc_weapon_family_autopistol_p1_m1") },
+	weapon_autopistol = { en=get_full_weapon_name_localized("autopistol_p1_m1") },
 	autogun_p3_m1_single = { en=Localize("loc_weapon_pattern_autogun_p3_m1").." "..Localize("loc_weapon_mark_autogun_p3_m1").." "..Localize("loc_weapon_family_autogun_p3_m1") },
 	autogun_p3_m2_single = { en=Localize("loc_weapon_pattern_autogun_p3_m3").." "..Localize("loc_weapon_mark_autogun_p3_m3").." "..Localize("loc_weapon_family_autogun_p3_m3") },
 	autogun_p3_m3_single = { en=Localize("loc_weapon_pattern_autogun_p3_m3").." "..Localize("loc_weapon_mark_autogun_p3_m3").." "..Localize("loc_weapon_family_autogun_p3_m3") },
@@ -201,8 +160,13 @@ local localizations = {
 	zealot_throw_knife = { en="Zealot "..Localize("loc_ability_zealot_throwing_knifes") },
 }
 
--- Localizations for easy automatic weapon effects
-local automatic_weapon_labels = {
+-- ######################
+-- Weapon Labels (SFX to be changed)
+-- ######################
+local weapon_labels = {
+	-- -------------------
+	-- Automatic Ranged Weapon Labels
+	-- -------------------
 	"autopistol_p1_m1",
 	"autogun_p1_m1",
 	"autogun_p1_m2",
@@ -210,6 +174,8 @@ local automatic_weapon_labels = {
 	"autogun_p2_m1",
 	"autogun_p2_m2",
 	"autogun_p2_m3",
+	"forcestaff_p2_m1",
+	"forcestaff_p3_m1",
 	"flamer_p1_m1",
 	"lasgun_p3_m1",
 	"lasgun_p3_m2",
@@ -220,11 +186,54 @@ local automatic_weapon_labels = {
 	"ogryn_heavystubber_p2_m1",
 	"ogryn_heavystubber_p2_m2",
 	"ogryn_heavystubber_p2_m3",
+	-- -------------------
+	-- Semi-automatic
+	-- -------------------
+	"autogun_p3_m1",
+	"autogun_p3_m2",
+	"autogun_p3_m3",
+	"bolter_p1_m1",
+	-- "bolter_p1_m2", -- Unreleased
+	-- "bolter_p1_m3", -- Unreleased
+	"boltpistol_p1_m1",
+	"forcestaff_p1_m1",
+	"forcestaff_p4_m1",
+	"lasgun_p1_m1",
+	"lasgun_p1_m2",
+	"lasgun_p1_m3",
+	"lasgun_p2_m1",
+	"lasgun_p2_m2",
+	"lasgun_p2_m3",
+	"laspistol_p1_m1",
+	-- "laspistol_p1_m2", -- Unreleased
+	"laspistol_p1_m3",
+	"ogryn_gauntlet_p1_m1",
+	"ogryn_thumper_p1_m1",
+	"ogryn_thumper_p1_m2",
+	-- "ogryn_thumper_p1_m3", -- Unreleased
+	"ogryn_rippergun_p1_m1",
+	"ogryn_rippergun_p1_m2",
+	"ogryn_rippergun_p1_m3",
+	"shotgun_p1_m1",
+	"shotgun_p1_m2",
+	"shotgun_p1_m3",
+	"shotgun_p2_m1",
+	"stubrevolver_p1_m1",
+	"stubrevolver_p1_m2",
+	-- "stubrevolver_p1_m3", -- Unreleased
+	"plasmagun_p1_m1",
+	-- "plasmagun_p1_m2", -- Unreleased
 }
-for _, weapon_code in ipairs(automatic_weapon_labels) do
+for _, weapon_code in ipairs(weapon_labels) do
 	localizations[weapon_code] = {
 		en = get_full_weapon_name_localized(weapon_code)
 	}
 end
+-- 	Handling exceptions
+--		Automatics
+localizations["forcestaff_p2_m1"]["en"] = localizations["forcestaff_p2_m1"]["en"].." Secondary Fire"
+localizations["forcestaff_p3_m1"]["en"] = localizations["forcestaff_p2_m1"]["en"].." Secondary Fire"
+--		Semi-Automatics
+localizations["forcestaff_p1_m1"]["en"] = localizations["forcestaff_p1_m1"]["en"].." Primary Fire"
 
 return localizations
