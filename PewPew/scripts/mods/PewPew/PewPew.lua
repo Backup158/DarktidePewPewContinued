@@ -27,21 +27,6 @@ function table_contains(table, x)
     return found
 end
 
---	See @scripts/settings/effects/minion_line_effects.lua
-mod.ENEMY_LINE_EFFECTS = {
-	{ text="renegade_twin_captain_las_pistol_lasbeam" },
-	{ text="renegade_lasbeam" },
-	{ text="renegade_gunner_lasbeam" },
-	{ text="renegade_sniper_lasbeam" },
-	{ text="renegade_assault_lasbeam" },
-	{ text="cultist_autogun_bullet" },
-	{ text="renegade_heavy_stubber_bullet" },
-	{ text="renegade_pellet" },
-	{ text="renegade_captain_pellet" },
-	{ text="renegade_captain_boltshell" },
-	{ text="renegade_captain_plasma_beam" },
-}
-
 -- ##################################################################################
 -- Finding Effect Names
 --  weapon_id = "wwise/events/weapon/play_<STRING_TO_STEAL>",
@@ -141,6 +126,25 @@ local CHARGED_SINGLE_SHOT_SFX = {
     --plasmagun_p1_m2 = "weapon_plasmagun_charged", -- Unreleased
 }
 
+--	See @scripts/settings/effects/minion_line_effects.lua
+mod.ENEMY_LINE_EFFECTS = {
+	{ text="renegade_twin_captain_las_pistol_lasbeam" },
+	{ text="renegade_lasbeam" },
+	{ text="renegade_gunner_lasbeam" },
+	{ text="renegade_sniper_lasbeam" },
+	{ text="renegade_assault_lasbeam" },
+	{ text="cultist_autogun_bullet" },
+	{ text="renegade_heavy_stubber_bullet" },
+	{ text="renegade_pellet" },
+	{ text="renegade_captain_pellet" },
+	{ text="renegade_captain_boltshell" },
+	{ text="renegade_captain_plasma_beam" },
+}
+
+-- #########################################
+-- Load Resources
+-- checks if package is available to be loaded? legacy code i haven't really looked into
+-- #########################################
 local function load_resource(package_name, cb)
     if package_name ~= nil and Application.can_get_resource("package", package_name) then
         Managers.package:load(package_name, "PewPew", function () cb(package_name) end)
@@ -197,28 +201,23 @@ local function update_line_effects(line_effects_to_be_changed)
     PlayerLineEffects[line_effects_to_be_changed].keep_aligned = original_line_effects[new_line_effects].keep_aligned
     PlayerLineEffects[line_effects_to_be_changed].link = original_line_effects[new_line_effects].link
     
-    
-    if original_line_effects[new_line_effects].vfx then
-        load_resource(original_line_effects[new_line_effects].vfx, function (loaded_package_name)
-            PlayerLineEffects[line_effects_to_be_changed].vfx = loaded_package_name
-        end)
-    else 
-        PlayerLineEffects[line_effects_to_be_changed].vfx = original_player_line_effects[line_effects_to_be_changed].vfx
+    -- putting this here so it can be destroyed afterwards
+    -- this means it'll get created every single time you change a setting, but that should happen infrequently enough so the memory usage isn't so much. otherwise i'd have to just keep this table up the entire time the game is running lol
+    local sound_event_keys = {
+        "vfx",
+        "sfx",
+        "vfx_crit",
+    }
+    for _, effect_key in ipairs(sound_event_keys) do
+        if original_line_effects[new_line_effects][effect_key] then
+            load_resource(original_line_effects[new_line_effects][effect_key], function (loaded_package_name)
+                PlayerLineEffects[line_effects_to_be_changed][effect_key] = loaded_package_name
+            end)
+        else 
+            PlayerLineEffects[line_effects_to_be_changed][effect_key] = original_player_line_effects[line_effects_to_be_changed][effect_key]
+        end
     end
-    if original_line_effects[new_line_effects].sfx then
-        load_resource(original_line_effects[new_line_effects].sfx, function (loaded_package_name)
-            PlayerLineEffects[line_effects_to_be_changed].sfx = loaded_package_name
-        end)
-    else 
-        PlayerLineEffects[line_effects_to_be_changed].sfx = original_player_line_effects[line_effects_to_be_changed].sfx
-    end
-    if original_line_effects[new_line_effects].vfx_crit then
-        load_resource(original_line_effects[new_line_effects].vfx_crit, function (loaded_package_name)
-            PlayerLineEffects[line_effects_to_be_changed].vfx_crit = loaded_package_name
-        end)
-    else 
-        PlayerLineEffects[line_effects_to_be_changed].vfx_crit = original_player_line_effects[line_effects_to_be_changed].vfx_crit
-    end
+
     -- Some of these tables may not exist
     --  Handles moving vfx table
     if type(original_line_effects[new_line_effects].moving_sfx) == "table" then
