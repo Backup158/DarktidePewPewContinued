@@ -202,7 +202,7 @@ local localizations = {
 }
 
 -- Localizations for easy automatic weapon effects
-local automatic_weapon_names = {
+local automatic_weapon_labels = {
 	"autopistol_p1_m1",
 	"autogun_p1_m1",
 	"autogun_p1_m2",
@@ -221,7 +221,7 @@ local automatic_weapon_names = {
 	"ogryn_heavystubber_p2_m2",
 	"ogryn_heavystubber_p2_m3",
 }
-for _, weapon_code in ipairs(automatic_weapon_names) do
+for _, weapon_code in ipairs(automatic_weapon_labels) do
 	localizations[weapon_code] = {
 		en = get_full_weapon_name_localized(weapon_code)
 	}
