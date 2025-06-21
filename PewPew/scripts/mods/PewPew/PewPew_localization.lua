@@ -6,6 +6,14 @@
 --		and no, reassigning localizations for single shot doesn't work...
 --		You'd have to assign that to a variable first, and there's still so many exceptions I'd just say fuck it
 --	loc_weapon_px_mx brings up the old localizations from before Unlocked and Loaded
+
+-- Get localized version of weapon name
+-- 	give it a string, the weapon code (e.g. autogun_p1_m1)
+--	returns a string comprised of the pattern, mark, and, family, in that order (e.g. "Accatran Mk VIc Recon Lasgun")
+local function get_full_weapon_name_localized(weapon_code) 
+	return Localize("loc_weapon_pattern_"..weapon_code).." "..Localize("loc_weapon_mark_"..weapon_code).." "..Localize("loc_weapon_family_"..weapon_code)
+end
+
 local localizations = {
 	mod_title = { en="PewPew" },
 	mod_description = { en="Change ranged weapon sounds and projectile visual effects (Continued). PewPewPew!" },

@@ -121,6 +121,7 @@ local SINGLE_SHOT_SOUND_EFFECTS_OPTIONS = {
 	{ text="weapon_rippergun" }, -- ogryn_rippergun_p1_m1
 	{ text="zealot_throw_knife" },
 }
+-- Creating another key value pair for each entry, called value
 for i, option in ipairs(SINGLE_SHOT_SOUND_EFFECTS_OPTIONS) do
 	SINGLE_SHOT_SOUND_EFFECTS_OPTIONS[i].value = SINGLE_SHOT_SOUND_EFFECTS_OPTIONS[i].text
 end
