@@ -1,5 +1,5 @@
 local mod = get_mod("PewPew")
-local mod_version = "1.5.0"
+local mod_version = "1.5.1"
 
 --[[
 Mod: PewPew
