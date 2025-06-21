@@ -20,21 +20,8 @@ local LINE_EFFECTS_OPTIONS = {
 	{ text="boltshell" },
 	{ text="plasma_beam" },
 }
---	See @scripts/settings/effects/minion_line_effects.lua
-local ENEMY_LINE_EFFECTS = {
-	{ text="renegade_lasbeam" },
-	{ text="renegade_assault_lasbeam" },
-	{ text="renegade_twin_captain_las_pistol_lasbeam" },
-	{ text="renegade_gunner_lasbeam" },
-	{ text="renegade_sniper_lasbeam" },
-	{ text="cultist_autogun_bullet" },
-	{ text="renegade_heavy_stubber_bullet" },
-	{ text="renegade_pellet" },
-	{ text="renegade_captain_pellet" },
-	{ text="renegade_captain_boltshell" },
-	{ text="renegade_captain_plasma_beam" },
-}
-for _, v in pairs(ENEMY_LINE_EFFECTS) do
+
+for _, v in pairs(mod.ENEMY_LINE_EFFECTS) do
 	table.insert(LINE_EFFECTS_OPTIONS, v)
 end
 
