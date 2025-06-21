@@ -76,20 +76,9 @@ local localizations = {
 	-- LOOPING RANGED SFX
 	-- ######################
 	weapon_autopistol_auto = { en=get_full_weapon_name_localized("autopistol_p1_m1") .. " Auto" },
-	autogun_p1_m1_auto = { en=Localize("loc_weapon_pattern_autogun_p1_m1").." "..Localize("loc_weapon_mark_autogun_p1_m1").." "..Localize("loc_weapon_family_autogun_p1_m1") .. " Auto" },
-	autogun_p1_m2_auto = { en=Localize("loc_weapon_pattern_autogun_p1_m2").." "..Localize("loc_weapon_mark_autogun_p1_m2").." "..Localize("loc_weapon_family_autogun_p1_m2") .. " Auto" },
-	autogun_p1_m3_auto = { en=Localize("loc_weapon_pattern_autogun_p1_m3").." "..Localize("loc_weapon_mark_autogun_p1_m3").." "..Localize("loc_weapon_family_autogun_p1_m3") .. " Auto" },
-	autogun_p2_m1_auto = { en=Localize("loc_weapon_pattern_autogun_p2_m1").." "..Localize("loc_weapon_mark_autogun_p2_m1").." "..Localize("loc_weapon_family_autogun_p2_m1") .. " Auto" },
-	autogun_p2_m2_auto = { en=Localize("loc_weapon_pattern_autogun_p2_m2").." "..Localize("loc_weapon_mark_autogun_p2_m2").." "..Localize("loc_weapon_family_autogun_p2_m2") .. " Auto" },
-	autogun_p2_m3_auto = { en=Localize("loc_weapon_pattern_autogun_p2_m3").." "..Localize("loc_weapon_mark_autogun_p2_m3").." "..Localize("loc_weapon_family_autogun_p2_m3") .. " Auto" },
 	flamethrower_fire_loop = { en="Flamethrower Fire Loop" },
 	forcestaff_warp_fire = { en="Forcestaff Warp Fire" },
-	lasgun_p3_m1_fire_auto = { en=Localize("loc_weapon_pattern_lasgun_p3_m1").." "..Localize("loc_weapon_mark_lasgun_p3_m1").." "..Localize("loc_weapon_family_lasgun_p3_m1") .. " Fire Auto" },
-	lasgun_p3_m2_fire_auto = { en=Localize("loc_weapon_pattern_lasgun_p3_m2").." "..Localize("loc_weapon_mark_lasgun_p3_m2").." "..Localize("loc_weapon_family_lasgun_p3_m2") .. " Fire Auto" },
-	lasgun_p3_m3_fire_auto = { en=Localize("loc_weapon_pattern_lasgun_p3_m3").." "..Localize("loc_weapon_mark_lasgun_p3_m3").." "..Localize("loc_weapon_family_lasgun_p3_m3") .. " Fire Auto" },
 	heavy_stubber_auto = { en=Localize("loc_weapon_pattern_ogryn_heavystubber_p1_m1").." "..Localize("loc_weapon_mark_ogryn_heavystubber_p1_m1").." "..Localize("loc_weapon_family_ogryn_heavystubber_p1_m1") .. " Auto" },
-	heavy_stubber_p1_m2_auto = { en=Localize("loc_weapon_pattern_ogryn_heavystubber_p1_m2").." "..Localize("loc_weapon_mark_ogryn_heavystubber_p1_m2").." "..Localize("loc_weapon_family_ogryn_heavystubber_p1_m2") .. " Auto" },
-	heavy_stubber_p1_m3_auto = { en=Localize("loc_weapon_pattern_ogryn_heavystubber_p1_m3").." "..Localize("loc_weapon_mark_ogryn_heavystubber_p1_m3").." "..Localize("loc_weapon_family_ogryn_heavystubber_p1_m3") .. " Auto" },
 	psyker_chain_lightning = { en="Psyker Smite (Chain Lightning)" },
 	-- Charging FX
 	-- 	Helbore
@@ -155,7 +144,9 @@ local localizations = {
 }
 
 -- ######################
--- Weapon Labels (SFX to be changed)
+-- Weapon Labels
+-- 	Localizations for the names of the weapons you will be changing the sound of
+--	This also covers some of the names for the single shot sounds
 -- ######################
 local weapon_labels = {
 	-- -------------------
@@ -229,5 +220,33 @@ localizations["forcestaff_p2_m1"]["en"] = localizations["forcestaff_p2_m1"]["en"
 localizations["forcestaff_p3_m1"]["en"] = localizations["forcestaff_p2_m1"]["en"].." Secondary Fire"
 --		Semi-Automatics
 localizations["forcestaff_p1_m1"]["en"] = localizations["forcestaff_p1_m1"]["en"].." Primary Fire"
+
+-- ######################
+-- Automatic SFX Names
+--	Localizations for some of the automatic shooting sounds
+--  These are just the labels appended by "_auto"
+-- ######################
+local sfx_automatic_simple = {
+	"autogun_p1_m1",
+	"autogun_p1_m2",
+	"autogun_p1_m3",
+	"autogun_p2_m1",
+	"autogun_p2_m2",
+	"autogun_p2_m3",
+	"lasgun_p3_m1",
+	"lasgun_p3_m2",
+	"lasgun_p3_m3",
+	"ogryn_heavystubber_p1_m1",
+	"ogryn_heavystubber_p1_m2",
+	"ogryn_heavystubber_p1_m3",
+	"ogryn_heavystubber_p2_m1",
+	"ogryn_heavystubber_p2_m2",
+	"ogryn_heavystubber_p2_m3",
+}
+for _, weapon_code in ipairs(sfx_automatic_simple) do
+	localizations[weapon_code.."_auto"] = {
+		en = get_full_weapon_name_localized(weapon_code) .. " Auto"
+	}
+end
 
 return localizations
