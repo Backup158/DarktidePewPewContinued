@@ -78,14 +78,14 @@ local localizations = {
 	weapon_autopistol_auto = { en=get_full_weapon_name_localized("autopistol_p1_m1") .. " Auto" },
 	flamethrower_fire_loop = { en="Flamethrower Fire Loop" },
 	forcestaff_warp_fire = { en="Forcestaff Warp Fire" },
-	heavy_stubber_auto = { en=Localize("loc_weapon_pattern_ogryn_heavystubber_p1_m1").." "..Localize("loc_weapon_mark_ogryn_heavystubber_p1_m1").." "..Localize("loc_weapon_family_ogryn_heavystubber_p1_m1") .. " Auto" },
+	heavy_stubber_auto = { en=get_full_weapon_name_localized("ogryn_heavystubber_p1_m1") .. " Auto" },
 	psyker_chain_lightning = { en="Psyker Smite (Chain Lightning)" },
 	-- Charging FX
 	-- 	Helbore
 	--lasgun_p2_charge = { en="Lasgun P2 Charge" },
-	lasgun_p2_charge = { en=Localize("loc_weapon_pattern_lasgun_p2_m1").." "..Localize("loc_weapon_mark_lasgun_p2_m1").." "..Localize("loc_weapon_family_lasgun_p2_m1") .. " Charge" }, -- It's the first mk, as seen in the code. ranged_charging table
-	lasgun_p2_m2_charge = { en=Localize("loc_weapon_pattern_lasgun_p2_m2").." "..Localize("loc_weapon_mark_lasgun_p2_m2").." "..Localize("loc_weapon_family_lasgun_p2_m2") .. " Charge" },
-	lasgun_p2_m3_charge = { en=Localize("loc_weapon_pattern_lasgun_p2_m3").." "..Localize("loc_weapon_mark_lasgun_p2_m3").." "..Localize("loc_weapon_family_lasgun_p2_m3") .. " Charge" },
+	lasgun_p2_charge = { en=get_full_weapon_name_localized("lasgun_p2_m1") .. " Charge" }, -- It's the first mk, as seen in the code. ranged_charging table
+	lasgun_p2_m2_charge = { en=get_full_weapon_name_localized("lasgun_p2_m2") .. " Charge" },
+	lasgun_p2_m3_charge = { en=get_full_weapon_name_localized("lasgun_p2_m3") .. " Charge" },
 	-- 	Psyker
 	-- 		Smite
 	--psyker_chain_lightning_charge = { en="Psyker Chain Lightning Charge" },
