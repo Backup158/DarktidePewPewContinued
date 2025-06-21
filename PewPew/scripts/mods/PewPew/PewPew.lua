@@ -1,7 +1,6 @@
 local mod = get_mod("PewPew")
-mod_version = "1.5.0"
-mod_debug = mod:get("enable_debug_mode")
-mod:info('PewPewPew v' .. mod_version .. ' loaded uwu nya :3')
+local mod_version = "1.5.0"
+
 --[[
 Mod: PewPew
 Description: Change ranged weapon sounds and projectile visual effects
@@ -27,7 +26,7 @@ function table_contains(table, x)
     end
     return found
 end
-local ENEMY_LINE_EFFECTS = {
+mod.ENEMY_LINE_EFFECTS = {
 	{ text="renegade_twin_captain_las_pistol_lasbeam" },
 	{ text="renegade_lasbeam" },
 	{ text="renegade_gunner_lasbeam" },
@@ -171,10 +170,10 @@ local function update_line_effects(line_effects_to_be_changed)
     --  Not used as a destination (?) for assignment, so pass by reference is fine
     if changed_effect_is_minion then
         original_line_effects = original_minion_line_effects
-        if mod_debug then mod:notify(tostring(new_line_effects).." is a fuck!") end
+        if mod.debug then mod:notify(tostring(new_line_effects).." is a fuck!") end
     else
         original_line_effects = original_player_line_effects
-        if mod_debug then mod:notify(tostring(new_line_effects).." is player") end
+        if mod.debug then mod:notify(tostring(new_line_effects).." is player") end
     end
     
     -- Assigning the new values
@@ -186,7 +185,7 @@ local function update_line_effects(line_effects_to_be_changed)
         --  Making an exception for scab sniper width, because that shit is literally 50 times bigger than the normal width lmfao
         --  Instead, it will use the original width at the default value
         if new_line_effects == "renegade_sniper_lasbeam" then
-            if mod_debug then mod:echo(tostring(new_line_effects).." is player") end
+            if mod.debug then mod:echo(tostring(new_line_effects).." is player") end
             PlayerLineEffects[line_effects_to_be_changed].vfx_width = original_player_line_effects[line_effects_to_be_changed].vfx_width
             -- PlayerLineEffects[line_effects_to_be_changed].vfx_width = nil -- Intentionally making it blank
         else
@@ -195,6 +194,7 @@ local function update_line_effects(line_effects_to_be_changed)
     end
     PlayerLineEffects[line_effects_to_be_changed].keep_aligned = original_line_effects[new_line_effects].keep_aligned
     PlayerLineEffects[line_effects_to_be_changed].link = original_line_effects[new_line_effects].link
+    
     
     if original_line_effects[new_line_effects].vfx then
         load_resource(original_line_effects[new_line_effects].vfx, function (loaded_package_name)
@@ -322,6 +322,9 @@ local function update_single_shot_sound_effects(weapon_to_be_changed)
 end
 
 mod.on_all_mods_loaded = function (setting_id)
+    mod.debug = mod:get("enable_debug_mode")
+    mod:info('PewPewPew v' .. mod_version .. ' loaded uwu nya :3')
+    
     for _, line_effects_widget in ipairs(mod.line_effects_widgets) do
         update_line_effects(line_effects_widget.setting_id)
     end
@@ -335,6 +338,8 @@ end
 
 
 mod.on_setting_changed = function (setting_id)
+    mod.debug = mod:get("enable_debug_mode")
+
     if table.find_by_key(mod.line_effects_widgets, "setting_id", setting_id) ~= nil then
         update_line_effects(setting_id)
     elseif table.find_by_key(mod.sound_effects_widgets, "setting_id", setting_id) ~= nil then
