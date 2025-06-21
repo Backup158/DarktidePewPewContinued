@@ -20,11 +20,24 @@ local LINE_EFFECTS_OPTIONS = {
 	{ text="boltshell" },
 	{ text="plasma_beam" },
 }
-
-for _, v in ipairs(mod.ENEMY_LINE_EFFECTS) do
+--	See @scripts/settings/effects/minion_line_effects.lua
+local ENEMY_LINE_EFFECTS = {
+	{ text="renegade_twin_captain_las_pistol_lasbeam" },
+	{ text="renegade_lasbeam" },
+	{ text="renegade_gunner_lasbeam" },
+	{ text="renegade_sniper_lasbeam" },
+	{ text="renegade_assault_lasbeam" },
+	{ text="cultist_autogun_bullet" },
+	{ text="renegade_heavy_stubber_bullet" },
+	{ text="renegade_pellet" },
+	{ text="renegade_captain_pellet" },
+	{ text="renegade_captain_boltshell" },
+	{ text="renegade_captain_plasma_beam" },
+}
+-- Adding enemy line effects to overall line effects table
+for _, v in ipairs(ENEMY_LINE_EFFECTS) do
 	table.insert(LINE_EFFECTS_OPTIONS, v)
 end
-
 -- Essentially doing value = text = "string" to use the same name for id and localization id
 for i, option in ipairs(LINE_EFFECTS_OPTIONS) do
 	LINE_EFFECTS_OPTIONS[i].value = LINE_EFFECTS_OPTIONS[i].text

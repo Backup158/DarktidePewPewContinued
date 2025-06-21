@@ -127,7 +127,7 @@ local CHARGED_SINGLE_SHOT_SFX = {
 }
 
 --	See @scripts/settings/effects/minion_line_effects.lua
-mod.ENEMY_LINE_EFFECTS = {
+local ENEMY_LINE_EFFECTS = {
 	{ text="renegade_twin_captain_las_pistol_lasbeam" },
 	{ text="renegade_lasbeam" },
 	{ text="renegade_gunner_lasbeam" },
@@ -170,7 +170,7 @@ local function update_line_effects(line_effects_to_be_changed)
     -- Get name of new effect we want to replace the current one with
     local new_line_effects = mod:get(line_effects_to_be_changed)
 
-    local changed_effect_is_minion = table_contains(mod.ENEMY_LINE_EFFECTS, new_line_effects)
+    local changed_effect_is_minion = table_contains(ENEMY_LINE_EFFECTS, new_line_effects)
     -- Makes a local copy of the original effects for faster access
     local original_line_effects
     --  Not used as a destination (?) for assignment, so pass by reference is fine
