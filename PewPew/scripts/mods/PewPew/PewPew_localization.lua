@@ -91,7 +91,7 @@ local localizations = {
 	-- 	Psyker
 	-- 		Smite
 	--psyker_chain_lightning_charge = { en="Psyker Chain Lightning Charge" },
-	psyker_chain_lightning_charge = { en="Psyker Smite Charge" },
+	psyker_chain_lightning_charge = { en="Psyker Smite (Chain Lightning) Charge" },
 	--		Brain Burst/Rupture and staff primary
 	psyker_smite_charge = { en="Psyker \"Smite\" Charge" },
 	--psyker_headpop_hands = { en="Psyker Headpop Hands" },
