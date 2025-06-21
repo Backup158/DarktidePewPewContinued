@@ -203,11 +203,7 @@ local function update_line_effects(line_effects_to_be_changed)
     
     -- putting this here so it can be destroyed afterwards
     -- this means it'll get created every single time you change a setting, but that should happen infrequently enough so the memory usage isn't so much. otherwise i'd have to just keep this table up the entire time the game is running lol
-    local sound_event_keys = {
-        "vfx",
-        "sfx",
-        "vfx_crit",
-    }
+    local sound_event_keys = { "vfx", "sfx", "vfx_crit", }
     for _, effect_key in ipairs(sound_event_keys) do
         if original_line_effects[new_line_effects][effect_key] then
             load_resource(original_line_effects[new_line_effects][effect_key], function (loaded_package_name)
