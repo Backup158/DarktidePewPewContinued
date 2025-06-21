@@ -80,7 +80,9 @@ local localizations = {
 	forcestaff_warp_fire = { en="Forcestaff Warp Fire" },
 	heavy_stubber_auto = { en=get_full_weapon_name_localized("ogryn_heavystubber_p1_m1") .. " Auto" },
 	psyker_chain_lightning = { en="Psyker Smite (Chain Lightning)" },
+	-- ----------------
 	-- Charging FX
+	-- ----------------
 	-- 	Helbore
 	--lasgun_p2_charge = { en="Lasgun P2 Charge" },
 	lasgun_p2_charge = { en=get_full_weapon_name_localized("lasgun_p2_m1") .. " Charge" }, -- It's the first mk, as seen in the code. ranged_charging table
