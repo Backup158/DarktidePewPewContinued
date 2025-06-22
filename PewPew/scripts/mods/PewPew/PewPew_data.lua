@@ -53,7 +53,7 @@ end
 --		'heavy_stubber_auto' instead of 'heavy_stubber_p1_m1_auto'
 --	So to streamline finding the sounds, these variable names match Fatshark's internal naming scheme for weapon sound effects
 -- ######################
-local SOUND_EFFECTS_OPTIONS = {
+local LOOPING_AUTOMATIC_SOUND_EFFECTS_OPTIONS = {
 	{ text="weapon_autopistol_auto" },
 	{ text="autogun_p1_m1_auto" },
 	{ text="autogun_p1_m2_auto" },
@@ -91,8 +91,8 @@ local SOUND_EFFECTS_OPTIONS = {
 	{ text="power_sword_loop" },
 	{ text="ogryn_power_maul_1h_loop" },
 }
-for i, option in ipairs(SOUND_EFFECTS_OPTIONS) do
-	SOUND_EFFECTS_OPTIONS[i].value = SOUND_EFFECTS_OPTIONS[i].text
+for i, option in ipairs(LOOPING_AUTOMATIC_SOUND_EFFECTS_OPTIONS) do
+	LOOPING_AUTOMATIC_SOUND_EFFECTS_OPTIONS[i].value = LOOPING_AUTOMATIC_SOUND_EFFECTS_OPTIONS[i].text
 end
 
 -- ######################
@@ -184,7 +184,7 @@ end
 -- ######################
 -- Sound Effect Widget Options: Automatic and Single
 --	setting_id:	Weapon's name in the code
---	default_value: the corresponding audio from SOUND_EFFECTS_OPTIONS or SINGLE_SHOT_SOUND_EFFECTS_OPTIONS
+--	default_value: the corresponding audio from LOOPING_AUTOMATIC_SOUND_EFFECTS_OPTIONS or SINGLE_SHOT_SOUND_EFFECTS_OPTIONS
 -- ######################
 mod.sound_effects_widgets = {
 	{ setting_id="autopistol_p1_m1", default_value="weapon_autopistol_auto" },
@@ -250,6 +250,10 @@ mod.single_shot_sound_effects_widgets = {
 	{ setting_id="shotgun_p1_m2", default_value="shotgun_p1_m2" },
 	{ setting_id="shotgun_p1_m3", default_value="shotgun_p1_m3" },
 	{ setting_id="shotgun_p2_m1", default_value="shotgun_p2_m1" },
+	-- { setting_id="shotgun_p3_m1", default_value="shotgun_p3_m1" },
+	-- { setting_id="shotgun_p3_m2", default_value="shotgun_p3_m2" },
+	-- { setting_id="shotgun_p3_m3", default_value="shotgun_p3_m3" },
+	-- { setting_id="shotpistol_p1_m1", default_value="shotpistol_p1_m1" },
 	{ setting_id="stubrevolver_p1_m1", default_value="stub_revolver" },
 	{ setting_id="stubrevolver_p1_m2", default_value="stub_revolver_p1_m2" },
 	-- { setting_id="stubrevolver_p1_m3", default_value="stub_revolver_p1_m3" }, -- Unreleased
@@ -257,7 +261,7 @@ mod.single_shot_sound_effects_widgets = {
 }
 for i, sound_effects_widget in ipairs(mod.sound_effects_widgets) do
 	mod.sound_effects_widgets[i].type = "dropdown"
-	mod.sound_effects_widgets[i].options = table.clone(SOUND_EFFECTS_OPTIONS)
+	mod.sound_effects_widgets[i].options = table.clone(LOOPING_AUTOMATIC_SOUND_EFFECTS_OPTIONS)
 end
 for i, single_shot_sound_effects_widgets in ipairs(mod.single_shot_sound_effects_widgets) do
 	mod.single_shot_sound_effects_widgets[i].type = "dropdown"
