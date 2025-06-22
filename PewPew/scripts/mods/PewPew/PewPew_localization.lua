@@ -126,16 +126,18 @@ local localizations = {
 	-- Recon shots use the same name as the label
 	weapon_laspistol = { en=get_full_weapon_name_localized("laspistol_p1_m1") },
 	-- laspistol_p1_m2 = { en=Localize("loc_laspistol_p1_m2") }, -- Unreleased
+	laspistol_p1_m3 = { en=get_full_weapon_name_localized("laspistol_p1_m3") },
 	weapon_rippergun = { en=get_full_weapon_name_localized("ogryn_rippergun_p1_m1") },
 	ogryn_gauntlet_fire = { en=get_full_weapon_name_localized("ogryn_gauntlet_p1_m1") },
 	heavy_stubber_p2_m1_punch_first = { en=get_full_weapon_name_localized("ogryn_heavystubber_p2_m1") },
 	heavy_stubber_p2_m2_punch_first = { en=get_full_weapon_name_localized("ogryn_heavystubber_p2_m2") },
 	heavy_stubber_p2_m3_punch_first = { en=get_full_weapon_name_localized("ogryn_heavystubber_p2_m3") },
+	ogryn_thumper_p1_m1 = { en=get_full_weapon_name_localized("ogryn_thumper_p1_m1") },
+	ogryn_thumper_p1_m2 = { en=get_full_weapon_name_localized("ogryn_thumper_p1_m2") },
 	combat_weapon_shotgun = { en=get_full_weapon_name_localized("shotgun_p1_m1") },
 	-- Shotgun shots use the same name as the label
 	--stub_revolver = { en=Localize("loc_stub_revolver") }, -- For some reason this shows up as 'Chambered'
 	stub_revolver = { en=get_full_weapon_name_localized("stubrevolver_p1_m1") },
-	stub_revolver_p1_m2 = { en=get_full_weapon_name_localized("stubrevolver_p1_m2") },
 	weapon_plasmagun = { en=get_full_weapon_name_localized("plasmagun_p1_m1") },
 	psyker_smite_fire = { en="Psyker Force Staff Primary Fire" },
 	-- The only localization lines related to these are the talent names, so you can get uwu flashbanged
