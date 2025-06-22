@@ -79,22 +79,21 @@ local localizations = {
 	flamethrower_fire_loop = { en="Flamethrower Fire Loop" },
 	forcestaff_warp_fire = { en="Forcestaff Warp Fire" },
 	heavy_stubber_auto = { en=get_full_weapon_name_localized("ogryn_heavystubber_p1_m1") .. " Auto" },
+	heavy_stubber_p1_m2_auto =  { en=get_full_weapon_name_localized("ogryn_heavystubber_p1_m2") .. " Auto" },
+    heavy_stubber_p1_m3_auto =  { en=get_full_weapon_name_localized("ogryn_heavystubber_p1_m3") .. " Auto" },
 	psyker_chain_lightning = { en="Psyker Smite (Chain Lightning)" },
 	-- ----------------
 	-- Charging FX
 	-- ----------------
 	-- 	Helbore
-	--lasgun_p2_charge = { en="Lasgun P2 Charge" },
 	lasgun_p2_charge = { en=get_full_weapon_name_localized("lasgun_p2_m1") .. " Charge" }, -- It's the first mk, as seen in the code. ranged_charging table
 	lasgun_p2_m2_charge = { en=get_full_weapon_name_localized("lasgun_p2_m2") .. " Charge" },
 	lasgun_p2_m3_charge = { en=get_full_weapon_name_localized("lasgun_p2_m3") .. " Charge" },
 	-- 	Psyker
 	-- 		Smite
-	--psyker_chain_lightning_charge = { en="Psyker Chain Lightning Charge" },
 	psyker_chain_lightning_charge = { en="Psyker Smite (Chain Lightning) Charge" },
 	--		Brain Burst/Rupture and staff primary
 	psyker_smite_charge = { en="Psyker \"Smite\" Charge" },
-	--psyker_headpop_hands = { en="Psyker Headpop Hands" },
 	psyker_headpop_hands = { en="Psyker Brain Burst/Rupture Charge" },
 	-- 		Staff
 	forcestaff_warp_fire_charge_loop = { en="Force Staff Warp Fire Charge Loop" },
@@ -123,21 +122,16 @@ local localizations = {
 	weapon_lasgun_p1_m1 = { en=get_full_weapon_name_localized("lasgun_p1_m1") },
 	weapon_lasgun_p1_m2 = { en=get_full_weapon_name_localized("lasgun_p1_m2") },
 	weapon_lasgun_p1_m3 = { en=get_full_weapon_name_localized("lasgun_p1_m3") },
-	-- Recon shots use the same name as the label
 	weapon_laspistol = { en=get_full_weapon_name_localized("laspistol_p1_m1") },
-	-- laspistol_p1_m2 = { en=Localize("loc_laspistol_p1_m2") }, -- Unreleased
-	laspistol_p1_m3 = { en=get_full_weapon_name_localized("laspistol_p1_m3") },
 	weapon_rippergun = { en=get_full_weapon_name_localized("ogryn_rippergun_p1_m1") },
 	ogryn_gauntlet_fire = { en=get_full_weapon_name_localized("ogryn_gauntlet_p1_m1") },
 	heavy_stubber_p2_m1_punch_first = { en=get_full_weapon_name_localized("ogryn_heavystubber_p2_m1") },
 	heavy_stubber_p2_m2_punch_first = { en=get_full_weapon_name_localized("ogryn_heavystubber_p2_m2") },
 	heavy_stubber_p2_m3_punch_first = { en=get_full_weapon_name_localized("ogryn_heavystubber_p2_m3") },
-	ogryn_thumper_p1_m1 = { en=get_full_weapon_name_localized("ogryn_thumper_p1_m1") },
-	ogryn_thumper_p1_m2 = { en=get_full_weapon_name_localized("ogryn_thumper_p1_m2") },
 	combat_weapon_shotgun = { en=get_full_weapon_name_localized("shotgun_p1_m1") },
-	-- Shotgun shots use the same name as the label
 	--stub_revolver = { en=Localize("loc_stub_revolver") }, -- For some reason this shows up as 'Chambered'
 	stub_revolver = { en=get_full_weapon_name_localized("stubrevolver_p1_m1") },
+	stub_revolver_p1_m2 = { en=get_full_weapon_name_localized("stubrevolver_p1_m2") },
 	weapon_plasmagun = { en=get_full_weapon_name_localized("plasmagun_p1_m1") },
 	psyker_smite_fire = { en="Psyker Force Staff Primary Fire" },
 	-- The only localization lines related to these are the talent names, so you can get uwu flashbanged
@@ -226,27 +220,22 @@ localizations["forcestaff_p1_m1"]["en"] = localizations["forcestaff_p1_m1"]["en"
 -- ######################
 -- Automatic SFX Names
 --	Localizations for some of the automatic shooting sounds
---  These are just the labels appended by "_auto"
+--  These are just the labels appended by "_auto" or something
 -- ######################
 local sfx_automatic_simple = {
-	"autogun_p1_m1",
-	"autogun_p1_m2",
-	"autogun_p1_m3",
-	"autogun_p2_m1",
-	"autogun_p2_m2",
-	"autogun_p2_m3",
-	"lasgun_p3_m1",
-	"lasgun_p3_m2",
-	"lasgun_p3_m3",
-	"ogryn_heavystubber_p1_m1",
-	"ogryn_heavystubber_p1_m2",
-	"ogryn_heavystubber_p1_m3",
-	"ogryn_heavystubber_p2_m1",
-	"ogryn_heavystubber_p2_m2",
-	"ogryn_heavystubber_p2_m3",
+	autogun_p1_m1 = "_auto",
+	autogun_p1_m2 = "_auto",
+	autogun_p1_m3 = "_auto",
+	autogun_p2_m1 = "_auto",
+	autogun_p2_m2 = "_auto",
+	autogun_p2_m3 = "_auto",
+	lasgun_p3_m1 = "_fire_auto",
+	lasgun_p3_m2 = "_fire_auto",
+	lasgun_p3_m3 = "_fire_auto",
 }
-for _, weapon_code in ipairs(sfx_automatic_simple) do
-	localizations[weapon_code.."_auto"] = {
+-- using pairs instead of ipairs because the keys are not just the index 1, 2, 3...
+for weapon_code, append in pairs(sfx_automatic_simple) do
+	localizations[weapon_code..append] = {
 		en = get_full_weapon_name_localized(weapon_code) .. " Auto"
 	}
 end
