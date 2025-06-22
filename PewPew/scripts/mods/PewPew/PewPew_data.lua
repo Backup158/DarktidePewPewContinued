@@ -54,21 +54,21 @@ end
 --	So to streamline finding the sounds, these variable names match Fatshark's internal naming scheme for weapon sound effects
 -- ######################
 local SOUND_EFFECTS_OPTIONS = {
-	{ text="weapon_autopistol_auto" },
-	{ text="autogun_p1_m1_auto" },
-	{ text="autogun_p1_m2_auto" },
-	{ text="autogun_p1_m3_auto" },
-	{ text="autogun_p2_m1_auto" },
-	{ text="autogun_p2_m2_auto" },
-	{ text="autogun_p2_m3_auto" },
+	--{ text="weapon_autopistol_auto" },
+	--{ text="autogun_p1_m1_auto" },
+	--{ text="autogun_p1_m2_auto" },
+	--{ text="autogun_p1_m3_auto" },
+	--{ text="autogun_p2_m1_auto" },
+	--{ text="autogun_p2_m2_auto" },
+	--{ text="autogun_p2_m3_auto" },
 	{ text="flamethrower_fire_loop" },
 	{ text="forcestaff_warp_fire" },
-	{ text="lasgun_p3_m1_fire_auto" },
-	{ text="lasgun_p3_m2_fire_auto" },
-	{ text="lasgun_p3_m3_fire_auto" },
-	{ text="heavy_stubber_auto" },
-	{ text="heavy_stubber_p1_m2_auto" },
-	{ text="heavy_stubber_p1_m3_auto" },
+	--{ text="lasgun_p3_m1_fire_auto" },
+	--{ text="lasgun_p3_m2_fire_auto" },
+	--{ text="lasgun_p3_m3_fire_auto" },
+	--{ text="heavy_stubber_auto" },
+	--{ text="heavy_stubber_p1_m2_auto" },
+	--{ text="heavy_stubber_p1_m3_auto" },
 	{ text="psyker_chain_lightning" },
 	--charging fx
 	{ text="psyker_chain_lightning_charge" },
@@ -91,6 +91,31 @@ local SOUND_EFFECTS_OPTIONS = {
 	{ text="power_sword_loop" },
 	{ text="ogryn_power_maul_1h_loop" },
 }
+local RANGED_SHOOTING_automatic_helper = {
+    "autopistol_p1_m1",
+	"autogun_p1_m1",
+	"autogun_p1_m2",
+	"autogun_p1_m3",
+	"autogun_p2_m1",
+	"autogun_p2_m2",
+	"autogun_p2_m3",
+	"forcestaff_p2_m1",
+	"forcestaff_p3_m1",
+	"flamer_p1_m1",
+	"lasgun_p3_m1",
+	"lasgun_p3_m2",
+	"lasgun_p3_m3",
+	"ogryn_heavystubber_p1_m1",
+	"ogryn_heavystubber_p1_m2",
+	"ogryn_heavystubber_p1_m3",
+	"ogryn_heavystubber_p2_m1",
+	"ogryn_heavystubber_p2_m2",
+	"ogryn_heavystubber_p2_m3",
+}
+for _, weapon_code in ipairs(RANGED_SHOOTING_automatic_helper) do
+	SOUND_EFFECTS_OPTIONS[#SOUND_EFFECTS_OPTIONS + 1] = { text = weapon_code }
+end
+
 for i, option in ipairs(SOUND_EFFECTS_OPTIONS) do
 	SOUND_EFFECTS_OPTIONS[i].value = SOUND_EFFECTS_OPTIONS[i].text
 end
@@ -187,25 +212,25 @@ end
 --	default_value: the corresponding audio from SOUND_EFFECTS_OPTIONS or SINGLE_SHOT_SOUND_EFFECTS_OPTIONS
 -- ######################
 mod.sound_effects_widgets = {
-	{ setting_id="autopistol_p1_m1", default_value="weapon_autopistol_auto" },
+	{ setting_id="autopistol_p1_m1", default_value="autopistol_p1_m1" },
 	-- { setting_id="autopistol_p1_m2", default_value="weapon_autopistol_auto" }, -- Unreleased
 	-- { setting_id="autopistol_p1_m3", default_value="weapon_autopistol_auto" }, -- Unreleased
-	{ setting_id="autogun_p1_m1", default_value="autogun_p1_m1_auto" },
-	{ setting_id="autogun_p1_m2", default_value="autogun_p1_m2_auto" },
-	{ setting_id="autogun_p1_m3", default_value="autogun_p1_m3_auto" },
-	{ setting_id="autogun_p2_m1", default_value="autogun_p2_m1_auto" },
-	{ setting_id="autogun_p2_m2", default_value="autogun_p2_m2_auto" },	
-	{ setting_id="autogun_p2_m3", default_value="autogun_p2_m3_auto" },
+	{ setting_id="autogun_p1_m1", default_value="autogun_p1_m1" },
+	{ setting_id="autogun_p1_m2", default_value="autogun_p1_m2" },
+	{ setting_id="autogun_p1_m3", default_value="autogun_p1_m3" },
+	{ setting_id="autogun_p2_m1", default_value="autogun_p2_m1" },
+	{ setting_id="autogun_p2_m2", default_value="autogun_p2_m2" },	
+	{ setting_id="autogun_p2_m3", default_value="autogun_p2_m3" },
 	{ setting_id="flamer_p1_m1", default_value="flamethrower_fire_loop" },
 	{ setting_id="forcestaff_p2_m1", default_value="forcestaff_warp_fire" },
 	-- { setting_id="forcestaff_p2_m2", default_value="forcestaff_warp_fire" }, -- Unreleased
 	{ setting_id="forcestaff_p3_m1", default_value="psyker_chain_lightning" },
-	{ setting_id="lasgun_p3_m1", default_value="lasgun_p3_m1_fire_auto" },
-	{ setting_id="lasgun_p3_m2", default_value="lasgun_p3_m2_fire_auto" },
-	{ setting_id="lasgun_p3_m3", default_value="lasgun_p3_m3_fire_auto" },
-	{ setting_id="ogryn_heavystubber_p1_m1", default_value="heavy_stubber_auto" },
-	{ setting_id="ogryn_heavystubber_p1_m2", default_value="heavy_stubber_p1_m2_auto" },
-	{ setting_id="ogryn_heavystubber_p1_m3", default_value="heavy_stubber_p1_m3_auto" },
+	{ setting_id="lasgun_p3_m1", default_value="lasgun_p3_m1" },
+	{ setting_id="lasgun_p3_m2", default_value="lasgun_p3_m2" },
+	{ setting_id="lasgun_p3_m3", default_value="lasgun_p3_m3" },
+	{ setting_id="ogryn_heavystubber_p1_m1", default_value="ogryn_heavystubber_p1_m1" },
+	{ setting_id="ogryn_heavystubber_p1_m2", default_value="ogryn_heavystubber_p1_m2" },
+	{ setting_id="ogryn_heavystubber_p1_m3", default_value="ogryn_heavystubber_p1_m3" },
 }
 mod.single_shot_sound_effects_widgets = {
 	{ setting_id="autogun_p3_m1", default_value="autogun_p3_m1_single" },
