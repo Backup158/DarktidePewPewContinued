@@ -39,20 +39,26 @@ end
 --      The way update_single_shot_sound_effects operates, this is automatically added from PewPew_data.lua
 --      the id in the code is bolter_p1_m1 but weapon id doesn't matter here, only the sound id
 --          The weapon_id chosen here is to identify the sounds for the options
+--  WHY CAN'T THIS BE AUTOMATED?
+--      PCSEA has sounds in multiple tables
+--      it only returns the events table
+--      automatic sounds are in the looping_events table
+--      therefore, not accessible by mods, at this point in time
 -- ##################################################################################
 local RANGED_SHOOTING_SOUND_EFFECTS = {
-    -- Autoguns
-    --  Yes, one of them says single instead of first. Blame Fatshark
-    --  Infantry
-    autogun_p1_m1_auto =        { braced="autogun_p1_m1_auto", pre_loop_shot="autogun_p1_m1_first", single_shot=nil },
-    autogun_p1_m2_auto =        { braced="autogun_p1_m2_auto", pre_loop_shot="autogun_p1_m2_single", single_shot=nil },
-    autogun_p1_m3_auto =        { braced="autogun_p1_m3_auto", pre_loop_shot="autogun_p1_m3_first", single_shot=nil },
-    --  Braced
-    autogun_p2_m1_auto =        { braced="autogun_p2_m1_auto", pre_loop_shot="autogun_p2_m1_first", single_shot=nil },
-    autogun_p2_m2_auto =        { braced="autogun_p2_m2_auto", pre_loop_shot="autogun_p2_m2_first", single_shot=nil },
-    autogun_p2_m3_auto =        { braced="autogun_p2_m3_auto", pre_loop_shot="autogun_p2_m3_first", single_shot=nil },
+    -- Infantry Autogun
+    --      Yes, one of them says single instead of first. Blame Fatshark
+    autogun_p1_m1 = { braced="autogun_p1_m1_auto", pre_loop_shot="autogun_p1_m1_first", single_shot=nil },
+    autogun_p1_m2 = { braced="autogun_p1_m2_auto", pre_loop_shot="autogun_p1_m2_single", single_shot=nil },
+    autogun_p1_m3 = { braced="autogun_p1_m3_auto", pre_loop_shot="autogun_p1_m3_first", single_shot=nil },
+    -- Braced Autogun
+    autogun_p2_m1 = { braced="autogun_p2_m1_auto", pre_loop_shot="autogun_p2_m1_first", single_shot=nil },
+    autogun_p2_m2 = { braced="autogun_p2_m2_auto", pre_loop_shot="autogun_p2_m2_first", single_shot=nil },
+    autogun_p2_m3 = { braced="autogun_p2_m3_auto", pre_loop_shot="autogun_p2_m3_first", single_shot=nil },
+    -- Vigilant Autogun
+    --      See single_shot note
     -- Shredder Autopistol
-    weapon_autopistol_auto =    { braced="weapon_autopistol_auto", pre_loop_shot="weapon_autopistol", single_shot="weapon_autopistol" }, -- equivalent to autopistol_p1_m1
+    autopistol_p1_m1 = { braced="weapon_autopistol_auto", pre_loop_shot="weapon_autopistol", single_shot="weapon_autopistol" }, -- equivalent to autopistol_p1_m1
     -- Bolter
     --      See single_shot note
     -- Boltpistol
@@ -60,23 +66,21 @@ local RANGED_SHOOTING_SOUND_EFFECTS = {
     -- Infantry Lasgun
     --      See single_shot note
     -- Helbore Lasgun
-    lasgun_p2_charge =          { braced="lasgun_p2_charge", pre_loop_shot="weapon_silence", single_shot=nil }, -- equivalent to lasgun_p2_m1_charge
-    -- Bolter
-    lasgun_p2_m2_charge =       { braced="lasgun_p2_m2_charge", pre_loop_shot="weapon_silence", single_shot=nil },
-    lasgun_p2_m3_charge =       { braced="lasgun_p2_m3_charge", pre_loop_shot="weapon_silence", single_shot=nil },
+    --      See single_shot note
+    
     -- Recon Lasgun
-    lasgun_p3_m1_fire_auto =    { braced="lasgun_p3_m1_fire_auto", pre_loop_shot="lasgun_p3_m1_fire_single", single_shot=nil },
-    lasgun_p3_m2_fire_auto =    { braced="lasgun_p3_m2_fire_auto", pre_loop_shot="lasgun_p3_m2_fire_single", single_shot=nil },
-    lasgun_p3_m3_fire_auto =    { braced="lasgun_p3_m3_fire_auto", pre_loop_shot="lasgun_p3_m3_fire_single", single_shot=nil },
+    lasgun_p3_m1 = { braced="lasgun_p3_m1_fire_auto", pre_loop_shot="lasgun_p3_m1_fire_single", single_shot=nil },
+    lasgun_p3_m2 = { braced="lasgun_p3_m2_fire_auto", pre_loop_shot="lasgun_p3_m2_fire_single", single_shot=nil },
+    lasgun_p3_m3 = { braced="lasgun_p3_m3_fire_auto", pre_loop_shot="lasgun_p3_m3_fire_single", single_shot=nil },
     -- Laspistol
     --      See single_shot note
     -- Grenade Gauntlet
     --      See single_shot note
     -- Heavy Stubber
     --  Twin-Linked
-    heavy_stubber_auto =        { braced="heavy_stubber_auto", pre_loop_shot="heavy_stubber_punch_first", single_shot=nil }, -- equivalent to heavy_stubber_p1_m1_auto
-    heavy_stubber_p1_m2_auto =  { braced="heavy_stubber_p1_m2_auto", pre_loop_shot="heavy_stubber_p1_m2_punch_first", single_shot=nil },
-    heavy_stubber_p1_m3_auto =  { braced="heavy_stubber_p1_m3_auto", pre_loop_shot="heavy_stubber_p1_m3_punch_first", single_shot=nil },
+    ogryn_heavystubber_p1_m1 = { braced="heavy_stubber_auto", pre_loop_shot="heavy_stubber_punch_first", single_shot=nil }, -- equivalent to heavy_stubber_p1_m1_auto
+    ogryn_heavystubber_p1_m2 = { braced="heavy_stubber_p1_m2_auto", pre_loop_shot="heavy_stubber_p1_m2_punch_first", single_shot=nil },
+    ogryn_heavystubber_p1_m3 = { braced="heavy_stubber_p1_m3_auto", pre_loop_shot="heavy_stubber_p1_m3_punch_first", single_shot=nil },
     --  Single
     --      See single_shot note
     -- Rippergun
@@ -87,6 +91,13 @@ local RANGED_SHOOTING_SOUND_EFFECTS = {
     -- Shotgun
     --      Combat and Double Barrel
     --      See single_shot note
+
+    -- ----------
+    -- Looping
+    -- ----------
+    lasgun_p2_charge =          { braced="lasgun_p2_charge", pre_loop_shot="weapon_silence", single_shot=nil }, -- equivalent to lasgun_p2_m1_charge
+    lasgun_p2_m2_charge =       { braced="lasgun_p2_m2_charge", pre_loop_shot="weapon_silence", single_shot=nil },
+    lasgun_p2_m3_charge =       { braced="lasgun_p2_m3_charge", pre_loop_shot="weapon_silence", single_shot=nil },
     -- Psyker Warp stuff
     forcestaff_warp_fire =      { braced="forcestaff_warp_fire", pre_loop_shot="weapon_silence", single_shot="psyker_smite_fire" },
     forcestaff_warp_fire_charge_loop = { braced="forcestaff_warp_fire_charge_loop", pre_loop_shot="weapon_silence", single_shot=nil },
