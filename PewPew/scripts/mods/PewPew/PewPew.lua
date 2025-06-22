@@ -244,8 +244,10 @@ local function update_line_effects(line_effects_to_be_changed)
     
 end
 
+-- ##################################################################################
 -- Sound effects
-local function update_sound_effects(weapon_to_be_changed)
+-- ##################################################################################
+local function update_ranged_automatic_sound_effects(weapon_to_be_changed)
     local new_ranged_shooting_sfx = mod:get(weapon_to_be_changed)
     local play_new_ranged_shooting_auto = "wwise/events/weapon/play_" .. new_ranged_shooting_sfx
     local stop_new_ranged_shooting_auto = "wwise/events/weapon/stop_" .. new_ranged_shooting_sfx
@@ -328,7 +330,7 @@ mod.on_all_mods_loaded = function (setting_id)
         update_line_effects(line_effects_widget.setting_id)
     end
     for _, sound_effects_widget in ipairs(mod.sound_effects_widgets) do
-        update_sound_effects(sound_effects_widget.setting_id)
+        update_ranged_automatic_sound_effects(sound_effects_widget.setting_id)
     end
     for _, single_shot_sound_effects_widget in ipairs(mod.single_shot_sound_effects_widgets) do
         update_single_shot_sound_effects(single_shot_sound_effects_widget.setting_id)
@@ -342,7 +344,7 @@ mod.on_setting_changed = function (setting_id)
     if table.find_by_key(mod.line_effects_widgets, "setting_id", setting_id) ~= nil then
         update_line_effects(setting_id)
     elseif table.find_by_key(mod.sound_effects_widgets, "setting_id", setting_id) ~= nil then
-        update_sound_effects(setting_id)
+        update_ranged_automatic_sound_effects(setting_id)
     elseif table.find_by_key(mod.single_shot_sound_effects_widgets, "setting_id", setting_id) ~= nil then
         update_single_shot_sound_effects(setting_id)
     end
