@@ -68,7 +68,7 @@ local localizations = {
 	-- bot_lasgun_killshot = { en=Localize("loc_bot_lasgun_killshot") },
 	-- bot_laspistol_killshot = { en=Localize("loc_bot_laspistol_killshot") },
 	-- bot_zola_laspistol = { en=Localize("loc_bot_zola_laspistol") },
-	psyker_smite = { en="Psyker \"Smite\"" },
+	-- psyker_smite = { en="Psyker \"Smite\"" },
 	psyker_throwing_knives = { en="Psyker "..Localize("loc_ability_psyker_blitz_throwing_knives") },
 	zealot_throwing_knives = { en="Zealot "..Localize("loc_ability_zealot_throwing_knifes") },
 
@@ -76,8 +76,8 @@ local localizations = {
 	-- LOOPING RANGED SFX
 	-- ######################
 	weapon_autopistol_auto = { en=get_full_weapon_name_localized("autopistol_p1_m1") .. " Auto" },
-	flamethrower_fire_loop = { en="Flamethrower Fire Loop" },
-	forcestaff_warp_fire = { en="Forcestaff Warp Fire" },
+	flamethrower_fire_loop = { en="Flamer Fire Loop" },
+	forcestaff_warp_fire = { en="Force Staff Warp Fire" },
 	heavy_stubber_auto = { en=get_full_weapon_name_localized("ogryn_heavystubber_p1_m1") .. " Auto" },
 	heavy_stubber_p1_m2_auto =  { en=get_full_weapon_name_localized("ogryn_heavystubber_p1_m2") .. " Auto" },
     heavy_stubber_p1_m3_auto =  { en=get_full_weapon_name_localized("ogryn_heavystubber_p1_m3") .. " Auto" },

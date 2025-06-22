@@ -244,7 +244,7 @@ mod.single_shot_sound_effects_widgets = {
 	-- { setting_id="ogryn_thumper_p1_m3", default_value="ogryn_thumper_p1_m3" }, -- Unreleased
 	{ setting_id="plasmagun_p1_m1", default_value="weapon_plasmagun" },
 	-- { setting_id="plasmagun_p1_m2", default_value="weapon_plasmagun" }, -- Unreleased
-	{ setting_id="psyker_smite", default_value="psyker_smite_fire" },
+	-- { setting_id="psyker_smite", default_value="psyker_smite_fire" }, -- I don't think this changes anything
 	{ setting_id="psyker_throwing_knives", default_value="psyker_throw_knife" },
 	{ setting_id="shotgun_p1_m1", default_value="combat_weapon_shotgun" },
 	{ setting_id="shotgun_p1_m2", default_value="shotgun_p1_m2" },
