@@ -18,7 +18,14 @@ local original_player_line_effects = table.clone(PlayerLineEffects)
 local original_minion_line_effects = table.clone(MinionLineEffects)
 -- "sfx_swing_heavy_left_hand", is shield and maul only
 -- "sfx_swing_special", is pickaxe only
-local swing_tables = { "sfx_swing", "sfx_swing_heavy", "melee_blocked_attack", "melee_sweep_hit", "melee_heavy_sweep_hit", "melee_sweep_hit_crit", "sfx_push_follow_up", "sfx_special_activate", "weapon_special_end", }
+local swing_tables = { 
+    "sfx_swing", "sfx_swing_heavy", 
+    "melee_blocked_attack", 
+    "melee_sweep_hit", "melee_heavy_sweep_hit", "melee_sweep_hit_crit", 
+    "sfx_push_follow_up", 
+    "sfx_special_activate", "weapon_special_end", "equipped_item_passive", -- Chainsword rev is NOT HERE LMAO
+    -- "melee_sticky_loop", -- sounds like something chain specific (even though force swords are here) and may crash because chain weapons are stupid???
+}
 local original_PCSEA_melee_effects = { }
 for _, swing_effect_name in ipairs(swing_tables) do
     original_PCSEA_melee_effects[swing_effect_name] = {
