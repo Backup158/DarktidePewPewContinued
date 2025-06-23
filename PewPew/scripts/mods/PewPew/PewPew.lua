@@ -21,7 +21,7 @@ local original_minion_line_effects = table.clone(MinionLineEffects)
 local swing_tables = { "sfx_swing", "sfx_swing_heavy", "melee_blocked_attack", "melee_heavy_sweep_hit", "melee_sweep_hit_crit" }
 local original_PCSEA_melee_effects = { }
 for _, effect_table in ipairs(swing_tables) do
-    original_PCSEA_melee_effects[effect_table] = table.clone(PlayerCharacterSoundEventAliases[table_name])
+    original_PCSEA_melee_effects[effect_table] = table.clone(PlayerCharacterSoundEventAliases[effect_table])
 end
 
 
