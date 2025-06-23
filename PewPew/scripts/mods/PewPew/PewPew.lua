@@ -325,6 +325,7 @@ end
 -- #########################################
 local function update_melee_sound_effects(weapon_to_be_changed)
     local new_weapon_sounds = mod:get(weapon_to_be_changed)
+    -- table defined above for the types of swing types. regular, heavy, etc.
     for _, table_name in ipairs(swing_tables) do
         if original_PCSEA_melee_effects[table_name].events[new_weapon_sounds] then
             PlayerCharacterSoundEventAliases[table_name].events[weapon_to_be_changed] = original_PCSEA_melee_effects[table_name].events[new_weapon_sounds]
