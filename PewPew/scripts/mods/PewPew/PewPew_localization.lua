@@ -147,87 +147,33 @@ local localizations = {
 -- 	Localizations for the names of the weapons you will be changing the sound of
 --	This also covers some of the names for the single shot sounds
 -- ######################
-local weapon_labels = {
-	-- -------------------
-	-- Automatic Ranged Weapon Labels
-	-- -------------------
-	"autopistol_p1_m1",
-	"autogun_p1_m1",
-	"autogun_p1_m2",
-	"autogun_p1_m3",
-	"autogun_p2_m1",
-	"autogun_p2_m2",
-	"autogun_p2_m3",
-	"forcestaff_p2_m1",
-	"forcestaff_p3_m1",
-	"flamer_p1_m1",
-	"lasgun_p3_m1",
-	"lasgun_p3_m2",
-	"lasgun_p3_m3",
-	"ogryn_heavystubber_p1_m1",
-	"ogryn_heavystubber_p1_m2",
-	"ogryn_heavystubber_p1_m3",
-	"ogryn_heavystubber_p2_m1",
-	"ogryn_heavystubber_p2_m2",
-	"ogryn_heavystubber_p2_m3",
-	-- -------------------
-	-- Semi-automatic
-	-- -------------------
-	"autogun_p3_m1",
-	"autogun_p3_m2",
-	"autogun_p3_m3",
-	"bolter_p1_m1",
-	-- "bolter_p1_m2", -- Unreleased
-	-- "bolter_p1_m3", -- Unreleased
-	"boltpistol_p1_m1",
-	"forcestaff_p1_m1",
-	"forcestaff_p4_m1",
-	"lasgun_p1_m1",
-	"lasgun_p1_m2",
-	"lasgun_p1_m3",
-	"lasgun_p2_m1",
-	"lasgun_p2_m2",
-	"lasgun_p2_m3",
-	"laspistol_p1_m1",
-	-- "laspistol_p1_m2", -- Unreleased
-	"laspistol_p1_m3",
-	"ogryn_gauntlet_p1_m1",
-	"ogryn_thumper_p1_m1",
-	"ogryn_thumper_p1_m2",
-	-- "ogryn_thumper_p1_m3", -- Unreleased
-	"ogryn_rippergun_p1_m1",
-	"ogryn_rippergun_p1_m2",
-	"ogryn_rippergun_p1_m3",
-	"shotgun_p1_m1",
-	"shotgun_p1_m2",
-	"shotgun_p1_m3",
-	"shotgun_p2_m1",
-	"stubrevolver_p1_m1",
-	"stubrevolver_p1_m2",
-	-- "stubrevolver_p1_m3", -- Unreleased
-	"plasmagun_p1_m1",
-	-- "plasmagun_p1_m2", -- Unreleased
-}
-for _, weapon_code in ipairs(weapon_labels) do
+-- -------------
+-- Ranged
+-- -------------
+-- Automatics
+for _, weapon_code in ipairs(mod.automatic_weapon_labels) do
 	localizations[weapon_code] = {
 		en = get_full_weapon_name_localized(weapon_code)
 	}
 end
--- 	Handling exceptions
---		Automatics
 localizations["forcestaff_p2_m1"]["en"] = localizations["forcestaff_p2_m1"]["en"].." Secondary Fire"
 localizations["forcestaff_p3_m1"]["en"] = localizations["forcestaff_p2_m1"]["en"].." Secondary Fire"
---		Semi-Automatics
+-- Semi Automatics
+for _, weapon_code in ipairs(mod.semiautomatic_weapon_labels) do
+	localizations[weapon_code] = {
+		en = get_full_weapon_name_localized(weapon_code)
+	}
+end
 localizations["forcestaff_p1_m1"]["en"] = localizations["forcestaff_p1_m1"]["en"].." Primary Fire"
 -- -------------
--- MELEE
+-- Melee
 -- -------------
---for _, weapon_table in ipairs(_weapon_tables_file.mod.melee_sound_effects_names) do
---	local weapon_code = weapon_table.text
---	localizations[weapon_code] = {
---		en = get_full_weapon_name_localized(weapon_code)
---	}
---end
+for _, weapon_table in ipairs(mod.melee_sound_effects_names) do
+	local weapon_code = weapon_table.text
+	localizations[weapon_code] = {
+		en = get_full_weapon_name_localized(weapon_code)
+	}
+end
 
 -- ######################
 -- Automatic SFX Names
