@@ -247,6 +247,9 @@ end
 -- ##################################################################################
 -- Sound effects
 -- ##################################################################################
+-- #########################################
+-- Ranged
+-- #########################################
 local function update_ranged_automatic_sound_effects(weapon_to_be_changed)
     local new_ranged_shooting_sfx = mod:get(weapon_to_be_changed)
     local play_new_ranged_shooting_auto = "wwise/events/weapon/play_" .. new_ranged_shooting_sfx
@@ -321,6 +324,26 @@ local function update_single_shot_sound_effects(weapon_to_be_changed)
         end
     end
 end
+-- #########################################
+-- Melee
+-- These ARE in the PCEA events table!
+-- https://github.com/Aussiemon/Darktide-Source-Code/blob/master/scripts/settings/sound/player_character_sound_event_aliases.lua#L2233
+-- #########################################
+local function update_melee_sound_effects(weapon_to_be_changed)
+    local new_weapon_sounds = mod:get(weapon_to_be_changed)
+    -- "sfx_swing_heavy_left_hand", is shield and maul only
+    -- "sfx_swing_special", is pickaxe only
+    local swing_tables = { "sfx_swing", "sfx_swing_heavy", "melee_blocked_attack", "melee_heavy_sweep_hit", "melee_sweep_hit_crit" }
+    for _, table_name in ipairs(swing_tables) do
+        if PlayerCharacterSoundEventAliases[table_name].events[new_weapon_sounds] then
+            PlayerCharacterSoundEventAliases[table_name].events[weapon_to_be_changed] = PlayerCharacterSoundEventAliases[table_name].events[new_weapon_sounds]
+        else
+            if mod.debug then mod:echo("Sound effect for "..new_weapon_sounds.." is fucked when adding to "..weapon_to_be_changed) end
+        end
+    end
+    
+    -- sfx_swing, melee_blocked_attack, melee_heavy_sweep_hit, melee_sweep_hit_crit 
+end
 
 mod.on_all_mods_loaded = function (setting_id)
     mod.debug = mod:get("enable_debug_mode")
@@ -335,6 +358,9 @@ mod.on_all_mods_loaded = function (setting_id)
     for _, single_shot_sound_effects_widget in ipairs(mod.single_shot_sound_effects_widgets) do
         update_single_shot_sound_effects(single_shot_sound_effects_widget.setting_id)
     end
+    for _, melee_sound_effects_widget in ipairs(mod.melee_sound_effects_widgets) do
+        update_melee_sound_effects(melee_sound_effects_widget.setting_id)
+    end
 end
 
 
@@ -347,5 +373,7 @@ mod.on_setting_changed = function (setting_id)
         update_ranged_automatic_sound_effects(setting_id)
     elseif table.find_by_key(mod.single_shot_sound_effects_widgets, "setting_id", setting_id) ~= nil then
         update_single_shot_sound_effects(setting_id)
+    elseif table.find_by_key(mod.melee_sound_effects_widgets, "setting_id", setting_id) ~= nil then
+        update_melee_sound_effects(setting_id)
     end
 end

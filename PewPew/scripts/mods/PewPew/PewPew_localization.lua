@@ -7,6 +7,8 @@
 --		You'd have to assign that to a variable first, and there's still so many exceptions I'd just say fuck it
 --	loc_weapon_px_mx brings up the old localizations from before Unlocked and Loaded
 
+--local _data_file = mod:io_dofile("PewPew/scripts/mod/PewPew/PewPew_data")
+
 -- Get localized version of weapon name
 -- 	give it a string, the weapon code (e.g. autogun_p1_m1)
 --	returns a string comprised of the pattern, mark, and, family, in that order (e.g. "Accatran Mk VIc Recon Lasgun")
@@ -24,6 +26,7 @@ local localizations = {
 	line_effects_id = { en="Visual Effects" },
 	sound_effects_id = { en="Fully Automatic Fire SFX" },
 	single_shot_sound_effects_id = { en="Single Shot SFX" },
+	melee_swing_effects_id = { en="Melee Swing SFX" },
 
 	-- ######################
 	-- Projectile (line effect) labels

@@ -259,6 +259,75 @@ mod.single_shot_sound_effects_widgets = {
 	-- { setting_id="stubrevolver_p1_m3", default_value="stub_revolver_p1_m3" }, -- Unreleased
 	{ setting_id="zealot_throwing_knives", default_value="zealot_throw_knife" },
 }
+-- just the names
+mod.melee_sound_effects_names = {
+	--{ text="bot_combataxe_linesman", },
+	--{ text="bot_combatsword_linesman_p1", },
+	--{ text="bot_combatsword_linesman_p2", },
+	{ text="chainaxe_p1_m1", },
+	{ text="chainaxe_p1_m2", },
+	{ text="chainsword_2h_p1_m1", },
+	{ text="chainsword_2h_p1_m2", },
+	{ text="chainsword_p1_m1", },
+	{ text="chainsword_p1_m2", },
+	{ text="combataxe_p1_m1", },
+	{ text="combataxe_p1_m2", },
+	{ text="combataxe_p1_m3", },
+	{ text="combataxe_p2_m1", },
+	{ text="combataxe_p2_m2", },
+	{ text="combataxe_p2_m3", },
+	{ text="combataxe_p3_m1", },
+	{ text="combataxe_p3_m2", },
+	{ text="combataxe_p3_m3", },
+	{ text="combatknife_p1_m1", },
+	{ text="combatknife_p1_m2", },
+	{ text="combatsword_p1_m1", },
+	{ text="combatsword_p1_m2", },
+	{ text="combatsword_p1_m3", },
+	{ text="combatsword_p2_m1", },
+	{ text="combatsword_p2_m2", },
+	{ text="combatsword_p2_m3", },
+	{ text="combatsword_p3_m1", },
+	{ text="combatsword_p3_m2", },
+	{ text="combatsword_p3_m3", },
+	{ text="forcesword_2h_p1_m1", },
+	{ text="forcesword_2h_p1_m2", },
+	{ text="forcesword_p1_m1", },
+	{ text="forcesword_p1_m2", },
+	{ text="forcesword_p1_m3", },
+	{ text="ogryn_club_p1_m1", },
+	{ text="ogryn_club_p1_m2", },
+	{ text="ogryn_club_p1_m3", },
+	{ text="ogryn_club_p2_m1", },
+	{ text="ogryn_club_p2_m2", },
+	{ text="ogryn_club_p2_m3", },
+	{ text="ogryn_combatblade_p1_m1", },
+	{ text="ogryn_combatblade_p1_m2", },
+	{ text="ogryn_combatblade_p1_m3", },
+	--{ text="ogryn_gauntlet_p1_m1", },
+	{ text="ogryn_pickaxe_2h_p1_m1", },
+	{ text="ogryn_pickaxe_2h_p1_m2", },
+	{ text="ogryn_pickaxe_2h_p1_m3", },
+	{ text="ogryn_powermaul_p1_m1", },
+	{ text="ogryn_powermaul_slabshield_p1_m1", },
+	--{ text="ogryn_thumper_p1_m1", },
+	--{ text="ogryn_thumper_p1_m2", },
+	{ text="powermaul_2h_p1_m1", },
+	{ text="powermaul_p1_m1", },
+	{ text="powermaul_p1_m2", },
+	{ text="powersword_2h_p1_m1", },
+	{ text="powersword_2h_p1_m2", },
+	{ text="powersword_2h_p1_m3", },
+	{ text="powersword_p1_m1", },
+	{ text="powersword_p1_m2", },
+	{ text="powersword_p1_m3", },
+	{ text="thunderhammer_2h_p1_m1", },
+	{ text="thunderhammer_2h_p1_m2", },
+}
+for i, option in ipairs(mod.melee_sound_effects_names) do
+	mod.melee_sound_effects_names[i].value = mod.melee_sound_effects_names[i].text
+end
+mod.melee_sound_effects_widgets = { }
 for i, sound_effects_widget in ipairs(mod.sound_effects_widgets) do
 	mod.sound_effects_widgets[i].type = "dropdown"
 	mod.sound_effects_widgets[i].options = table.clone(LOOPING_AUTOMATIC_SOUND_EFFECTS_OPTIONS)
@@ -266,6 +335,14 @@ end
 for i, single_shot_sound_effects_widgets in ipairs(mod.single_shot_sound_effects_widgets) do
 	mod.single_shot_sound_effects_widgets[i].type = "dropdown"
 	mod.single_shot_sound_effects_widgets[i].options = table.clone(SINGLE_SHOT_SOUND_EFFECTS_OPTIONS)
+end
+for _, weapon_table in pairs(mod.melee_sound_effects_names) do
+	mod.melee_sound_effects_widgets[#mod.melee_sound_effects_widgets + 1] = {
+		setting_id = weapon_table.text,
+		default_value = weapon_table.text,
+		type = "dropdown",
+		options = table.clone(mod.melee_sound_effects_names),
+	}
 end
 
 return {
@@ -279,6 +356,7 @@ return {
 			{ setting_id="line_effects_id", type="group", sub_widgets=mod.line_effects_widgets },
 			{ setting_id="sound_effects_id", type="group", sub_widgets=mod.sound_effects_widgets },
 			{ setting_id="single_shot_sound_effects_id", type="group", sub_widgets=mod.single_shot_sound_effects_widgets },
+			{ setting_id="melee_swing_effects_id", type="group", sub_widgets=mod.melee_sound_effects_widgets },
 		},
 	},
 }
