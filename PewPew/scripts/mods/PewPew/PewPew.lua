@@ -1,12 +1,13 @@
-local mod = get_mod("PewPew")
-local mod_version = "1.6.0"
-
 --[[
 Mod: PewPew
 Description: Change ranged weapon sounds and projectile visual effects
 Author: tinybike (GlaresAtKoalas on Nexus)
     2025-02-17 adopted by Backup158
 ]]
+
+local mod = get_mod("PewPew")
+local _weapon_tables_file = mod:io_dofile("PewPew/scripts/mods/PewPew/PewPew_weapon_tables")
+local mod_version = "1.6.0"
 
 -- The required files for PlayerLineEffects and MinionLineEffects each contain a declaration of a line_effects table, then returns that table
 local PlayerLineEffects = require("scripts/settings/effects/player_line_effects")
@@ -15,6 +16,14 @@ local PlayerCharacterSoundEventAliases = require("scripts/settings/sound/player_
 
 local original_player_line_effects = table.clone(PlayerLineEffects)
 local original_minion_line_effects = table.clone(MinionLineEffects)
+-- "sfx_swing_heavy_left_hand", is shield and maul only
+-- "sfx_swing_special", is pickaxe only
+local swing_tables = { "sfx_swing", "sfx_swing_heavy", "melee_blocked_attack", "melee_heavy_sweep_hit", "melee_sweep_hit_crit" }
+local original_PCSEA_melee_effects = { }
+for _, effect_table in ipairs(swing_tables) do
+    original_PCSEA_melee_effects[effect_table] = table.clone(PlayerCharacterSoundEventAliases[table_name])
+end
+
 
 -- Checks if value exists in table
 function table_contains(table, x)
@@ -316,18 +325,13 @@ end
 -- #########################################
 local function update_melee_sound_effects(weapon_to_be_changed)
     local new_weapon_sounds = mod:get(weapon_to_be_changed)
-    -- "sfx_swing_heavy_left_hand", is shield and maul only
-    -- "sfx_swing_special", is pickaxe only
-    local swing_tables = { "sfx_swing", "sfx_swing_heavy", "melee_blocked_attack", "melee_heavy_sweep_hit", "melee_sweep_hit_crit" }
     for _, table_name in ipairs(swing_tables) do
-        if PlayerCharacterSoundEventAliases[table_name].events[new_weapon_sounds] then
-            PlayerCharacterSoundEventAliases[table_name].events[weapon_to_be_changed] = PlayerCharacterSoundEventAliases[table_name].events[new_weapon_sounds]
+        if original_PCSEA_melee_effects[table_name].events[new_weapon_sounds] then
+            PlayerCharacterSoundEventAliases[table_name].events[weapon_to_be_changed] = original_PCSEA_melee_effects[table_name].events[new_weapon_sounds]
         else
             if mod.debug then mod:echo("Sound effect for "..new_weapon_sounds.." is fucked when adding to "..weapon_to_be_changed) end
         end
     end
-    
-    -- sfx_swing, melee_blocked_attack, melee_heavy_sweep_hit, melee_sweep_hit_crit 
 end
 
 mod.on_all_mods_loaded = function (setting_id)
