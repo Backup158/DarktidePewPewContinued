@@ -1,4 +1,5 @@
 local mod = get_mod("PewPew")
+local _weapon_tables_file = mod:io_dofile("PewPew/scripts/mods/PewPew/PewPew_weapon_tables")
 
 --	See @scripts/settings/effects/player_line_effects.lua
 local LINE_EFFECTS_OPTIONS = {
@@ -21,21 +22,9 @@ local LINE_EFFECTS_OPTIONS = {
 	{ text="plasma_beam" },
 }
 --	See @scripts/settings/effects/minion_line_effects.lua
-local ENEMY_LINE_EFFECTS = {
-	{ text="renegade_twin_captain_las_pistol_lasbeam" },
-	{ text="renegade_lasbeam" },
-	{ text="renegade_gunner_lasbeam" },
-	{ text="renegade_sniper_lasbeam" },
-	{ text="renegade_assault_lasbeam" },
-	{ text="cultist_autogun_bullet" },
-	{ text="renegade_heavy_stubber_bullet" },
-	{ text="renegade_pellet" },
-	{ text="renegade_captain_pellet" },
-	{ text="renegade_captain_boltshell" },
-	{ text="renegade_captain_plasma_beam" },
-}
+
 -- Adding enemy line effects to overall line effects table
-for _, v in ipairs(ENEMY_LINE_EFFECTS) do
+for _, v in ipairs(mod.ENEMY_LINE_EFFECTS) do
 	table.insert(LINE_EFFECTS_OPTIONS, v)
 end
 -- Essentially doing value = text = "string" to use the same name for id and localization id
@@ -260,70 +249,7 @@ mod.single_shot_sound_effects_widgets = {
 	{ setting_id="zealot_throwing_knives", default_value="zealot_throw_knife" },
 }
 -- just the names
-mod.melee_sound_effects_names = {
-	--{ text="bot_combataxe_linesman", },
-	--{ text="bot_combatsword_linesman_p1", },
-	--{ text="bot_combatsword_linesman_p2", },
-	{ text="chainaxe_p1_m1", },
-	{ text="chainaxe_p1_m2", },
-	{ text="chainsword_2h_p1_m1", },
-	{ text="chainsword_2h_p1_m2", },
-	{ text="chainsword_p1_m1", },
-	{ text="chainsword_p1_m2", },
-	{ text="combataxe_p1_m1", },
-	{ text="combataxe_p1_m2", },
-	{ text="combataxe_p1_m3", },
-	{ text="combataxe_p2_m1", },
-	{ text="combataxe_p2_m2", },
-	{ text="combataxe_p2_m3", },
-	{ text="combataxe_p3_m1", },
-	{ text="combataxe_p3_m2", },
-	{ text="combataxe_p3_m3", },
-	{ text="combatknife_p1_m1", },
-	{ text="combatknife_p1_m2", },
-	{ text="combatsword_p1_m1", },
-	{ text="combatsword_p1_m2", },
-	{ text="combatsword_p1_m3", },
-	{ text="combatsword_p2_m1", },
-	{ text="combatsword_p2_m2", },
-	{ text="combatsword_p2_m3", },
-	{ text="combatsword_p3_m1", },
-	{ text="combatsword_p3_m2", },
-	{ text="combatsword_p3_m3", },
-	{ text="forcesword_2h_p1_m1", },
-	{ text="forcesword_2h_p1_m2", },
-	{ text="forcesword_p1_m1", },
-	{ text="forcesword_p1_m2", },
-	{ text="forcesword_p1_m3", },
-	{ text="ogryn_club_p1_m1", },
-	{ text="ogryn_club_p1_m2", },
-	{ text="ogryn_club_p1_m3", },
-	{ text="ogryn_club_p2_m1", },
-	{ text="ogryn_club_p2_m2", },
-	{ text="ogryn_club_p2_m3", },
-	{ text="ogryn_combatblade_p1_m1", },
-	{ text="ogryn_combatblade_p1_m2", },
-	{ text="ogryn_combatblade_p1_m3", },
-	--{ text="ogryn_gauntlet_p1_m1", },
-	{ text="ogryn_pickaxe_2h_p1_m1", },
-	{ text="ogryn_pickaxe_2h_p1_m2", },
-	{ text="ogryn_pickaxe_2h_p1_m3", },
-	{ text="ogryn_powermaul_p1_m1", },
-	{ text="ogryn_powermaul_slabshield_p1_m1", },
-	--{ text="ogryn_thumper_p1_m1", },
-	--{ text="ogryn_thumper_p1_m2", },
-	{ text="powermaul_2h_p1_m1", },
-	{ text="powermaul_p1_m1", },
-	{ text="powermaul_p1_m2", },
-	{ text="powersword_2h_p1_m1", },
-	{ text="powersword_2h_p1_m2", },
-	{ text="powersword_2h_p1_m3", },
-	{ text="powersword_p1_m1", },
-	{ text="powersword_p1_m2", },
-	{ text="powersword_p1_m3", },
-	{ text="thunderhammer_2h_p1_m1", },
-	{ text="thunderhammer_2h_p1_m2", },
-}
+
 for i, option in ipairs(mod.melee_sound_effects_names) do
 	mod.melee_sound_effects_names[i].value = mod.melee_sound_effects_names[i].text
 end

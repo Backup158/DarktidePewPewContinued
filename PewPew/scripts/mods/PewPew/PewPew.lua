@@ -126,21 +126,6 @@ local CHARGED_SINGLE_SHOT_SFX = {
     --plasmagun_p1_m2 = "weapon_plasmagun_charged", -- Unreleased
 }
 
---	See @scripts/settings/effects/minion_line_effects.lua
-local ENEMY_LINE_EFFECTS = {
-	{ text="renegade_twin_captain_las_pistol_lasbeam" },
-	{ text="renegade_lasbeam" },
-	{ text="renegade_gunner_lasbeam" },
-	{ text="renegade_sniper_lasbeam" },
-	{ text="renegade_assault_lasbeam" },
-	{ text="cultist_autogun_bullet" },
-	{ text="renegade_heavy_stubber_bullet" },
-	{ text="renegade_pellet" },
-	{ text="renegade_captain_pellet" },
-	{ text="renegade_captain_boltshell" },
-	{ text="renegade_captain_plasma_beam" },
-}
-
 -- #########################################
 -- Load Resources
 -- checks if package is available to be loaded? legacy code i haven't really looked into
@@ -170,7 +155,7 @@ local function update_line_effects(line_effects_to_be_changed)
     -- Get name of new effect we want to replace the current one with
     local new_line_effects = mod:get(line_effects_to_be_changed)
 
-    local changed_effect_is_minion = table_contains(ENEMY_LINE_EFFECTS, new_line_effects)
+    local changed_effect_is_minion = table_contains(mod.ENEMY_LINE_EFFECTS, new_line_effects)
     -- Makes a local copy of the original effects for faster access
     local original_line_effects
     --  Not used as a destination (?) for assignment, so pass by reference is fine

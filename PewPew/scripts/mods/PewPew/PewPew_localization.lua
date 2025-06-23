@@ -6,8 +6,8 @@
 --		and no, reassigning localizations for single shot doesn't work...
 --		You'd have to assign that to a variable first, and there's still so many exceptions I'd just say fuck it
 --	loc_weapon_px_mx brings up the old localizations from before Unlocked and Loaded
-
---local _data_file = mod:io_dofile("PewPew/scripts/mod/PewPew/PewPew_data")
+local mod = get_mod("PewPew")
+local _weapon_tables_file = mod:io_dofile("PewPew/scripts/mods/PewPew/PewPew_weapon_tables")
 
 -- Get localized version of weapon name
 -- 	give it a string, the weapon code (e.g. autogun_p1_m1)
@@ -219,6 +219,15 @@ localizations["forcestaff_p2_m1"]["en"] = localizations["forcestaff_p2_m1"]["en"
 localizations["forcestaff_p3_m1"]["en"] = localizations["forcestaff_p2_m1"]["en"].." Secondary Fire"
 --		Semi-Automatics
 localizations["forcestaff_p1_m1"]["en"] = localizations["forcestaff_p1_m1"]["en"].." Primary Fire"
+-- -------------
+-- MELEE
+-- -------------
+--for _, weapon_table in ipairs(_weapon_tables_file.mod.melee_sound_effects_names) do
+--	local weapon_code = weapon_table.text
+--	localizations[weapon_code] = {
+--		en = get_full_weapon_name_localized(weapon_code)
+--	}
+--end
 
 -- ######################
 -- Automatic SFX Names
