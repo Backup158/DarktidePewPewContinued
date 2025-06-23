@@ -1,11 +1,11 @@
 local mod = get_mod("PewPew")
-local mod_version = "1.5.1"
+local mod_version = "1.6.0"
 
 --[[
 Mod: PewPew
 Description: Change ranged weapon sounds and projectile visual effects
 Author: tinybike (GlaresAtKoalas on Nexus)
-    2025-02-17 updates by Backup158
+    2025-02-17 adopted by Backup158
 ]]
 
 -- The required files for PlayerLineEffects and MinionLineEffects each contain a declaration of a line_effects table, then returns that table
