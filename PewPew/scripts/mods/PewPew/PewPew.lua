@@ -7,7 +7,7 @@ Author: tinybike (GlaresAtKoalas on Nexus)
 
 local mod = get_mod("PewPew")
 local _weapon_tables_file = mod:io_dofile("PewPew/scripts/mods/PewPew/PewPew_weapon_tables")
-local mod_version = "1.6.0"
+local mod_version = "1.6.1"
 
 -- The required files for PlayerLineEffects and MinionLineEffects each contain a declaration of a line_effects table, then returns that table
 local PlayerLineEffects = require("scripts/settings/effects/player_line_effects")
