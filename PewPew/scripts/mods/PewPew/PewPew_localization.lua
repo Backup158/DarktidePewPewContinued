@@ -175,6 +175,8 @@ for _, weapon_table in ipairs(mod.melee_sound_effects_names) do
 		en = get_full_weapon_name_localized(weapon_code)
 	}
 end
+-- second mark doesn't have a pattern defined because fuck you i guess
+localizations["powermaul_shield_p1_m2"]["en"] = Localize("loc_weapon_pattern_powermaul_shield_p1_m1").." "..Localize("loc_weapon_mark_powermaul_shield_p1_m2").." "..Localize("loc_weapon_family_powermaul_shield_p1_m2")
 
 -- ######################
 -- Automatic SFX Names
