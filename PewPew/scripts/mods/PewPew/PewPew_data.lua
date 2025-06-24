@@ -112,7 +112,7 @@ local SINGLE_SHOT_SOUND_EFFECTS_OPTIONS = {
 	{ text="shotgun_p2_m1" },
 	{ text="shotgun_p4_m1" },
 	{ text="shotgun_p4_m2" },
-	{ text="shotgun_p4_m3" },
+	--{ text="shotgun_p4_m3" },
 	{ text="shotpistol_p1_m1" },
 	{ text="stub_revolver" }, -- stubrevolver_p1_m1
 	{ text="stub_revolver_p1_m2" },
@@ -245,7 +245,7 @@ mod.single_shot_sound_effects_widgets = {
 	{ setting_id="shotgun_p2_m1", default_value="shotgun_p2_m1" },
 	{ setting_id="shotgun_p4_m1", default_value="shotgun_p4_m1" },
 	{ setting_id="shotgun_p4_m2", default_value="shotgun_p4_m1" },
-	{ setting_id="shotgun_p4_m3", default_value="shotgun_p4_m1" },
+	--{ setting_id="shotgun_p4_m3", default_value="shotgun_p4_m1" },
 	{ setting_id="shotpistol_shield_p1_m1", default_value="shotpistol_p1_m1" },
 	{ setting_id="stubrevolver_p1_m1", default_value="stub_revolver" },
 	{ setting_id="stubrevolver_p1_m2", default_value="stub_revolver_p1_m2" },
