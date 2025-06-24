@@ -133,6 +133,7 @@ local localizations = {
 	heavy_stubber_p2_m3_punch_first = { en=get_full_weapon_name_localized("ogryn_heavystubber_p2_m3") },
 	combat_weapon_shotgun = { en=get_full_weapon_name_localized("shotgun_p1_m1") },
 	--stub_revolver = { en=Localize("loc_stub_revolver") }, -- For some reason this shows up as 'Chambered'
+	shotpistol_p1_m1 = { en=get_full_weapon_name_localized("shotpistol_shield_p1_m1") },
 	stub_revolver = { en=get_full_weapon_name_localized("stubrevolver_p1_m1") },
 	stub_revolver_p1_m2 = { en=get_full_weapon_name_localized("stubrevolver_p1_m2") },
 	weapon_plasmagun = { en=get_full_weapon_name_localized("plasmagun_p1_m1") },
