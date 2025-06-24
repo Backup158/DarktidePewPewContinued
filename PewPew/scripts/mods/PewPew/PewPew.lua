@@ -21,9 +21,11 @@ local original_minion_line_effects = table.clone(MinionLineEffects)
 local swing_tables = { 
     "sfx_swing", "sfx_swing_heavy", 
     "melee_blocked_attack", 
-    "melee_sweep_hit", "melee_heavy_sweep_hit", "melee_sweep_hit_crit", 
+    "melee_sweep_hit", "melee_heavy_sweep_hit", --"melee_sweep_hit_crit", -- crit goes events.["true"]???
     "sfx_push_follow_up", 
-    "sfx_special_activate", "weapon_special_end", "equipped_item_passive", -- Chainsword rev is NOT HERE LMAO
+    "sfx_special_activate", -- Chainsword rev is NOT HERE LMAO
+    "weapon_special_end", 
+    --"equipped_item_passive", -- moved to looping events
     -- "melee_sticky_loop", -- sounds like something chain specific (even though force swords are here) and may crash because chain weapons are stupid???
 }
 local original_PCSEA_melee_effects = { }
