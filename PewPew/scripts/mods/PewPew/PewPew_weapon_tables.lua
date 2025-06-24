@@ -141,6 +141,10 @@ mod.semiautomatic_weapon_labels = {
 	"shotgun_p1_m2",
 	"shotgun_p1_m3",
 	"shotgun_p2_m1",
+	"shotgun_p4_m1",
+	"shotgun_p4_m2",
+	"shotgun_p4_m3",
+	"shotpistol_p1_m1",
 	"stubrevolver_p1_m1",
 	"stubrevolver_p1_m2",
 	-- "stubrevolver_p1_m3", -- Unreleased

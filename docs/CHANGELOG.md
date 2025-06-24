@@ -1,3 +1,13 @@
+# v1.6.1
+2025-06-23
+
+- Added support for Arbites weapons
+    - Powermaul, including the ones with shield
+    - Shotpistol
+    - Executioner Shotgun
+- Removed melee sound swaps for passive audio
+    - This was moved to the looping audio table, which I can't access easily
+
 # v1.6.0
 2025-06-21
 
