@@ -7,6 +7,9 @@
 --		You'd have to assign that to a variable first, and there's still so many exceptions I'd just say fuck it
 --	loc_weapon_px_mx brings up the old localizations from before Unlocked and Loaded
 local mod = get_mod("PewPew")
+-- List of weapons from game code
+local WeaponTemplates = require("scripts/settings/equipment/weapon_templates/weapon_templates")
+-- Disgusting hardcoded tables
 local _weapon_tables_file = mod:io_dofile("PewPew/scripts/mods/PewPew/PewPew_weapon_tables")
 
 -- Get localized version of weapon name
@@ -152,7 +155,7 @@ local localizations = {
 -- Ranged
 -- -------------
 -- Automatics
-for _, weapon_code in ipairs(mod.automatic_weapon_labels) do
+for _, weapon_code in pairs(WeaponTemplates) do
 	localizations[weapon_code] = {
 		en = get_full_weapon_name_localized(weapon_code)
 	}
@@ -160,12 +163,13 @@ end
 localizations["forcestaff_p2_m1"]["en"] = localizations["forcestaff_p2_m1"]["en"].." Secondary Fire"
 localizations["forcestaff_p3_m1"]["en"] = localizations["forcestaff_p2_m1"]["en"].." Secondary Fire"
 -- Semi Automatics
+localizations["forcestaff_p1_m1"]["en"] = localizations["forcestaff_p1_m1"]["en"].." Primary Fire"
+--[[
 for _, weapon_code in ipairs(mod.semiautomatic_weapon_labels) do
 	localizations[weapon_code] = {
 		en = get_full_weapon_name_localized(weapon_code)
 	}
 end
-localizations["forcestaff_p1_m1"]["en"] = localizations["forcestaff_p1_m1"]["en"].." Primary Fire"
 -- -------------
 -- Melee
 -- -------------
@@ -175,6 +179,7 @@ for _, weapon_table in ipairs(mod.melee_sound_effects_names) do
 		en = get_full_weapon_name_localized(weapon_code)
 	}
 end
+]]
 -- second mark doesn't have a pattern defined because fuck you i guess
 localizations["powermaul_shield_p1_m2"]["en"] = Localize("loc_weapon_pattern_powermaul_shield_p1_m1").." "..Localize("loc_weapon_mark_powermaul_shield_p1_m2").." "..Localize("loc_weapon_family_powermaul_shield_p1_m2")
 
