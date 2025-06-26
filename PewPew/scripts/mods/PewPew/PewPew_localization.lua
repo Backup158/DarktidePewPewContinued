@@ -1,3 +1,4 @@
+-- ------------------------------------------------------------------------------------
 -- Localizations: Universal
 --	NOTE FOR FUTURE READERS: This is an absolute mess of copypasted code
 --	However, there's so many exceptions to make the main functions work smoothly with Fatshark's naming scheme that automating localization is more effort than copypasting
@@ -6,20 +7,44 @@
 --		and no, reassigning localizations for single shot doesn't work...
 --		You'd have to assign that to a variable first, and there's still so many exceptions I'd just say fuck it
 --	loc_weapon_px_mx brings up the old localizations from before Unlocked and Loaded
+-- ------------------------------------------------------------------------------------
+
 local mod = get_mod("PewPew")
 -- List of weapons from game code
 local WeaponTemplates = require("scripts/settings/equipment/weapon_templates/weapon_templates")
 -- Disgusting hardcoded tables
 local _weapon_tables_file = mod:io_dofile("PewPew/scripts/mods/PewPew/PewPew_weapon_tables")
+-- Optimizations
+local _string_find = string.find
 
+-- ###############
+-- Helper to get localized version of weapon name
+-- 	PARAMETERS
+--		string, localization prefix (e.g. loc_weapon_pattern_)
+--		string, the weapon code (e.g. autogun_p1_m1)
+--	returns a string comprised for the respective prefix (pattern, mark, family)
+-- ###############
+local function name_localization_helper(prefix, weapon_code)
+	local normal_string = Localize(prefix..weapon_code)
+	if normal_string then
+		return normal_string
+	else 
+		-- fallback to localization for m1. replaces m<digit> so m2 or m3
+		return Localize(prefix..weapon_code:gsub("m%d", "m1")) or "i_hate_swedish_people"
+		-- fuck you powermaul_shield_p1_m2 pattern
+	end
+end
+-- ###############
 -- Get localized version of weapon name
 -- 	give it a string, the weapon code (e.g. autogun_p1_m1)
 --	returns a string comprised of the pattern, mark, and, family, in that order (e.g. "Accatran Mk VIc Recon Lasgun")
+-- ###############
 local function get_full_weapon_name_localized(weapon_code) 
-	local weapon_pattern = Localize("loc_weapon_pattern_"..weapon_code)
-	local weapon_mark = Localize("loc_weapon_mark_"..weapon_code)
-	local weapon_family = Localize("loc_weapon_family_"..weapon_code)
-	return weapon_pattern.." "..weapon_mark.." "..weapon_family
+	-- Check if it's a pattern/mark type weapon 
+	if _string_find(weapon_code, "p%d_m%d") then
+		return name_localization_helper("loc_weapon_pattern_", weapon_code).." "..name_localization_helper("loc_weapon_mark_", weapon_code).." "..name_localization_helper("loc_weapon_family_", weapon_code)
+	else
+		return Localize(weapon_code) or "i_fucked_up"
 end
 
 local localizations = {
@@ -78,8 +103,7 @@ local localizations = {
 	-- bot_laspistol_killshot = { en=Localize("loc_bot_laspistol_killshot") },
 	-- bot_zola_laspistol = { en=Localize("loc_bot_zola_laspistol") },
 	-- psyker_smite = { en="Psyker \"Smite\"" },
-	psyker_throwing_knives = { en="Psyker "..Localize("loc_ability_psyker_blitz_throwing_knives") },
-	zealot_throwing_knives = { en="Zealot "..Localize("loc_ability_zealot_throwing_knifes") },
+	
 
 	-- ######################
 	-- LOOPING RANGED SFX
@@ -90,7 +114,6 @@ local localizations = {
 	heavy_stubber_auto = { en=get_full_weapon_name_localized("ogryn_heavystubber_p1_m1") .. " Auto" },
 	heavy_stubber_p1_m2_auto =  { en=get_full_weapon_name_localized("ogryn_heavystubber_p1_m2") .. " Auto" },
     heavy_stubber_p1_m3_auto =  { en=get_full_weapon_name_localized("ogryn_heavystubber_p1_m3") .. " Auto" },
-	psyker_chain_lightning = { en="Psyker Smite (Chain Lightning)" },
 	-- ----------------
 	-- Charging FX
 	-- ----------------
@@ -153,38 +176,25 @@ local localizations = {
 -- Weapon Labels
 -- 	Localizations for the names of the weapons you will be changing the sound of
 --	This also covers some of the names for the single shot sounds
+-- 	Yes, I know adding to tables like this is inefficient as fuck, but it's a one time thing and saves me a lot of headache so eat shit :3
 -- ######################
--- -------------
--- Ranged
--- -------------
--- Automatics
 for weapon_code, _ in pairs(WeaponTemplates) do
 	localizations[weapon_code] = {
 		en = get_full_weapon_name_localized(weapon_code)
 	}
 end
+-- -------------
+-- Ranged Patches
+-- -------------
+-- Automatics
 localizations["forcestaff_p2_m1"]["en"] = localizations["forcestaff_p2_m1"]["en"].." Secondary Fire"
 localizations["forcestaff_p3_m1"]["en"] = localizations["forcestaff_p2_m1"]["en"].." Secondary Fire"
+localizations["psyker_chain_lightning"]["en"] = "Psyker Smite (Chain Lightning)"
 -- Semi Automatics
 localizations["forcestaff_p1_m1"]["en"] = localizations["forcestaff_p1_m1"]["en"].." Primary Fire"
---[[
-for _, weapon_code in ipairs(mod.semiautomatic_weapon_labels) do
-	localizations[weapon_code] = {
-		en = get_full_weapon_name_localized(weapon_code)
-	}
-end
 -- -------------
--- Melee
+-- Melee Patches
 -- -------------
-for _, weapon_table in ipairs(mod.melee_sound_effects_names) do
-	local weapon_code = weapon_table.text
-	localizations[weapon_code] = {
-		en = get_full_weapon_name_localized(weapon_code)
-	}
-end
-]]
--- second mark doesn't have a pattern defined because fuck you i guess
-localizations["powermaul_shield_p1_m2"]["en"] = Localize("loc_weapon_pattern_powermaul_shield_p1_m1").." "..Localize("loc_weapon_mark_powermaul_shield_p1_m2").." "..Localize("loc_weapon_family_powermaul_shield_p1_m2")
 
 -- ######################
 -- Automatic SFX Names
