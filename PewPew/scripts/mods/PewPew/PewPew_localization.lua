@@ -16,7 +16,10 @@ local _weapon_tables_file = mod:io_dofile("PewPew/scripts/mods/PewPew/PewPew_wea
 -- 	give it a string, the weapon code (e.g. autogun_p1_m1)
 --	returns a string comprised of the pattern, mark, and, family, in that order (e.g. "Accatran Mk VIc Recon Lasgun")
 local function get_full_weapon_name_localized(weapon_code) 
-	return Localize("loc_weapon_pattern_"..weapon_code).." "..Localize("loc_weapon_mark_"..weapon_code).." "..Localize("loc_weapon_family_"..weapon_code)
+	local weapon_pattern = Localize("loc_weapon_pattern_"..weapon_code)
+	local weapon_mark = Localize("loc_weapon_mark_"..weapon_code)
+	local weapon_family = Localize("loc_weapon_family_"..weapon_code)
+	return weapon_pattern.." "..weapon_mark.." "..weapon_family
 end
 
 local localizations = {
@@ -155,7 +158,7 @@ local localizations = {
 -- Ranged
 -- -------------
 -- Automatics
-for _, weapon_code in pairs(WeaponTemplates) do
+for weapon_code, _ in pairs(WeaponTemplates) do
 	localizations[weapon_code] = {
 		en = get_full_weapon_name_localized(weapon_code)
 	}
