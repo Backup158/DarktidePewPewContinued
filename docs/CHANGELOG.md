@@ -1,10 +1,15 @@
+# v1.6.2
+2025-06-25
+
+- Refactored localizations to avoid needing the cursed as hard-coded tables (thanks to Norkkom for mentioning the WeaponTemplates in public)
+
 # v1.6.1
 2025-06-23
 
 - Added support for Arbites weapons
-    - Powermaul, including the ones with shield
-    - Shotpistol
-    - Executioner Shotgun
+    - Arbites Shock Maul (powermaul), including the ones with shield
+    - Subductor Shotpistol and Riot Shield
+    - Exaction Shotgun
 - Removed melee sound swaps for passive audio
     - This was moved to the looping audio table, which I can't access easily
 
