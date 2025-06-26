@@ -26,11 +26,13 @@ local _string_find = string.find
 -- ###############
 local function name_localization_helper(prefix, weapon_code)
 	local normal_string = Localize(prefix..weapon_code)
-	if normal_string then
+	--mod:info(normal_string.." from "..prefix..weapon_code)
+	if normal_string and not _string_find(normal_string, "unlocalized") then
+		--mod:info("was poggers")
 		return normal_string
 	else 
 		-- fallback to localization for m1. replaces m<digit> so m2 or m3
-		return Localize(prefix..weapon_code:gsub("m%d", "m1")) or "i_hate_swedish_people"
+		return Localize(prefix..weapon_code:gsub("_m%d", "_m1")) or "i_hate_swedish_people"
 		-- fuck you powermaul_shield_p1_m2 pattern
 	end
 end
@@ -47,7 +49,7 @@ local function get_full_weapon_name_localized(weapon_code)
 		local weapon_family = name_localization_helper("loc_weapon_family_", weapon_code)
 		return weapon_pattern.." "..weapon_mark.." "..weapon_family
 	else
-		return Localize(weapon_code) or "i_fucked_up"
+		return Localize("loc_"..weapon_code) or "i_fucked_up"
 	end
 end
 
@@ -118,8 +120,6 @@ local localizations = {
 	heavy_stubber_auto = { en=get_full_weapon_name_localized("ogryn_heavystubber_p1_m1") .. " Auto" },
 	heavy_stubber_p1_m2_auto =  { en=get_full_weapon_name_localized("ogryn_heavystubber_p1_m2") .. " Auto" },
     heavy_stubber_p1_m3_auto =  { en=get_full_weapon_name_localized("ogryn_heavystubber_p1_m3") .. " Auto" },
-	psyker_throwing_knives = { en="Psyker "..Localize("loc_ability_psyker_blitz_throwing_knives") },
-	zealot_throwing_knives = { en="Zealot "..Localize("loc_ability_zealot_throwing_knifes") },
 	-- ----------------
 	-- Charging FX
 	-- ----------------
@@ -195,7 +195,12 @@ end
 -- Automatics
 localizations["forcestaff_p2_m1"]["en"] = localizations["forcestaff_p2_m1"]["en"].." Secondary Fire"
 localizations["forcestaff_p3_m1"]["en"] = localizations["forcestaff_p2_m1"]["en"].." Secondary Fire"
---localizations["psyker_chain_lightning"]["en"] = "Psyker Smite (Chain Lightning)"
+-- I have no fucking clue what these are called normally.
+--	yolo ig 
+localizations["psyker_chain_lightning"]["en"] = "Psyker Smite (Chain Lightning)"
+-- 	I'm just using the skill names
+localizations["psyker_throwing_knives"]["en"] = "Psyker "..Localize("loc_ability_psyker_blitz_throwing_knives")
+localizations["zealot_throwing_knives"]["en"] = "Zealot "..Localize("loc_ability_zealot_throwing_knifes")
 -- Semi Automatics
 localizations["forcestaff_p1_m1"]["en"] = localizations["forcestaff_p1_m1"]["en"].." Primary Fire"
 -- -------------
