@@ -14,7 +14,7 @@ local mod = get_mod("PewPew")
 local WeaponTemplates = require("scripts/settings/equipment/weapon_templates/weapon_templates")
 -- Disgusting hardcoded tables
 local _weapon_tables_file = mod:io_dofile("PewPew/scripts/mods/PewPew/PewPew_weapon_tables")
--- Optimizations
+-- Optimizations, global to local
 local _string_find = string.find
 
 -- ###############
@@ -42,9 +42,13 @@ end
 local function get_full_weapon_name_localized(weapon_code) 
 	-- Check if it's a pattern/mark type weapon 
 	if _string_find(weapon_code, "p%d_m%d") then
-		return name_localization_helper("loc_weapon_pattern_", weapon_code).." "..name_localization_helper("loc_weapon_mark_", weapon_code).." "..name_localization_helper("loc_weapon_family_", weapon_code)
+		local weapon_pattern = name_localization_helper("loc_weapon_pattern_", weapon_code)
+		local weapon_mark = name_localization_helper("loc_weapon_mark_", weapon_code)
+		local weapon_family = name_localization_helper("loc_weapon_family_", weapon_code)
+		return weapon_pattern.." "..weapon_mark.." "..weapon_family
 	else
 		return Localize(weapon_code) or "i_fucked_up"
+	end
 end
 
 local localizations = {
@@ -114,6 +118,8 @@ local localizations = {
 	heavy_stubber_auto = { en=get_full_weapon_name_localized("ogryn_heavystubber_p1_m1") .. " Auto" },
 	heavy_stubber_p1_m2_auto =  { en=get_full_weapon_name_localized("ogryn_heavystubber_p1_m2") .. " Auto" },
     heavy_stubber_p1_m3_auto =  { en=get_full_weapon_name_localized("ogryn_heavystubber_p1_m3") .. " Auto" },
+	psyker_throwing_knives = { en="Psyker "..Localize("loc_ability_psyker_blitz_throwing_knives") },
+	zealot_throwing_knives = { en="Zealot "..Localize("loc_ability_zealot_throwing_knifes") },
 	-- ----------------
 	-- Charging FX
 	-- ----------------
@@ -189,7 +195,7 @@ end
 -- Automatics
 localizations["forcestaff_p2_m1"]["en"] = localizations["forcestaff_p2_m1"]["en"].." Secondary Fire"
 localizations["forcestaff_p3_m1"]["en"] = localizations["forcestaff_p2_m1"]["en"].." Secondary Fire"
-localizations["psyker_chain_lightning"]["en"] = "Psyker Smite (Chain Lightning)"
+--localizations["psyker_chain_lightning"]["en"] = "Psyker Smite (Chain Lightning)"
 -- Semi Automatics
 localizations["forcestaff_p1_m1"]["en"] = localizations["forcestaff_p1_m1"]["en"].." Primary Fire"
 -- -------------
