@@ -32,6 +32,7 @@ local function name_localization_helper(prefix, weapon_code)
 		return normal_string
 	else 
 		-- fallback to localization for m1. replaces m<digit> so m2 or m3
+		-- 	must be digit, not unsigned int (that won't work)
 		return Localize(prefix..weapon_code:gsub("_m%d", "_m1")) or "i_hate_swedish_people"
 		-- fuck you powermaul_shield_p1_m2 pattern
 	end
@@ -49,6 +50,7 @@ local function get_full_weapon_name_localized(weapon_code)
 		local weapon_family = name_localization_helper("loc_weapon_family_", weapon_code)
 		return weapon_pattern.." "..weapon_mark.." "..weapon_family
 	else
+		-- naive localization. it won't work (blitz would be loc_ability_<weapon_code>)
 		return Localize("loc_"..weapon_code) or "i_fucked_up"
 	end
 end
