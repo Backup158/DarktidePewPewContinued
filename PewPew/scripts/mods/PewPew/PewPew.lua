@@ -105,7 +105,7 @@ local RANGED_SHOOTING_SOUND_EFFECTS = {
     --      Rumbler and Kickback
     --      See single_shot note
     -- Shotgun
-    --      Combat and Double Barrel
+    --      Combat, Double Barrel (Assault), and Exterminator
     --      See single_shot note
     -- Psyker Warp stuff
     forcestaff_warp_fire =      { braced="forcestaff_warp_fire", pre_loop_shot="weapon_silence", single_shot="psyker_smite_fire" },

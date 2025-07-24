@@ -89,6 +89,7 @@ end
 --	See ranged loop sfx note for weird naming reasons
 -- ######################
 local SINGLE_SHOT_SOUND_EFFECTS_OPTIONS = {
+	{ text="weapon_silence" }, -- "wwise/events/weapon/play_weapon_silence" is the default silent sound
 	{ text="weapon_autopistol" }, -- autopistol_p1_m1
 	{ text="autogun_p3_m1_single" },
 	{ text="autogun_p3_m2_single" },
