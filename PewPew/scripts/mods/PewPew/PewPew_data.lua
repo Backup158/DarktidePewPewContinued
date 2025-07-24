@@ -1,4 +1,9 @@
 local mod = get_mod("PewPew")
+local _weapon_tables_file = mod:io_dofile("PewPew/scripts/mods/PewPew/PewPew_weapon_tables")
+
+-- ############################################
+-- Defining Effects
+-- ############################################
 
 --	See @scripts/settings/effects/player_line_effects.lua
 local LINE_EFFECTS_OPTIONS = {
@@ -21,23 +26,11 @@ local LINE_EFFECTS_OPTIONS = {
 	{ text="plasma_beam" },
 }
 --	See @scripts/settings/effects/minion_line_effects.lua
-local ENEMY_LINE_EFFECTS = {
-	{ text="renegade_lasbeam" },
-	{ text="renegade_assault_lasbeam" },
-	{ text="renegade_twin_captain_las_pistol_lasbeam" },
-	{ text="renegade_gunner_lasbeam" },
-	{ text="renegade_sniper_lasbeam" },
-	{ text="cultist_autogun_bullet" },
-	{ text="renegade_heavy_stubber_bullet" },
-	{ text="renegade_pellet" },
-	{ text="renegade_captain_pellet" },
-	{ text="renegade_captain_boltshell" },
-	{ text="renegade_captain_plasma_beam" },
-}
-for _, v in pairs(ENEMY_LINE_EFFECTS) do
+
+-- Adding enemy line effects to overall line effects table
+for _, v in ipairs(mod.ENEMY_LINE_EFFECTS) do
 	table.insert(LINE_EFFECTS_OPTIONS, v)
 end
-
 -- Essentially doing value = text = "string" to use the same name for id and localization id
 for i, option in ipairs(LINE_EFFECTS_OPTIONS) do
 	LINE_EFFECTS_OPTIONS[i].value = LINE_EFFECTS_OPTIONS[i].text
@@ -53,7 +46,8 @@ end
 --		'heavy_stubber_auto' instead of 'heavy_stubber_p1_m1_auto'
 --	So to streamline finding the sounds, these variable names match Fatshark's internal naming scheme for weapon sound effects
 -- ######################
-local SOUND_EFFECTS_OPTIONS = {
+local LOOPING_AUTOMATIC_SOUND_EFFECTS_OPTIONS = {
+	{ text="weapon_silence" },
 	{ text="weapon_autopistol_auto" },
 	{ text="autogun_p1_m1_auto" },
 	{ text="autogun_p1_m2_auto" },
@@ -91,8 +85,8 @@ local SOUND_EFFECTS_OPTIONS = {
 	{ text="power_sword_loop" },
 	{ text="ogryn_power_maul_1h_loop" },
 }
-for i, option in ipairs(SOUND_EFFECTS_OPTIONS) do
-	SOUND_EFFECTS_OPTIONS[i].value = SOUND_EFFECTS_OPTIONS[i].text
+for i, option in ipairs(LOOPING_AUTOMATIC_SOUND_EFFECTS_OPTIONS) do
+	LOOPING_AUTOMATIC_SOUND_EFFECTS_OPTIONS[i].value = LOOPING_AUTOMATIC_SOUND_EFFECTS_OPTIONS[i].text
 end
 
 -- ######################
@@ -100,6 +94,7 @@ end
 --	See ranged loop sfx note for weird naming reasons
 -- ######################
 local SINGLE_SHOT_SOUND_EFFECTS_OPTIONS = {
+	{ text="weapon_silence" }, -- "wwise/events/weapon/play_weapon_silence" is the default silent sound
 	{ text="weapon_autopistol" }, -- autopistol_p1_m1
 	{ text="autogun_p3_m1_single" },
 	{ text="autogun_p3_m2_single" },
@@ -121,6 +116,10 @@ local SINGLE_SHOT_SOUND_EFFECTS_OPTIONS = {
 	{ text="shotgun_p1_m2" },
 	{ text="shotgun_p1_m3" },
 	{ text="shotgun_p2_m1" },
+	{ text="shotgun_p4_m1" },
+	--{ text="shotgun_p4_m2" }, -- Uses the same sound as shotgun_p4_m1 so there's no sound (so it becomes silent)
+	--{ text="shotgun_p4_m3" },
+	{ text="shotpistol_p1_m1" },
 	{ text="stub_revolver" }, -- stubrevolver_p1_m1
 	{ text="stub_revolver_p1_m2" },
 	-- { text="stub_revolver_p1_m3" }, -- Unreleased
@@ -134,9 +133,14 @@ local SINGLE_SHOT_SOUND_EFFECTS_OPTIONS = {
 	{ text="weapon_rippergun" }, -- ogryn_rippergun_p1_m1
 	{ text="zealot_throw_knife" },
 }
+-- Creating another key value pair for each entry, called value
 for i, option in ipairs(SINGLE_SHOT_SOUND_EFFECTS_OPTIONS) do
 	SINGLE_SHOT_SOUND_EFFECTS_OPTIONS[i].value = SINGLE_SHOT_SOUND_EFFECTS_OPTIONS[i].text
 end
+
+-- ############################################
+-- Creating Widgets
+-- ############################################
 
 -- ######################
 -- Line Effects Widgets
@@ -183,8 +187,11 @@ end
 -- ######################
 -- Sound Effect Widget Options: Automatic and Single
 --	setting_id:	Weapon's name in the code
---	default_value: the corresponding audio from SOUND_EFFECTS_OPTIONS or SINGLE_SHOT_SOUND_EFFECTS_OPTIONS
+--	default_value: the corresponding audio from LOOPING_AUTOMATIC_SOUND_EFFECTS_OPTIONS or SINGLE_SHOT_SOUND_EFFECTS_OPTIONS
 -- ######################
+-- -------------
+-- Automatic
+-- -------------
 mod.sound_effects_widgets = {
 	{ setting_id="autopistol_p1_m1", default_value="weapon_autopistol_auto" },
 	-- { setting_id="autopistol_p1_m2", default_value="weapon_autopistol_auto" }, -- Unreleased
@@ -206,6 +213,13 @@ mod.sound_effects_widgets = {
 	{ setting_id="ogryn_heavystubber_p1_m2", default_value="heavy_stubber_p1_m2_auto" },
 	{ setting_id="ogryn_heavystubber_p1_m3", default_value="heavy_stubber_p1_m3_auto" },
 }
+for i, sound_effects_widget in ipairs(mod.sound_effects_widgets) do
+	mod.sound_effects_widgets[i].type = "dropdown"
+	mod.sound_effects_widgets[i].options = table.clone(LOOPING_AUTOMATIC_SOUND_EFFECTS_OPTIONS)
+end
+-- -------------
+-- Single
+-- -------------
 mod.single_shot_sound_effects_widgets = {
 	{ setting_id="autogun_p3_m1", default_value="autogun_p3_m1_single" },
 	{ setting_id="autogun_p3_m2", default_value="autogun_p3_m2_single" },
@@ -243,24 +257,40 @@ mod.single_shot_sound_effects_widgets = {
 	-- { setting_id="ogryn_thumper_p1_m3", default_value="ogryn_thumper_p1_m3" }, -- Unreleased
 	{ setting_id="plasmagun_p1_m1", default_value="weapon_plasmagun" },
 	-- { setting_id="plasmagun_p1_m2", default_value="weapon_plasmagun" }, -- Unreleased
-	{ setting_id="psyker_smite", default_value="psyker_smite_fire" },
+	-- { setting_id="psyker_smite", default_value="psyker_smite_fire" }, -- I don't think this changes anything
 	{ setting_id="psyker_throwing_knives", default_value="psyker_throw_knife" },
 	{ setting_id="shotgun_p1_m1", default_value="combat_weapon_shotgun" },
 	{ setting_id="shotgun_p1_m2", default_value="shotgun_p1_m2" },
 	{ setting_id="shotgun_p1_m3", default_value="shotgun_p1_m3" },
 	{ setting_id="shotgun_p2_m1", default_value="shotgun_p2_m1" },
+	{ setting_id="shotgun_p4_m1", default_value="shotgun_p4_m1" },
+	{ setting_id="shotgun_p4_m2", default_value="shotgun_p4_m1" },
+	--{ setting_id="shotgun_p4_m3", default_value="shotgun_p4_m1" },
+	{ setting_id="shotpistol_shield_p1_m1", default_value="shotpistol_p1_m1" },
 	{ setting_id="stubrevolver_p1_m1", default_value="stub_revolver" },
 	{ setting_id="stubrevolver_p1_m2", default_value="stub_revolver_p1_m2" },
 	-- { setting_id="stubrevolver_p1_m3", default_value="stub_revolver_p1_m3" }, -- Unreleased
 	{ setting_id="zealot_throwing_knives", default_value="zealot_throw_knife" },
 }
-for i, sound_effects_widget in ipairs(mod.sound_effects_widgets) do
-	mod.sound_effects_widgets[i].type = "dropdown"
-	mod.sound_effects_widgets[i].options = table.clone(SOUND_EFFECTS_OPTIONS)
-end
 for i, single_shot_sound_effects_widgets in ipairs(mod.single_shot_sound_effects_widgets) do
 	mod.single_shot_sound_effects_widgets[i].type = "dropdown"
 	mod.single_shot_sound_effects_widgets[i].options = table.clone(SINGLE_SHOT_SOUND_EFFECTS_OPTIONS)
+end
+-- -------------
+-- Melee
+-- -------------
+-- From the list of all melee weapons in PewPwe_weapon_tables.lua
+for i, option in ipairs(mod.melee_sound_effects_names) do
+	mod.melee_sound_effects_names[i].value = mod.melee_sound_effects_names[i].text
+end
+mod.melee_sound_effects_widgets = { }
+for _, weapon_table in pairs(mod.melee_sound_effects_names) do
+	mod.melee_sound_effects_widgets[#mod.melee_sound_effects_widgets + 1] = {
+		setting_id = weapon_table.text,
+		default_value = weapon_table.text,
+		type = "dropdown",
+		options = table.clone(mod.melee_sound_effects_names),
+	}
 end
 
 return {
@@ -274,6 +304,7 @@ return {
 			{ setting_id="line_effects_id", type="group", sub_widgets=mod.line_effects_widgets },
 			{ setting_id="sound_effects_id", type="group", sub_widgets=mod.sound_effects_widgets },
 			{ setting_id="single_shot_sound_effects_id", type="group", sub_widgets=mod.single_shot_sound_effects_widgets },
+			{ setting_id="melee_swing_effects_id", type="group", sub_widgets=mod.melee_sound_effects_widgets },
 		},
 	},
 }
