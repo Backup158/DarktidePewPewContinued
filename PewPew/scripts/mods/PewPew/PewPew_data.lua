@@ -43,6 +43,7 @@ end
 --	So to streamline finding the sounds, these variable names match Fatshark's internal naming scheme for weapon sound effects
 -- ######################
 local LOOPING_AUTOMATIC_SOUND_EFFECTS_OPTIONS = {
+	{ text="weapon_silence" },
 	{ text="weapon_autopistol_auto" },
 	{ text="autogun_p1_m1_auto" },
 	{ text="autogun_p1_m2_auto" },

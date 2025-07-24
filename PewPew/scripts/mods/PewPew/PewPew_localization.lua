@@ -111,7 +111,6 @@ local localizations = {
 	-- bot_laspistol_killshot = { en=Localize("loc_bot_laspistol_killshot") },
 	-- bot_zola_laspistol = { en=Localize("loc_bot_zola_laspistol") },
 	-- psyker_smite = { en="Psyker \"Smite\"" },
-	
 
 	-- ######################
 	-- LOOPING RANGED SFX
@@ -153,6 +152,8 @@ local localizations = {
 	-- ######################
 	-- SINGLE-SHOT RANGED SFX
 	-- ######################
+	-- Silence! quote from Arbitrator
+	weapon_silence = { en=Localize("loc_adamant_female_c__response_for_friendly_fire_from_adamant_to_ogryn_02") },
 	weapon_autopistol = { en=get_full_weapon_name_localized("autopistol_p1_m1") },
 	autogun_p3_m1_single = { en=get_full_weapon_name_localized("autogun_p3_m1") },
 	autogun_p3_m2_single = { en=get_full_weapon_name_localized("autogun_p3_m2") },

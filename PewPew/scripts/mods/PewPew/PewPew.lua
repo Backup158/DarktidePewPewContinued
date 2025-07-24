@@ -61,6 +61,8 @@ end
 --          The weapon_id chosen here is to identify the sounds for the options
 -- ##################################################################################
 local RANGED_SHOOTING_SOUND_EFFECTS = {
+    -- Default (Silence)
+    weapon_silence =            { braced="weapon_silence", pre_loop_shot="weapon_silence", single_shot=nil },
     -- Autoguns
     --  Yes, one of them says single instead of first. Blame Fatshark
     --  Infantry
