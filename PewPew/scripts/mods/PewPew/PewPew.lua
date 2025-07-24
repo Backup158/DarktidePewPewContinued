@@ -2,12 +2,12 @@
 Mod: PewPew
 Description: Change ranged weapon sounds and projectile visual effects
 Author: tinybike (GlaresAtKoalas on Nexus)
-    2025-02-17 adopted by Backup158
+    2025-02-17: Date of adoption by Backup158
 ]]
 
 local mod = get_mod("PewPew")
 local _weapon_tables_file = mod:io_dofile("PewPew/scripts/mods/PewPew/PewPew_weapon_tables")
-local mod_version = "1.6.2"
+local mod_version = "1.6.3"
 
 -- The required files for PlayerLineEffects and MinionLineEffects each contain a declaration of a line_effects table, then returns that table
 local PlayerLineEffects = require("scripts/settings/effects/player_line_effects")
@@ -107,7 +107,7 @@ local RANGED_SHOOTING_SOUND_EFFECTS = {
     --      Rumbler and Kickback
     --      See single_shot note
     -- Shotgun
-    --      Combat, Double Barrel (Assault), and Exterminator
+    --      Combat, Double-Barreled, and Exterminator
     --      See single_shot note
     -- Psyker Warp stuff
     forcestaff_warp_fire =      { braced="forcestaff_warp_fire", pre_loop_shot="weapon_silence", single_shot="psyker_smite_fire" },

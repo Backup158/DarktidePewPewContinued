@@ -1,6 +1,10 @@
 local mod = get_mod("PewPew")
 local _weapon_tables_file = mod:io_dofile("PewPew/scripts/mods/PewPew/PewPew_weapon_tables")
 
+-- ############################################
+-- Defining Effects
+-- ############################################
+
 --	See @scripts/settings/effects/player_line_effects.lua
 local LINE_EFFECTS_OPTIONS = {
 	{ text="lasbeam" }, -- Bot Zola Laspistol
@@ -134,6 +138,10 @@ for i, option in ipairs(SINGLE_SHOT_SOUND_EFFECTS_OPTIONS) do
 	SINGLE_SHOT_SOUND_EFFECTS_OPTIONS[i].value = SINGLE_SHOT_SOUND_EFFECTS_OPTIONS[i].text
 end
 
+-- ############################################
+-- Creating Widgets
+-- ############################################
+
 -- ######################
 -- Line Effects Widgets
 -- 	Bullet trails to change
@@ -181,6 +189,9 @@ end
 --	setting_id:	Weapon's name in the code
 --	default_value: the corresponding audio from LOOPING_AUTOMATIC_SOUND_EFFECTS_OPTIONS or SINGLE_SHOT_SOUND_EFFECTS_OPTIONS
 -- ######################
+-- -------------
+-- Automatic
+-- -------------
 mod.sound_effects_widgets = {
 	{ setting_id="autopistol_p1_m1", default_value="weapon_autopistol_auto" },
 	-- { setting_id="autopistol_p1_m2", default_value="weapon_autopistol_auto" }, -- Unreleased
@@ -202,6 +213,13 @@ mod.sound_effects_widgets = {
 	{ setting_id="ogryn_heavystubber_p1_m2", default_value="heavy_stubber_p1_m2_auto" },
 	{ setting_id="ogryn_heavystubber_p1_m3", default_value="heavy_stubber_p1_m3_auto" },
 }
+for i, sound_effects_widget in ipairs(mod.sound_effects_widgets) do
+	mod.sound_effects_widgets[i].type = "dropdown"
+	mod.sound_effects_widgets[i].options = table.clone(LOOPING_AUTOMATIC_SOUND_EFFECTS_OPTIONS)
+end
+-- -------------
+-- Single
+-- -------------
 mod.single_shot_sound_effects_widgets = {
 	{ setting_id="autogun_p3_m1", default_value="autogun_p3_m1_single" },
 	{ setting_id="autogun_p3_m2", default_value="autogun_p3_m2_single" },
@@ -254,20 +272,18 @@ mod.single_shot_sound_effects_widgets = {
 	-- { setting_id="stubrevolver_p1_m3", default_value="stub_revolver_p1_m3" }, -- Unreleased
 	{ setting_id="zealot_throwing_knives", default_value="zealot_throw_knife" },
 }
--- just the names
-
-for i, option in ipairs(mod.melee_sound_effects_names) do
-	mod.melee_sound_effects_names[i].value = mod.melee_sound_effects_names[i].text
-end
-mod.melee_sound_effects_widgets = { }
-for i, sound_effects_widget in ipairs(mod.sound_effects_widgets) do
-	mod.sound_effects_widgets[i].type = "dropdown"
-	mod.sound_effects_widgets[i].options = table.clone(LOOPING_AUTOMATIC_SOUND_EFFECTS_OPTIONS)
-end
 for i, single_shot_sound_effects_widgets in ipairs(mod.single_shot_sound_effects_widgets) do
 	mod.single_shot_sound_effects_widgets[i].type = "dropdown"
 	mod.single_shot_sound_effects_widgets[i].options = table.clone(SINGLE_SHOT_SOUND_EFFECTS_OPTIONS)
 end
+-- -------------
+-- Melee
+-- -------------
+-- From the list of all melee weapons in PewPwe_weapon_tables.lua
+for i, option in ipairs(mod.melee_sound_effects_names) do
+	mod.melee_sound_effects_names[i].value = mod.melee_sound_effects_names[i].text
+end
+mod.melee_sound_effects_widgets = { }
 for _, weapon_table in pairs(mod.melee_sound_effects_names) do
 	mod.melee_sound_effects_widgets[#mod.melee_sound_effects_widgets + 1] = {
 		setting_id = weapon_table.text,

@@ -1,3 +1,13 @@
+# v1.6.3
+2025-07-23
+
+- Removed extraneous option for Exterminator Shotgun sounds
+    - `shotgun_p4_m2` is the Mk VIII
+    - It uses the same sound as the `shotgun_p4_m1` so having it as an option just made the gun silent
+    - e.g. Putting the Exaction Mk VIII Exterminator Shotgun sound on an Agripinaa Mk VII Combat Shotgun makes the Combat Shotgun silent
+- Added silent weapon sounds
+    - To single shot, ranged shooting,
+
 # v1.6.2
 2025-06-25
 
