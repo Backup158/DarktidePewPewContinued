@@ -123,6 +123,7 @@ local SINGLE_SHOT_SOUND_EFFECTS_OPTIONS = {
 	{ text="stub_revolver" }, -- stubrevolver_p1_m1
 	{ text="stub_revolver_p1_m2" },
 	-- { text="stub_revolver_p1_m3" }, -- Unreleased
+	-- { text="stubrifle_p1_m1" }, -- Unreleased
 	{ text="ogryn_gauntlet_fire" },
 	{ text="heavy_stubber_p2_m1_punch_first" },
 	{ text="heavy_stubber_p2_m2_punch_first" },
