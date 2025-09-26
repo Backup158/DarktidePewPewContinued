@@ -1,3 +1,14 @@
+# v1.7.0: Bound by Duty
+2025-09-25
+
+- Added new weapons
+    - Power Falchions
+        - `powersword_p2_m1`
+        - `powersword_p2_m2`
+    - Godwyn-Branx Mk VI Bolt Pistol (`boltpistol_p1_m2`)
+    - Locke Mk III Spearhead Boltgun (`bolter_p1_m2`)
+- Made mod version a global so other mods can check for it (not like anyone's doing that)
+
 # v1.6.3
 2025-07-23
 
