@@ -7,7 +7,7 @@ Author: tinybike (GlaresAtKoalas on Nexus)
 
 local mod = get_mod("PewPew")
 local _weapon_tables_file = mod:io_dofile("PewPew/scripts/mods/PewPew/PewPew_weapon_tables")
-local mod_version = "1.6.3"
+mod.version = "1.7.0"
 
 -- The required files for PlayerLineEffects and MinionLineEffects each contain a declaration of a line_effects table, then returns that table
 local PlayerLineEffects = require("scripts/settings/effects/player_line_effects")
@@ -350,7 +350,7 @@ end
 
 mod.on_all_mods_loaded = function (setting_id)
     mod.debug = mod:get("enable_debug_mode")
-    mod:info('PewPewPew v' .. mod_version .. ' loaded uwu nya :3')
+    mod:info('PewPewPew v' .. mod.version .. ' loaded uwu nya :3')
     
     for _, line_effects_widget in ipairs(mod.line_effects_widgets) do
         update_line_effects(line_effects_widget.setting_id)
