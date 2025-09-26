@@ -225,9 +225,10 @@ mod.single_shot_sound_effects_widgets = {
 	{ setting_id="autogun_p3_m2", default_value="autogun_p3_m2_single" },
 	{ setting_id="autogun_p3_m3", default_value="autogun_p3_m3_single" },
 	{ setting_id="bolter_p1_m1", default_value="weapon_bolter" },
-	-- { setting_id="bolter_p1_m2", default_value="weapon_bolter" }, -- Unreleased
+	{ setting_id="bolter_p1_m2", default_value="weapon_bolter_m2" },
 	-- { setting_id="bolter_p1_m3", default_value="weapon_bolter" }, -- Unreleased
 	{ setting_id="boltpistol_p1_m1", default_value="bolt_pistol_p1_m1_single" },
+	{ setting_id="boltpistol_p1_m2", default_value="bolt_pistol_m2_single" },
 	-- { setting_id="bot_zola_laspistol", default_value="weapon_laspistol" },
 	-- { setting_id="bot_laspistol_killshot", default_value="weapon_laspistol" },
 	-- { setting_id="bot_lasgun_killshot", default_value="weapon_lasgun_p1_m1" },

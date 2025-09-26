@@ -79,6 +79,8 @@ mod.melee_sound_effects_names = {
 	{ text="powersword_p1_m1", },
 	{ text="powersword_p1_m2", },
 	--{ text="powersword_p1_m3", },
+	{ text="powersword_p2_m1", },
+	{ text="powersword_p2_m2", },
 	{ text="thunderhammer_2h_p1_m1", },
 	{ text="thunderhammer_2h_p1_m2", },
 }
