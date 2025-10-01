@@ -21,6 +21,7 @@ local ipairs = ipairs
 -- Shot trails (not impacts!)
 -- ######################
 local LINE_EFFECTS_OPTIONS = {
+	{ text="empty_line_effect_keep_original" }, -- "Empty" but keeps original impacts
 	{ text="empty_line_effect" }, -- "Empty"
 }
 --	See @scripts/settings/effects/player_line_effects.lua
