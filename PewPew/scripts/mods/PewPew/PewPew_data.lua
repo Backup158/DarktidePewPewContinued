@@ -4,6 +4,12 @@ local ENEMY_LINE_EFFECTS = mod.ENEMY_LINE_EFFECTS
 
 local original_player_line_effects = require("scripts/settings/effects/player_line_effects")
 
+local table = table
+local table_clone = table.clone
+local table_insert = table.insert
+local pairs = pairs
+local ipairs = ipairs
+
 -- ############################################
 -- Defining Effects
 -- ############################################
@@ -17,33 +23,12 @@ local LINE_EFFECTS_OPTIONS = {
 --	See @scripts/settings/effects/player_line_effects.lua
 -- Adding player line effects
 for line_effect_name, _ in pairs(original_player_line_effects) do
-	table.insert(LINE_EFFECTS_OPTIONS, { text=line_effect_name})
+	table_insert(LINE_EFFECTS_OPTIONS, { text=line_effect_name})
 end
-	--[[
-	-- All the regular options
-	{ text="lasbeam" }, -- Bot Zola Laspistol
-	{ text="lasbeam_pistol" }, -- laspistol_p1_m1 
-	{ text="lasbeam_pistol_ads" }, -- laspistol_p1_m1 ADS
-	{ text="lasbeam_heavy_pistol" }, -- scripts/settings/equipment/weapon_templates/laspistols/laspistol_p1_m3.lua
-	{ text="lasbeam_killshot" }, -- lasgun_p1 and lasgun_p2 uncharged (Infantry and Helbore)
-	{ text="lasbeam_elysian" }, -- lasgun_p3 (Recon)
-	{ text="lasbeam_charged" }, -- lasgun_p2 partial charge (Helbore)
-	{ text="lasbeam_bfg" }, -- lasgun_p2 full charge (Helbore)
-	{ text="autogun_bullet" },
-	--{ text="heavy_stubpistol_bullet" }, -- Unreleased, and it's identical to the autogun bullet
-	{ text="heavy_stubber_bullet" },
-	{ text="pellet_trail" },
-	{ text="shotgun_slug_trail" },
-	{ text="shotgun_incendiary_trail" },
-	{ text="ripper_trail" },
-	{ text="boltshell" },
-	{ text="plasma_beam" },
-	]]
-
 --	See @scripts/settings/effects/minion_line_effects.lua
 -- Adding enemy line effects to overall line effects table
 for _, v in ipairs(ENEMY_LINE_EFFECTS) do
-	table.insert(LINE_EFFECTS_OPTIONS, v)
+	table_insert(LINE_EFFECTS_OPTIONS, v)
 end
 -- Essentially doing value = text = "string" to use the same name for id and localization id
 for i, option in ipairs(LINE_EFFECTS_OPTIONS) do
@@ -174,7 +159,7 @@ mod.line_effects_widgets = {
 	{ setting_id="lasbeam_charged" }, -- lasgun_p2 partial charge (Helbore)
 	{ setting_id="lasbeam_bfg" }, -- lasgun_p2 full charge (Helbore)
 	{ setting_id="autogun_bullet" },
-	--{ setting_id="heavy_stubpistol_bullet" },
+	--{ setting_id="heavy_stubpistol_bullet" }, -- Unreleased, and it's identical to the autogun bullet
 	{ setting_id="heavy_stubber_bullet" },
 	{ setting_id="pellet_trail" },
 	{ setting_id="pellet_trail_shock" },
@@ -199,7 +184,7 @@ mod.line_effects_widgets = {
 for i, line_effects_widget in ipairs(mod.line_effects_widgets) do
 	mod.line_effects_widgets[i].type = "dropdown"
 	mod.line_effects_widgets[i].default_value = line_effects_widget.setting_id
-	mod.line_effects_widgets[i].options = table.clone(LINE_EFFECTS_OPTIONS)
+	mod.line_effects_widgets[i].options = table_clone(LINE_EFFECTS_OPTIONS)
 end
 
 -- ######################
@@ -233,7 +218,7 @@ mod.sound_effects_widgets = {
 }
 for i, sound_effects_widget in ipairs(mod.sound_effects_widgets) do
 	mod.sound_effects_widgets[i].type = "dropdown"
-	mod.sound_effects_widgets[i].options = table.clone(LOOPING_AUTOMATIC_SOUND_EFFECTS_OPTIONS)
+	mod.sound_effects_widgets[i].options = table_clone(LOOPING_AUTOMATIC_SOUND_EFFECTS_OPTIONS)
 end
 -- -------------
 -- Single
@@ -293,7 +278,7 @@ mod.single_shot_sound_effects_widgets = {
 }
 for i, single_shot_sound_effects_widgets in ipairs(mod.single_shot_sound_effects_widgets) do
 	mod.single_shot_sound_effects_widgets[i].type = "dropdown"
-	mod.single_shot_sound_effects_widgets[i].options = table.clone(SINGLE_SHOT_SOUND_EFFECTS_OPTIONS)
+	mod.single_shot_sound_effects_widgets[i].options = table_clone(SINGLE_SHOT_SOUND_EFFECTS_OPTIONS)
 end
 -- -------------
 -- Melee
@@ -308,7 +293,7 @@ for _, weapon_table in pairs(mod.melee_sound_effects_names) do
 		setting_id = weapon_table.text,
 		default_value = weapon_table.text,
 		type = "dropdown",
-		options = table.clone(mod.melee_sound_effects_names),
+		options = table_clone(mod.melee_sound_effects_names),
 	}
 end
 
