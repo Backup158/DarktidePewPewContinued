@@ -9,6 +9,8 @@ local mod = get_mod("PewPew")
 local _weapon_tables_file = mod:io_dofile("PewPew/scripts/mods/PewPew/PewPew_weapon_tables")
 mod.version = "1.7.0"
 
+local ENEMY_LINE_EFFECTS = mod.ENEMY_LINE_EFFECTS
+
 local tostring = tostring
 local type = type
 local pairs = pairs
@@ -181,20 +183,22 @@ end
 --      Which likely means these are immutable by mods
 -- ##################################################################################
 local function update_line_effects(line_effects_to_be_changed)
+    local debug = mod.debug
+    
     -- Get name of new effect we want to replace the current one with
     local new_line_effects = mod:get(line_effects_to_be_changed)
     local new_line_string = tostring(new_line_effects)
 
-    local changed_effect_is_minion = table_contains(mod.ENEMY_LINE_EFFECTS, new_line_effects)
+    local changed_effect_is_minion = table_contains(ENEMY_LINE_EFFECTS, new_line_effects)
     -- Makes a local copy of the original effects for faster access
     local original_line_effects
     --  Not used as a destination (?) for assignment, so pass by reference is fine
     if changed_effect_is_minion then
         original_line_effects = original_minion_line_effects
-        if mod.debug then mod:notify(new_line_string.." is a fuck!") end
+        if debug then mod:notify(new_line_string.." is a fuck!") end
     else
         original_line_effects = original_player_line_effects
-        if mod.debug then mod:notify(new_line_string.." is player") end
+        if debug then mod:notify(new_line_string.." is player") end
     end
 
     local function table_remove_vfx_width(use_original)
@@ -206,11 +210,11 @@ local function update_line_effects(line_effects_to_be_changed)
         PlayerLineEffects[line_effects_to_be_changed].vfx_width = 0.001
     end
     if new_line_string == "empty_line_effect" then
-        if mod.debug then mod:echo(new_line_string.." is empty") end
+        if debug then mod:echo(new_line_string.." is empty") end
         table_remove_vfx_width(false)
         return
     elseif new_line_string == "empty_line_effect_keep_original" then
-        if mod.debug then mod:echo(new_line_string.." is empty (keep orig)") end
+        if debug then mod:echo(new_line_string.." is empty (keep orig)") end
         table_remove_vfx_width(true)
         return
     end
@@ -224,7 +228,7 @@ local function update_line_effects(line_effects_to_be_changed)
         --  Making an exception for scab sniper width, because that shit is literally 50 times bigger than the normal width lmfao
         --  Instead, it will use the original width at the default value
         if new_line_effects == "renegade_sniper_lasbeam" then
-            if mod.debug then mod:echo(new_line_string.." is player") end
+            if debug then mod:echo(new_line_string.." is player") end
             PlayerLineEffects[line_effects_to_be_changed].vfx_width = original_player_line_effects[line_effects_to_be_changed].vfx_width
             -- PlayerLineEffects[line_effects_to_be_changed].vfx_width = nil -- Intentionally making it blank
         else
@@ -364,12 +368,14 @@ end
 -- #########################################
 local function update_melee_sound_effects(weapon_to_be_changed)
     local new_weapon_sounds = mod:get(weapon_to_be_changed)
+    local debug = mod.debug 
+
     -- table defined above for the types of swing types. regular, heavy, etc.
     for _, table_name in ipairs(swing_tables) do
         if original_PCSEA_melee_effects[table_name].events[new_weapon_sounds] then
             PlayerCharacterSoundEventAliases[table_name].events[weapon_to_be_changed] = original_PCSEA_melee_effects[table_name].events[new_weapon_sounds]
         else
-            if mod.debug then mod:echo("Sound effect for "..new_weapon_sounds.." is fucked when adding to "..weapon_to_be_changed) end
+            if debug then mod:echo("Sound effect for "..new_weapon_sounds.." is fucked when adding to "..weapon_to_be_changed) end
         end
     end
 end
