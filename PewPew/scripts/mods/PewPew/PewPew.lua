@@ -197,18 +197,19 @@ local function update_line_effects(line_effects_to_be_changed)
         if mod.debug then mod:notify(new_line_string.." is player") end
     end
 
-    local function set_table_nil(table_to_get_keys_from)
+    local function table_remove_vfx_width(table_to_get_keys_from)
         for key, value in pairs(table_to_get_keys_from) do
-            if type(value) == "table" then
-                set_table_nil(table_to_get_keys_from[key])
-            else
-                table_to_get_keys_from[key] = nil
+            if key == "vfx_width" then 
+                table_to_get_keys_from[key] = 0.001
+            elseif type(value) == "table" then
+                table_remove_vfx_width(table_to_get_keys_from[key])
+            -- Otherwise, do nothing (keep it the same)
             end
         end
     end
     if new_line_string == "empty_line_effect" then
         if mod.debug then mod:echo(new_line_string.." is empty") end
-        set_table_nil(PlayerLineEffects[line_effects_to_be_changed])
+        table_remove_vfx_width(PlayerLineEffects[line_effects_to_be_changed])
         return
     end
     
