@@ -102,8 +102,6 @@ local localizations = {
 	renegade_captain_plasma_beam = { en="Rodin Karnak Flaming Plasma Beam" },
 
 	empty_line_effect = { en="Empty" },
-	empty_line_effect_autogun = { en="Empty (Invisible Autogun)" },
-	empty_line_effect_lasgun = { en="Empty (Invisible Lasgun)" },
 	
 	-- ######################
 	-- Single-shot ranged weapon labels
