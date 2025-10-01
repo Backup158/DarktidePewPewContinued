@@ -9,6 +9,8 @@ local mod = get_mod("PewPew")
 local _weapon_tables_file = mod:io_dofile("PewPew/scripts/mods/PewPew/PewPew_weapon_tables")
 mod.version = "1.7.0"
 
+local tostring = tostring
+
 -- The required files for PlayerLineEffects and MinionLineEffects each contain a declaration of a line_effects table, then returns that table
 local PlayerLineEffects = require("scripts/settings/effects/player_line_effects")
 local MinionLineEffects = require("scripts/settings/effects/minion_line_effects")
@@ -176,6 +178,7 @@ end
 local function update_line_effects(line_effects_to_be_changed)
     -- Get name of new effect we want to replace the current one with
     local new_line_effects = mod:get(line_effects_to_be_changed)
+    local new_line_string = tostring(new_line_effects)
 
     local changed_effect_is_minion = table_contains(mod.ENEMY_LINE_EFFECTS, new_line_effects)
     -- Makes a local copy of the original effects for faster access
@@ -183,10 +186,25 @@ local function update_line_effects(line_effects_to_be_changed)
     --  Not used as a destination (?) for assignment, so pass by reference is fine
     if changed_effect_is_minion then
         original_line_effects = original_minion_line_effects
-        if mod.debug then mod:notify(tostring(new_line_effects).." is a fuck!") end
+        if mod.debug then mod:notify(new_line_string.." is a fuck!") end
     else
         original_line_effects = original_player_line_effects
-        if mod.debug then mod:notify(tostring(new_line_effects).." is player") end
+        if mod.debug then mod:notify(new_line_string.." is player") end
+    end
+
+    local function set_table_nil(table_to_get_keys_from)
+        for key, value in pairs(table_to_get_keys_from) do
+            if type(value) == "table" then
+                set_table_nil(table_to_get_keys_from[key])
+            else
+                table_to_get_keys_from[key] = nil
+            end
+        end
+    end
+    if new_line_string == "empty_line_effect" then
+        if mod.debug then mod:echo(new_line_string.." is empty") end
+        set_table_nil(PlayerLineEffects[line_effects_to_be_changed])
+        return
     end
     
     -- Assigning the new values
@@ -198,7 +216,7 @@ local function update_line_effects(line_effects_to_be_changed)
         --  Making an exception for scab sniper width, because that shit is literally 50 times bigger than the normal width lmfao
         --  Instead, it will use the original width at the default value
         if new_line_effects == "renegade_sniper_lasbeam" then
-            if mod.debug then mod:echo(tostring(new_line_effects).." is player") end
+            if mod.debug then mod:echo(new_line_string.." is player") end
             PlayerLineEffects[line_effects_to_be_changed].vfx_width = original_player_line_effects[line_effects_to_be_changed].vfx_width
             -- PlayerLineEffects[line_effects_to_be_changed].vfx_width = nil -- Intentionally making it blank
         else

@@ -24,6 +24,7 @@ local LINE_EFFECTS_OPTIONS = {
 	{ text="ripper_trail" },
 	{ text="boltshell" },
 	{ text="plasma_beam" },
+	{ text="empty_line_effect" },
 }
 --	See @scripts/settings/effects/minion_line_effects.lua
 
