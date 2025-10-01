@@ -1,11 +1,13 @@
 local mod = get_mod("PewPew")
 
+local minion_line_effects = require("scripts/settings/effects/minion_line_effects")
+
 mod.ENEMY_LINE_EFFECTS = {
-	{ text="renegade_twin_captain_las_pistol_lasbeam" },
 	{ text="renegade_lasbeam" },
+	{ text="renegade_assault_lasbeam" },
 	{ text="renegade_gunner_lasbeam" },
 	{ text="renegade_sniper_lasbeam" },
-	{ text="renegade_assault_lasbeam" },
+	{ text="renegade_twin_captain_las_pistol_lasbeam" },
 	{ text="cultist_autogun_bullet" },
 	{ text="renegade_heavy_stubber_bullet" },
 	{ text="renegade_pellet" },
