@@ -4,6 +4,13 @@
 - Added option to have "empty" line trails
     - technically it's 0.001 but effectively that's empty
     - does NOT remove impacts!
+- Added options for `pellet_trail_shock`
+    - player line effect from arbites i think
+    - the electro shotgun special
+- Refactored (dev talk)
+    - Player line effect search
+        - automatically grabs player line effects
+        
 
 # v1.7.0: Bound by Duty
 2025-09-25
