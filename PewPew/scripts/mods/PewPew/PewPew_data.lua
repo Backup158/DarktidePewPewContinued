@@ -1,12 +1,25 @@
 local mod = get_mod("PewPew")
 local _weapon_tables_file = mod:io_dofile("PewPew/scripts/mods/PewPew/PewPew_weapon_tables")
 
+local original_player_line_effects = require("scripts/settings/effects/player_line_effects")
+
 -- ############################################
 -- Defining Effects
 -- ############################################
-
---	See @scripts/settings/effects/player_line_effects.lua
+-- ######################
+-- Line Effects
+-- Shot trails (not impacts!)
+-- ######################
 local LINE_EFFECTS_OPTIONS = {
+	{ text="empty_line_effect" }, -- "Empty"
+}
+--	See @scripts/settings/effects/player_line_effects.lua
+-- Adding player line effects
+for line_effect_name, _ in pairs(original_player_line_effects) do
+	table.insert(LINE_EFFECTS_OPTIONS, { text=line_effect_name})
+end
+	--[[
+	-- All the regular options
 	{ text="lasbeam" }, -- Bot Zola Laspistol
 	{ text="lasbeam_pistol" }, -- laspistol_p1_m1 
 	{ text="lasbeam_pistol_ads" }, -- laspistol_p1_m1 ADS
@@ -24,10 +37,9 @@ local LINE_EFFECTS_OPTIONS = {
 	{ text="ripper_trail" },
 	{ text="boltshell" },
 	{ text="plasma_beam" },
-	{ text="empty_line_effect" },
-}
---	See @scripts/settings/effects/minion_line_effects.lua
+	]]
 
+--	See @scripts/settings/effects/minion_line_effects.lua
 -- Adding enemy line effects to overall line effects table
 for _, v in ipairs(mod.ENEMY_LINE_EFFECTS) do
 	table.insert(LINE_EFFECTS_OPTIONS, v)
