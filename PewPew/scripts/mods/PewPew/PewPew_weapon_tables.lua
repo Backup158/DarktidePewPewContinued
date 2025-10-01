@@ -4,14 +4,23 @@ local minion_line_effects = require("scripts/settings/effects/minion_line_effect
 
 local table = table
 local table_insert = table.insert
-local table_contains_text = mod.table_contains_text
 local pairs = pairs
 
-function mod.add_effect_from_original_if_not_found(effects_table_from_game, my_table_of_effects, table_of_keys_to_ignore)
+-- DUPLICATE CODE BECAUSE FUCK ME
+local function table_contains_text(table, x)
+    found = false
+    for _, v in pairs(table) do
+        if v.text == x then 
+            found = true 
+        end
+    end
+    return found
+end
+local function add_effect_from_original_if_not_found(effects_table_from_game, my_table_of_effects, table_of_keys_to_ignore)
 	for line_effect_name, _ in pairs(effects_table_from_game) do
 		-- not a line to skip AND not in table already
-		if (table_of_keys_to_ignore and not table_contains_text(table_of_keys_to_ignore, line_effect_name)) and (not table_contains_text(my_table_of_effects, line_effect_name)) then
-			mod:info("line effect found: "..line_effect_name)
+		if not (table_of_keys_to_ignore and table_contains_text(table_of_keys_to_ignore, line_effect_name)) and (not table_contains_text(my_table_of_effects, line_effect_name)) then
+			mod:echo("line effect found: "..line_effect_name)
 			table_insert(my_table_of_effects, { text=line_effect_name })
 		end
 	end
@@ -30,7 +39,7 @@ mod.ENEMY_LINE_EFFECTS = {
 	{ text="renegade_captain_boltshell" },
 	{ text="renegade_captain_plasma_beam" },
 }
-mod.add_effect_from_original_if_not_found(minion_line_effects, mod.ENEMY_LINE_EFFECTS)
+add_effect_from_original_if_not_found(minion_line_effects, mod.ENEMY_LINE_EFFECTS)
 
 mod.melee_sound_effects_names = {
 	--{ text="bot_combataxe_linesman", },
