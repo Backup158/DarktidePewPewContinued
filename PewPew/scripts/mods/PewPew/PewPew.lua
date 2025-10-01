@@ -46,7 +46,7 @@ end
 
 
 -- Checks if value exists in table
-function table_contains(table, x)
+function mod.table_contains_text(table, x)
     found = false
     for _, v in pairs(table) do
         if v.text == x then 
@@ -55,6 +55,7 @@ function table_contains(table, x)
     end
     return found
 end
+local table_contains_text = mod.table_contains_text
 
 -- ##################################################################################
 -- Finding Effect Names
@@ -189,7 +190,7 @@ local function update_line_effects(line_effects_to_be_changed)
     local new_line_effects = mod:get(line_effects_to_be_changed)
     local new_line_string = tostring(new_line_effects)
 
-    local changed_effect_is_minion = table_contains(ENEMY_LINE_EFFECTS, new_line_effects)
+    local changed_effect_is_minion = table_contains_text(ENEMY_LINE_EFFECTS, new_line_effects)
     -- Makes a local copy of the original effects for faster access
     local original_line_effects
     --  Not used as a destination (?) for assignment, so pass by reference is fine
