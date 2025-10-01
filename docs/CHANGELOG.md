@@ -1,3 +1,10 @@
+# v1.8.0
+2025-09-30
+
+- Added option to have "empty" line trails
+    - technically it's 0.001 but effectively that's empty
+    - does NOT remove impacts!
+
 # v1.7.0: Bound by Duty
 2025-09-25
 
