@@ -197,19 +197,21 @@ local function update_line_effects(line_effects_to_be_changed)
         if mod.debug then mod:notify(new_line_string.." is player") end
     end
 
-    local function table_remove_vfx_width(table_to_get_keys_from)
-        for key, value in pairs(table_to_get_keys_from) do
-            if key == "vfx_width" then 
-                table_to_get_keys_from[key] = 0.001
-            elseif type(value) == "table" then
-                table_remove_vfx_width(table_to_get_keys_from[key])
-            -- Otherwise, do nothing (keep it the same)
-            end
+    local function table_remove_vfx_width(use_original)
+        -- copies autogun bullet first
+        if not use_original then
+            PlayerLineEffects[line_effects_to_be_changed] = table_clone(PlayerLineEffects.autogun_bullet)
         end
+
+        PlayerLineEffects[line_effects_to_be_changed].vfx_width = 0.001
     end
     if new_line_string == "empty_line_effect" then
         if mod.debug then mod:echo(new_line_string.." is empty") end
-        table_remove_vfx_width(PlayerLineEffects[line_effects_to_be_changed])
+        table_remove_vfx_width(false)
+        return
+    elseif new_line_string == "empty_line_effect_keep_original" then
+        if mod.debug then mod:echo(new_line_string.." is empty (keep orig)") end
+        table_remove_vfx_width(true)
         return
     end
     
