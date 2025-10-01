@@ -7,9 +7,16 @@
 - Added options for `pellet_trail_shock`
     - player line effect from arbites i think exaction mk 3 exterminator shotgun
     - the electro shotgun special
+- Renamed some line effects
 - Refactored (dev talk)
     - Player line effect search
         - automatically grabs player line effects
+        - adds to table if not already in there
+            - if it's something i intentionally left out don't insert
+            - heavy stubpistol bullet
+        - still have the manual entries to keep it sorted
+            - in lua, only array tables (keys are integers) are guaranteed to be in order
+            - automatic sorting doesn't put it in an order i'd like
 
 
 # v1.7.0: Bound by Duty
