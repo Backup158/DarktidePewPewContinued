@@ -216,6 +216,7 @@ local function update_line_effects(line_effects_to_be_changed)
 
         PlayerLineEffects[line_effects_to_be_changed].vfx_width = 0.001
     end
+
     if new_line_string == "empty_line_effect_autogun" then
         if debug then mod:echo(new_line_string.." is empty (autogun)") end
         table_remove_vfx_width("autogun")
@@ -224,7 +225,6 @@ local function update_line_effects(line_effects_to_be_changed)
         if debug then mod:echo(new_line_string.." is empty (lasgun)") end
         table_remove_vfx_width("lasgun")
         return
-    end
     elseif new_line_string == "empty_line_effect" then
         if debug then mod:echo(new_line_string.." is empty (keep orig)") end
         table_remove_vfx_width()
