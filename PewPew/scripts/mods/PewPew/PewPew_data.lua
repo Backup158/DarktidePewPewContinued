@@ -34,7 +34,7 @@ local LINE_EFFECTS_OPTIONS = {
 	{ text="lasbeam_charged" }, -- lasgun_p2 partial charge (Helbore)
 	{ text="lasbeam_bfg" }, -- lasgun_p2 full charge (Helbore)
 	{ text="autogun_bullet" },
-	{ text="heavy_stubpistol_bullet" }, -- Unreleased, and it's identical to the autogun bullet
+	-- { text="heavy_stubpistol_bullet" }, -- Unreleased, and it's identical to the autogun bullet
 	{ text="heavy_stubber_bullet" },
 	{ text="pellet_trail" },
 	{ text="pellet_trail_shock" },
@@ -47,13 +47,13 @@ local LINE_EFFECTS_OPTIONS = {
 
 -- for dev use to see what's new
 for line_effect_name, _ in pairs(original_player_line_effects) do
-	if not table_contains(LINE_EFFECTS_OPTIONS, line_effect_name) then
-		mod:info("line effect found: "..line_effect_name)
-		table_insert(LINE_EFFECTS_OPTIONS, { text=line_effect_name })
+	if not line_effect_name == "heavy_stubpistol_bullet" then
+		if not table_contains(LINE_EFFECTS_OPTIONS, line_effect_name) then
+			mod:info("line effect found: "..line_effect_name)
+			table_insert(LINE_EFFECTS_OPTIONS, { text=line_effect_name })
+		end
 	end
 end
--- hard coded to remove an entry
-table.remove(LINE_EFFECTS_OPTIONS, 11) -- hardcoded to remove stubpistol bullet
 
 --	See @scripts/settings/effects/minion_line_effects.lua
 -- Adding enemy line effects to overall line effects table
