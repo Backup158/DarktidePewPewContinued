@@ -204,7 +204,7 @@ local function update_line_effects(line_effects_to_be_changed)
     local function table_remove_vfx_width(use_original)
         -- copies autogun bullet first
         if not use_original then
-            PlayerLineEffects[line_effects_to_be_changed] = table_clone(PlayerLineEffects.autogun_bullet)
+            PlayerLineEffects[line_effects_to_be_changed] = table_clone(original_player_line_effects.autogun_bullet)
         end
 
         PlayerLineEffects[line_effects_to_be_changed].vfx_width = 0.001
