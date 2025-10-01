@@ -101,8 +101,9 @@ local localizations = {
 	renegade_captain_boltshell = { en="Scab Captain Bolt Shell" },
 	renegade_captain_plasma_beam = { en="Rodin Karnak Flaming Plasma Beam" },
 
-	empty_line_effect_keep_original = { en="Empty Line Effect (Keep Original)" },
-	empty_line_effect = { en="Empty Line Effect (Invisible Autogun)" },
+	empty_line_effect = { en="Empty" },
+	empty_line_effect_autogun = { en="Empty (Invisible Autogun)" },
+	empty_line_effect_lasgun = { en="Empty (Invisible Lasgun)" },
 	
 	-- ######################
 	-- Single-shot ranged weapon labels

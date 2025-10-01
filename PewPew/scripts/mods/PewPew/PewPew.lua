@@ -201,21 +201,33 @@ local function update_line_effects(line_effects_to_be_changed)
         if debug then mod:notify(new_line_string.." is player") end
     end
 
-    local function table_remove_vfx_width(use_original)
-        -- copies autogun bullet first
-        if not use_original then
-            PlayerLineEffects[line_effects_to_be_changed] = table_clone(original_player_line_effects.autogun_bullet)
+    -- ----------------
+    -- Using an empty trail
+    -- ----------------
+    local function table_remove_vfx_width(trail_to_copy)
+        -- Copies first
+        if trail_to_copy then
+            if trail_to_copy == "autogun" then
+                PlayerLineEffects[line_effects_to_be_changed] = table_clone(original_player_line_effects.autogun_bullet)
+            elseif trail_to_copy == "lasgun" then
+                PlayerLineEffects[line_effects_to_be_changed] = table_clone(original_player_line_effects.lasbeam)
+            end
         end
 
         PlayerLineEffects[line_effects_to_be_changed].vfx_width = 0.001
     end
-    if new_line_string == "empty_line_effect" then
-        if debug then mod:echo(new_line_string.." is empty") end
-        table_remove_vfx_width(false)
+    if new_line_string == "empty_line_effect_autogun" then
+        if debug then mod:echo(new_line_string.." is empty (autogun)") end
+        table_remove_vfx_width("autogun")
         return
-    elseif new_line_string == "empty_line_effect_keep_original" then
+    elseif new_line_string == "empty_line_effect_lasgun" then
+        if debug then mod:echo(new_line_string.." is empty (lasgun)") end
+        table_remove_vfx_width("lasgun")
+        return
+    end
+    elseif new_line_string == "empty_line_effect" then
         if debug then mod:echo(new_line_string.." is empty (keep orig)") end
-        table_remove_vfx_width(true)
+        table_remove_vfx_width()
         return
     end
     
