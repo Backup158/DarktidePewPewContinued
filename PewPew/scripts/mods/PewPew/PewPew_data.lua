@@ -23,9 +23,15 @@ local ipairs = ipairs
 local LINE_EFFECTS_OPTIONS = {
 	{ text="empty_line_effect" }, -- "Empty" but keeps original impacts
 }
---	See @scripts/settings/effects/player_line_effects.lua
+-- See @scripts/settings/effects/player_line_effects.lua
 -- Adding player line effects
+--	sort it first
+local player_line_effect_keys = {}
 for line_effect_name, _ in pairs(original_player_line_effects) do
+	table_insert(player_line_effect_keys, line_effect_name)
+end
+table.sort(player_line_effect_keys)
+for _, line_effect_name in ipairs(player_line_effect_keys) do
 	table_insert(LINE_EFFECTS_OPTIONS, { text=line_effect_name})
 end
 --	See @scripts/settings/effects/minion_line_effects.lua
