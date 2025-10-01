@@ -17,6 +17,7 @@
         - still have the manual entries to keep it sorted
             - in lua, only array tables (keys are integers) are guaranteed to be in order
             - automatic sorting doesn't put it in an order i'd like
+    - Added local references to global variables
 
 
 # v1.7.0: Bound by Duty
