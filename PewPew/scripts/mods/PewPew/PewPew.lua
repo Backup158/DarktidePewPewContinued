@@ -10,14 +10,19 @@ local _weapon_tables_file = mod:io_dofile("PewPew/scripts/mods/PewPew/PewPew_wea
 mod.version = "1.7.0"
 
 local tostring = tostring
+local type = type
+local pairs = pairs
+local ipairs = ipairs
+local table = table
+local table_clone = table.clone
 
 -- The required files for PlayerLineEffects and MinionLineEffects each contain a declaration of a line_effects table, then returns that table
 local PlayerLineEffects = require("scripts/settings/effects/player_line_effects")
 local MinionLineEffects = require("scripts/settings/effects/minion_line_effects")
 local PlayerCharacterSoundEventAliases = require("scripts/settings/sound/player_character_sound_event_aliases")
 
-local original_player_line_effects = table.clone(PlayerLineEffects)
-local original_minion_line_effects = table.clone(MinionLineEffects)
+local original_player_line_effects = table_clone(PlayerLineEffects)
+local original_minion_line_effects = table_clone(MinionLineEffects)
 -- "sfx_swing_heavy_left_hand", is shield and maul only
 -- "sfx_swing_special", is pickaxe only
 local swing_tables = { 
@@ -33,7 +38,7 @@ local swing_tables = {
 local original_PCSEA_melee_effects = { }
 for _, swing_effect_name in ipairs(swing_tables) do
     original_PCSEA_melee_effects[swing_effect_name] = {
-        events = table.clone(PlayerCharacterSoundEventAliases[swing_effect_name].events)
+        events = table_clone(PlayerCharacterSoundEventAliases[swing_effect_name].events)
     }
 end
 
@@ -242,7 +247,7 @@ local function update_line_effects(line_effects_to_be_changed)
     -- Some of these tables may not exist
     --  Handles moving vfx table
     if type(original_line_effects[new_line_effects].moving_sfx) == "table" then
-        PlayerLineEffects[line_effects_to_be_changed].moving_sfx = table.clone(original_line_effects[new_line_effects].moving_sfx)
+        PlayerLineEffects[line_effects_to_be_changed].moving_sfx = table_clone(original_line_effects[new_line_effects].moving_sfx)
     else
         PlayerLineEffects[line_effects_to_be_changed].moving_sfx = nil
     end
@@ -250,7 +255,7 @@ local function update_line_effects(line_effects_to_be_changed)
     if type(original_line_effects[new_line_effects].emitters) == "table" then
         load_resource(original_line_effects[new_line_effects].emitters.vfx.default, function (loaded_package_name)
             load_resource(original_line_effects[new_line_effects].emitters.vfx.start, function (loaded_package_name)
-                PlayerLineEffects[line_effects_to_be_changed].emitters = table.clone(original_line_effects[new_line_effects].emitters)
+                PlayerLineEffects[line_effects_to_be_changed].emitters = table_clone(original_line_effects[new_line_effects].emitters)
             end)
         end)
     else
@@ -260,7 +265,7 @@ local function update_line_effects(line_effects_to_be_changed)
     if type(original_line_effects[new_line_effects].emitters_crit) == "table" then
         load_resource(original_line_effects[new_line_effects].emitters_crit.vfx.default, function (loaded_package_name)
             load_resource(original_line_effects[new_line_effects].emitters_crit.vfx.start, function (loaded_package_name)
-                PlayerLineEffects[line_effects_to_be_changed].emitters_crit = table.clone(original_line_effects[new_line_effects].emitters_crit)
+                PlayerLineEffects[line_effects_to_be_changed].emitters_crit = table_clone(original_line_effects[new_line_effects].emitters_crit)
             end)
         end)
     else
