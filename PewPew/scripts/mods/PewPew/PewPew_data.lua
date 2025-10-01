@@ -1,5 +1,6 @@
 local mod = get_mod("PewPew")
 local _weapon_tables_file = mod:io_dofile("PewPew/scripts/mods/PewPew/PewPew_weapon_tables")
+local ENEMY_LINE_EFFECTS = mod.ENEMY_LINE_EFFECTS
 
 local original_player_line_effects = require("scripts/settings/effects/player_line_effects")
 
@@ -41,7 +42,7 @@ end
 
 --	See @scripts/settings/effects/minion_line_effects.lua
 -- Adding enemy line effects to overall line effects table
-for _, v in ipairs(mod.ENEMY_LINE_EFFECTS) do
+for _, v in ipairs(ENEMY_LINE_EFFECTS) do
 	table.insert(LINE_EFFECTS_OPTIONS, v)
 end
 -- Essentially doing value = text = "string" to use the same name for id and localization id
@@ -164,18 +165,19 @@ end
 -- ######################
 mod.line_effects_widgets = {
 	-- Player
-	{ setting_id="lasbeam" },
-	{ setting_id="lasbeam_pistol" },
-	{ setting_id="lasbeam_pistol_ads" },
-	{ setting_id="lasbeam_heavy_pistol" },
-	{ setting_id="lasbeam_killshot" },
-	{ setting_id="lasbeam_elysian" },
-	{ setting_id="lasbeam_charged" },
-	{ setting_id="lasbeam_bfg" },
+	{ setting_id="lasbeam" }, -- Bot Zola Laspistol
+	{ setting_id="lasbeam_pistol" }, -- laspistol_p1_m1 
+	{ setting_id="lasbeam_pistol_ads" }, -- laspistol_p1_m1 ADS
+	{ setting_id="lasbeam_heavy_pistol" }, -- laspistol_p1_m3. see 'scripts/settings/equipment/weapon_templates/laspistols/laspistol_p1_m3.lua'
+	{ setting_id="lasbeam_killshot" }, -- lasgun_p1 and lasgun_p2 uncharged (Infantry and Helbore)
+	{ setting_id="lasbeam_elysian" }, -- lasgun_p3 (Recon)
+	{ setting_id="lasbeam_charged" }, -- lasgun_p2 partial charge (Helbore)
+	{ setting_id="lasbeam_bfg" }, -- lasgun_p2 full charge (Helbore)
 	{ setting_id="autogun_bullet" },
 	--{ setting_id="heavy_stubpistol_bullet" },
 	{ setting_id="heavy_stubber_bullet" },
 	{ setting_id="pellet_trail" },
+	{ setting_id="pellet_trail_shock" },
 	{ setting_id="shotgun_slug_trail" },
 	{ setting_id="shotgun_incendiary_trail" },
 	{ setting_id="ripper_trail" },
