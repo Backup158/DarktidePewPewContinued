@@ -91,6 +91,7 @@ local localizations = {
 	ripper_trail = { en="Ripper Trail" },
 	boltshell = { en="Bolt Shell" },
 	plasma_beam = { en="Plasma Beam" },
+
 	renegade_twin_captain_las_pistol_lasbeam = { en="Scab Captain Laspistol Beam" },
 	renegade_lasbeam = { en="Scab Shooter Las Beam" },
 	renegade_gunner_lasbeam = { en="Scab Gunner Las Beam" },
@@ -102,6 +103,8 @@ local localizations = {
 	renegade_captain_pellet = { en="Scab Captain Pellet Trail" },
 	renegade_captain_boltshell = { en="Scab Captain Bolt Shell" },
 	renegade_captain_plasma_beam = { en="Rodin Karnak Flaming Plasma Beam" },
+
+	empty_line_effect = { en="Empty Line Effect" },
 	
 	-- ######################
 	-- Single-shot ranged weapon labels
