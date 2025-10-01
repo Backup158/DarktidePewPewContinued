@@ -10,6 +10,7 @@ local ENEMY_LINE_EFFECTS = mod.ENEMY_LINE_EFFECTS
 local table = table
 local table_clone = table.clone
 local table_insert = table.insert
+local table_contains = table.contains
 local pairs = pairs
 local ipairs = ipairs
 
@@ -22,18 +23,38 @@ local ipairs = ipairs
 -- ######################
 local LINE_EFFECTS_OPTIONS = {
 	{ text="empty_line_effect" }, -- "Empty" but keeps original impacts
+
+	-- See @scripts/settings/effects/player_line_effects.lua
+	{ text="lasbeam" }, -- Bot Zola Laspistol
+	{ text="lasbeam_pistol" }, -- laspistol_p1_m1 
+	{ text="lasbeam_pistol_ads" }, -- laspistol_p1_m1 ADS
+	{ text="lasbeam_heavy_pistol" }, -- laspistol_p1_m3. see 'scripts/settings/equipment/weapon_templates/laspistols/laspistol_p1_m3.lua'
+	{ text="lasbeam_killshot" }, -- lasgun_p1 and lasgun_p2 uncharged (Infantry and Helbore)
+	{ text="lasbeam_elysian" }, -- lasgun_p3 (Recon)
+	{ text="lasbeam_charged" }, -- lasgun_p2 partial charge (Helbore)
+	{ text="lasbeam_bfg" }, -- lasgun_p2 full charge (Helbore)
+	{ text="autogun_bullet" },
+	{ text="heavy_stubpistol_bullet" }, -- Unreleased, and it's identical to the autogun bullet
+	{ text="heavy_stubber_bullet" },
+	{ text="pellet_trail" },
+	{ text="pellet_trail_shock" },
+	{ text="shotgun_slug_trail" },
+	{ text="shotgun_incendiary_trail" },
+	{ text="ripper_trail" },
+	{ text="boltshell" },
+	{ text="plasma_beam" },
 }
--- See @scripts/settings/effects/player_line_effects.lua
--- Adding player line effects
---	sort it first
-local player_line_effect_keys = {}
+
+-- for dev use to see what's new
 for line_effect_name, _ in pairs(original_player_line_effects) do
-	table_insert(player_line_effect_keys, line_effect_name)
+	if not table_contains(LINE_EFFECTS_OPTIONS, line_effect_name) then
+		mod:info("line effect found: "..line_effect_name)
+		table_insert(LINE_EFFECTS_OPTIONS, { text=line_effect_name })
+	end
 end
-table.sort(player_line_effect_keys)
-for _, line_effect_name in ipairs(player_line_effect_keys) do
-	table_insert(LINE_EFFECTS_OPTIONS, { text=line_effect_name})
-end
+-- hard coded to remove an entry
+table.remove(LINE_EFFECTS_OPTIONS, 11) -- hardcoded to remove stubpistol bullet
+
 --	See @scripts/settings/effects/minion_line_effects.lua
 -- Adding enemy line effects to overall line effects table
 for _, v in ipairs(ENEMY_LINE_EFFECTS) do
