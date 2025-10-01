@@ -10,7 +10,7 @@ local ENEMY_LINE_EFFECTS = mod.ENEMY_LINE_EFFECTS
 local table = table
 local table_clone = table.clone
 local table_insert = table.insert
-local table_contains = table.contains
+local table_contains_text = mod.table_contains_text
 local pairs = pairs
 local ipairs = ipairs
 
@@ -48,7 +48,7 @@ local LINE_EFFECTS_OPTIONS = {
 -- for dev use to see what's new
 for line_effect_name, _ in pairs(original_player_line_effects) do
 	if not line_effect_name == "heavy_stubpistol_bullet" then
-		if not table_contains(LINE_EFFECTS_OPTIONS, line_effect_name) then
+		if not table_contains_text(LINE_EFFECTS_OPTIONS, line_effect_name) then
 			mod:info("line effect found: "..line_effect_name)
 			table_insert(LINE_EFFECTS_OPTIONS, { text=line_effect_name })
 		end
