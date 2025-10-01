@@ -1,8 +1,11 @@
 local mod = get_mod("PewPew")
 local _weapon_tables_file = mod:io_dofile("PewPew/scripts/mods/PewPew/PewPew_weapon_tables")
-local ENEMY_LINE_EFFECTS = mod.ENEMY_LINE_EFFECTS
 
+-- Requirements
 local original_player_line_effects = require("scripts/settings/effects/player_line_effects")
+
+-- Local References for Performance
+local ENEMY_LINE_EFFECTS = mod.ENEMY_LINE_EFFECTS
 
 local table = table
 local table_clone = table.clone
