@@ -4,6 +4,9 @@
 - Added option to have "empty" line trails
     - technically it's 0.001 but effectively that's empty (crashes if you set effect to nil lol)
     - does NOT remove impacts and muzzle flash
+    - Adds a new check in `change_line_effects`
+        - changes the width, then exits
+        - checks for option manually
 - Added options for `pellet_trail_shock`
     - player line effect from arbites i think exaction mk 3 exterminator shotgun
     - the electro shotgun special
@@ -16,7 +19,8 @@
             - heavy stubpistol bullet
         - still have the manual entries to keep it sorted
             - in lua, only array tables (keys are integers) are guaranteed to be in order
-            - automatic sorting doesn't put it in an order i'd like
+            - automatic sorting (alphabetical) doesn't put it in an order i'd like, and i'm not making my own sorting rules
+    - Moved some functions into different files to remove duplication of code
     - Added local references to global variables for better performance
 
 
