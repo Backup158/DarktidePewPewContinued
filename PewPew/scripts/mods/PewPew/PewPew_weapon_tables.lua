@@ -4,6 +4,7 @@ local minion_line_effects = require("scripts/settings/effects/minion_line_effect
 
 local table = table
 local table_insert = table.insert
+local table_contains = table.contains
 local pairs = pairs
 
 -- ######################
@@ -31,8 +32,9 @@ local table_contains_text = mod.table_contains_text
 function mod.add_effect_from_original_if_not_found(effects_table_from_game, my_table_of_effects, table_of_keys_to_ignore)
 	for line_effect_name, _ in pairs(effects_table_from_game) do
 		-- not a line to skip AND not in table already
-		if not (table_of_keys_to_ignore and table_contains_text(table_of_keys_to_ignore, line_effect_name)) and (not table_contains_text(my_table_of_effects, line_effect_name)) then
+		if not (table_of_keys_to_ignore and table_contains(table_of_keys_to_ignore, line_effect_name)) and (not table_contains_text(my_table_of_effects, line_effect_name)) then
 			mod:echo("line effect found: "..line_effect_name)
+			--mod:echo("table contains text = "..tostring(table_contains_text(table_of_keys_to_ignore, line_effect_name)))
 			table_insert(my_table_of_effects, { text=line_effect_name })
 		end
 	end
