@@ -12,6 +12,7 @@ local add_effect_from_original_if_not_found = mod.add_effect_from_original_if_no
 local table = table
 local table_clone = table.clone
 local table_insert = table.insert
+local table_contains = table.contains
 local pairs = pairs
 local ipairs = ipairs
 
