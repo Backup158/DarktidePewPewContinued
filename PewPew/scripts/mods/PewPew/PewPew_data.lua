@@ -6,11 +6,12 @@ local original_player_line_effects = require("scripts/settings/effects/player_li
 
 -- Local References for Performance
 local ENEMY_LINE_EFFECTS = mod.ENEMY_LINE_EFFECTS
+local table_contains_text = mod.table_contains_text
+local add_effect_from_original_if_not_found = mod.add_effect_from_original_if_not_found
 
 local table = table
 local table_clone = table.clone
 local table_insert = table.insert
-local table_contains_text = mod.table_contains_text
 local pairs = pairs
 local ipairs = ipairs
 
@@ -46,6 +47,8 @@ local LINE_EFFECTS_OPTIONS = {
 }
 
 -- for dev use to see what's new
+add_effect_from_original_if_not_found(original_player_line_effects, LINE_EFFECTS_OPTIONS, { "heavy_stubpistol_bullet" })
+--[[
 for line_effect_name, _ in pairs(original_player_line_effects) do
 	if not line_effect_name == "heavy_stubpistol_bullet" then
 		if not table_contains_text(LINE_EFFECTS_OPTIONS, line_effect_name) then
@@ -54,7 +57,7 @@ for line_effect_name, _ in pairs(original_player_line_effects) do
 		end
 	end
 end
-
+]]
 --	See @scripts/settings/effects/minion_line_effects.lua
 -- Adding enemy line effects to overall line effects table
 for _, v in ipairs(ENEMY_LINE_EFFECTS) do
