@@ -13,6 +13,7 @@ local pairs = pairs
 --	{ text = val },
 --  { text = val },
 -- }
+-- RETURN: bool
 -- ######################
 function mod.table_contains_text(table, x)
     found = false
@@ -27,7 +28,10 @@ local table_contains_text = mod.table_contains_text
 
 -- ######################
 -- Add Effect from Original If Not Found
--- 
+-- PARAMETERS
+--	effects_table_from_game: table of string, table pairs; like line effect name = { values idc here }
+--  my_table_of_effects: table of tables; the ones i added for the options, whihc we add to, like { { text = x }, { text = y }, }
+--	table_of_keys_to_ignore: table of strings
 -- ######################
 function mod.add_effect_from_original_if_not_found(effects_table_from_game, my_table_of_effects, table_of_keys_to_ignore)
 	for line_effect_name, _ in pairs(effects_table_from_game) do
