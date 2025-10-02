@@ -2,8 +2,8 @@
 2025-09-30
 
 - Added option to have "empty" line trails
-    - technically it's 0.001 but effectively that's empty
-    - does NOT remove impacts!
+    - technically it's 0.001 but effectively that's empty (crashes if you set effect to nil lol)
+    - does NOT remove impacts and muzzle flash
 - Added options for `pellet_trail_shock`
     - player line effect from arbites i think exaction mk 3 exterminator shotgun
     - the electro shotgun special
@@ -17,7 +17,7 @@
         - still have the manual entries to keep it sorted
             - in lua, only array tables (keys are integers) are guaranteed to be in order
             - automatic sorting doesn't put it in an order i'd like
-    - Added local references to global variables
+    - Added local references to global variables for better performance
 
 
 # v1.7.0: Bound by Duty
