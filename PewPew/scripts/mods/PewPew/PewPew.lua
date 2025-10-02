@@ -10,6 +10,7 @@ local _weapon_tables_file = mod:io_dofile("PewPew/scripts/mods/PewPew/PewPew_wea
 mod.version = "1.8.0"
 
 local ENEMY_LINE_EFFECTS = mod.ENEMY_LINE_EFFECTS
+local table_contains_text = mod.table_contains_text
 
 local tostring = tostring
 local type = type
@@ -17,6 +18,7 @@ local pairs = pairs
 local ipairs = ipairs
 local table = table
 local table_clone = table.clone
+local table_insert = table.insert
 
 -- The required files for PlayerLineEffects and MinionLineEffects each contain a declaration of a line_effects table, then returns that table
 local PlayerLineEffects = require("scripts/settings/effects/player_line_effects")
@@ -43,19 +45,6 @@ for _, swing_effect_name in ipairs(swing_tables) do
         events = table_clone(PlayerCharacterSoundEventAliases[swing_effect_name].events)
     }
 end
-
---[[
--- Checks if value exists in table
-function mod.table_contains_text(table, x)
-    found = false
-    for _, v in pairs(table) do
-        if v.text == x then 
-            found = true 
-        end
-    end
-    return found
-end]]
-local table_contains_text = mod.table_contains_text
 
 -- ##################################################################################
 -- Finding Effect Names
