@@ -7,7 +7,7 @@ local table_insert = table.insert
 local pairs = pairs
 
 -- DUPLICATE CODE BECAUSE FUCK ME
-local function table_contains_text(table, x)
+function mod.table_contains_text(table, x)
     found = false
     for _, v in pairs(table) do
         if v.text == x then 
@@ -16,6 +16,8 @@ local function table_contains_text(table, x)
     end
     return found
 end
+local table_contains_text = mod.table_contains_text
+
 local function add_effect_from_original_if_not_found(effects_table_from_game, my_table_of_effects, table_of_keys_to_ignore)
 	for line_effect_name, _ in pairs(effects_table_from_game) do
 		-- not a line to skip AND not in table already

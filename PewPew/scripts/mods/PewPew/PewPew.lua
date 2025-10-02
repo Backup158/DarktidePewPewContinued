@@ -44,7 +44,7 @@ for _, swing_effect_name in ipairs(swing_tables) do
     }
 end
 
-
+--[[
 -- Checks if value exists in table
 function mod.table_contains_text(table, x)
     found = false
@@ -54,7 +54,7 @@ function mod.table_contains_text(table, x)
         end
     end
     return found
-end
+end]]
 local table_contains_text = mod.table_contains_text
 
 -- ##################################################################################
