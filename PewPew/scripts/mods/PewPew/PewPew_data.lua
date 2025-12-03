@@ -120,6 +120,8 @@ end
 local SINGLE_SHOT_SOUND_EFFECTS_OPTIONS = {
 	{ text="weapon_silence" }, -- "wwise/events/weapon/play_weapon_silence" is the default silent sound
 	{ text="weapon_autopistol" }, -- autopistol_p1_m1
+	{ text="weapon_dual_autopistols"}, -- dual_autopistols_p1_m1
+	{ text="dual_stubpistols_p1_m1_single"},
 	{ text="autogun_p3_m1_single" },
 	{ text="autogun_p3_m2_single" },
 	{ text="autogun_p3_m3_single" },
@@ -136,8 +138,10 @@ local SINGLE_SHOT_SOUND_EFFECTS_OPTIONS = {
 	{ text="lasgun_p2_m1" },
 	{ text="lasgun_p2_m2" },
 	{ text="lasgun_p2_m3" },
+	{ text="outlaw_missile_launcher_fire" }, -- missile_launcher, Hive Scum blitz
+	{ text="weapon_needle_pistol" }, -- needlepistol_p1_m1-3
 	{ text="psyker_smite_fire" },
-	{ text="psyker_throw_knife" },
+	{ text="psyker_throw_knife" }, -- Assail
 	{ text="combat_weapon_shotgun" }, -- shotgun_p1_m1
 	{ text="shotgun_p1_m2" },
 	{ text="shotgun_p1_m3" },
@@ -158,7 +162,7 @@ local SINGLE_SHOT_SOUND_EFFECTS_OPTIONS = {
 	{ text="ogryn_thumper_p1_m2" },
 	{ text="weapon_plasmagun" }, -- plasmagun_p1_m1
 	{ text="weapon_rippergun" }, -- ogryn_rippergun_p1_m1
-	{ text="zealot_throw_knife" },
+	{ text="zealot_throw_knife" }, -- Blades of Faith
 }
 -- Creating another key value pair for each entry, called value
 for i, option in ipairs(SINGLE_SHOT_SOUND_EFFECTS_OPTIONS) do
@@ -184,7 +188,7 @@ mod.line_effects_widgets = {
 	{ setting_id="lasbeam_charged" }, -- lasgun_p2 partial charge (Helbore)
 	{ setting_id="lasbeam_bfg" }, -- lasgun_p2 full charge (Helbore)
 	{ setting_id="autogun_bullet" },
-	--{ setting_id="heavy_stubpistol_bullet" }, -- Unreleased, and it's identical to the autogun bullet
+	{ setting_id="heavy_stubpistol_bullet" }, -- Identical to the autogun bullet
 	{ setting_id="heavy_stubber_bullet" },
 	{ setting_id="pellet_trail" },
 	{ setting_id="pellet_trail_shock" },
@@ -224,6 +228,7 @@ mod.sound_effects_widgets = {
 	{ setting_id="autopistol_p1_m1", default_value="weapon_autopistol_auto" },
 	-- { setting_id="autopistol_p1_m2", default_value="weapon_autopistol_auto" }, -- Unreleased
 	-- { setting_id="autopistol_p1_m3", default_value="weapon_autopistol_auto" }, -- Unreleased
+	{ setting_id="dual_autopistols_p1_m1", default_value="dual_autopistols_p1_m1_auto" },
 	{ setting_id="autogun_p1_m1", default_value="autogun_p1_m1_auto" },
 	{ setting_id="autogun_p1_m2", default_value="autogun_p1_m2_auto" },
 	{ setting_id="autogun_p1_m3", default_value="autogun_p1_m3_auto" },
@@ -252,6 +257,7 @@ mod.single_shot_sound_effects_widgets = {
 	{ setting_id="autogun_p3_m1", default_value="autogun_p3_m1_single" },
 	{ setting_id="autogun_p3_m2", default_value="autogun_p3_m2_single" },
 	{ setting_id="autogun_p3_m3", default_value="autogun_p3_m3_single" },
+	{ setting_id="dual_stubpistols_p1_m1", default_value="dual_stubpistols_p1_m1_single" },
 	{ setting_id="bolter_p1_m1", default_value="weapon_bolter" },
 	{ setting_id="bolter_p1_m2", default_value="weapon_bolter_m2" },
 	-- { setting_id="bolter_p1_m3", default_value="weapon_bolter" }, -- Unreleased
@@ -274,6 +280,10 @@ mod.single_shot_sound_effects_widgets = {
 	{ setting_id="lasgun_p2_m1", default_value="lasgun_p2_m1" },
 	{ setting_id="lasgun_p2_m2", default_value="lasgun_p2_m2" },
 	{ setting_id="lasgun_p2_m3", default_value="lasgun_p2_m3" },
+	{ setting_id="missile_launcher", default_value="outlaw_missile_launcher_fire" },
+	{ setting_id="needlepistol_p1_m1", default_value="weapon_needle_pistol" },
+	{ setting_id="needlepistol_p1_m2", default_value="weapon_needle_pistol" },
+	{ setting_id="needlepistol_p1_m3", default_value="weapon_needle_pistol" },
 	{ setting_id="ogryn_gauntlet_p1_m1", default_value="ogryn_gauntlet_fire" },
 	{ setting_id="ogryn_heavystubber_p2_m1", default_value="heavy_stubber_p2_m1_punch_first" },
 	{ setting_id="ogryn_heavystubber_p2_m2", default_value="heavy_stubber_p2_m2_punch_first" },
