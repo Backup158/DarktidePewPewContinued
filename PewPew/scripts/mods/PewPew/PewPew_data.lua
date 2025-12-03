@@ -38,6 +38,7 @@ local LINE_EFFECTS_OPTIONS = {
 	{ text="autogun_bullet" },
 	{ text="heavy_stubpistol_bullet" }, -- It's identical to the autogun bullet
 	{ text="heavy_stubber_bullet" },
+	{ text="needle_trail" },
 	{ text="pellet_trail" },
 	{ text="pellet_trail_shock" },
 	{ text="shotgun_slug_trail" },
@@ -73,7 +74,7 @@ end
 local LOOPING_AUTOMATIC_SOUND_EFFECTS_OPTIONS = {
 	{ text="weapon_silence" },
 	{ text="weapon_autopistol_auto" },
-	{ text="dual_autopistols_p1_m1_auto" },
+	{ text="weapon_dual_autopistols_dual_auto" },
 	{ text="autogun_p1_m1_auto" },
 	{ text="autogun_p1_m2_auto" },
 	{ text="autogun_p1_m3_auto" },
@@ -230,7 +231,7 @@ mod.sound_effects_widgets = {
 	{ setting_id="autopistol_p1_m1", default_value="weapon_autopistol_auto" },
 	-- { setting_id="autopistol_p1_m2", default_value="weapon_autopistol_auto" }, -- Unreleased
 	-- { setting_id="autopistol_p1_m3", default_value="weapon_autopistol_auto" }, -- Unreleased
-	{ setting_id="dual_autopistols_p1_m1", default_value="dual_autopistols_p1_m1_auto" },
+	{ setting_id="dual_autopistols_p1_m1", default_value="weapon_dual_autopistols_dual_auto" },
 	{ setting_id="autogun_p1_m1", default_value="autogun_p1_m1_auto" },
 	{ setting_id="autogun_p1_m2", default_value="autogun_p1_m2_auto" },
 	{ setting_id="autogun_p1_m3", default_value="autogun_p1_m3_auto" },
