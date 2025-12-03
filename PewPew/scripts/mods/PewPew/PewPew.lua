@@ -74,6 +74,10 @@ local RANGED_SHOOTING_SOUND_EFFECTS = {
     autogun_p2_m3_auto =        { braced="autogun_p2_m3_auto", pre_loop_shot="autogun_p2_m3_first", single_shot=nil },
     -- Shredder Autopistol
     weapon_autopistol_auto =    { braced="weapon_autopistol_auto", pre_loop_shot="weapon_autopistol", single_shot="weapon_autopistol" }, -- equivalent to autopistol_p1_m1
+    -- Dual Autopistols
+    dual_autopistols_p1_m1 =    { braced="weapon_dual_autopistols_dual_auto", pre_loop_shot="weapon_dual_autopistols", pre_loop_shot="weapon_dual_autopistols" },
+    -- Dual Stubpistols
+    --      See single_shot note
     -- Bolter
     --      See single_shot note
     -- Boltpistol
@@ -99,6 +103,8 @@ local RANGED_SHOOTING_SOUND_EFFECTS = {
     heavy_stubber_p1_m2_auto =  { braced="heavy_stubber_p1_m2_auto", pre_loop_shot="heavy_stubber_p1_m2_punch_first", single_shot=nil },
     heavy_stubber_p1_m3_auto =  { braced="heavy_stubber_p1_m3_auto", pre_loop_shot="heavy_stubber_p1_m3_punch_first", single_shot=nil },
     --  Single
+    --      See single_shot note
+    -- Needlepistol
     --      See single_shot note
     -- Rippergun
     --      See single_shot note

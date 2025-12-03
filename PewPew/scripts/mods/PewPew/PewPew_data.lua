@@ -36,7 +36,7 @@ local LINE_EFFECTS_OPTIONS = {
 	{ text="lasbeam_charged" }, -- lasgun_p2 partial charge (Helbore)
 	{ text="lasbeam_bfg" }, -- lasgun_p2 full charge (Helbore)
 	{ text="autogun_bullet" },
-	-- { text="heavy_stubpistol_bullet" }, -- Unreleased, and it's identical to the autogun bullet
+	{ text="heavy_stubpistol_bullet" }, -- It's identical to the autogun bullet
 	{ text="heavy_stubber_bullet" },
 	{ text="pellet_trail" },
 	{ text="pellet_trail_shock" },
@@ -48,7 +48,7 @@ local LINE_EFFECTS_OPTIONS = {
 }
 
 -- for dev use to see what's new
-add_effect_from_original_if_not_found(original_player_line_effects, LINE_EFFECTS_OPTIONS, { "heavy_stubpistol_bullet" })
+add_effect_from_original_if_not_found(original_player_line_effects, LINE_EFFECTS_OPTIONS, { })
 
 --	See @scripts/settings/effects/minion_line_effects.lua
 -- Adding enemy line effects to overall line effects table
