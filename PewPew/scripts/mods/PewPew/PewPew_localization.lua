@@ -116,6 +116,7 @@ local localizations = {
 	-- LOOPING RANGED SFX
 	-- ######################
 	weapon_autopistol_auto = { en=get_full_weapon_name_localized("autopistol_p1_m1") .. " Auto" },
+	dual_autopistols_p1_m1_auto = { en=get_full_weapon_name_localized("dual_autopistols_p1_m1") .. " Auto" },
 	flamethrower_fire_loop = { en="Flamer Fire Loop" },
 	forcestaff_warp_fire = { en="Force Staff Warp Fire" },
 	heavy_stubber_auto = { en=get_full_weapon_name_localized("ogryn_heavystubber_p1_m1") .. " Auto" },
