@@ -90,6 +90,9 @@ mod.melee_sound_effects_names = {
 	{ text="combatsword_p3_m1", },
 	{ text="combatsword_p3_m2", },
 	{ text="combatsword_p3_m3", },
+	{ text="crowbar_p1_m1", },
+	{ text="dual_shivs_p1_m1", },
+	{ text="dual_shivs_p1_m2", },
 	{ text="forcesword_2h_p1_m1", },
 	{ text="forcesword_2h_p1_m2", },
 	{ text="forcesword_p1_m1", },
@@ -127,6 +130,7 @@ mod.melee_sound_effects_names = {
 	--{ text="powersword_p1_m3", },
 	{ text="powersword_p2_m1", },
 	{ text="powersword_p2_m2", },
+	{ text="saw_p1_m1", },
 	{ text="thunderhammer_2h_p1_m1", },
 	{ text="thunderhammer_2h_p1_m2", },
 }
