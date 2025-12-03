@@ -5,6 +5,7 @@
     - Missing needle trail line effect
     - Incorrect values for dual autopistol sounds
     - Missing localizations for mod options
+    - Missing mod option to change dual autopistol sounds
     - Wrong name for missile launcher
 
 # v1.9.0
