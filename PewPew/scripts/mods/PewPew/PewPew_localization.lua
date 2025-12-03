@@ -81,6 +81,7 @@ local localizations = {
 	heavy_stubpistol_bullet = 					{ en="Stub Pistol Bullet" },
 	autogun_bullet = 							{ en="Autogun Bullet" },
 	heavy_stubber_bullet = 						{ en="Ogryn Heavy Stubber Bullet" },
+	needle_trail = 								{ en="Needle Trail" },
 	pellet_trail = 								{ en="Shotgun Pellet" },
 	pellet_trail_shock = 						{ en="Shotgun Special: Shock" },
 	shotgun_slug_trail = 						{ en="Shotgun Special: Slug" },

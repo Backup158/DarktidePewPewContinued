@@ -191,6 +191,7 @@ mod.line_effects_widgets = {
 	{ setting_id="autogun_bullet" },
 	{ setting_id="heavy_stubpistol_bullet" }, -- Identical to the autogun bullet
 	{ setting_id="heavy_stubber_bullet" },
+	{ setting_id="needle_trail" },
 	{ setting_id="pellet_trail" },
 	{ setting_id="pellet_trail_shock" },
 	{ setting_id="shotgun_slug_trail" },
