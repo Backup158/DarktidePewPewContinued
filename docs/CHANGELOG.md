@@ -13,6 +13,9 @@ No Man's Land: Hive Scum
     - Improvised Mk I Shivs
     - Improvised Mk III Shivs
     - Missile Launcher
+- Added Line Effects from Hive Scum
+    - `heavy_stubpistol_bullet`: Stub Pistol bullet
+    - `needle_trail`: Needle Pistol
 
 # v1.8.0
 2025-09-30
