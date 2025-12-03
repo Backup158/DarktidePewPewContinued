@@ -7,7 +7,7 @@ Author: tinybike (GlaresAtKoalas on Nexus)
 
 local mod = get_mod("PewPew")
 local _weapon_tables_file = mod:io_dofile("PewPew/scripts/mods/PewPew/PewPew_weapon_tables")
-mod.version = "1.9.0"
+mod.version = "1.9.1"
 
 local ENEMY_LINE_EFFECTS = mod.ENEMY_LINE_EFFECTS
 local table_contains_text = mod.table_contains_text

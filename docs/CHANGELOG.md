@@ -1,3 +1,12 @@
+# v1.9.1
+2025-12-02
+
+- Fixed:
+    - Missing needle trail line effect
+    - Incorrect values for dual autopistol sounds
+    - Missing localizations for mod options
+    - Wrong name for missile launcher
+
 # v1.9.0
 2025-12-02
 
