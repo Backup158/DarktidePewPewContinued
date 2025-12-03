@@ -73,6 +73,7 @@ end
 local LOOPING_AUTOMATIC_SOUND_EFFECTS_OPTIONS = {
 	{ text="weapon_silence" },
 	{ text="weapon_autopistol_auto" },
+	{ text="dual_autopistols_p1_m1_auto" },
 	{ text="autogun_p1_m1_auto" },
 	{ text="autogun_p1_m2_auto" },
 	{ text="autogun_p1_m3_auto" },
