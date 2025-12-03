@@ -1,3 +1,19 @@
+# v1.9.0
+2025-12-02
+
+No Man's Land: Hive Scum
+
+- Added sounds for Hive Scum weapons
+    - Branx MkIII Dual Autopistols
+    - Branx MkVIII Dual Stub Pistols
+    - Branx MKII Needle Pistol
+    - Branx MKVI Needle Pistol
+    - Chirurgeon's Mk IV Bone Saw
+    - Enginseer's Mk VI Crowbar
+    - Improvised Mk I Shivs
+    - Improvised Mk III Shivs
+    - Missile Launcher
+
 # v1.8.0
 2025-09-30
 
