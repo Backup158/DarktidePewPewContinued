@@ -283,7 +283,7 @@ mod.single_shot_sound_effects_widgets = {
 	{ setting_id="missile_launcher", default_value="outlaw_missile_launcher_fire" },
 	{ setting_id="needlepistol_p1_m1", default_value="weapon_needle_pistol" },
 	{ setting_id="needlepistol_p1_m2", default_value="weapon_needle_pistol" },
-	{ setting_id="needlepistol_p1_m3", default_value="weapon_needle_pistol" },
+	--{ setting_id="needlepistol_p1_m3", default_value="weapon_needle_pistol" }, -- Unreleased
 	{ setting_id="ogryn_gauntlet_p1_m1", default_value="ogryn_gauntlet_fire" },
 	{ setting_id="ogryn_heavystubber_p2_m1", default_value="heavy_stubber_p2_m1_punch_first" },
 	{ setting_id="ogryn_heavystubber_p2_m2", default_value="heavy_stubber_p2_m2_punch_first" },
