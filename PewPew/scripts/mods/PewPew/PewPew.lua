@@ -74,8 +74,6 @@ end
 --      Which likely means these are immutable by mods
 -- ####################################################################################
 local function update_line_effects(line_effects_to_be_changed)
-    
-    
     -- Get name of new effect we want to replace the current one with
     local new_line_effects = mod:get(line_effects_to_be_changed)
     local new_line_string = tostring(new_line_effects)
@@ -184,6 +182,7 @@ local function update_ranged_automatic_sound_effects(weapon_to_be_changed)
     local stop_new_ranged_shooting_auto = "wwise/events/weapon/stop_" .. new_ranged_shooting_sfx
     local play_new_ranged_braced_shooting_auto = nil
     local stop_new_ranged_braced_shooting_auto = nil
+
     if RANGED_SHOOTING_SOUND_EFFECTS[new_ranged_shooting_sfx].braced ~= nil then
         play_new_ranged_braced_shooting_auto = "wwise/events/weapon/play_" .. RANGED_SHOOTING_SOUND_EFFECTS[new_ranged_shooting_sfx].braced
         stop_new_ranged_braced_shooting_auto = "wwise/events/weapon/stop_" .. RANGED_SHOOTING_SOUND_EFFECTS[new_ranged_shooting_sfx].braced
@@ -220,6 +219,7 @@ end
 local function update_single_shot_sound_effects(weapon_to_be_changed)
     local new_ranged_shooting_sfx = mod:get(weapon_to_be_changed)
     local play_ranged_single_shot = "wwise/events/weapon/play_" .. new_ranged_shooting_sfx
+
     if type(PlayerCharacterSoundEventAliases.ranged_single_shot.events[weapon_to_be_changed]) == "table" then
         if play_ranged_single_shot ~= PlayerCharacterSoundEventAliases.ranged_single_shot.events[weapon_to_be_changed].default then
             if CHARGED_SINGLE_SHOT_SFX[new_ranged_shooting_sfx] ~= nil then
@@ -262,7 +262,6 @@ end
 -- #####################
 local function update_special_shot_sound_effects(weapon_to_be_changed)
     local new_weapon_sounds = mod:get(weapon_to_be_changed)
-     
 
     if original_PCSEA_ranged_effects.ranged_single_shot_special_extra.events[new_weapon_sounds] then
         PlayerCharacterSoundEventAliases.ranged_single_shot_special_extra.events[weapon_to_be_changed] = original_PCSEA_ranged_effects.ranged_single_shot_special_extra
@@ -278,7 +277,6 @@ end
 -- ##########################################
 local function update_melee_sound_effects(weapon_to_be_changed)
     local new_weapon_sounds = mod:get(weapon_to_be_changed)
-     
 
     -- table defined above for the types of swing types. regular, heavy, etc.
     for _, table_name in ipairs(swing_tables) do
