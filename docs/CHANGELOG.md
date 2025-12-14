@@ -6,6 +6,8 @@
         - These are played *on top of* the original shot sound
         - Can use the other special extra sounds, or layer another single shot sound
     - Single Shot sounds can instead use the Special Extra Sounds
+- Fixed:
+    - Incorrect Localization for `forcestaff_p3_m1` secondary fire
 - Refactored (Dev only):
     - Reorganized files to be cleaner
         - Moved table copying (from accessible game data) into its own file `PewPew_copied_data`
