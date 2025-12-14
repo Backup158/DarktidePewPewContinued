@@ -34,6 +34,13 @@ local original_PCSEA_ranged_effects = mod.original_PCSEA_ranged_effects
 local swing_tables = mod.swing_tables
 local original_PCSEA_melee_effects = mod.original_PCSEA_melee_effects
 
+-- Widget Data
+local line_effects_widgets = mod.line_effects_widgets
+local sound_effects_widgets = mod.sound_effects_widgets
+local single_shot_sound_effects_widgets = mod.single_shot_sound_effects_widgets
+local special_shot_sound_effects_widgets = mod.special_shot_sound_effects_widgets
+local melee_sound_effects_widgets = mod.melee_sound_effects_widgets
+
 -- ##################################################################################
 -- Finding Effect Names
 --  weapon_id = "wwise/events/weapon/play_<STRING_TO_STEAL>",
@@ -341,7 +348,7 @@ local function update_single_shot_sound_effects(weapon_to_be_changed)
     end
 end
 
-local function update_ranged_special_sound_effects(weapon_to_be_changed)
+local function update_special_shot_sound_effects(weapon_to_be_changed)
     local new_weapon_sounds = mod:get(weapon_to_be_changed)
     local debug = mod.debug 
 
@@ -378,16 +385,19 @@ mod.on_all_mods_loaded = function (setting_id)
     mod.debug = mod:get("enable_debug_mode")
     mod:info('PewPewPew v' .. mod.version .. ' loaded uwu nya :3')
     
-    for _, line_effects_widget in ipairs(mod.line_effects_widgets) do
+    for _, line_effects_widget in ipairs(line_effects_widgets) do
         update_line_effects(line_effects_widget.setting_id)
     end
-    for _, sound_effects_widget in ipairs(mod.sound_effects_widgets) do
+    for _, sound_effects_widget in ipairs(sound_effects_widgets) do
         update_ranged_automatic_sound_effects(sound_effects_widget.setting_id)
     end
-    for _, single_shot_sound_effects_widget in ipairs(mod.single_shot_sound_effects_widgets) do
+    for _, single_shot_sound_effects_widget in ipairs(single_shot_sound_effects_widgets) do
         update_single_shot_sound_effects(single_shot_sound_effects_widget.setting_id)
     end
-    for _, melee_sound_effects_widget in ipairs(mod.melee_sound_effects_widgets) do
+    for _, special_shot_sound_effects_widget in ipairs(special_shot_sound_effects_widgets) do
+        update_special_shot_sound_effects(special_shot_sound_effects_widget.setting_id)
+    end
+    for _, melee_sound_effects_widget in ipairs(melee_sound_effects_widgets) do
         update_melee_sound_effects(melee_sound_effects_widget.setting_id)
     end
 end
@@ -396,13 +406,15 @@ end
 mod.on_setting_changed = function (setting_id)
     mod.debug = mod:get("enable_debug_mode")
 
-    if table.find_by_key(mod.line_effects_widgets, "setting_id", setting_id) ~= nil then
+    if table.find_by_key(line_effects_widgets, "setting_id", setting_id) ~= nil then
         update_line_effects(setting_id)
-    elseif table.find_by_key(mod.sound_effects_widgets, "setting_id", setting_id) ~= nil then
+    elseif table.find_by_key(sound_effects_widgets, "setting_id", setting_id) ~= nil then
         update_ranged_automatic_sound_effects(setting_id)
-    elseif table.find_by_key(mod.single_shot_sound_effects_widgets, "setting_id", setting_id) ~= nil then
+    elseif table.find_by_key(single_shot_sound_effects_widgets, "setting_id", setting_id) ~= nil then
         update_single_shot_sound_effects(setting_id)
-    elseif table.find_by_key(mod.melee_sound_effects_widgets, "setting_id", setting_id) ~= nil then
+    elseif table.find_by_key(special_shot_sound_effects_widgets, "setting_id", setting_id) ~= nil then
+        update_special_shot_sound_effects(setting_id)
+    elseif table.find_by_key(melee_sound_effects_widgets, "setting_id", setting_id) ~= nil then
         update_melee_sound_effects(setting_id)
     end
 end
