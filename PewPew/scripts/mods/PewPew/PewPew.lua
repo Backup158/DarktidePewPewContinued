@@ -262,12 +262,18 @@ end
 -- #####################
 local function update_special_shot_sound_effects(weapon_to_be_changed)
     local new_weapon_sounds = mod:get(weapon_to_be_changed)
+    --load_resource(new_weapon_sounds, function (loaded_package_name)
+        PlayerCharacterSoundEventAliases.ranged_single_shot_special_extra.events[weapon_to_be_changed] = new_weapon_sounds
+    --end)
 
+
+    --[[
     if original_PCSEA_ranged_effects.ranged_single_shot_special_extra.events[new_weapon_sounds] then
         PlayerCharacterSoundEventAliases.ranged_single_shot_special_extra.events[weapon_to_be_changed] = original_PCSEA_ranged_effects.ranged_single_shot_special_extra
     else
         if debug_mode_enabled then mod:echo("Sound effect for "..new_weapon_sounds.." is fucked when adding to "..weapon_to_be_changed) end
     end
+    ]]
 end
 
 -- ##########################################
