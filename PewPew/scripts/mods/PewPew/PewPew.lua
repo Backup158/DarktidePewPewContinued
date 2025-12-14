@@ -31,6 +31,7 @@ local original_player_line_effects = table_clone(PlayerLineEffects)
 local original_minion_line_effects = table_clone(MinionLineEffects)
 -- Copy Sound Effects
 local original_PCSEA_ranged_effects = mod.original_PCSEA_ranged_effects
+local swing_tables = mod.swing_tables
 local original_PCSEA_melee_effects = mod.original_PCSEA_melee_effects
 
 -- ##################################################################################

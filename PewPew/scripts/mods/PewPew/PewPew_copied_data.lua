@@ -63,4 +63,5 @@ for _, swing_effect_name in ipairs(swing_tables) do
         events = table_clone(PlayerCharacterSoundEventAliases[swing_effect_name].events)
     }
 end
+mod.swing_tables = swing_tables
 mod.original_PCSEA_melee_effects = original_PCSEA_melee_effects
