@@ -338,7 +338,7 @@ local single_shot_sound_effects_widgets = {
 	-- { setting_id="stubrevolver_p1_m3", default_value="stub_revolver_p1_m3" }, -- Unreleased
 	{ setting_id="zealot_throwing_knives", default_value="zealot_throw_knife" },
 }
-for i, single_shot_sound_effects_widgets in ipairs(single_shot_sound_effects_widgets) do
+for i, _ in ipairs(single_shot_sound_effects_widgets) do
 	single_shot_sound_effects_widgets[i].type = "dropdown"
 	single_shot_sound_effects_widgets[i].options = table_clone(SINGLE_SHOT_SOUND_EFFECTS_OPTIONS)
 end
