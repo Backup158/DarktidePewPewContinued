@@ -83,6 +83,7 @@ local localizations = {
 	line_effects_id = { en="Visual Effects" },
 	sound_effects_id = { en="Fully Automatic Fire SFX" },
 	single_shot_sound_effects_id = { en="Single Shot SFX" },
+	special_shot_sound_effects_id = { en="Special Shot SFX" },
 	melee_swing_effects_id = { en="Melee Swing SFX" },
 
 	-- ######################
