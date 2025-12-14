@@ -3,6 +3,9 @@
 
 - Added:
     - Support for swapping out special shot sound effects (ranged)
+        - These are played *on top of* the original shot sound
+        - Can use the other special extra sounds, or layer another single shot sound
+    - Single Shot sounds can instead use the Special Extra Sounds
 - Refactored (Dev only):
     - Reorganized files to be cleaner
         - Moved table copying (from accessible game data) into its own file `PewPew_copied_data`
