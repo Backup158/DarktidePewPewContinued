@@ -8,16 +8,24 @@
 --		You'd have to assign that to a variable first, and there's still so many exceptions I'd just say fuck it
 --	loc_weapon_px_mx brings up the old localizations from before Unlocked and Loaded
 -- ------------------------------------------------------------------------------------
-
 local mod = get_mod("PewPew")
--- List of weapons from game code
+
+-- For list of weapons
 local WeaponTemplates = require("scripts/settings/equipment/weapon_templates/weapon_templates")
+
 -- Disgusting hardcoded tables
 mod:io_dofile("PewPew/scripts/mods/PewPew/PewPew_weapon_tables")
 local weapon_name_prefixes = mod.weapon_name_prefixes
+mod:io_dofile("PewPew/scripts/mods/PewPew/PewPew_copied_data")
+local original_PCSEA_ranged_effects = mod.original_PCSEA_ranged_effects
 -- Optimizations, global to local
+local string = string
 local string_find = string.find
+local string_regex_sub = string.gsub
 
+-- ##############################
+-- Helper Functions
+-- ##############################
 -- ###############
 -- Helper to get localized version of weapon name
 -- 	PARAMETERS
@@ -38,6 +46,7 @@ local function name_localization_helper(prefix, weapon_code)
 		-- fuck you powermaul_shield_p1_m2 pattern
 	end
 end
+
 -- ###############
 -- Get localized version of weapon name
 -- 	give it a string, the weapon code (e.g. autogun_p1_m1)
@@ -56,6 +65,14 @@ local function get_full_weapon_name_localized(weapon_code)
 	end
 end
 
+local function localize_name_after_stripping(weapon_code, prefix)
+	local naked_weapon_code = string_regex_sub(weapon_code, prefix, "")
+	return get_full_weapon_name_localized(naked_weapon_code)
+end
+
+-- ##############################
+-- Localizations
+-- ##############################
 local localizations = {
 	mod_title = { en="PewPew" },
 	mod_description = { en="Change ranged weapon sounds and projectile visual effects (Continued). PewPewPew! Also with options for melee weapons. SwishSwishSwish!" },
@@ -171,7 +188,7 @@ local localizations = {
 	weapon_lasgun_p1_m2 = { en=get_full_weapon_name_localized("lasgun_p1_m2") },
 	weapon_lasgun_p1_m3 = { en=get_full_weapon_name_localized("lasgun_p1_m3") },
 	weapon_laspistol = { en=get_full_weapon_name_localized("laspistol_p1_m1") },
-	loc_missile_launcher = { en=Localize("loc_talent_broker_blitz_missile_launcher") },
+	missile_launcher = { en=Localize("loc_talent_broker_blitz_missile_launcher") },
 	outlaw_missile_launcher_fire = { en=Localize("loc_talent_broker_blitz_missile_launcher") },
 	weapon_needle_pistol = { en=get_full_weapon_name_localized("needlepistol_p1_m1") },
 	weapon_rippergun = { en=get_full_weapon_name_localized("ogryn_rippergun_p1_m1") },
@@ -242,5 +259,16 @@ for weapon_code, append in pairs(sfx_automatic_simple) do
 		en = get_full_weapon_name_localized(weapon_code) .. " Auto"
 	}
 end
+
+-- ######################
+-- Special Shots
+-- ######################
+for weapon_key, sound_id in pairs(original_PCSEA_ranged_effects.ranged_single_shot_special_extra.events) do
+	local var_name = weapon_name_prefixes.special..weapon_key
+	localizations[var_name] = {
+		en = "Special Shot: " .. get_full_weapon_name_localized(weapon_key)
+	}
+end
+localizations["SPECIAL_SHOT_psyker_chain_lightning"]["en"] = "Special: Psyker Chain Lightning"
 
 return localizations
