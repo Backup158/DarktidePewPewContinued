@@ -84,6 +84,7 @@ local localizations = {
 	sound_effects_id = { en="Fully Automatic Fire SFX" },
 	single_shot_sound_effects_id = { en="Single Shot SFX" },
 	special_shot_sound_effects_id = { en="Special Shot Extra SFX" },
+	special_shot_sound_effects_id_description = { en="When special ammo is used, these sounds are played on top of the original shooting sound." },
 	melee_swing_effects_id = { en="Melee Swing SFX" },
 
 	-- ######################
