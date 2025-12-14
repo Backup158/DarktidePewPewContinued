@@ -366,7 +366,7 @@ mod.melee_sound_effects_widgets = { }
 for _, weapon_table in pairs(melee_sound_effects_names) do
 	mod.melee_sound_effects_widgets[#mod.melee_sound_effects_widgets + 1] = {
 		setting_id = weapon_table.text,
-		default_value = weapon_table.text,
+		default_value = weapon_table.value,
 		type = "dropdown",
 		options = table_clone(melee_sound_effects_names),
 	}
