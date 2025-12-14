@@ -47,6 +47,8 @@ local single_shot_sound_effects_widgets = mod.single_shot_sound_effects_widgets
 local special_shot_sound_effects_widgets = mod.special_shot_sound_effects_widgets
 local melee_sound_effects_widgets = mod.melee_sound_effects_widgets
 
+local weapon_name_prefixes = mod.weapon_name_prefixes
+
 -- Copying 
 mod:io_dofile("PewPew/scripts/mods/PewPew/PewPew_manual_sound_effect_digging")
 local RANGED_SHOOTING_SOUND_EFFECTS = mod.RANGED_SHOOTING_SOUND_EFFECTS
@@ -277,7 +279,7 @@ end
 -- #####################
 local function update_special_shot_sound_effects(weapon_to_be_changed)
     local new_weapon_sounds = prepend_wwise_if_not_found(mod:get(weapon_to_be_changed))
-    local actual_weapon_name = string_regex_sub(weapon_to_be_changed, "SPECIAL_SHOT_", "")
+    local actual_weapon_name = string_regex_sub(weapon_to_be_changed, weapon_name_prefixes.special, "")
 
     --load_resource(new_weapon_sounds, function (loaded_package_name)
         PlayerCharacterSoundEventAliases.ranged_single_shot_special_extra.events[actual_weapon_name] = new_weapon_sounds

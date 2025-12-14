@@ -21,6 +21,8 @@ local original_PCSEA_ranged_effects = mod.original_PCSEA_ranged_effects
 mod:io_dofile("PewPew/scripts/mods/PewPew/PewPew_weapon_tables")
 local melee_sound_effects_names = mod.melee_sound_effects_names
 
+local weapon_name_prefixes = mod.weapon_name_prefixes
+
 -- ############################################
 -- Defining Effects
 -- ############################################
@@ -181,7 +183,7 @@ end
 -- ######################
 local SPECIAL_SHOT_SOUND_EFFECTS_OPTIONS = {}
 for weapon_key, sound_id in pairs(original_PCSEA_ranged_effects.ranged_single_shot_special_extra.events) do
-	local var_name = "SPECIAL_SHOT_"..weapon_key
+	local var_name = weapon_name_prefixes.special..weapon_key
 	table_insert(SPECIAL_SHOT_SOUND_EFFECTS_OPTIONS, {
 		text = var_name,
 		value = sound_id,
@@ -349,7 +351,7 @@ mod.single_shot_sound_effects_widgets = single_shot_sound_effects_widgets
 local special_shot_sound_effects_widgets = {
 }
 for weapon_key, sound_id in pairs(original_PCSEA_ranged_effects.ranged_single_shot_special_extra.events) do
-	local var_name = "SPECIAL_SHOT_"..weapon_key
+	local var_name = weapon_name_prefixes.special..weapon_key
 	table_insert(special_shot_sound_effects_widgets, {
 		setting_id = var_name,
 		default_value = sound_id,

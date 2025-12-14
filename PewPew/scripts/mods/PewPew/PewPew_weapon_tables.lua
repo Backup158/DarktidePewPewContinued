@@ -51,6 +51,10 @@ local add_effect_from_original_if_not_found = mod.add_effect_from_original_if_no
 -- ############################################
 -- Data Definition
 -- ############################################
+mod.weapon_name_prefixes = {
+	special = "SPECIAL_SHOT_",
+}
+
 mod.ENEMY_LINE_EFFECTS = {
 	{ text="renegade_lasbeam" },
 	{ text="renegade_assault_lasbeam" },
