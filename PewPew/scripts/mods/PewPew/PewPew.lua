@@ -20,6 +20,7 @@ local table = table
 local table_clone = table.clone
 local table_insert = table.insert
 local table_find_by_key = table.find_by_key
+local table_contains = table.contains
 
 -- The required files for PlayerLineEffects and MinionLineEffects each contain a declaration of a line_effects table, then returns that table
 local PlayerLineEffects = require("scripts/settings/effects/player_line_effects")
@@ -262,6 +263,11 @@ end
 -- #####################
 local function update_special_shot_sound_effects(weapon_to_be_changed)
     local new_weapon_sounds = mod:get(weapon_to_be_changed)
+    
+    -- Compatiblity with single shot sounds
+    if not string_find(new_weapon_sounds, "wwise") then
+        new_weapon_sounds = "wwise/events/weapon/play_"..new_weapon_sounds
+    end
     --load_resource(new_weapon_sounds, function (loaded_package_name)
         PlayerCharacterSoundEventAliases.ranged_single_shot_special_extra.events[weapon_to_be_changed] = new_weapon_sounds
     --end)
