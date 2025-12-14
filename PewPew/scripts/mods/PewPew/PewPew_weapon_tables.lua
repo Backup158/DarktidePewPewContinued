@@ -16,7 +16,7 @@ local pairs = pairs
 -- RETURN: bool
 -- ######################
 function mod.table_contains_text(table, x)
-    found = false
+    local found = false
     for _, v in pairs(table) do
         if v.text == x then 
             found = true 
