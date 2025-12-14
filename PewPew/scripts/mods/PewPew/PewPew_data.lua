@@ -16,6 +16,9 @@ local table_contains = table.contains
 local pairs = pairs
 local ipairs = ipairs
 
+mod:io_dofile("PewPew/scripts/mods/PewPew/PewPew_copied_data")
+local original_PCSEA_ranged_effects = mod.original_PCSEA_ranged_effects
+
 -- ############################################
 -- Defining Effects
 -- ############################################
@@ -171,6 +174,19 @@ for i, option in ipairs(SINGLE_SHOT_SOUND_EFFECTS_OPTIONS) do
 	SINGLE_SHOT_SOUND_EFFECTS_OPTIONS[i].value = SINGLE_SHOT_SOUND_EFFECTS_OPTIONS[i].text
 end
 
+-- ######################
+-- Special Shot Sound Options
+-- ######################
+local SPECIAL_SHOT_SOUND_EFFECTS_OPTIONS = {}
+for weapon_key, effect_id in pairs(original_PCSEA_ranged_effects.events) do
+	local var_name = "SPECIAL_SHOT_"..weapon_key
+	table_insert(SPECIAL_SHOT_SOUND_EFFECTS_OPTIONS, {
+		text = var_name,
+		value = var_name,
+	})
+end
+
+
 -- ############################################
 -- Creating Widgets
 -- ############################################
@@ -319,6 +335,21 @@ for i, single_shot_sound_effects_widgets in ipairs(mod.single_shot_sound_effects
 	mod.single_shot_sound_effects_widgets[i].options = table_clone(SINGLE_SHOT_SOUND_EFFECTS_OPTIONS)
 end
 -- -------------
+-- Special
+-- -------------
+local special_shot_sound_effects_widgets = {
+}
+for weapon_key, effect_id in pairs(original_PCSEA_ranged_effects.events) do
+	local var_name = "SPECIAL_SHOT_"..weapon_key
+	table_insert(special_shot_sound_effects_widgets, {
+		setting_id = var_name,
+		default_value = effect_id,
+		type = "dropdown",
+		options = table_clone(SINGLE_SHOT_SOUND_EFFECTS_OPTIONS)
+	})
+end
+mod.special_shot_sound_effects_widgets = special_shot_sound_effects_widgets
+-- -------------
 -- Melee
 -- -------------
 -- From the list of all melee weapons in PewPwe_weapon_tables.lua
@@ -346,6 +377,7 @@ return {
 			{ setting_id="line_effects_id", type="group", sub_widgets=mod.line_effects_widgets },
 			{ setting_id="sound_effects_id", type="group", sub_widgets=mod.sound_effects_widgets },
 			{ setting_id="single_shot_sound_effects_id", type="group", sub_widgets=mod.single_shot_sound_effects_widgets },
+			{ setting_id="special_shot_sound_effects_id", type="group", sub_widgets=mod.special_shot_sound_effects_widgets },
 			{ setting_id="melee_swing_effects_id", type="group", sub_widgets=mod.melee_sound_effects_widgets },
 		},
 	},
