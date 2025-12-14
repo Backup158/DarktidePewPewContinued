@@ -34,7 +34,7 @@ for _, shoot_effect_name in ipairs(sound_events_to_copy) do
     }
 end
 -- Removes entries from bots and default
-original_PCSEA_ranged_effects.events["default"] = nil
+original_PCSEA_ranged_effects.ranged_single_shot_special_extra.events["default"] = nil
 --[[
 -- Only one thign to remove
 for weapon_key, _ in pairs(original_PCSEA_ranged_effects.events) do
@@ -42,7 +42,7 @@ for weapon_key, _ in pairs(original_PCSEA_ranged_effects.events) do
 end
 ]]
 
-mod.original_PCSEA_ranged_effects = original_PCSEA_ranged_effects
+mod.original_PCSEA_ranged_effects = table_clone(original_PCSEA_ranged_effects)
 
 -- Copy Melee Sounds
 --  "sfx_swing_heavy_left_hand", is shield and maul only
