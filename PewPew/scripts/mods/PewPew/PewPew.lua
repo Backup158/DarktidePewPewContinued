@@ -21,6 +21,8 @@ local table_clone = table.clone
 local table_insert = table.insert
 local table_find_by_key = table.find_by_key
 local table_contains = table.contains
+local string = string
+local string_find = string.find
 
 -- The required files for PlayerLineEffects and MinionLineEffects each contain a declaration of a line_effects table, then returns that table
 local PlayerLineEffects = require("scripts/settings/effects/player_line_effects")
@@ -59,6 +61,16 @@ local function load_resource(package_name, cb)
     else
         cb(nil)
     end
+end
+
+-- Compatilibity between given full value and manually added values
+local function prepend_wwise_if_not_in(given_string)
+    local final_string = given_string
+    if not string_find(final_string, "wwise") then
+        final_string = "wwise/events/weapon/play_"..final_string
+    end
+
+    return final_string
 end
 
 -- ####################################################################################
@@ -224,7 +236,8 @@ local function update_single_shot_sound_effects(weapon_to_be_changed)
     if type(PlayerCharacterSoundEventAliases.ranged_single_shot.events[weapon_to_be_changed]) == "table" then
         if play_ranged_single_shot ~= PlayerCharacterSoundEventAliases.ranged_single_shot.events[weapon_to_be_changed].default then
             if CHARGED_SINGLE_SHOT_SFX[new_ranged_shooting_sfx] ~= nil then
-                local play_ranged_single_shot_fully_charged = "wwise/events/weapon/play_" .. CHARGED_SINGLE_SHOT_SFX[new_ranged_shooting_sfx]
+                local play_ranged_single_shot_fully_charged = prepend_wwise_if_not_in(CHARGED_SINGLE_SHOT_SFX[new_ranged_shooting_sfx])
+
                 load_resource(play_ranged_single_shot, function (loaded_package_name)
                     PlayerCharacterSoundEventAliases.ranged_single_shot.events[weapon_to_be_changed].default = loaded_package_name
                 end)
@@ -262,12 +275,8 @@ end
 -- These ARE in the PCEA events table!
 -- #####################
 local function update_special_shot_sound_effects(weapon_to_be_changed)
-    local new_weapon_sounds = mod:get(weapon_to_be_changed)
-    
-    -- Compatiblity with single shot sounds
-    if not string_find(new_weapon_sounds, "wwise") then
-        new_weapon_sounds = "wwise/events/weapon/play_"..new_weapon_sounds
-    end
+    local new_weapon_sounds = prepend_wwise_if_not_in(mod:get(weapon_to_be_changed))
+
     --load_resource(new_weapon_sounds, function (loaded_package_name)
         PlayerCharacterSoundEventAliases.ranged_single_shot_special_extra.events[weapon_to_be_changed] = new_weapon_sounds
     --end)
