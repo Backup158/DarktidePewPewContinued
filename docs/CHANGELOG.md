@@ -1,3 +1,12 @@
+# v1.10.0
+2025-12-13
+
+- Added:
+    - Support for swapping out special shot sound effects (ranged)
+- Refactored (Dev only):
+    - Moved table copying into its own file
+    - Added local references to tables and only made them global at the end
+
 # v1.9.1
 2025-12-02
 
