@@ -7,6 +7,9 @@ local table_insert = table.insert
 local table_contains = table.contains
 local pairs = pairs
 
+-- ############################################
+-- Helper Functions
+-- ############################################
 -- ######################
 -- Table Contains Value in Text Key
 -- {
@@ -45,6 +48,9 @@ function mod.add_effect_from_original_if_not_found(effects_table_from_game, my_t
 end
 local add_effect_from_original_if_not_found = mod.add_effect_from_original_if_not_found
 
+-- ############################################
+-- Data Definition
+-- ############################################
 mod.ENEMY_LINE_EFFECTS = {
 	{ text="renegade_lasbeam" },
 	{ text="renegade_assault_lasbeam" },
