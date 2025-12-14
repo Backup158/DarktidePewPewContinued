@@ -5,7 +5,8 @@
     - Support for swapping out special shot sound effects (ranged)
 - Refactored (Dev only):
     - Moved table copying into its own file
-    - Added local references to tables and only made them global at the end
+    - Used local references to tables and only made them global at the end for performance while still allowing cross file usage
+    - Made local references to global tables before usage (from widgets)
 
 # v1.9.1
 2025-12-02
