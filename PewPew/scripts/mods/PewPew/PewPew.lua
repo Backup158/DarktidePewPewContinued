@@ -25,26 +25,13 @@ local PlayerLineEffects = require("scripts/settings/effects/player_line_effects"
 local MinionLineEffects = require("scripts/settings/effects/minion_line_effects")
 local PlayerCharacterSoundEventAliases = require("scripts/settings/sound/player_character_sound_event_aliases")
 
+mod:io_dofile("PewPew/scripts/mods/PewPew/PewPew_copied_data")
+-- Copy Line Effects
 local original_player_line_effects = table_clone(PlayerLineEffects)
 local original_minion_line_effects = table_clone(MinionLineEffects)
--- "sfx_swing_heavy_left_hand", is shield and maul only
--- "sfx_swing_special", is pickaxe only
-local swing_tables = { 
-    "sfx_swing", "sfx_swing_heavy", 
-    "melee_blocked_attack", 
-    "melee_sweep_hit", "melee_heavy_sweep_hit", --"melee_sweep_hit_crit", -- crit goes events.["true"]???
-    "sfx_push_follow_up", 
-    "sfx_special_activate", -- Chainsword rev is NOT HERE LMAO
-    "weapon_special_end", 
-    --"equipped_item_passive", -- moved to looping events
-    -- "melee_sticky_loop", -- sounds like something chain specific (even though force swords are here) and may crash because chain weapons are stupid???
-}
-local original_PCSEA_melee_effects = { }
-for _, swing_effect_name in ipairs(swing_tables) do
-    original_PCSEA_melee_effects[swing_effect_name] = {
-        events = table_clone(PlayerCharacterSoundEventAliases[swing_effect_name].events)
-    }
-end
+-- Copy Sound Effects
+local original_PCSEA_ranged_effects = mod.original_PCSEA_ranged_effects
+local original_PCSEA_melee_effects = mod.original_PCSEA_melee_effects
 
 -- ##################################################################################
 -- Finding Effect Names
@@ -352,6 +339,18 @@ local function update_single_shot_sound_effects(weapon_to_be_changed)
         end
     end
 end
+
+local function update_ranged_special_sound_effects(weapon_to_be_changed)
+    local new_weapon_sounds = mod:get(weapon_to_be_changed)
+    local debug = mod.debug 
+
+    if original_PCSEA_ranged_effects.ranged_single_shot_special_extra.events[new_weapon_sounds] then
+        PlayerCharacterSoundEventAliases.ranged_single_shot_special_extra.events[weapon_to_be_changed] = original_PCSEA_ranged_effects.ranged_single_shot_special_extra
+    else
+        if debug then mod:echo("Sound effect for "..new_weapon_sounds.." is fucked when adding to "..weapon_to_be_changed) end
+    end
+end
+
 -- #########################################
 -- Melee
 -- These ARE in the PCEA events table!
@@ -371,6 +370,9 @@ local function update_melee_sound_effects(weapon_to_be_changed)
     end
 end
 
+-- ##################################################################################
+-- Applying Mod Logic when the game runs
+-- ##################################################################################
 mod.on_all_mods_loaded = function (setting_id)
     mod.debug = mod:get("enable_debug_mode")
     mod:info('PewPewPew v' .. mod.version .. ' loaded uwu nya :3')
