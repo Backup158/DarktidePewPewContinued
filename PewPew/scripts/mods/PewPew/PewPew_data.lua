@@ -337,9 +337,9 @@ end
 -- -------------
 -- Special
 -- -------------
-local COMBINED_SOUNDS_SPECIAL_SINGLE = table_clone(SPECIAL_SHOT_SOUND_EFFECTS_OPTIONS)
-for _, sound_table in pairs(SINGLE_SHOT_SOUND_EFFECTS_OPTIONS) do
-	table_insert(COMBINED_SOUNDS_SPECIAL_SINGLE, sound_table)
+local COMBINED_SOUNDS_SINGLE_SPECIAL = table_clone(SINGLE_SHOT_SOUND_EFFECTS_OPTIONS)
+for _, sound_table in pairs(SPECIAL_SHOT_SOUND_EFFECTS_OPTIONS) do
+	table_insert(COMBINED_SOUNDS_SINGLE_SPECIAL, sound_table)
 end
 local special_shot_sound_effects_widgets = {
 }
@@ -349,7 +349,7 @@ for weapon_key, _ in pairs(original_PCSEA_ranged_effects.ranged_single_shot_spec
 		setting_id = var_name,
 		default_value = var_name,
 		type = "dropdown",
-		options = table_clone(COMBINED_SOUNDS_SPECIAL_SINGLE)
+		options = table_clone(COMBINED_SOUNDS_SINGLE_SPECIAL)
 	})
 end
 mod.special_shot_sound_effects_widgets = special_shot_sound_effects_widgets
