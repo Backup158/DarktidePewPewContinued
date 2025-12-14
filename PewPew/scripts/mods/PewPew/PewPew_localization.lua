@@ -13,7 +13,7 @@ local mod = get_mod("PewPew")
 -- List of weapons from game code
 local WeaponTemplates = require("scripts/settings/equipment/weapon_templates/weapon_templates")
 -- Disgusting hardcoded tables
-local _weapon_tables_file = mod:io_dofile("PewPew/scripts/mods/PewPew/PewPew_weapon_tables")
+mod:io_dofile("PewPew/scripts/mods/PewPew/PewPew_weapon_tables")
 -- Optimizations, global to local
 local _string_find = string.find
 

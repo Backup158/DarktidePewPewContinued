@@ -6,8 +6,8 @@ Author: tinybike (GlaresAtKoalas on Nexus)
 ]]
 
 local mod = get_mod("PewPew")
-local _weapon_tables_file = mod:io_dofile("PewPew/scripts/mods/PewPew/PewPew_weapon_tables")
 mod.version = "1.10.1"
+local debug_mode_enabled
 
 local ENEMY_LINE_EFFECTS = mod.ENEMY_LINE_EFFECTS
 local table_contains_text = mod.table_contains_text
@@ -26,11 +26,12 @@ local PlayerLineEffects = require("scripts/settings/effects/player_line_effects"
 local MinionLineEffects = require("scripts/settings/effects/minion_line_effects")
 local PlayerCharacterSoundEventAliases = require("scripts/settings/sound/player_character_sound_event_aliases")
 
-mod:io_dofile("PewPew/scripts/mods/PewPew/PewPew_copied_data")
 -- Copy Line Effects
 local original_player_line_effects = table_clone(PlayerLineEffects)
 local original_minion_line_effects = table_clone(MinionLineEffects)
 -- Copy Sound Effects
+mod:io_dofile("PewPew/scripts/mods/PewPew/PewPew_weapon_tables")
+mod:io_dofile("PewPew/scripts/mods/PewPew/PewPew_copied_data")
 local original_PCSEA_ranged_effects = mod.original_PCSEA_ranged_effects
 local swing_tables = mod.swing_tables
 local original_PCSEA_melee_effects = mod.original_PCSEA_melee_effects
@@ -73,7 +74,7 @@ end
 --      Which likely means these are immutable by mods
 -- ####################################################################################
 local function update_line_effects(line_effects_to_be_changed)
-    local debug = mod.debug
+    
     
     -- Get name of new effect we want to replace the current one with
     local new_line_effects = mod:get(line_effects_to_be_changed)
@@ -85,10 +86,10 @@ local function update_line_effects(line_effects_to_be_changed)
     --  Not used as a destination (?) for assignment, so pass by reference is fine
     if changed_effect_is_minion then
         original_line_effects = original_minion_line_effects
-        if debug then mod:notify(new_line_string.." is a fuck!") end
+        if debug_mode_enabled then mod:notify(new_line_string.." is a fuck!") end
     else
         original_line_effects = original_player_line_effects
-        if debug then mod:notify(new_line_string.." is player") end
+        if debug_mode_enabled then mod:notify(new_line_string.." is player") end
     end
 
     -- ----------------
@@ -100,7 +101,7 @@ local function update_line_effects(line_effects_to_be_changed)
     end
     ]]
     if new_line_string == "empty_line_effect" then
-        if debug then mod:echo(new_line_string.." is empty (keep orig)") end
+        if debug_mode_enabled then mod:echo(new_line_string.." is empty (keep orig)") end
         
         PlayerLineEffects[line_effects_to_be_changed].vfx_width = 0.001
         return
@@ -115,7 +116,7 @@ local function update_line_effects(line_effects_to_be_changed)
         --  Making an exception for scab sniper width, because that shit is literally 50 times bigger than the normal width lmfao
         --  Instead, it will use the original width at the default value
         if new_line_effects == "renegade_sniper_lasbeam" then
-            if debug then mod:echo(new_line_string.." is player") end
+            if debug_mode_enabled then mod:echo(new_line_string.." is player") end
             PlayerLineEffects[line_effects_to_be_changed].vfx_width = original_player_line_effects[line_effects_to_be_changed].vfx_width
             -- PlayerLineEffects[line_effects_to_be_changed].vfx_width = nil -- Intentionally making it blank
         else
@@ -261,12 +262,12 @@ end
 -- #####################
 local function update_special_shot_sound_effects(weapon_to_be_changed)
     local new_weapon_sounds = mod:get(weapon_to_be_changed)
-    local debug = mod.debug 
+     
 
     if original_PCSEA_ranged_effects.ranged_single_shot_special_extra.events[new_weapon_sounds] then
         PlayerCharacterSoundEventAliases.ranged_single_shot_special_extra.events[weapon_to_be_changed] = original_PCSEA_ranged_effects.ranged_single_shot_special_extra
     else
-        if debug then mod:echo("Sound effect for "..new_weapon_sounds.." is fucked when adding to "..weapon_to_be_changed) end
+        if debug_mode_enabled then mod:echo("Sound effect for "..new_weapon_sounds.." is fucked when adding to "..weapon_to_be_changed) end
     end
 end
 
@@ -277,14 +278,14 @@ end
 -- ##########################################
 local function update_melee_sound_effects(weapon_to_be_changed)
     local new_weapon_sounds = mod:get(weapon_to_be_changed)
-    local debug = mod.debug 
+     
 
     -- table defined above for the types of swing types. regular, heavy, etc.
     for _, table_name in ipairs(swing_tables) do
         if original_PCSEA_melee_effects[table_name].events[new_weapon_sounds] then
             PlayerCharacterSoundEventAliases[table_name].events[weapon_to_be_changed] = original_PCSEA_melee_effects[table_name].events[new_weapon_sounds]
         else
-            if debug then mod:echo("Sound effect for "..new_weapon_sounds.." is fucked when adding to "..weapon_to_be_changed) end
+            if debug_mode_enabled then mod:echo("Sound effect for "..new_weapon_sounds.." is fucked when adding to "..weapon_to_be_changed) end
         end
     end
 end
@@ -293,7 +294,7 @@ end
 -- Applying Mod Logic when the game runs
 -- ####################################################################################
 mod.on_all_mods_loaded = function (setting_id)
-    mod.debug = mod:get("enable_debug_mode")
+    debug_mode_enabled = mod:get("enable_debug_mode")
     mod:info('PewPewPew v' .. mod.version .. ' loaded uwu nya :3')
     
     for _, line_effects_widget in ipairs(line_effects_widgets) do
@@ -315,7 +316,7 @@ end
 
 
 mod.on_setting_changed = function (setting_id)
-    mod.debug = mod:get("enable_debug_mode")
+    debug_mode_enabled = mod:get("enable_debug_mode")
 
     if table_find_by_key(line_effects_widgets, "setting_id", setting_id) ~= nil then
         update_line_effects(setting_id)

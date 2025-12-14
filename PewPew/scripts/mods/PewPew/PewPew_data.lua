@@ -18,7 +18,7 @@ local ipairs = ipairs
 mod:io_dofile("PewPew/scripts/mods/PewPew/PewPew_copied_data")
 local original_PCSEA_ranged_effects = mod.original_PCSEA_ranged_effects
 
-local _weapon_tables_file = mod:io_dofile("PewPew/scripts/mods/PewPew/PewPew_weapon_tables")
+mod:io_dofile("PewPew/scripts/mods/PewPew/PewPew_weapon_tables")
 local melee_sound_effects_names = mod.melee_sound_effects_names
 
 -- ############################################
