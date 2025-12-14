@@ -186,7 +186,6 @@ for weapon_key, _ in pairs(original_PCSEA_ranged_effects.ranged_single_shot_spec
 	})
 end
 
-
 -- ############################################
 -- Creating Widgets
 -- ############################################
@@ -195,7 +194,7 @@ end
 -- Line Effects Widgets
 -- 	Bullet trails to change
 -- ######################
-mod.line_effects_widgets = {
+local line_effects_widgets = {
 	-- Player
 	{ setting_id="lasbeam" }, -- Bot Zola Laspistol
 	{ setting_id="lasbeam_pistol" }, -- laspistol_p1_m1 
@@ -229,11 +228,12 @@ mod.line_effects_widgets = {
 	--{ setting_id="renegade_captain_boltshell" },
 	--{ setting_id="renegade_captain_plasma_beam" },
 }
-for i, line_effects_widget in ipairs(mod.line_effects_widgets) do
-	mod.line_effects_widgets[i].type = "dropdown"
-	mod.line_effects_widgets[i].default_value = line_effects_widget.setting_id
-	mod.line_effects_widgets[i].options = table_clone(LINE_EFFECTS_OPTIONS)
+for i, line_effects_widget in ipairs(line_effects_widgets) do
+	line_effects_widgets[i].type = "dropdown"
+	line_effects_widgets[i].default_value = line_effects_widget.setting_id
+	line_effects_widgets[i].options = table_clone(LINE_EFFECTS_OPTIONS)
 end
+mod.line_effects_widgets = line_effects_widgets
 
 -- ######################
 -- Sound Effect Widget Options: Automatic and Single
@@ -265,7 +265,7 @@ mod.sound_effects_widgets = {
 	{ setting_id="ogryn_heavystubber_p1_m2", default_value="heavy_stubber_p1_m2_auto" },
 	{ setting_id="ogryn_heavystubber_p1_m3", default_value="heavy_stubber_p1_m3_auto" },
 }
-for i, sound_effects_widget in ipairs(mod.sound_effects_widgets) do
+for i, _ in ipairs(mod.sound_effects_widgets) do
 	mod.sound_effects_widgets[i].type = "dropdown"
 	mod.sound_effects_widgets[i].options = table_clone(LOOPING_AUTOMATIC_SOUND_EFFECTS_OPTIONS)
 end
@@ -374,7 +374,7 @@ return {
 	options = {
 		widgets = {
 			{ setting_id="enable_debug_mode", type="checkbox", default_value = false, },
-			{ setting_id="line_effects_id", type="group", sub_widgets=mod.line_effects_widgets },
+			{ setting_id="line_effects_id", type="group", sub_widgets=line_effects_widgets },
 			{ setting_id="sound_effects_id", type="group", sub_widgets=mod.sound_effects_widgets },
 			{ setting_id="single_shot_sound_effects_id", type="group", sub_widgets=mod.single_shot_sound_effects_widgets },
 			{ setting_id="special_shot_sound_effects_id", type="group", sub_widgets=mod.special_shot_sound_effects_widgets },
