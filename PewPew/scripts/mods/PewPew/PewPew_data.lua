@@ -178,7 +178,7 @@ end
 -- Special Shot Sound Options
 -- ######################
 local SPECIAL_SHOT_SOUND_EFFECTS_OPTIONS = {}
-for weapon_key, effect_id in pairs(original_PCSEA_ranged_effects.events) do
+for weapon_key, effect_id in pairs(original_PCSEA_ranged_effects.ranged_single_shot_special_extra.events) do
 	local var_name = "SPECIAL_SHOT_"..weapon_key
 	table_insert(SPECIAL_SHOT_SOUND_EFFECTS_OPTIONS, {
 		text = var_name,
@@ -339,7 +339,7 @@ end
 -- -------------
 local special_shot_sound_effects_widgets = {
 }
-for weapon_key, effect_id in pairs(original_PCSEA_ranged_effects.events) do
+for weapon_key, effect_id in pairs(original_PCSEA_ranged_effects.ranged_single_shot_special_extra.events) do
 	local var_name = "SPECIAL_SHOT_"..weapon_key
 	table_insert(special_shot_sound_effects_widgets, {
 		setting_id = var_name,
