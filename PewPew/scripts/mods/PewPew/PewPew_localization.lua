@@ -16,7 +16,7 @@ local WeaponTemplates = require("scripts/settings/equipment/weapon_templates/wea
 mod:io_dofile("PewPew/scripts/mods/PewPew/PewPew_weapon_tables")
 local weapon_name_prefixes = mod.weapon_name_prefixes
 -- Optimizations, global to local
-local _string_find = string.find
+local string_find = string.find
 
 -- ###############
 -- Helper to get localized version of weapon name
@@ -28,7 +28,7 @@ local _string_find = string.find
 local function name_localization_helper(prefix, weapon_code)
 	local normal_string = Localize(prefix..weapon_code)
 	--mod:info(normal_string.." from "..prefix..weapon_code)
-	if normal_string and not _string_find(normal_string, "unlocalized") then
+	if normal_string and not string_find(normal_string, "unlocalized") then
 		--mod:info("was poggers")
 		return normal_string
 	else 
@@ -45,7 +45,7 @@ end
 -- ###############
 local function get_full_weapon_name_localized(weapon_code) 
 	-- Check if it's a pattern/mark type weapon 
-	if _string_find(weapon_code, "p%d_m%d") then
+	if string_find(weapon_code, "p%d_m%d") then
 		local weapon_pattern = name_localization_helper("loc_weapon_pattern_", weapon_code)
 		local weapon_mark = name_localization_helper("loc_weapon_mark_", weapon_code)
 		local weapon_family = name_localization_helper("loc_weapon_family_", weapon_code)
