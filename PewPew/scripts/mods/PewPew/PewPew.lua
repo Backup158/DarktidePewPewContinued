@@ -23,6 +23,7 @@ local table_find_by_key = table.find_by_key
 local table_contains = table.contains
 local string = string
 local string_find = string.find
+local string_regex_sub = string.gsub
 
 -- The required files for PlayerLineEffects and MinionLineEffects each contain a declaration of a line_effects table, then returns that table
 local PlayerLineEffects = require("scripts/settings/effects/player_line_effects")
@@ -276,9 +277,10 @@ end
 -- #####################
 local function update_special_shot_sound_effects(weapon_to_be_changed)
     local new_weapon_sounds = prepend_wwise_if_not_found(mod:get(weapon_to_be_changed))
+    local actual_weapon_name = string_regex_sub(weapon_to_be_changed, "SPECIAL_SHOT_", "")
 
     --load_resource(new_weapon_sounds, function (loaded_package_name)
-        PlayerCharacterSoundEventAliases.ranged_single_shot_special_extra.events[weapon_to_be_changed] = new_weapon_sounds
+        PlayerCharacterSoundEventAliases.ranged_single_shot_special_extra.events[actual_weapon_name] = new_weapon_sounds
     --end)
 
 
