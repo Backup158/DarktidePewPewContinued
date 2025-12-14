@@ -1,5 +1,4 @@
 local mod = get_mod("PewPew")
-local _weapon_tables_file = mod:io_dofile("PewPew/scripts/mods/PewPew/PewPew_weapon_tables")
 
 -- Requirements
 local original_player_line_effects = require("scripts/settings/effects/player_line_effects")
@@ -18,6 +17,9 @@ local ipairs = ipairs
 
 mod:io_dofile("PewPew/scripts/mods/PewPew/PewPew_copied_data")
 local original_PCSEA_ranged_effects = mod.original_PCSEA_ranged_effects
+
+local _weapon_tables_file = mod:io_dofile("PewPew/scripts/mods/PewPew/PewPew_weapon_tables")
+local melee_sound_effects_names = mod.melee_sound_effects_names
 
 -- ############################################
 -- Defining Effects
@@ -248,7 +250,7 @@ mod.line_effects_widgets = line_effects_widgets
 -- -------------
 -- Automatic
 -- -------------
-mod.sound_effects_widgets = {
+local sound_effects_widgets = {
 	{ setting_id="autopistol_p1_m1", default_value="weapon_autopistol_auto" },
 	-- { setting_id="autopistol_p1_m2", default_value="weapon_autopistol_auto" }, -- Unreleased
 	-- { setting_id="autopistol_p1_m3", default_value="weapon_autopistol_auto" }, -- Unreleased
@@ -270,14 +272,15 @@ mod.sound_effects_widgets = {
 	{ setting_id="ogryn_heavystubber_p1_m2", default_value="heavy_stubber_p1_m2_auto" },
 	{ setting_id="ogryn_heavystubber_p1_m3", default_value="heavy_stubber_p1_m3_auto" },
 }
-for i, _ in ipairs(mod.sound_effects_widgets) do
-	mod.sound_effects_widgets[i].type = "dropdown"
-	mod.sound_effects_widgets[i].options = table_clone(LOOPING_AUTOMATIC_SOUND_EFFECTS_OPTIONS)
+for i, _ in ipairs(sound_effects_widgets) do
+	sound_effects_widgets[i].type = "dropdown"
+	sound_effects_widgets[i].options = table_clone(LOOPING_AUTOMATIC_SOUND_EFFECTS_OPTIONS)
 end
+mod.sound_effects_widgets = sound_effects_widgets
 -- -------------
 -- Single
 -- -------------
-mod.single_shot_sound_effects_widgets = {
+local single_shot_sound_effects_widgets = {
 	{ setting_id="autogun_p3_m1", default_value="autogun_p3_m1_single" },
 	{ setting_id="autogun_p3_m2", default_value="autogun_p3_m2_single" },
 	{ setting_id="autogun_p3_m3", default_value="autogun_p3_m3_single" },
@@ -335,10 +338,11 @@ mod.single_shot_sound_effects_widgets = {
 	-- { setting_id="stubrevolver_p1_m3", default_value="stub_revolver_p1_m3" }, -- Unreleased
 	{ setting_id="zealot_throwing_knives", default_value="zealot_throw_knife" },
 }
-for i, single_shot_sound_effects_widgets in ipairs(mod.single_shot_sound_effects_widgets) do
-	mod.single_shot_sound_effects_widgets[i].type = "dropdown"
-	mod.single_shot_sound_effects_widgets[i].options = table_clone(SINGLE_SHOT_SOUND_EFFECTS_OPTIONS)
+for i, single_shot_sound_effects_widgets in ipairs(single_shot_sound_effects_widgets) do
+	single_shot_sound_effects_widgets[i].type = "dropdown"
+	single_shot_sound_effects_widgets[i].options = table_clone(SINGLE_SHOT_SOUND_EFFECTS_OPTIONS)
 end
+mod.single_shot_sound_effects_widgets = single_shot_sound_effects_widgets
 -- -------------
 -- Special
 -- -------------
@@ -358,16 +362,13 @@ mod.special_shot_sound_effects_widgets = special_shot_sound_effects_widgets
 -- Melee
 -- -------------
 -- From the list of all melee weapons in PewPwe_weapon_tables.lua
-for i, option in ipairs(mod.melee_sound_effects_names) do
-	mod.melee_sound_effects_names[i].value = mod.melee_sound_effects_names[i].text
-end
 mod.melee_sound_effects_widgets = { }
-for _, weapon_table in pairs(mod.melee_sound_effects_names) do
+for _, weapon_table in pairs(melee_sound_effects_names) do
 	mod.melee_sound_effects_widgets[#mod.melee_sound_effects_widgets + 1] = {
 		setting_id = weapon_table.text,
 		default_value = weapon_table.text,
 		type = "dropdown",
-		options = table_clone(mod.melee_sound_effects_names),
+		options = table_clone(melee_sound_effects_names),
 	}
 end
 
@@ -380,8 +381,8 @@ return {
 		widgets = {
 			{ setting_id="enable_debug_mode", type="checkbox", default_value = false, },
 			{ setting_id="line_effects_id", type="group", sub_widgets=line_effects_widgets },
-			{ setting_id="sound_effects_id", type="group", sub_widgets=mod.sound_effects_widgets },
-			{ setting_id="single_shot_sound_effects_id", type="group", sub_widgets=mod.single_shot_sound_effects_widgets },
+			{ setting_id="sound_effects_id", type="group", sub_widgets=sound_effects_widgets },
+			{ setting_id="single_shot_sound_effects_id", type="group", sub_widgets=single_shot_sound_effects_widgets },
 			{ setting_id="special_shot_sound_effects_id", type="group", sub_widgets=mod.special_shot_sound_effects_widgets },
 			{ setting_id="melee_swing_effects_id", type="group", sub_widgets=mod.melee_sound_effects_widgets },
 		},

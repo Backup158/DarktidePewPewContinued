@@ -60,7 +60,7 @@ mod.ENEMY_LINE_EFFECTS = {
 }
 add_effect_from_original_if_not_found(minion_line_effects, mod.ENEMY_LINE_EFFECTS)
 
-mod.melee_sound_effects_names = {
+local melee_sound_effects_names = {
 	--{ text="bot_combataxe_linesman", },
 	--{ text="bot_combatsword_linesman_p1", },
 	--{ text="bot_combatsword_linesman_p2", },
@@ -134,3 +134,7 @@ mod.melee_sound_effects_names = {
 	{ text="thunderhammer_2h_p1_m1", },
 	{ text="thunderhammer_2h_p1_m2", },
 }
+for i, _ in ipairs(melee_sound_effects_names) do
+	melee_sound_effects_names[i].value = melee_sound_effects_names[i].text
+end
+mod.melee_sound_effects_names = melee_sound_effects_names
