@@ -50,7 +50,7 @@ local CHARGED_SINGLE_SHOT_SFX = mod.CHARGED_SINGLE_SHOT_SFX
 
 -- #########################################
 -- Load Resources
--- checks if package is available to be loaded? legacy code i haven't really looked into
+-- @backup158: checks if package is available to be loaded? legacy code i haven't really looked into
 -- #########################################
 local function load_resource(package_name, cb)
     if package_name ~= nil and Application.can_get_resource("package", package_name) then
