@@ -59,7 +59,7 @@ local function load_resource(package_name, cb)
     end
 end
 
--- ##################################################################################
+-- ####################################################################################
 -- Projectile visual effects
 --	See @scripts/settings/effects/player_line_effects.lua
 --  These are called from @scripts/settings/equipment/weapon_templates/<family>/<weapon>.lua
@@ -71,7 +71,7 @@ end
 --              They only use generic ranged shooting trails, which are normally added on top of the weapon's line effect
 --      These tables also contain values such as ammo used per shot, handling timings, etc
 --      Which likely means these are immutable by mods
--- ##################################################################################
+-- ####################################################################################
 local function update_line_effects(line_effects_to_be_changed)
     local debug = mod.debug
     
@@ -168,12 +168,15 @@ local function update_line_effects(line_effects_to_be_changed)
     
 end
 
--- ##################################################################################
+-- ####################################################################################
 -- Sound effects
--- ##################################################################################
--- #########################################
+-- ####################################################################################
+-- ##########################################
 -- Ranged
--- #########################################
+-- ##########################################
+-- #####################
+-- Automatic
+-- #####################
 local function update_ranged_automatic_sound_effects(weapon_to_be_changed)
     local new_ranged_shooting_sfx = mod:get(weapon_to_be_changed)
     local play_new_ranged_shooting_auto = "wwise/events/weapon/play_" .. new_ranged_shooting_sfx
@@ -210,6 +213,9 @@ local function update_ranged_automatic_sound_effects(weapon_to_be_changed)
     end
 end
 
+-- #####################
+-- Single
+-- #####################
 local function update_single_shot_sound_effects(weapon_to_be_changed)
     local new_ranged_shooting_sfx = mod:get(weapon_to_be_changed)
     local play_ranged_single_shot = "wwise/events/weapon/play_" .. new_ranged_shooting_sfx
@@ -249,6 +255,10 @@ local function update_single_shot_sound_effects(weapon_to_be_changed)
     end
 end
 
+-- #####################
+-- Special
+-- These ARE in the PCEA events table!
+-- #####################
 local function update_special_shot_sound_effects(weapon_to_be_changed)
     local new_weapon_sounds = mod:get(weapon_to_be_changed)
     local debug = mod.debug 
@@ -260,11 +270,11 @@ local function update_special_shot_sound_effects(weapon_to_be_changed)
     end
 end
 
--- #########################################
+-- ##########################################
 -- Melee
 -- These ARE in the PCEA events table!
 -- https://github.com/Aussiemon/Darktide-Source-Code/blob/master/scripts/settings/sound/player_character_sound_event_aliases.lua#L2233
--- #########################################
+-- ##########################################
 local function update_melee_sound_effects(weapon_to_be_changed)
     local new_weapon_sounds = mod:get(weapon_to_be_changed)
     local debug = mod.debug 
@@ -279,9 +289,9 @@ local function update_melee_sound_effects(weapon_to_be_changed)
     end
 end
 
--- ##################################################################################
+-- ####################################################################################
 -- Applying Mod Logic when the game runs
--- ##################################################################################
+-- ####################################################################################
 mod.on_all_mods_loaded = function (setting_id)
     mod.debug = mod:get("enable_debug_mode")
     mod:info('PewPewPew v' .. mod.version .. ' loaded uwu nya :3')
