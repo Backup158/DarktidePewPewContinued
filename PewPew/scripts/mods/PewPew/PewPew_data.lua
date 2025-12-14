@@ -362,15 +362,16 @@ mod.special_shot_sound_effects_widgets = special_shot_sound_effects_widgets
 -- Melee
 -- -------------
 -- From the list of all melee weapons in PewPwe_weapon_tables.lua
-mod.melee_sound_effects_widgets = { }
+local melee_sound_effects_widgets = { }
 for _, weapon_table in pairs(melee_sound_effects_names) do
-	mod.melee_sound_effects_widgets[#mod.melee_sound_effects_widgets + 1] = {
+	melee_sound_effects_widgets[#melee_sound_effects_widgets + 1] = {
 		setting_id = weapon_table.text,
 		default_value = weapon_table.value,
 		type = "dropdown",
 		options = table_clone(melee_sound_effects_names),
 	}
 end
+mod.melee_sound_effects_widgets = melee_sound_effects_widgets
 
 return {
 	name = mod:localize("mod_title"),
@@ -383,8 +384,8 @@ return {
 			{ setting_id="line_effects_id", type="group", sub_widgets=line_effects_widgets },
 			{ setting_id="sound_effects_id", type="group", sub_widgets=sound_effects_widgets },
 			{ setting_id="single_shot_sound_effects_id", type="group", sub_widgets=single_shot_sound_effects_widgets },
-			{ setting_id="special_shot_sound_effects_id", type="group", sub_widgets=mod.special_shot_sound_effects_widgets },
-			{ setting_id="melee_swing_effects_id", type="group", sub_widgets=mod.melee_sound_effects_widgets },
+			{ setting_id="special_shot_sound_effects_id", type="group", sub_widgets=special_shot_sound_effects_widgets },
+			{ setting_id="melee_swing_effects_id", type="group", sub_widgets=melee_sound_effects_widgets },
 		},
 	},
 }
