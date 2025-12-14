@@ -4,7 +4,9 @@
 - Added:
     - Support for swapping out special shot sound effects (ranged)
 - Refactored (Dev only):
-    - Moved table copying into its own file
+    - Reorganized files to be cleaner
+        - Moved table copying (from accessible game data) into its own file `PewPew_copied_data`
+        - Moved manual table copying (from non-returned game data) into its own file `PewPew_manual_sound_effect_digging.lua`
     - Used local references to tables and only made them global at the end for performance while still allowing cross file usage
     - Made local references to global tables before usage (from widgets)
 
