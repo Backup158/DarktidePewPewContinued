@@ -225,7 +225,7 @@ end
 -- -------------
 -- Automatics
 localizations["forcestaff_p2_m1"]["en"] = localizations["forcestaff_p2_m1"]["en"].." Secondary Fire"
-localizations["forcestaff_p3_m1"]["en"] = localizations["forcestaff_p2_m1"]["en"].." Secondary Fire"
+localizations["forcestaff_p3_m1"]["en"] = localizations["forcestaff_p3_m1"]["en"].." Secondary Fire"
 -- I have no fucking clue what these are called normally.
 --	yolo ig 
 localizations["psyker_chain_lightning"]["en"] = "Psyker Smite (Chain Lightning)"
