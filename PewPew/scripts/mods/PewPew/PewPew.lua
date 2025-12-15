@@ -60,8 +60,11 @@ local RANGED_SHOOTING_SOUND_EFFECTS = mod.RANGED_SHOOTING_SOUND_EFFECTS
 local CHARGED_SINGLE_SHOT_SFX = mod.CHARGED_SINGLE_SHOT_SFX
 
 -- #########################################
--- Load Resources
--- @backup158: checks if package is available to be loaded? legacy code i haven't really looked into
+-- Load Resource
+-- DESCRRIPTION: Allows swapping sounds without restarting/reequiping weapons
+-- PARAMETERS: 
+--  package_name: string; the wwise event 
+--  cb: function; the sound swap itself
 -- #########################################
 local function load_resource(package_name, cb)
     if package_name ~= nil and app_can_get_resource("package", package_name) then
