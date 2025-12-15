@@ -4,6 +4,8 @@
 - Fixed missing sounds when swapping without a restart
     - For special shot and melee swings
     - Loads resources properly now
+- Refactored load resources function for performance
+    - Using local references to global functions
 
 # v1.10.0
 2025-12-13
