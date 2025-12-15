@@ -281,9 +281,9 @@ local function update_special_shot_sound_effects(weapon_to_be_changed)
     local new_weapon_sounds = prepend_wwise_if_not_found(mod:get(weapon_to_be_changed))
     local actual_weapon_name = string_regex_sub(weapon_to_be_changed, weapon_name_prefixes.special, "")
 
-    --load_resource(new_weapon_sounds, function (loaded_package_name)
-        PlayerCharacterSoundEventAliases.ranged_single_shot_special_extra.events[actual_weapon_name] = new_weapon_sounds
-    --end)
+    load_resource(new_weapon_sounds, function (loaded_package_name)
+        PlayerCharacterSoundEventAliases.ranged_single_shot_special_extra.events[actual_weapon_name] = loaded_package_name
+    end)
 
 
     --[[
@@ -301,14 +301,17 @@ end
 -- https://github.com/Aussiemon/Darktide-Source-Code/blob/master/scripts/settings/sound/player_character_sound_event_aliases.lua#L2233
 -- ##########################################
 local function update_melee_sound_effects(weapon_to_be_changed)
-    local new_weapon_sounds = mod:get(weapon_to_be_changed)
+    local new_weapon = mod:get(weapon_to_be_changed)
 
     -- table defined above for the types of swing types. regular, heavy, etc.
     for _, table_name in ipairs(swing_tables) do
-        if original_PCSEA_melee_effects[table_name].events[new_weapon_sounds] then
-            PlayerCharacterSoundEventAliases[table_name].events[weapon_to_be_changed] = original_PCSEA_melee_effects[table_name].events[new_weapon_sounds]
+        if original_PCSEA_melee_effects[table_name].events[new_weapon] then
+            local melee_sound_to_load = original_PCSEA_melee_effects[table_name].events[new_weapon]
+            load_resource(melee_sound_to_load, function (loaded_package_name)
+                PlayerCharacterSoundEventAliases[table_name].events[weapon_to_be_changed] = loaded_package_name
+            end)
         else
-            if debug_mode_enabled then mod:echo("Sound effect for "..new_weapon_sounds.." is fucked when adding to "..weapon_to_be_changed) end
+            if debug_mode_enabled then mod:echo("Sound effect for "..new_weapon.." is fucked when adding to "..weapon_to_be_changed) end
         end
     end
 end
