@@ -12,6 +12,11 @@ local debug_mode_enabled
 local ENEMY_LINE_EFFECTS = mod.ENEMY_LINE_EFFECTS
 local table_contains_text = mod.table_contains_text
 
+local Application = Application
+local app_can_get_resource = Application.can_get_resource
+local Managers = Managers
+local pack_man = Managers.package
+
 local tostring = tostring
 local type = type
 local pairs = pairs
@@ -59,8 +64,8 @@ local CHARGED_SINGLE_SHOT_SFX = mod.CHARGED_SINGLE_SHOT_SFX
 -- @backup158: checks if package is available to be loaded? legacy code i haven't really looked into
 -- #########################################
 local function load_resource(package_name, cb)
-    if package_name ~= nil and Application.can_get_resource("package", package_name) then
-        Managers.package:load(package_name, "PewPew", function () cb(package_name) end)
+    if package_name ~= nil and app_can_get_resource("package", package_name) then
+        pack_man:load(package_name, "PewPew", function () cb(package_name) end)
     else
         cb(nil)
     end
