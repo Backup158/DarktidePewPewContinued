@@ -157,7 +157,11 @@ local function update_line_effects(line_effects_to_be_changed)
                 PlayerLineEffects[line_effects_to_be_changed][effect_key] = loaded_package_name
             end)
         else 
-            PlayerLineEffects[line_effects_to_be_changed][effect_key] = original_player_line_effects[line_effects_to_be_changed][effect_key]
+            if PlayerLineEffects[line_effects_to_be_changed][effect_key] then
+                PlayerLineEffects[line_effects_to_be_changed][effect_key] = original_player_line_effects[line_effects_to_be_changed][effect_key]
+            elseif debug_mode_enabled then
+                mod:info("Line Effect missing key: "..line_effects_to_be_changed.."; "..effect_key)
+            end
         end
     end
 
