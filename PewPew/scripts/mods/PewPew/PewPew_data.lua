@@ -42,6 +42,7 @@ local LINE_EFFECTS_OPTIONS = {
 	{ text="lasbeam_elysian" }, -- lasgun_p3 (Recon)
 	{ text="lasbeam_charged" }, -- lasgun_p2 partial charge (Helbore)
 	{ text="lasbeam_bfg" }, -- lasgun_p2 full charge (Helbore)
+	{ text="servo_skull_lasbeam" }, -- Skitarii Servo Skull laser
 	{ text="autogun_bullet" },
 	{ text="heavy_stubpistol_bullet" }, -- It's identical to the autogun bullet
 	{ text="heavy_stubber_bullet" },
@@ -53,6 +54,9 @@ local LINE_EFFECTS_OPTIONS = {
 	{ text="ripper_trail" },
 	{ text="boltshell" },
 	{ text="plasma_beam" },
+	{ text="phosphor_beam" },
+	{ text="arc_beam" },
+	{ text="galvanic_beam" },
 }
 
 -- for dev use to see what's new
