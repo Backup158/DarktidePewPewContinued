@@ -132,6 +132,7 @@ end
 -- ######################
 local SINGLE_SHOT_SOUND_EFFECTS_OPTIONS = {
 	{ text="weapon_silence" }, -- "wwise/events/weapon/play_weapon_silence" is the default silent sound
+	{ text="arc_rifle_p1_m1_fire_single" }, -- arc_rifle_p1_m1
 	{ text="weapon_autopistol" }, -- autopistol_p1_m1
 	{ text="weapon_dual_autopistols"}, -- dual_autopistols_p1_m1
 	{ text="dual_stubpistols_p1_m1_single"},
@@ -142,6 +143,7 @@ local SINGLE_SHOT_SOUND_EFFECTS_OPTIONS = {
 	{ text="weapon_bolter_m2" }, -- bolter_p1_m2
 	{ text="bolt_pistol_p1_m1_single" }, -- boltpistol_p1_m1
 	{ text="bolt_pistol_m2_single" }, -- boltpistol_p1_m2
+	{ text="weapon_galvanic_rifle" }, -- galvanic_rifle_p1_m1
 	{ text="weapon_laspistol" },  -- laspistol_p1_m1
 	-- { text="laspistol_p1_m2" }, -- Unreleased
 	{ text="laspistol_p1_m3" },
@@ -153,6 +155,7 @@ local SINGLE_SHOT_SOUND_EFFECTS_OPTIONS = {
 	{ text="lasgun_p2_m3" },
 	{ text="outlaw_missile_launcher_fire" }, -- missile_launcher, Hive Scum blitz
 	{ text="weapon_needle_pistol" }, -- needlepistol_p1_m1-3
+	{ text="blast_pistol_single" }, -- phosphor_pistol_p1_m1
 	{ text="psyker_smite_fire" },
 	{ text="psyker_throw_knife" }, -- Assail
 	{ text="combat_weapon_shotgun" }, -- shotgun_p1_m1
@@ -174,6 +177,7 @@ local SINGLE_SHOT_SOUND_EFFECTS_OPTIONS = {
 	{ text="ogryn_thumper_p1_m1" },
 	{ text="ogryn_thumper_p1_m2" },
 	{ text="weapon_plasmagun" }, -- plasmagun_p1_m1
+	{ text="weapon_plasmagun_m2" }, -- plasmagun_p1_m2
 	{ text="weapon_rippergun" }, -- ogryn_rippergun_p1_m1
 	{ text="zealot_throw_knife" }, -- Blades of Faith
 }

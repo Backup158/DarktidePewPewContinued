@@ -12,6 +12,10 @@ Skitussy
         - Branx Mk III Arc Maul (`powermaul_p3_m1`)
         - Branx Mk VI Mechanicus Power Sword (`powersword_p3_m1`)
         - Branx Mk XI Paired Transonic Blades (`transonic_sword_transonic_knife_p1_m1`)
+    - Ranged (Single Shot):
+        - Branx Mk IV Arc Rifle (`arc_rifle_p1_m1`)
+        - Branx Mk CV Galvanic Rifle (`galvanic_rifle_p1_m1`)
+        - Branx Mk XI Phosphor Blast Pistol (`phosphor_pistol_p1_m1`)
 - Added new plasmagun, M35 Magnacore Mk III Plasma Gun (`plasmagun_p1_m2`)
     - Charging sound
     - Single shot sound
