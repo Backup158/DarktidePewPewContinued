@@ -180,6 +180,7 @@ local localizations = {
 	-- ######################
 	-- Silence! quote from Arbitrator
 	weapon_silence = { en=Localize("loc_adamant_female_c__response_for_friendly_fire_from_adamant_to_ogryn_02") },
+	arc_rifle_p1_m1_fire_single = { en=get_full_weapon_name_localized("arc_rifle_p1_m1") },
 	weapon_autopistol = { en=get_full_weapon_name_localized("autopistol_p1_m1") },
 	weapon_dual_autopistols = { en=get_full_weapon_name_localized("dual_autopistols_p1_m1") },
 	dual_stubpistols_p1_m1_single = { en=get_full_weapon_name_localized("dual_stubpistols_p1_m1") },
@@ -190,6 +191,7 @@ local localizations = {
 	weapon_bolter_m2 = { en=get_full_weapon_name_localized("bolter_p1_m2") },
 	bolt_pistol_p1_m1_single = { en=get_full_weapon_name_localized("boltpistol_p1_m1") },
 	bolt_pistol_m2_single = { en=get_full_weapon_name_localized("boltpistol_p1_m2") },
+	weapon_galvanic_rifle = { en=get_full_weapon_name_localized("galvanic_rifle_p1_m1") },
 	weapon_lasgun_p1_m1 = { en=get_full_weapon_name_localized("lasgun_p1_m1") },
 	weapon_lasgun_p1_m2 = { en=get_full_weapon_name_localized("lasgun_p1_m2") },
 	weapon_lasgun_p1_m3 = { en=get_full_weapon_name_localized("lasgun_p1_m3") },
@@ -207,7 +209,9 @@ local localizations = {
 	shotpistol_p1_m1 = { en=get_full_weapon_name_localized("shotpistol_shield_p1_m1") },
 	stub_revolver = { en=get_full_weapon_name_localized("stubrevolver_p1_m1") },
 	stub_revolver_p1_m2 = { en=get_full_weapon_name_localized("stubrevolver_p1_m2") },
+	blast_pistol_single = { en=get_full_weapon_name_localized("phosphor_pistol_p1_m1") },
 	weapon_plasmagun = { en=get_full_weapon_name_localized("plasmagun_p1_m1") },
+	weapon_plasmagun_m2 = { en=get_full_weapon_name_localized("plasmagun_p1_m2") },
 	psyker_smite_fire = { en="Psyker Force Staff Primary Fire" },
 	-- The only localization lines related to these are the talent names, so you can get uwu flashbanged
 	psyker_throw_knife = { en="Psyker "..Localize("loc_ability_psyker_blitz_throwing_knives") },
