@@ -6,7 +6,7 @@ Author: tinybike (GlaresAtKoalas on Nexus)
 ]]
 
 local mod = get_mod("PewPew")
-mod.version = "1.10.1"
+mod.version = "1.11.0"
 local debug_mode_enabled
 
 local ENEMY_LINE_EFFECTS = mod.ENEMY_LINE_EFFECTS

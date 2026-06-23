@@ -1,3 +1,9 @@
+# v1.11.0
+2026-06-23
+Skitussy
+
+- Added localization for Skitarii weapon trails (line effects)
+
 # v1.10.1
 2025-12-14
 
