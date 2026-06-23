@@ -109,6 +109,10 @@ local localizations = {
 	ripper_trail = 								{ en="Ogryn Ripper Trail" },
 	boltshell = 								{ en="Bolt Shell" },
 	plasma_beam = 								{ en="Plasma Beam" },
+	servo_skull_lasbeam =						{ en="Las Beam: Servo Skull" },
+	phosphor_beam =								{ en="Phosphor Trail" },
+	arc_beam =									{ en="Arc Trail" },
+	galvanic_beam =								{ en="Galvanic Trail" },
 
 	renegade_twin_captain_las_pistol_lasbeam = 	{ en="Scab Captain Laspistol Beam" },
 	renegade_lasbeam = 							{ en="Scab Shooter Las Beam" },
