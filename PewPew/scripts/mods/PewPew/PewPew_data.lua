@@ -295,6 +295,7 @@ mod.sound_effects_widgets = sound_effects_widgets
 -- Single
 -- -------------
 local single_shot_sound_effects_widgets = {
+	{ setting_id="arc_rifle_p1_m1", default_value="arc_rifle_p1_m1_fire_single" },
 	{ setting_id="autogun_p3_m1", default_value="autogun_p3_m1_single" },
 	{ setting_id="autogun_p3_m2", default_value="autogun_p3_m2_single" },
 	{ setting_id="autogun_p3_m3", default_value="autogun_p3_m3_single" },
@@ -310,6 +311,7 @@ local single_shot_sound_effects_widgets = {
 	-- { setting_id="bot_autogun_killshot", default_value="autogun_p3_m1_single" },
 	{ setting_id="forcestaff_p1_m1", default_value="psyker_smite_fire" },
 	{ setting_id="forcestaff_p4_m1", default_value="psyker_smite_fire" },
+	{ setting_id="galvanic_rifle_p1_m1", default_value="weapon_galvanic_rifle" },
 	-- { setting_id="high_bot_autogun_killshot", default_value="autogun_p3_m1_single" },
 	-- { setting_id="high_bot_lasgun_killshot", default_value="weapon_lasgun_p1_m1" },
 	{ setting_id="laspistol_p1_m1", default_value="weapon_laspistol" },
@@ -335,8 +337,9 @@ local single_shot_sound_effects_widgets = {
 	{ setting_id="ogryn_thumper_p1_m1", default_value="ogryn_thumper_p1_m1" },
 	{ setting_id="ogryn_thumper_p1_m2", default_value="ogryn_thumper_p1_m2" },
 	-- { setting_id="ogryn_thumper_p1_m3", default_value="ogryn_thumper_p1_m3" }, -- Unreleased
+	{ setting_id="phosphor_pistol_p1_m1", default_value="blast_pistol_single" },
 	{ setting_id="plasmagun_p1_m1", default_value="weapon_plasmagun" },
-	{ setting_id="plasmagun_p1_m2", default_value="weapon_plasmagun" },
+	{ setting_id="plasmagun_p1_m2", default_value="weapon_plasmagun_m2" },
 	-- { setting_id="psyker_smite", default_value="psyker_smite_fire" }, -- I don't think this changes anything
 	{ setting_id="psyker_throwing_knives", default_value="psyker_throw_knife" },
 	{ setting_id="shotgun_p1_m1", default_value="combat_weapon_shotgun" },
