@@ -221,6 +221,7 @@ local line_effects_widgets = {
 	{ setting_id="lasbeam_elysian" }, -- lasgun_p3 (Recon)
 	{ setting_id="lasbeam_charged" }, -- lasgun_p2 partial charge (Helbore)
 	{ setting_id="lasbeam_bfg" }, -- lasgun_p2 full charge (Helbore)
+	{ setting_id="servo_skull_lasbeam" }, -- Skitarii Servo Skull laser
 	{ setting_id="autogun_bullet" },
 	{ setting_id="heavy_stubpistol_bullet" }, -- Identical to the autogun bullet
 	{ setting_id="heavy_stubber_bullet" },
@@ -232,6 +233,9 @@ local line_effects_widgets = {
 	{ setting_id="ripper_trail" },
 	{ setting_id="boltshell" },
 	{ setting_id="plasma_beam" },
+	{ setting_id="phosphor_beam" },
+	{ setting_id="arc_beam" },
+	{ setting_id="galvanic_beam" },
 	-- Minion
 	--{ setting_id="renegade_twin_captain_las_pistol_lasbeam" },
 	--{ setting_id="renegade_lasbeam" },
