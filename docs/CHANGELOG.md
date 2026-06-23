@@ -3,7 +3,7 @@
 Skitussy
 
 - Added new Skitarii weapon trails (line effects)
-	- `servo_skull_lasbeam`
+	- `servo_skull_lasbeam` (minion)
 	- `phosphor_beam`
 	- `arc_beam`
 	- `galvanic_beam`

@@ -67,6 +67,7 @@ mod.ENEMY_LINE_EFFECTS = {
 	{ text="renegade_captain_pellet" },
 	{ text="renegade_captain_boltshell" },
 	{ text="renegade_captain_plasma_beam" },
+	{ text="servo_skull_lasbeam" },
 }
 add_effect_from_original_if_not_found(minion_line_effects, mod.ENEMY_LINE_EFFECTS)
 
