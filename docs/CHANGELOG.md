@@ -3,6 +3,11 @@
 Skitussy
 
 - Added localization for Skitarii weapon trails (line effects)
+- Added Skitarii weapons
+    - Melee:
+        - Branx Mk III Arc Maul (`powermaul_p3_m1`)
+        - Branx Mk VI Mechanicus Power Sword (`powersword_p3_m1`)
+        - Branx Mk XI Paired Transonic Blades (`transonic_sword_transonic_knife_p1_m1`)
 
 # v1.10.1
 2025-12-14

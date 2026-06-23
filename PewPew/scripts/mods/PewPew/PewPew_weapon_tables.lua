@@ -130,6 +130,7 @@ local melee_sound_effects_names = {
 	{ text="powermaul_p1_m2", },
 	{ text="powermaul_p2_m1", },
 	--{ text="powermaul_p2_m2", },
+	{ text="powermaul_p3_m1", },
 	{ text="powermaul_shield_p1_m1", },
 	{ text="powermaul_shield_p1_m2", },
 	{ text="powersword_2h_p1_m1", },
@@ -140,9 +141,11 @@ local melee_sound_effects_names = {
 	--{ text="powersword_p1_m3", },
 	{ text="powersword_p2_m1", },
 	{ text="powersword_p2_m2", },
+	{ text="powersword_p3_m1", },
 	{ text="saw_p1_m1", },
 	{ text="thunderhammer_2h_p1_m1", },
 	{ text="thunderhammer_2h_p1_m2", },
+	{ text="transonic_sword_transonic_knife_p1_m1", },
 }
 for i, _ in ipairs(melee_sound_effects_names) do
 	melee_sound_effects_names[i].value = melee_sound_effects_names[i].text
