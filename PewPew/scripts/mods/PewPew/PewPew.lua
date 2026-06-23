@@ -173,7 +173,7 @@ local function update_line_effects(line_effects_to_be_changed)
         PlayerLineEffects[line_effects_to_be_changed].moving_sfx = nil
     end
     --  Handles emitters table
-    if type(original_line_effects[new_line_effects].emitters) == "table" then
+    if type(original_line_effects[new_line_effects].emitters) == "table" and type(original_line_effects[new_line_effects].emitters.vfx) == "table" then
         load_resource(original_line_effects[new_line_effects].emitters.vfx.default, function (loaded_package_name)
             load_resource(original_line_effects[new_line_effects].emitters.vfx.start, function (loaded_package_name)
                 PlayerLineEffects[line_effects_to_be_changed].emitters = table_clone(original_line_effects[new_line_effects].emitters)
