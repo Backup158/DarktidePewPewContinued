@@ -104,5 +104,5 @@ mod.CHARGED_SINGLE_SHOT_SFX = {
     lasgun_p2_m3 = "lasgun_p2_m3_charged",
     -- Plasmagun
     plasmagun_p1_m1 = "weapon_plasmagun_charged",
-    --plasmagun_p1_m2 = "weapon_plasmagun_charged", -- Unreleased
+    plasmagun_p1_m2 = "weapon_plasmagun_charged_m2",
 }
