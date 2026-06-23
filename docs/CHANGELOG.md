@@ -19,6 +19,7 @@ Skitussy
 - Added new plasmagun, M35 Magnacore Mk III Plasma Gun (`plasmagun_p1_m2`)
     - Charging sound
     - Single shot sound
+- Moved up plasmagun in single shot sound list to be consistent with order
 
 # v1.10.1
 2025-12-14

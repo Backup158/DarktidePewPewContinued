@@ -156,6 +156,8 @@ local SINGLE_SHOT_SOUND_EFFECTS_OPTIONS = {
 	{ text="outlaw_missile_launcher_fire" }, -- missile_launcher, Hive Scum blitz
 	{ text="weapon_needle_pistol" }, -- needlepistol_p1_m1-3
 	{ text="blast_pistol_single" }, -- phosphor_pistol_p1_m1
+	{ text="weapon_plasmagun" }, -- plasmagun_p1_m1
+	{ text="weapon_plasmagun_m2" }, -- plasmagun_p1_m2
 	{ text="psyker_smite_fire" },
 	{ text="psyker_throw_knife" }, -- Assail
 	{ text="combat_weapon_shotgun" }, -- shotgun_p1_m1
@@ -176,8 +178,6 @@ local SINGLE_SHOT_SOUND_EFFECTS_OPTIONS = {
 	{ text="heavy_stubber_p2_m3_punch_first" },
 	{ text="ogryn_thumper_p1_m1" },
 	{ text="ogryn_thumper_p1_m2" },
-	{ text="weapon_plasmagun" }, -- plasmagun_p1_m1
-	{ text="weapon_plasmagun_m2" }, -- plasmagun_p1_m2
 	{ text="weapon_rippergun" }, -- ogryn_rippergun_p1_m1
 	{ text="zealot_throw_knife" }, -- Blades of Faith
 }
