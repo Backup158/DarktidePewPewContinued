@@ -129,7 +129,7 @@ local function update_line_effects(line_effects_to_be_changed)
         return
     end
     
-    -- Assigning the new values
+    -- @Backup158: Assigning the new values
     --  Values are taken from the local copy of the original line effects
     --  If there is no new value, use the value from the default line effect
     --      This is because enemy line effects don't have things such as width
@@ -148,7 +148,7 @@ local function update_line_effects(line_effects_to_be_changed)
     PlayerLineEffects[line_effects_to_be_changed].keep_aligned = original_line_effects[new_line_effects].keep_aligned
     PlayerLineEffects[line_effects_to_be_changed].link = original_line_effects[new_line_effects].link
     
-    -- putting this here so it can be destroyed afterwards
+    -- @Backup158: putting this here so it can be destroyed afterwards
     -- this means it'll get created every single time you change a setting, but that should happen infrequently enough so the memory usage isn't so much. otherwise i'd have to just keep this table up the entire time the game is running lol
     local sound_event_keys = { "vfx", "sfx", "vfx_crit", }
     for _, effect_key in ipairs(sound_event_keys) do
