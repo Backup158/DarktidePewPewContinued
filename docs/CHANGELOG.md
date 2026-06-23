@@ -2,7 +2,11 @@
 2026-06-23
 Skitussy
 
-- Added localization for Skitarii weapon trails (line effects)
+- Added new Skitarii weapon trails (line effects)
+	- `servo_skull_lasbeam`
+	- `phosphor_beam`
+	- `arc_beam`
+	- `galvanic_beam`
 - Added Skitarii weapons
     - Melee:
         - Branx Mk III Arc Maul (`powermaul_p3_m1`)
