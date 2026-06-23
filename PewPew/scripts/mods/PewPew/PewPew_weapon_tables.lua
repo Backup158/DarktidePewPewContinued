@@ -55,7 +55,7 @@ mod.weapon_name_prefixes = {
 	special = "SPECIAL_SHOT_",
 }
 
-mod.ENEMY_LINE_EFFECTS = {
+mod.MINION_LINE_EFFECTS = {
 	{ text="renegade_lasbeam" },
 	{ text="renegade_assault_lasbeam" },
 	{ text="renegade_gunner_lasbeam" },
@@ -69,7 +69,7 @@ mod.ENEMY_LINE_EFFECTS = {
 	{ text="renegade_captain_plasma_beam" },
 	{ text="servo_skull_lasbeam" },
 }
-add_effect_from_original_if_not_found(minion_line_effects, mod.ENEMY_LINE_EFFECTS)
+add_effect_from_original_if_not_found(minion_line_effects, mod.MINION_LINE_EFFECTS)
 
 local melee_sound_effects_names = {
 	--{ text="bot_combataxe_linesman", },

@@ -9,7 +9,7 @@ local mod = get_mod("PewPew")
 mod.version = "1.11.0"
 local debug_mode_enabled
 
-local ENEMY_LINE_EFFECTS = mod.ENEMY_LINE_EFFECTS
+local MINION_LINE_EFFECTS = mod.MINION_LINE_EFFECTS
 local table_contains_text = mod.table_contains_text
 
 local Application = Application
@@ -102,7 +102,7 @@ local function update_line_effects(line_effects_to_be_changed)
     local new_line_effects = mod:get(line_effects_to_be_changed)
     local new_line_string = tostring(new_line_effects)
 
-    local changed_effect_is_minion = table_contains_text(ENEMY_LINE_EFFECTS, new_line_effects)
+    local changed_effect_is_minion = table_contains_text(MINION_LINE_EFFECTS, new_line_effects)
     -- Makes a local copy of the original effects for faster access
     local original_line_effects
     --  Not used as a destination (?) for assignment, so pass by reference is fine

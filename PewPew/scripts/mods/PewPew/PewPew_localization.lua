@@ -109,7 +109,6 @@ local localizations = {
 	ripper_trail = 								{ en="Ogryn Ripper Trail" },
 	boltshell = 								{ en="Bolt Shell" },
 	plasma_beam = 								{ en="Plasma Beam" },
-	servo_skull_lasbeam =						{ en="Las Beam: Servo Skull" },
 	phosphor_beam =								{ en="Phosphor Trail" },
 	arc_beam =									{ en="Arc Trail" },
 	galvanic_beam =								{ en="Galvanic Trail" },
@@ -125,6 +124,7 @@ local localizations = {
 	renegade_captain_pellet = 					{ en="Scab Captain Pellet Trail" },
 	renegade_captain_boltshell = 				{ en="Scab Captain Bolt Shell" },
 	renegade_captain_plasma_beam = 				{ en="Rodin Karnak Flaming Plasma Beam" },
+	servo_skull_lasbeam =						{ en="Las Beam: Servo Skull" },
 
 	empty_line_effect = 						{ en="Empty" },
 	

@@ -4,7 +4,7 @@ local mod = get_mod("PewPew")
 local original_player_line_effects = require("scripts/settings/effects/player_line_effects")
 
 -- Local References for Performance
-local ENEMY_LINE_EFFECTS = mod.ENEMY_LINE_EFFECTS
+local MINION_LINE_EFFECTS = mod.MINION_LINE_EFFECTS
 local table_contains_text = mod.table_contains_text
 local add_effect_from_original_if_not_found = mod.add_effect_from_original_if_not_found
 
@@ -64,7 +64,7 @@ add_effect_from_original_if_not_found(original_player_line_effects, LINE_EFFECTS
 
 --	See @scripts/settings/effects/minion_line_effects.lua
 -- Adding enemy line effects to overall line effects table
-for _, v in ipairs(ENEMY_LINE_EFFECTS) do
+for _, v in ipairs(MINION_LINE_EFFECTS) do
 	table_insert(LINE_EFFECTS_OPTIONS, v)
 end
 -- Essentially doing value = text = "string" to use the same name for id and localization id
