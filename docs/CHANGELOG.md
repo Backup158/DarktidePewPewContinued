@@ -3,6 +3,7 @@
 ### Fixed
 - Fixed new line effects not appearing
     - Yeah that was a pretty bad bug to let slip through
+    - Moved safety check so it doesn't delete everything
 - Arc Rifle sounds not changing
     - It's actually an automatic fire weapon
     - Added entry to `PewPew_manual_sound_effect_digging.lua`
