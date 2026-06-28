@@ -358,15 +358,15 @@ end
 mod.on_setting_changed = function (setting_id)
     debug_mode_enabled = mod:get("enable_debug_mode")
 
-    if table_find_by_key(line_effects_widgets, "setting_id", setting_id) ~= nil then
+    if table_find_by_key(line_effects_widgets, "setting_id", setting_id) then
         update_line_effects(setting_id)
-    elseif table_find_by_key(sound_effects_widgets, "setting_id", setting_id) ~= nil then
+    elseif table_find_by_key(sound_effects_widgets, "setting_id", setting_id) then
         update_ranged_automatic_sound_effects(setting_id)
-    elseif table_find_by_key(single_shot_sound_effects_widgets, "setting_id", setting_id) ~= nil then
+    elseif table_find_by_key(single_shot_sound_effects_widgets, "setting_id", setting_id) then
         update_single_shot_sound_effects(setting_id)
-    elseif table_find_by_key(special_shot_sound_effects_widgets, "setting_id", setting_id) ~= nil then
+    elseif table_find_by_key(special_shot_sound_effects_widgets, "setting_id", setting_id) then
         update_special_shot_sound_effects(setting_id)
-    elseif table_find_by_key(melee_sound_effects_widgets, "setting_id", setting_id) ~= nil then
+    elseif table_find_by_key(melee_sound_effects_widgets, "setting_id", setting_id) then
         update_melee_sound_effects(setting_id)
     end
 end
