@@ -137,7 +137,7 @@ local function update_line_effects(line_effects_to_be_changed)
     if original_line_effects[new_line_effects].vfx_width then
         --  Making an exception for scab sniper width, because that shit is literally 50 times bigger than the normal width lmfao
         --  Instead, it will use the original width at the default value
-        if new_line_effects == "renegade_sniper_lasbeam" then
+        if new_line_effects == "renegade_sniper_lasbeam" and mod:get("line_effects_override_renegade_sniper_lasbeam_width") then
             if debug_mode_enabled then mod:echo(new_line_string.." is player") end
             PlayerLineEffects[line_effects_to_be_changed].vfx_width = original_player_line_effects[line_effects_to_be_changed].vfx_width
             -- PlayerLineEffects[line_effects_to_be_changed].vfx_width = nil -- Intentionally making it blank

@@ -213,47 +213,59 @@ end
 -- 	Bullet trails to change
 -- ######################
 local line_effects_widgets = {
-	-- Player
-	{ setting_id="lasbeam" }, -- Bot Zola Laspistol
-	{ setting_id="lasbeam_pistol" }, -- laspistol_p1_m1 
-	{ setting_id="lasbeam_pistol_ads" }, -- laspistol_p1_m1 ADS
-	{ setting_id="lasbeam_heavy_pistol" }, -- laspistol_p1_m3. see 'scripts/settings/equipment/weapon_templates/laspistols/laspistol_p1_m3.lua'
-	{ setting_id="lasbeam_killshot" }, -- lasgun_p1 and lasgun_p2 uncharged (Infantry and Helbore)
-	{ setting_id="lasbeam_elysian" }, -- lasgun_p3 (Recon)
-	{ setting_id="lasbeam_charged" }, -- lasgun_p2 partial charge (Helbore)
-	{ setting_id="lasbeam_bfg" }, -- lasgun_p2 full charge (Helbore)
-	--{ setting_id="servo_skull_lasbeam" }, -- Skitarii Servo Skull laser
-	{ setting_id="autogun_bullet" },
-	{ setting_id="heavy_stubpistol_bullet" }, -- Identical to the autogun bullet
-	{ setting_id="heavy_stubber_bullet" },
-	{ setting_id="needle_trail" },
-	{ setting_id="pellet_trail" },
-	{ setting_id="pellet_trail_shock" },
-	{ setting_id="shotgun_slug_trail" },
-	{ setting_id="shotgun_incendiary_trail" },
-	{ setting_id="ripper_trail" },
-	{ setting_id="boltshell" },
-	{ setting_id="plasma_beam" },
-	{ setting_id="phosphor_beam" },
-	{ setting_id="arc_beam" },
-	{ setting_id="galvanic_beam" },
-	-- Minion
-	--{ setting_id="renegade_twin_captain_las_pistol_lasbeam" },
-	--{ setting_id="renegade_lasbeam" },
-	--{ setting_id="renegade_gunner_lasbeam" },
-	--{ setting_id="renegade_sniper_lasbeam" },
-	--{ setting_id="renegade_assault_lasbeam" },
-	--{ setting_id="cultist_autogun_bullet" },
-	--{ setting_id="renegade_heavy_stubber_bullet" },
-	--{ setting_id="renegade_pellet" },
-	--{ setting_id="renegade_captain_pellet" },
-	--{ setting_id="renegade_captain_boltshell" },
-	--{ setting_id="renegade_captain_plasma_beam" },
+	{ 
+		setting_id = "line_effects_override_renegade_sniper_lasbeam_width",
+		type = "checkbox",
+		default_value = true,
+	},
+	{
+		setting_id = "line_effects_choices",
+		title = "line_effects_id",
+		type = "group",
+		sub_widgets = {
+			-- Player
+			{ setting_id="lasbeam" }, -- Bot Zola Laspistol
+			{ setting_id="lasbeam_pistol" }, -- laspistol_p1_m1 
+			{ setting_id="lasbeam_pistol_ads" }, -- laspistol_p1_m1 ADS
+			{ setting_id="lasbeam_heavy_pistol" }, -- laspistol_p1_m3. see 'scripts/settings/equipment/weapon_templates/laspistols/laspistol_p1_m3.lua'
+			{ setting_id="lasbeam_killshot" }, -- lasgun_p1 and lasgun_p2 uncharged (Infantry and Helbore)
+			{ setting_id="lasbeam_elysian" }, -- lasgun_p3 (Recon)
+			{ setting_id="lasbeam_charged" }, -- lasgun_p2 partial charge (Helbore)
+			{ setting_id="lasbeam_bfg" }, -- lasgun_p2 full charge (Helbore)
+			{ setting_id="autogun_bullet" },
+			{ setting_id="heavy_stubpistol_bullet" }, -- Identical to the autogun bullet
+			{ setting_id="heavy_stubber_bullet" },
+			{ setting_id="needle_trail" },
+			{ setting_id="pellet_trail" },
+			{ setting_id="pellet_trail_shock" },
+			{ setting_id="shotgun_slug_trail" },
+			{ setting_id="shotgun_incendiary_trail" },
+			{ setting_id="ripper_trail" },
+			{ setting_id="boltshell" },
+			{ setting_id="plasma_beam" },
+			{ setting_id="phosphor_beam" },
+			{ setting_id="arc_beam" },
+			{ setting_id="galvanic_beam" },
+			-- Minion
+			--{ setting_id="renegade_twin_captain_las_pistol_lasbeam" },
+			--{ setting_id="renegade_lasbeam" },
+			--{ setting_id="renegade_gunner_lasbeam" },
+			--{ setting_id="renegade_sniper_lasbeam" },
+			--{ setting_id="renegade_assault_lasbeam" },
+			--{ setting_id="cultist_autogun_bullet" },
+			--{ setting_id="renegade_heavy_stubber_bullet" },
+			--{ setting_id="renegade_pellet" },
+			--{ setting_id="renegade_captain_pellet" },
+			--{ setting_id="renegade_captain_boltshell" },
+			--{ setting_id="renegade_captain_plasma_beam" },
+			--{ setting_id="servo_skull_lasbeam" }, -- Skitarii Servo Skull laser
+		}
+	},
 }
-for i, line_effects_widget in ipairs(line_effects_widgets) do
-	line_effects_widgets[i].type = "dropdown"
-	line_effects_widgets[i].default_value = line_effects_widget.setting_id
-	line_effects_widgets[i].options = table_clone(LINE_EFFECTS_OPTIONS)
+for i, line_effects_widget in ipairs(line_effects_widgets[2]) do
+	line_effects_widgets[2][i].type = "dropdown"
+	line_effects_widgets[2][i].default_value = line_effects_widget.setting_id
+	line_effects_widgets[2][i].options = table_clone(LINE_EFFECTS_OPTIONS)
 end
 mod.line_effects_widgets = line_effects_widgets
 
