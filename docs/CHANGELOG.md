@@ -2,6 +2,7 @@
 2026-06-27
 - Fixed new line effects not appearing
     - Yeah that was a pretty bad bug to let slip through
+- Refactored ordered table access to follow Fatshark's LUA optimization guide
 
 # v1.11.0
 2026-06-23

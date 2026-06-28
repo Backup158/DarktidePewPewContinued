@@ -151,7 +151,8 @@ local function update_line_effects(line_effects_to_be_changed)
     -- @Backup158: putting this here so it can be destroyed afterwards
     -- this means it'll get created every single time you change a setting, but that should happen infrequently enough so the memory usage isn't so much. otherwise i'd have to just keep this table up the entire time the game is running lol
     local sound_event_keys = { "vfx", "sfx", "vfx_crit", }
-    for _, effect_key in ipairs(sound_event_keys) do
+    for i = 1, #sound_event_keys do
+        local effect_key = sound_event_keys[i]
         if original_line_effects[new_line_effects][effect_key] then
             load_resource(original_line_effects[new_line_effects][effect_key], function (loaded_package_name)
                 PlayerLineEffects[line_effects_to_be_changed][effect_key] = loaded_package_name
@@ -316,7 +317,8 @@ local function update_melee_sound_effects(weapon_to_be_changed)
     local new_weapon = mod:get(weapon_to_be_changed)
 
     -- table defined above for the types of swing types. regular, heavy, etc.
-    for _, table_name in ipairs(swing_tables) do
+    for i = 1, #swing_tables do
+        local table_name = swing_tables[i]
         if original_PCSEA_melee_effects[table_name].events[new_weapon] then
             local melee_sound_to_load = original_PCSEA_melee_effects[table_name].events[new_weapon]
             load_resource(melee_sound_to_load, function (loaded_package_name)
@@ -335,20 +337,20 @@ mod.on_all_mods_loaded = function (setting_id)
     debug_mode_enabled = mod:get("enable_debug_mode")
     mod:info('PewPewPew v' .. mod.version .. ' loaded uwu nya :3')
     
-    for _, line_effects_widget in ipairs(line_effects_widgets) do
-        update_line_effects(line_effects_widget.setting_id)
+    for i = 1, #line_effects_widgets do
+        update_line_effects(line_effects_widgets[i].setting_id)
     end
-    for _, sound_effects_widget in ipairs(sound_effects_widgets) do
-        update_ranged_automatic_sound_effects(sound_effects_widget.setting_id)
+    for i = 1, #sound_effects_widgets do
+        update_ranged_automatic_sound_effects(sound_effects_widgets[i].setting_id)
     end
-    for _, single_shot_sound_effects_widget in ipairs(single_shot_sound_effects_widgets) do
-        update_single_shot_sound_effects(single_shot_sound_effects_widget.setting_id)
+    for i = 1, #single_shot_sound_effects_widgets do
+        update_single_shot_sound_effects(single_shot_sound_effects_widgets[i].setting_id)
     end
-    for _, special_shot_sound_effects_widget in ipairs(special_shot_sound_effects_widgets) do
-        update_special_shot_sound_effects(special_shot_sound_effects_widget.setting_id)
+    for i = 1, #special_shot_sound_effects_widgets do
+        update_special_shot_sound_effects(special_shot_sound_effects_widgets[i].setting_id)
     end
-    for _, melee_sound_effects_widget in ipairs(melee_sound_effects_widgets) do
-        update_melee_sound_effects(melee_sound_effects_widget.setting_id)
+    for i = 1, #melee_sound_effects_widgets do
+        update_melee_sound_effects(melee_sound_effects_widgets[i].setting_id)
     end
 end
 
