@@ -16,6 +16,8 @@ local mod = get_mod("PewPew")
 mod.RANGED_SHOOTING_SOUND_EFFECTS = {
     -- Default (Silence)
     weapon_silence =                    { braced="weapon_silence", pre_loop_shot="weapon_silence", single_shot=nil },
+    -- Arc Rifle
+    arc_rifle_p1_m1_auto =              { braced="arc_rifle_p1_m1_fire_auto", pre_loop_shot="arc_rifle_p1_m1_fire_single", single_shot=nil },
     -- Autoguns
     --  Yes, one of them says single instead of first. Blame Fatshark
     --  Infantry

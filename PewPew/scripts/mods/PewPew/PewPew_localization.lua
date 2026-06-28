@@ -140,6 +140,7 @@ local localizations = {
 	-- ######################
 	-- LOOPING RANGED SFX
 	-- ######################
+	arc_rifle_p1_m1_fire_auto = { en=get_full_weapon_name_localized("arc_rifle_p1_m1") },
 	weapon_autopistol_auto = { en=get_full_weapon_name_localized("autopistol_p1_m1") .. " Auto" },
 	weapon_dual_autopistols_dual_auto = { en=get_full_weapon_name_localized("dual_autopistols_p1_m1") .. " Auto" },
 	flamethrower_fire_loop = { en="Flamer Fire Loop" },
@@ -180,7 +181,7 @@ local localizations = {
 	-- ######################
 	-- Silence! quote from Arbitrator
 	weapon_silence = { en=Localize("loc_adamant_female_c__response_for_friendly_fire_from_adamant_to_ogryn_02") },
-	arc_rifle_p1_m1_fire_single = { en=get_full_weapon_name_localized("arc_rifle_p1_m1") },
+	arc_rifle_p1_m1_fire_single = { en=get_full_weapon_name_localized("arc_rifle_p1_m1") }, -- It's actually auto
 	weapon_autopistol = { en=get_full_weapon_name_localized("autopistol_p1_m1") },
 	weapon_dual_autopistols = { en=get_full_weapon_name_localized("dual_autopistols_p1_m1") },
 	dual_stubpistols_p1_m1_single = { en=get_full_weapon_name_localized("dual_stubpistols_p1_m1") },

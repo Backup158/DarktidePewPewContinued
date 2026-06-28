@@ -84,6 +84,7 @@ end
 -- ######################
 local LOOPING_AUTOMATIC_SOUND_EFFECTS_OPTIONS = {
 	{ text="weapon_silence" },
+	{ text="arc_rifle_p1_m1_fire_auto" },
 	{ text="weapon_autopistol_auto" },
 	{ text="weapon_dual_autopistols_dual_auto" },
 	{ text="autogun_p1_m1_auto" },
@@ -265,6 +266,7 @@ mod.line_effects_widgets = line_effects_widgets
 -- Automatic
 -- -------------
 local sound_effects_widgets = {
+	{ setting_id="arc_rifle_p1_m1", default_value="arc_rifle_p1_m1_auto" },
 	{ setting_id="autopistol_p1_m1", default_value="weapon_autopistol_auto" },
 	-- { setting_id="autopistol_p1_m2", default_value="weapon_autopistol_auto" }, -- Unreleased
 	-- { setting_id="autopistol_p1_m3", default_value="weapon_autopistol_auto" }, -- Unreleased
@@ -295,7 +297,6 @@ mod.sound_effects_widgets = sound_effects_widgets
 -- Single
 -- -------------
 local single_shot_sound_effects_widgets = {
-	{ setting_id="arc_rifle_p1_m1", default_value="arc_rifle_p1_m1_fire_single" },
 	{ setting_id="autogun_p3_m1", default_value="autogun_p3_m1_single" },
 	{ setting_id="autogun_p3_m2", default_value="autogun_p3_m2_single" },
 	{ setting_id="autogun_p3_m3", default_value="autogun_p3_m3_single" },
