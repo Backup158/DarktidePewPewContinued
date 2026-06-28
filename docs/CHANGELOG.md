@@ -1,7 +1,9 @@
-# v1.11.1
-2026-06-27
+# 1.11.1 - 2026-06-28
+
+### Fixed
 - Fixed new line effects not appearing
     - Yeah that was a pretty bad bug to let slip through
+### Refactored
 - Refactored ordered table access to follow Fatshark's LUA optimization guide
 - Refactored `if x is not nil` checks to just `if x`
 
