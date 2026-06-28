@@ -414,7 +414,6 @@ return {
 					},
 					{
 						setting_id = "line_effects_choices",
-						title = "line_effects_id",
 						type = "group",
 						sub_widgets = line_effects_widgets 
 					},
