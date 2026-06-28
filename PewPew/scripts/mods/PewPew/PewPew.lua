@@ -173,29 +173,23 @@ local function update_line_effects(line_effects_to_be_changed)
     else
         PlayerLineEffects[line_effects_to_be_changed].moving_sfx = nil
     end
-    --  Handles emitters table
+    --  Emitters
     if type(original_line_effects[new_line_effects].emitters) == "table" then
-        -- Some effects don't have VFX
-        if type(original_line_effects[new_line_effects].emitters.vfx) == "table" then
-            load_resource(original_line_effects[new_line_effects].emitters.vfx.default, function (loaded_package_name)
-                load_resource(original_line_effects[new_line_effects].emitters.vfx.start, function (loaded_package_name)
-                    PlayerLineEffects[line_effects_to_be_changed].emitters = table_clone(original_line_effects[new_line_effects].emitters)
-                end)
+        -- Default
+        if type(original_line_effects[new_line_effects].emitters.default) == "table" then
+            load_resource(original_line_effects[new_line_effects].emitters.default.vfx, function (loaded_package_name)
+                PlayerLineEffects[line_effects_to_be_changed].emitters.default = table_clone(original_line_effects[new_line_effects].emitters.default)
             end)
         end
-        -- Doing it this way prevents the emitters from being yeeted, such as arc rifle
+
+        -- Critical Strike
+        if type(original_line_effects[new_line_effects].emitters.critical_strike) == "table" then
+            load_resource(original_line_effects[new_line_effects].emitters.critical_strike.vfx, function (loaded_package_name)
+                PlayerLineEffects[line_effects_to_be_changed].emitters.critical_strike = table_clone(original_line_effects[new_line_effects].emitters.critical_strike)
+            end)
+        end
     else
         PlayerLineEffects[line_effects_to_be_changed].emitters = nil
-    end
-    --  Handles emitters_crit table
-    if type(original_line_effects[new_line_effects].emitters_crit) == "table" then
-        load_resource(original_line_effects[new_line_effects].emitters_crit.vfx.default, function (loaded_package_name)
-            load_resource(original_line_effects[new_line_effects].emitters_crit.vfx.start, function (loaded_package_name)
-                PlayerLineEffects[line_effects_to_be_changed].emitters_crit = table_clone(original_line_effects[new_line_effects].emitters_crit)
-            end)
-        end)
-    else
-        PlayerLineEffects[line_effects_to_be_changed].emitters_crit = nil
     end
     
 end
