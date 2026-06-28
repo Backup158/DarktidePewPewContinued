@@ -1,3 +1,8 @@
+# 1.12.0 - 2026-06-28
+### Changed
+### Added
+- Add option to not scale down Sniper trail
+
 # 1.11.1 - 2026-06-28
 
 ### Fixed

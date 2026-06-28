@@ -8,6 +8,6 @@ return {
 			mod_localization = "PewPew/scripts/mods/PewPew/PewPew_localization",
 		})
 	end,
-	version = "1.11.1",
+	version = "1.12.0",
 	packages = {},
 }
