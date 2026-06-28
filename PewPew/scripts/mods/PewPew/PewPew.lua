@@ -67,7 +67,7 @@ local CHARGED_SINGLE_SHOT_SFX = mod.CHARGED_SINGLE_SHOT_SFX
 --  cb: function; the sound swap itself
 -- #########################################
 local function load_resource(package_name, cb)
-    if package_name ~= nil and app_can_get_resource("package", package_name) then
+    if package_name and app_can_get_resource("package", package_name) then
         pack_man:load(package_name, "PewPew", function () cb(package_name) end)
     else
         cb(nil)
@@ -212,7 +212,7 @@ local function update_ranged_automatic_sound_effects(weapon_to_be_changed)
     local play_new_ranged_braced_shooting_auto = nil
     local stop_new_ranged_braced_shooting_auto = nil
 
-    if RANGED_SHOOTING_SOUND_EFFECTS[new_ranged_shooting_sfx].braced ~= nil then
+    if RANGED_SHOOTING_SOUND_EFFECTS[new_ranged_shooting_sfx].braced then
         play_new_ranged_braced_shooting_auto = "wwise/events/weapon/play_" .. RANGED_SHOOTING_SOUND_EFFECTS[new_ranged_shooting_sfx].braced
         stop_new_ranged_braced_shooting_auto = "wwise/events/weapon/stop_" .. RANGED_SHOOTING_SOUND_EFFECTS[new_ranged_shooting_sfx].braced
     end
@@ -233,7 +233,7 @@ local function update_ranged_automatic_sound_effects(weapon_to_be_changed)
         load_resource(play_new_ranged_pre_loop_shot, function (loaded_package_name)
             PlayerCharacterSoundEventAliases.ranged_pre_loop_shot.events[weapon_to_be_changed] = loaded_package_name
         end)
-        if RANGED_SHOOTING_SOUND_EFFECTS[new_ranged_shooting_sfx].single_shot ~= nil then
+        if RANGED_SHOOTING_SOUND_EFFECTS[new_ranged_shooting_sfx].single_shot then
             local play_ranged_single_shot = "wwise/events/weapon/play_" .. RANGED_SHOOTING_SOUND_EFFECTS[new_ranged_shooting_sfx].single_shot
             load_resource(play_ranged_single_shot, function (loaded_package_name)
                 PlayerCharacterSoundEventAliases.ranged_single_shot.events[weapon_to_be_changed] = loaded_package_name
@@ -251,7 +251,7 @@ local function update_single_shot_sound_effects(weapon_to_be_changed)
 
     if type(PlayerCharacterSoundEventAliases.ranged_single_shot.events[weapon_to_be_changed]) == "table" then
         if play_ranged_single_shot ~= PlayerCharacterSoundEventAliases.ranged_single_shot.events[weapon_to_be_changed].default then
-            if CHARGED_SINGLE_SHOT_SFX[new_ranged_shooting_sfx] ~= nil then
+            if CHARGED_SINGLE_SHOT_SFX[new_ranged_shooting_sfx] then
                 local play_ranged_single_shot_fully_charged = prepend_wwise_if_not_found(CHARGED_SINGLE_SHOT_SFX[new_ranged_shooting_sfx])
 
                 load_resource(play_ranged_single_shot, function (loaded_package_name)
