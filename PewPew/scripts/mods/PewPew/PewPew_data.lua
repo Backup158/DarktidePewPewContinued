@@ -266,7 +266,7 @@ mod.line_effects_widgets = line_effects_widgets
 -- Automatic
 -- -------------
 local sound_effects_widgets = {
-	{ setting_id="arc_rifle_p1_m1", default_value="arc_rifle_p1_m1_auto" },
+	{ setting_id="arc_rifle_p1_m1", default_value="arc_rifle_p1_m1_fire_auto" },
 	{ setting_id="autopistol_p1_m1", default_value="weapon_autopistol_auto" },
 	-- { setting_id="autopistol_p1_m2", default_value="weapon_autopistol_auto" }, -- Unreleased
 	-- { setting_id="autopistol_p1_m3", default_value="weapon_autopistol_auto" }, -- Unreleased
