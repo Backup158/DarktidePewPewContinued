@@ -354,7 +354,6 @@ mod.on_all_mods_loaded = function (setting_id)
     end
 end
 
-
 mod.on_setting_changed = function (setting_id)
     debug_mode_enabled = mod:get("enable_debug_mode")
 
