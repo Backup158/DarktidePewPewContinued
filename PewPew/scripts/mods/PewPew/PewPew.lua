@@ -6,7 +6,7 @@ Author: tinybike (GlaresAtKoalas on Nexus)
 ]]
 
 local mod = get_mod("PewPew")
-mod.version = "1.11.0"
+mod.version = "1.11.1"
 local debug_mode_enabled
 
 local MINION_LINE_EFFECTS = mod.MINION_LINE_EFFECTS

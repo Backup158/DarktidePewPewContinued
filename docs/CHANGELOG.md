@@ -1,3 +1,8 @@
+# v1.11.1
+2026-06-27
+- Fixed new line effects not appearing
+    - Yeah that was a pretty bad bug to let slip through
+
 # v1.11.0
 2026-06-23
 Skitussy
