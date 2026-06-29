@@ -216,22 +216,23 @@ local function update_line_effects(line_effects_to_be_changed)
                 -- Replace each destination with the associated source
                 for k = 1, #PlayerLineEffects[line_effects_to_be_changed].emitters[emitter_name] do
                     echo_if_debug("Checking Emitter: "..emitter_name.."; "..tostring(k))
-                    -- Only add sources if they exist
+                    -- Only add associated sources if they exist, with fallbacks
+                    --  Source exists
                     if original_line_effects[new_line_effects].emitters[emitter_name][k] and original_line_effects[new_line_effects].emitters[emitter_name][k].vfx then
                         load_resource(original_line_effects[new_line_effects].emitters[emitter_name][k].vfx, function(loaded_package_name)
                             PlayerLineEffects[line_effects_to_be_changed].emitters[emitter_name][k] = table_clone(original_line_effects[new_line_effects].emitters[emitter_name][k])
                         end)
-                    -- Source does not have a #2, so fall back to 1
+                    --  Source does not have a #2, so fall back to 1
                     elseif original_line_effects[new_line_effects].emitters[emitter_name][1] and original_line_effects[new_line_effects].emitters[emitter_name][1].vfx then
                         load_resource(original_line_effects[new_line_effects].emitters[emitter_name][1].vfx, function(loaded_package_name)
                             PlayerLineEffects[line_effects_to_be_changed].emitters[emitter_name][k] = table_clone(original_line_effects[new_line_effects].emitters[emitter_name][1])
                         end)
-                    -- No #1 for this type, so fall back to Default
+                    --  No #1 for this type, so fall back to Default
                     elseif original_line_effects[new_line_effects].emitters.default and original_line_effects[new_line_effects].emitters.default[1] and original_line_effects[new_line_effects].emitters.default[1].vfx then
                         load_resource(original_line_effects[new_line_effects].emitters.default[1].vfx, function(loaded_package_name)
                             PlayerLineEffects[line_effects_to_be_changed].emitters[emitter_name][k] = table_clone(original_line_effects[new_line_effects].emitters.default[1])
                         end)
-                    -- No default lol
+                    --  No default lol
                     else
                         echo_if_debug("Source line effect has no Emitters for key: "..emitter_name.."; "..new_line_effects)
                         PlayerLineEffects[line_effects_to_be_changed].emitters[emitter_name][k] = nil
