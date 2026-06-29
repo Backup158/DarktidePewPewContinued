@@ -216,36 +216,33 @@ local function update_line_effects(line_effects_to_be_changed)
             PlayerLineEffects[line_effects_to_be_changed].emitters = {}
         end
         local emitter_types = {"default", "critical_strike"}
+        -- Copying each type of Emitter effect
         for i = 1, #emitter_types do
             local emitter_name = emitter_types[i]
+            local emitter_name_source = emitter_name
             -- First, check if destination exists. Source check is done inside
             if type(PlayerLineEffects[line_effects_to_be_changed].emitters[emitter_name]) == "table" then
                 -- Each emitter type is a table of tables, with each of the inside tables containing the vfx
                 -- Before copying over the effects, wipe the existing destination
                 PlayerLineEffects[line_effects_to_be_changed].emitters[emitter_name] = {}
                 -- Replace each destination with the associated source, with fallbacks
-                for amount_of_source_emitters = 1, #original_line_effects[new_line_effects].emitters[emitter_name] do
-                    echo_if_debug("Checking Emitter: "..emitter_name.."; "..tostring(k))
+                --  Destination does not have this emitter (crit), but has default, so fallback
+                if not original_line_effects[new_line_effects].emitters[emitter_name_source] and original_line_effects[new_line_effects].emitters["default"] then
+                    emitter_name_source  = "default"
+                end
+                -- Copy all emitters from source
+                for amount_of_source_emitters = 1, #original_line_effects[new_line_effects].emitters[emitter_name_source] do
+                    echo_if_debug("Checking Emitter: "..emitter_name.."; "..tostring(emitter_name_source))
                     --  Source exists
-                    if original_line_effects[new_line_effects].emitters[emitter_name] and original_line_effects[new_line_effects].emitters[emitter_name][amount_of_source_emitters] and original_line_effects[new_line_effects].emitters[emitter_name][amount_of_source_emitters].vfx then
-                        load_resource(original_line_effects[new_line_effects].emitters[emitter_name][amount_of_source_emitters].vfx, function(loaded_package_name)
-                            PlayerLineEffects[line_effects_to_be_changed].emitters[emitter_name][amount_of_source_emitters] = table_clone(original_line_effects[new_line_effects].emitters[emitter_name][amount_of_source_emitters])
+                    if original_line_effects[new_line_effects].emitters[emitter_name_source] and original_line_effects[new_line_effects].emitters[emitter_name_source][amount_of_source_emitters] and original_line_effects[new_line_effects].emitters[emitter_name_source][amount_of_source_emitters].vfx then
+                        load_resource(original_line_effects[new_line_effects].emitters[emitter_name_source][amount_of_source_emitters].vfx, function(loaded_package_name)
+                            PlayerLineEffects[line_effects_to_be_changed].emitters[emitter_name][amount_of_source_emitters] = table_clone(original_line_effects[new_line_effects].emitters[emitter_name_source][amount_of_source_emitters])
                         end)
-                    --  Source does not have a #2, so fall back to 1
-                    elseif original_line_effects[new_line_effects].emitters[emitter_name] and original_line_effects[new_line_effects].emitters[emitter_name][1] and original_line_effects[new_line_effects].emitters[emitter_name][1].vfx then
-                        load_resource(original_line_effects[new_line_effects].emitters[emitter_name][1].vfx, function(loaded_package_name)
-                            PlayerLineEffects[line_effects_to_be_changed].emitters[emitter_name][amount_of_source_emitters] = table_clone(original_line_effects[new_line_effects].emitters[emitter_name][1])
-                        end)
-                    --  No #1 for this type, so fall back to Default
-                    elseif original_line_effects[new_line_effects].emitters.default and original_line_effects[new_line_effects].emitters.default[1] and original_line_effects[new_line_effects].emitters.default[1].vfx then
-                        load_resource(original_line_effects[new_line_effects].emitters.default[1].vfx, function(loaded_package_name)
-                            PlayerLineEffects[line_effects_to_be_changed].emitters[emitter_name][amount_of_source_emitters] = table_clone(original_line_effects[new_line_effects].emitters.default[1])
-                        end)
-                    --  No default lol
                     else
                         echo_if_debug("Source line effect has no Emitters for key: "..emitter_name.."; "..new_line_effects)
                         PlayerLineEffects[line_effects_to_be_changed].emitters[emitter_name][amount_of_source_emitters] = nil
                     end
+
                 end
             else
                 PlayerLineEffects[line_effects_to_be_changed].emitters[emitter_name] = nil
