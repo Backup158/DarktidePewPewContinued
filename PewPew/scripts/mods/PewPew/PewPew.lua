@@ -13,6 +13,7 @@ local mod = get_mod("PewPew")
 mod.version = "1.13.4"
 local debug_mode_enabled
 local use_line_effect_fallback
+local options_override_linking
 
 local MINION_LINE_EFFECTS = mod.MINION_LINE_EFFECTS
 local table_contains_text = mod.table_contains_text
@@ -177,8 +178,19 @@ local function update_line_effects(line_effects_to_be_changed)
             PlayerLineEffects[line_effects_to_be_changed].vfx_width = original_line_effects[new_line_effects].vfx_width
         end
     end
-    PlayerLineEffects[line_effects_to_be_changed].keep_aligned = original_line_effects[new_line_effects].keep_aligned
-    PlayerLineEffects[line_effects_to_be_changed].link = original_line_effects[new_line_effects].link
+    
+    if options_override_linking == "default" then
+        PlayerLineEffects[line_effects_to_be_changed].keep_aligned = original_line_effects[new_line_effects].keep_aligned
+        PlayerLineEffects[line_effects_to_be_changed].link = original_line_effects[new_line_effects].link
+    elseif options_override_linking == "on" then
+        PlayerLineEffects[line_effects_to_be_changed].keep_aligned = true
+        PlayerLineEffects[line_effects_to_be_changed].link = true
+    elseif options_override_linking == "off" then
+        PlayerLineEffects[line_effects_to_be_changed].keep_aligned = false
+        PlayerLineEffects[line_effects_to_be_changed].link = false
+    else
+        info_if_debug("Option to override linking is invalid: "..tostring(options_override_linking))
+    end
     
     -- @Backup158: putting this here so it can be destroyed afterwards
     -- this means it'll get created every single time you change a setting, but that should happen infrequently enough so the memory usage isn't so much. otherwise i'd have to just keep this table up the entire time the game is running lol
@@ -394,9 +406,11 @@ end
 -- Applying Mod Logic when the game runs
 -- ####################################################################################
 mod.on_all_mods_loaded = function (setting_id)
+    mod:info('PewPewPew v' .. mod.version .. ' loaded uwu nya :3')
+
     debug_mode_enabled = mod:get("enable_debug_mode")
     use_line_effect_fallback = mod:get("line_effects_override_fallback_vfx")
-    mod:info('PewPewPew v' .. mod.version .. ' loaded uwu nya :3')
+    options_override_linking = mod:get("line_effects_override_linking")
     
     for i = 1, #line_effects_widgets do
         update_line_effects(line_effects_widgets[i].setting_id)
@@ -418,6 +432,7 @@ end
 mod.on_setting_changed = function (setting_id)
     debug_mode_enabled = mod:get("enable_debug_mode")
     use_line_effect_fallback = mod:get("line_effects_override_fallback_vfx")
+    options_override_linking = mod:get("line_effects_override_linking")
 
     if table_find_by_key(line_effects_widgets, "setting_id", setting_id) then
         update_line_effects(setting_id)

@@ -423,6 +423,16 @@ return {
 						default_value = false,
 					},
 					{
+						setting_id = "line_effects_override_linking",
+						type = "dropdown",
+						default_value = "default",
+						options = {
+							{ text = "line_effects_override_option_default", value = "default" },
+							{ text = "line_effects_override_option_on", value = "on" },
+							{ text = "line_effects_override_option_off", value = "off" },
+						},
+					},
+					{
 						setting_id = "line_effects_choices_player",
 						type = "group",
 						sub_widgets = line_effects_widgets.player

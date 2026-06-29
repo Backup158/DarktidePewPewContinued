@@ -1,8 +1,8 @@
 # 1.14.0 - 2026-06-29
 - Added new dropdown for line effects: forced link
     - Default: copies effect
-    - Force link on: sets link to true. See `lasbeam pistol`
-    - Force link off: sets link to false. This way it doesn't link to the barrel. See `lasbeam_pistol_ads`
+    - Force link on, sticky: sets link to true. See `lasbeam pistol`
+    - Force link off, detach: sets link to false. This way it doesn't link to the barrel. See `lasbeam_pistol_ads`
 
 # 1.13.0 - 2026-06-29
 ### Changed
