@@ -1,4 +1,11 @@
-# 1.12.0 - 2026-06-28
+# 1.12.1 - 2026-06-28
+### Changed
+### Added
+### Removed
+### Fixed
+- Fix line effects failing to replace due to missing safety checks for source
+
+# 1.12.0 - 2026-06-29
 ### Changed
 ### Added
 - Add option to not scale down Sniper trail
