@@ -6,6 +6,10 @@ Author: tinybike (GlaresAtKoalas on Nexus)
 ]]
 
 local mod = get_mod("PewPew")
+
+-- ####################################################################################
+-- Data
+-- ####################################################################################
 mod.version = "1.12.0"
 local debug_mode_enabled
 
@@ -16,6 +20,8 @@ local Application = Application
 local app_can_get_resource = Application.can_get_resource
 local Managers = Managers
 local pack_man = Managers.package
+-- local PackageManager = class("PackageManager")
+-- local PackageManager_Load = PackageManager.load
 
 local tostring = tostring
 local type = type
@@ -38,6 +44,8 @@ local PlayerCharacterSoundEventAliases = require("scripts/settings/sound/player_
 -- Copy Line Effects
 local original_player_line_effects = table_clone(PlayerLineEffects)
 local original_minion_line_effects = table_clone(MinionLineEffects)
+--table.dump(original_player_line_effects, "ORIGINAL PLAYER LINE EFFECTS OWO NOTICES BULGE", 20)
+--table.dump(original_minion_line_effects, "ORIGINAL MINION LINE EFFECTS OWO NOTICES BULGE", 20)
 -- Copy Sound Effects
 mod:io_dofile("PewPew/scripts/mods/PewPew/PewPew_weapon_tables")
 mod:io_dofile("PewPew/scripts/mods/PewPew/PewPew_copied_data")
@@ -60,6 +68,25 @@ mod:io_dofile("PewPew/scripts/mods/PewPew/PewPew_manual_sound_effect_digging")
 local RANGED_SHOOTING_SOUND_EFFECTS = mod.RANGED_SHOOTING_SOUND_EFFECTS
 local CHARGED_SINGLE_SHOT_SFX = mod.CHARGED_SINGLE_SHOT_SFX
 
+-- ####################################################################################
+-- Helper Functions
+-- ####################################################################################
+local function info_if_debug(message)
+    if debug_mode_enabled then
+        mod:info(message)
+    end
+end
+local function echo_if_debug(message)
+    if debug_mode_enabled then
+        mod:echo(message)
+    end
+end
+local function notify_if_debug(message)
+    if debug_mode_enabled then
+        mod:notify(message)
+    end
+end
+
 -- #########################################
 -- Load Resource
 -- DESCRRIPTION: Allows swapping sounds without restarting/reequiping weapons
@@ -71,6 +98,7 @@ local function load_resource(package_name, cb)
     if package_name and app_can_get_resource("package", package_name) then
         pack_man:load(package_name, "PewPew", function () cb(package_name) end)
     else
+        notify_if_debug("Failed to load package: "..package_name)
         cb(nil)
     end
 end
@@ -176,28 +204,74 @@ local function update_line_effects(line_effects_to_be_changed)
     end
     --  Emitters
     if type(original_line_effects[new_line_effects].emitters) == "table" then
+        local emitter_types = {"default", "critical_strike"}
+        for i = 1, #emitter_types do
+            local emitter_name = emitter_types[i]
+            if type(original_line_effects[new_line_effects].emitters[emitter_name]) == "table" then
+                -- Each emitter type is a table of tables, with each of the inside tables containing the vfx
+                local original_emitter_tables_group = original_line_effects[new_line_effects].emitters[emitter_name]
+                -- Replace each destination with the associated source
+                for k = 1, #PlayerLineEffects[line_effects_to_be_changed].emitters[emitter_name] do
+                    if original_line_effects[new_line_effects].emitters[emitter_name][k].vfx then
+                        load_resource(original_line_effects[new_line_effects].emitters[emitter_name][k].vfx, function(loaded_package_name)
+                            PlayerLineEffects[line_effects_to_be_changed].emitters[emitter_name][k] = table_clone(original_line_effects[new_line_effects].emitters[emitter_name][k])
+                        end)
+                    -- Source does not have a #2, so fall back to 1
+                    elseif original_line_effects[new_line_effects].emitters[emitter_name][1].vfx then
+                        load_resource(original_line_effects[new_line_effects].emitters[emitter_name][1].vfx, function(loaded_package_name)
+                            PlayerLineEffects[line_effects_to_be_changed].emitters[emitter_name][k] = table_clone(original_line_effects[new_line_effects].emitters[emitter_name][1])
+                        end)
+                    -- No #1 for this type, so fall back to Default
+                    elseif original_line_effects[new_line_effects].emitters.default[1].vfx then
+                        load_resource(original_line_effects[new_line_effects].emitters.default[1].vfx, function(loaded_package_name)
+                            PlayerLineEffects[line_effects_to_be_changed].emitters[emitter_name][k] = table_clone(original_line_effects[new_line_effects].emitters.default[1])
+                        end)
+                    -- No default lol
+                    else
+                        echo_if_debug("Default Emitter has no VFX: "..new_line_effects)
+                        PlayerLineEffects[line_effects_to_be_changed].emitters[emitter_name] = nil
+                    end
+                end
+            else
+                PlayerLineEffects[line_effects_to_be_changed].emitters = nil
+            end
+        end
+        --[[
         -- Default
         if type(original_line_effects[new_line_effects].emitters.default) == "table" then
-            load_resource(original_line_effects[new_line_effects].emitters.default.vfx, function()
-                PlayerLineEffects[line_effects_to_be_changed].emitters.default = table_clone(original_line_effects[new_line_effects].emitters.default)
-            end)
-        end
-
+            if original_line_effects[new_line_effects].emitters.default.vfx then
+                --load_resource(original_line_effects[new_line_effects].emitters.default.vfx, function()
+                --    PlayerLineEffects[line_effects_to_be_changed].emitters.default = table_clone(original_line_effects[new_line_effects].emitters.default)
+                --end)
+                load_resource(original_line_effects[new_line_effects].emitters.default.vfx, function(loaded_package_name)
+                    PlayerLineEffects[line_effects_to_be_changed].emitters.default = table_clone(original_line_effects[new_line_effects].emitters.default)
+                    PlayerLineEffects[line_effects_to_be_changed].emitters.default.vfx = loaded_package_name
+                end)
+            else
+                echo_if_debug("Default Emitter has no VFX: "..new_line_effects)
+                PlayerLineEffects[line_effects_to_be_changed].emitters.default.vfx = nil
+            end
+        else
+            PlayerLineEffects[line_effects_to_be_changed].emitters.default = nil
+        end]]
+--[[
         -- Critical Strike
         if type(original_line_effects[new_line_effects].emitters.critical_strike) == "table" then
-            load_resource(original_line_effects[new_line_effects].emitters.critical_strike.vfx, function()
+            load_resource(original_line_effects[new_line_effects].emitters.critical_strike.vfx, function(loaded_package_name)
                 PlayerLineEffects[line_effects_to_be_changed].emitters.critical_strike = table_clone(original_line_effects[new_line_effects].emitters.critical_strike)
+                PlayerLineEffects[line_effects_to_be_changed].emitters.critical_strike = loaded_package_name
             end)
         --  Fall back to default line effect. It crashes without this.
         else
-            load_resource(original_line_effects[new_line_effects].emitters.default.vfx, function()
+            load_resource(original_line_effects[new_line_effects].emitters.default.vfx, function(loaded_package_name)
                 PlayerLineEffects[line_effects_to_be_changed].emitters.critical_strike = table_clone(original_line_effects[new_line_effects].emitters.default)
+                PlayerLineEffects[line_effects_to_be_changed].emitters.critical_strike = loaded_package_name
             end)
-        end
+        end]]
     else
         PlayerLineEffects[line_effects_to_be_changed].emitters = nil
     end
-    
+    notify_if_debug("Changing line effect done")
 end
 
 -- ####################################################################################
@@ -329,7 +403,7 @@ local function update_melee_sound_effects(weapon_to_be_changed)
                 PlayerCharacterSoundEventAliases[table_name].events[weapon_to_be_changed] = loaded_package_name
             end)
         else
-            if debug_mode_enabled then mod:echo("Sound effect for "..new_weapon.." is fucked when adding to "..weapon_to_be_changed) end
+            echo_if_debug("Swing Table: "..table_name.."\nSound effect for "..new_weapon.." is fucked when adding to "..weapon_to_be_changed)
         end
     end
 end
