@@ -2,6 +2,10 @@
 ### Changed
 ### Added
 - Add option to not scale down Sniper trail
+### Fixed
+- Fix trails not changing
+    - The format of the line effects were changed in the latest update
+    - `emitters` and `emitters_crit` were merged into one `emitters` table, now under the `default` and `critical_strike` keys, respectively
 
 # 1.11.1 - 2026-06-28
 

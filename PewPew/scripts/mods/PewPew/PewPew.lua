@@ -177,15 +177,20 @@ local function update_line_effects(line_effects_to_be_changed)
     if type(original_line_effects[new_line_effects].emitters) == "table" then
         -- Default
         if type(original_line_effects[new_line_effects].emitters.default) == "table" then
-            load_resource(original_line_effects[new_line_effects].emitters.default.vfx, function (loaded_package_name)
+            load_resource(original_line_effects[new_line_effects].emitters.default.vfx, function()
                 PlayerLineEffects[line_effects_to_be_changed].emitters.default = table_clone(original_line_effects[new_line_effects].emitters.default)
             end)
         end
 
         -- Critical Strike
         if type(original_line_effects[new_line_effects].emitters.critical_strike) == "table" then
-            load_resource(original_line_effects[new_line_effects].emitters.critical_strike.vfx, function (loaded_package_name)
+            load_resource(original_line_effects[new_line_effects].emitters.critical_strike.vfx, function()
                 PlayerLineEffects[line_effects_to_be_changed].emitters.critical_strike = table_clone(original_line_effects[new_line_effects].emitters.critical_strike)
+            end)
+        --  Fall back to default
+        else
+            load_resource(original_line_effects[new_line_effects].emitters.default.vfx, function()
+                PlayerLineEffects[line_effects_to_be_changed].emitters.critical_strike = table_clone(original_line_effects[new_line_effects].emitters.default)
             end)
         end
     else
