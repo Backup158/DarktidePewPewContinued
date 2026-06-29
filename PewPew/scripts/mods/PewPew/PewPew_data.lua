@@ -420,7 +420,7 @@ return {
 					{
 						setting_id = "line_effects_override_fallback_vfx",
 						type = "checkbox",
-						default_value = true,
+						default_value = false,
 					},
 					{
 						setting_id = "line_effects_choices_player",
