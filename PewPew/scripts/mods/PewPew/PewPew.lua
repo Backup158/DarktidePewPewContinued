@@ -153,7 +153,7 @@ local function update_line_effects(line_effects_to_be_changed)
     end
     ]]
     if new_line_string == "empty_line_effect" then
-        if debug_mode_enabled then mod:echo(new_line_string.." is empty (keep orig)") end
+        echo_if_debug(new_line_string.." is empty (keep orig)")
         
         PlayerLineEffects[line_effects_to_be_changed].vfx_width = 0.001
         return
@@ -168,7 +168,7 @@ local function update_line_effects(line_effects_to_be_changed)
         --  Making an exception for scab sniper width, because that shit is literally 50 times bigger than the normal width lmfao
         --  Instead, it will use the original width at the default value
         if new_line_effects == "renegade_sniper_lasbeam" and mod:get("line_effects_override_renegade_sniper_lasbeam_width") then
-            if debug_mode_enabled then mod:echo(new_line_string.." is player") end
+            echo_if_debug(new_line_string.." is player")
             PlayerLineEffects[line_effects_to_be_changed].vfx_width = original_player_line_effects[line_effects_to_be_changed].vfx_width
             -- PlayerLineEffects[line_effects_to_be_changed].vfx_width = nil -- Intentionally making it blank
         else
@@ -356,7 +356,7 @@ local function update_special_shot_sound_effects(weapon_to_be_changed)
     if original_PCSEA_ranged_effects.ranged_single_shot_special_extra.events[new_weapon_sounds] then
         PlayerCharacterSoundEventAliases.ranged_single_shot_special_extra.events[weapon_to_be_changed] = original_PCSEA_ranged_effects.ranged_single_shot_special_extra
     else
-        if debug_mode_enabled then mod:echo("Sound effect for "..new_weapon_sounds.." is fucked when adding to "..weapon_to_be_changed) end
+        echo_if_debug("Sound effect for "..new_weapon_sounds.." is fucked when adding to "..weapon_to_be_changed)
     end
     ]]
 end
