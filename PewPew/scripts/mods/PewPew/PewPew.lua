@@ -215,12 +215,12 @@ local function update_line_effects(line_effects_to_be_changed)
                 local original_emitter_tables_group = original_line_effects[new_line_effects].emitters[emitter_name]
                 -- Replace each destination with the associated source
                 for k = 1, #PlayerLineEffects[line_effects_to_be_changed].emitters[emitter_name] do
-                    if original_line_effects[new_line_effects].emitters[emitter_name][k].vfx then
+                    if original_line_effects[new_line_effects].emitters[emitter_name][k] and original_line_effects[new_line_effects].emitters[emitter_name][k].vfx then
                         load_resource(original_line_effects[new_line_effects].emitters[emitter_name][k].vfx, function(loaded_package_name)
                             PlayerLineEffects[line_effects_to_be_changed].emitters[emitter_name][k] = table_clone(original_line_effects[new_line_effects].emitters[emitter_name][k])
                         end)
                     -- Source does not have a #2, so fall back to 1
-                    elseif original_line_effects[new_line_effects].emitters[emitter_name][1].vfx then
+                    elseif original_line_effects[new_line_effects].emitters[emitter_name][1] and original_line_effects[new_line_effects].emitters[emitter_name][1].vfx then
                         load_resource(original_line_effects[new_line_effects].emitters[emitter_name][1].vfx, function(loaded_package_name)
                             PlayerLineEffects[line_effects_to_be_changed].emitters[emitter_name][k] = table_clone(original_line_effects[new_line_effects].emitters[emitter_name][1])
                         end)
