@@ -210,11 +210,13 @@ local function update_line_effects(line_effects_to_be_changed)
         local emitter_types = {"default", "critical_strike"}
         for i = 1, #emitter_types do
             local emitter_name = emitter_types[i]
-            if type(original_line_effects[new_line_effects].emitters[emitter_name]) == "table" then
+            -- First, check if destination exists. Source check is done inside
+            if type(PlayerLineEffects[line_effects_to_be_changed].emitters[emitter_name]) == "table" then
                 -- Each emitter type is a table of tables, with each of the inside tables containing the vfx
                 -- Replace each destination with the associated source
                 for k = 1, #PlayerLineEffects[line_effects_to_be_changed].emitters[emitter_name] do
                     echo_if_debug("Checking Emitter: "..emitter_name.."; "..tostring(k))
+                    -- Only add sources if they exist
                     if original_line_effects[new_line_effects].emitters[emitter_name][k] and original_line_effects[new_line_effects].emitters[emitter_name][k].vfx then
                         load_resource(original_line_effects[new_line_effects].emitters[emitter_name][k].vfx, function(loaded_package_name)
                             PlayerLineEffects[line_effects_to_be_changed].emitters[emitter_name][k] = table_clone(original_line_effects[new_line_effects].emitters[emitter_name][k])
