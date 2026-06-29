@@ -12,6 +12,7 @@ local mod = get_mod("PewPew")
 -- ####################################################################################
 mod.version = "1.12.2"
 local debug_mode_enabled
+local use_line_effect_fallback
 
 local MINION_LINE_EFFECTS = mod.MINION_LINE_EFFECTS
 local table_contains_text = mod.table_contains_text
@@ -387,6 +388,7 @@ end
 -- ####################################################################################
 mod.on_all_mods_loaded = function (setting_id)
     debug_mode_enabled = mod:get("enable_debug_mode")
+    use_line_effect_fallback = mod:get("line_effects_override_fallback_vfx")
     mod:info('PewPewPew v' .. mod.version .. ' loaded uwu nya :3')
     
     for i = 1, #line_effects_widgets do
@@ -408,6 +410,7 @@ end
 
 mod.on_setting_changed = function (setting_id)
     debug_mode_enabled = mod:get("enable_debug_mode")
+    use_line_effect_fallback = mod:get("line_effects_override_fallback_vfx")
 
     if table_find_by_key(line_effects_widgets, "setting_id", setting_id) then
         update_line_effects(setting_id)

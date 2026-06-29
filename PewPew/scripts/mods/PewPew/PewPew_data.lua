@@ -418,6 +418,11 @@ return {
 						default_value = true,
 					},
 					{
+						setting_id = "line_effects_override_fallback_vfx",
+						type = "checkbox",
+						default_value = true,
+					},
+					{
 						setting_id = "line_effects_choices_player",
 						type = "group",
 						sub_widgets = line_effects_widgets.player

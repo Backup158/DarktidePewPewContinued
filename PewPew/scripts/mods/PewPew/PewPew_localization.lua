@@ -85,6 +85,8 @@ local localizations = {
 	line_effects_choices_minion = { en="Change Visual Effects - Minion" },
 	line_effects_override_renegade_sniper_lasbeam_width = { en="Override Scab Sniper Las Beam Width" },
 	line_effects_override_renegade_sniper_lasbeam_width_description = { en="The Scab Sniper Las Beam is incredibly large. When aiming down sights, it will blind you. Instead of its actual size, it now uses the size from the line effect that's being replaced." },
+	line_effects_override_fallback_vfx = { en="Line Effect Fallback" },
+	line_effects_override_fallback_vfx_description = { en="When the new line effect does not have an effect for the given situation (such as critical hits), fall back to using the original line effect's vfx." },
 	sound_effects_id = { en="Fully Automatic Fire SFX" },
 	single_shot_sound_effects_id = { en="Single Shot SFX" },
 	special_shot_sound_effects_id = { en="Special Shot Extra SFX" },
