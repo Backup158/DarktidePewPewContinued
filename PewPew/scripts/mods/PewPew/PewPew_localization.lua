@@ -83,7 +83,7 @@ local localizations = {
 	line_effects_id = { en="Visual Effects" },
 	line_effects_choices = { en="Change Player Visual Effects" },
 	line_effects_override_renegade_sniper_lasbeam_width = { en="Override Scab Sniper Las Beam Width" },
-	line_effects_override_renegade_sniper_lasbeam_width_description = { en="The Scab Sniper Las Beam is incredibly large. When aiming down sights, it will blind you. This setting makes it use a smaller size instead of its actual size." },
+	line_effects_override_renegade_sniper_lasbeam_width_description = { en="The Scab Sniper Las Beam is incredibly large. When aiming down sights, it will blind you. Instead of its actual size, it uses the size from the line effect that's being replaced." },
 	sound_effects_id = { en="Fully Automatic Fire SFX" },
 	single_shot_sound_effects_id = { en="Single Shot SFX" },
 	special_shot_sound_effects_id = { en="Special Shot Extra SFX" },
