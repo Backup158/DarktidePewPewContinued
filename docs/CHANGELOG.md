@@ -2,6 +2,7 @@
 ### Changed
 ### Added
 - Add option to not scale down Sniper trail
+### Removed
 ### Fixed
 - Fix trails not changing
     - The format of the line effects were changed in the latest update
