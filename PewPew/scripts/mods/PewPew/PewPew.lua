@@ -47,6 +47,7 @@ local original_PCSEA_melee_effects = mod.original_PCSEA_melee_effects
 
 -- Widget Data
 local line_effects_widgets = mod.line_effects_widgets
+local minion_line_effects_widgets = mod.minion_line_effects_widgets
 local sound_effects_widgets = mod.sound_effects_widgets
 local single_shot_sound_effects_widgets = mod.single_shot_sound_effects_widgets
 local special_shot_sound_effects_widgets = mod.special_shot_sound_effects_widgets

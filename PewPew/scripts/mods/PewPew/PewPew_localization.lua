@@ -81,7 +81,8 @@ local localizations = {
 	enable_debug_mode_description = { en = "Enables verbose logging for trail effect", },
 
 	line_effects_id = { en="Visual Effects" },
-	line_effects_choices = { en="Change Player Visual Effects" },
+	line_effects_choices_player = { en="Change Visual Effects - Player" },
+	line_effects_choices_minion = { en="Change Visual Effects - Minion" },
 	line_effects_override_renegade_sniper_lasbeam_width = { en="Override Scab Sniper Las Beam Width" },
 	line_effects_override_renegade_sniper_lasbeam_width_description = { en="The Scab Sniper Las Beam is incredibly large. When aiming down sights, it will blind you. Instead of its actual size, it now uses the size from the line effect that's being replaced." },
 	sound_effects_id = { en="Fully Automatic Fire SFX" },
