@@ -4,18 +4,58 @@
 This mod is a replacer plugin for the old PewPew. I have kept the core functionality the same and simply added missing options from game updates.
 
 New Features
-
-    Support for:
-        Kantrael Mk X Heavy Laspistol (Traitor's Curse)
-        Agripinaa Mk XIV Quickdraw Stub Revolver (Traitor's Curse)
-        Godwyn-Branx Mk IV Bolt Pistol (Secrets of the Machine God)
-        Crucis Mk XI Double-Barrelled Shotgun (Secrets of the Machine God)
-        Krourk Mk IIa/Gorgonum Mk IIIa/Achlys Mk II Ogryn Heavy Stubber (Grim Protocols)
-    Looping sounds from Force Greatswords (Grim Protocols)
-    Localization
-        Updated to use names from Unlocked and Loaded (If you don't like this, I made a mod for that﻿﻿)
-        Renamed options to be read from a player's perspective instead of through the code's perspective
-        e.g. lasbeam bfg --> Lasbeam: Helbore (Fully Charged)
+- Support for:
+    - Traitor's Curse
+        - Kantrael Mk X Heavy Laspistol
+        - Agripinaa Mk XIV Quickdraw Stub Revolver
+    - Secrets of the Machine God
+        - Godwyn-Branx Mk IV Bolt Pistol
+        - Crucis Mk XI Double-Barrelled Shotgun
+    - Grim Protocols
+        - Krourk Mk IIa/Gorgonum Mk IIIa/Achlys Mk II Ogryn Heavy Stubber
+    - The Battle for Tertium - Arbitrator
+        - Exaction Mk III/Exaction Mk VIII Exterminator Shotgun
+        - Judgement Mk IV Subductor Shotpistol and Riot Shield
+    - Bound by Duty
+        - Godwyn-Branx Mk VI Bolt Pistol
+        - Locke Mk III Spearhead Boltgun
+    - No Man's Land - Hive Scum
+        - Branx MkIII Dual Autopistols 
+        - Branx MkVIII Dual Stub Pistols
+        - Branx MKII Needle Pistol
+        - Branx MKVI Needle Pistol
+        - Chirurgeon's Mk IV Bone Saw
+        - Enginseer's Mk VI Crowbar
+        - Improvised Mk I Shivs
+        - Improvised Mk III Shivs
+        - Missile Launcher Blitz
+    - Skitarii Update (1.12.0)
+        - M35 Magnacore Mk III Plasma Gun
+        - Branx Mk III Arc Maul
+        - Branx Mk VI Mechanicus Power Sword
+        - Branx Mk XI Paired Transonic Blades
+        - Branx Mk IV Arc Rifle
+        - Branx Mk CV Galvanic Rifle
+        - Branx Mk XI Phosphor Blast Pistol
+- Looping sounds from Force Greatswords (Grim Protocols)
+- Option to use Silence for ranged weapons
+- Options to swap Ranged Special Shot Extra sound effects
+- Options to swap Melee Weapon sound effects
+- Supports new line effects (weapon trails):
+    - Options to use Minion Weapon Trails
+        - Enemy weapon trails
+        - Skitarii Servo Skull lasbeam
+    - No Man's Land - Hive Scum
+        - Stub Pistol Bullet
+        - Needle Trail
+    - Skitarii
+        - Arc Beam
+        - Galvanic Beam
+        - Phosphor Beam
+- Localization
+    - Updated to use names from Unlocked and Loaded (If you don't like this, I made a mod for that﻿﻿)
+    - Renamed options to be read from a player's perspective instead of through the code's perspective
+    - e.g. lasbeam bfg --> Lasbeam: Helbore (Fully Charged)
 
 
 # Installation
