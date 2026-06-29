@@ -217,12 +217,12 @@ local function update_line_effects(line_effects_to_be_changed)
                 for k = 1, #PlayerLineEffects[line_effects_to_be_changed].emitters[emitter_name] do
                     echo_if_debug("Checking Emitter: "..emitter_name.."; "..tostring(k))
                     --  Source exists
-                    if original_line_effects[new_line_effects].emitters[emitter_name][k] and original_line_effects[new_line_effects].emitters[emitter_name][k].vfx then
+                    if original_line_effects[new_line_effects].emitters[emitter_name] and original_line_effects[new_line_effects].emitters[emitter_name][k] and original_line_effects[new_line_effects].emitters[emitter_name][k].vfx then
                         load_resource(original_line_effects[new_line_effects].emitters[emitter_name][k].vfx, function(loaded_package_name)
                             PlayerLineEffects[line_effects_to_be_changed].emitters[emitter_name][k] = table_clone(original_line_effects[new_line_effects].emitters[emitter_name][k])
                         end)
                     --  Source does not have a #2, so fall back to 1
-                    elseif original_line_effects[new_line_effects].emitters[emitter_name][1] and original_line_effects[new_line_effects].emitters[emitter_name][1].vfx then
+                    elseif original_line_effects[new_line_effects].emitters[emitter_name] and original_line_effects[new_line_effects].emitters[emitter_name][1] and original_line_effects[new_line_effects].emitters[emitter_name][1].vfx then
                         load_resource(original_line_effects[new_line_effects].emitters[emitter_name][1].vfx, function(loaded_package_name)
                             PlayerLineEffects[line_effects_to_be_changed].emitters[emitter_name][k] = table_clone(original_line_effects[new_line_effects].emitters[emitter_name][1])
                         end)
