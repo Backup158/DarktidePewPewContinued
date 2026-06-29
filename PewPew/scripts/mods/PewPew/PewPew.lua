@@ -204,9 +204,16 @@ local function update_line_effects(line_effects_to_be_changed)
     end
     --  Emitters
     if type(original_line_effects[new_line_effects].emitters) == "table" then
+        if not PlayerLineEffects[line_effects_to_be_changed].emitters then
+            PlayerLineEffects[line_effects_to_be_changed].emitters = {}
+        end
         local emitter_types = {"default", "critical_strike"}
         for i = 1, #emitter_types do
             local emitter_name = emitter_types[i]
+            if not PlayerLineEffects[line_effects_to_be_changed].emitters[emitter_name] then
+                PlayerLineEffects[line_effects_to_be_changed].emitters[emitter_name] = {}
+            end
+            
             if type(original_line_effects[new_line_effects].emitters[emitter_name]) == "table" then
                 -- Each emitter type is a table of tables, with each of the inside tables containing the vfx
                 local original_emitter_tables_group = original_line_effects[new_line_effects].emitters[emitter_name]
@@ -222,14 +229,14 @@ local function update_line_effects(line_effects_to_be_changed)
                             PlayerLineEffects[line_effects_to_be_changed].emitters[emitter_name][k] = table_clone(original_line_effects[new_line_effects].emitters[emitter_name][1])
                         end)
                     -- No #1 for this type, so fall back to Default
-                    elseif original_line_effects[new_line_effects].emitters.default[1].vfx then
+                    elseif original_line_effects[new_line_effects].emitters.default and original_line_effects[new_line_effects].emitters.default[1] and original_line_effects[new_line_effects].emitters.default[1].vfx then
                         load_resource(original_line_effects[new_line_effects].emitters.default[1].vfx, function(loaded_package_name)
                             PlayerLineEffects[line_effects_to_be_changed].emitters[emitter_name][k] = table_clone(original_line_effects[new_line_effects].emitters.default[1])
                         end)
                     -- No default lol
                     else
                         echo_if_debug("Default Emitter has no VFX: "..new_line_effects)
-                        PlayerLineEffects[line_effects_to_be_changed].emitters[emitter_name] = nil
+                        PlayerLineEffects[line_effects_to_be_changed].emitters[emitter_name][k] = nil
                     end
                 end
             else
