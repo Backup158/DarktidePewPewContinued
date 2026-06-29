@@ -45,8 +45,10 @@ local PlayerCharacterSoundEventAliases = require("scripts/settings/sound/player_
 -- Copy Line Effects
 local original_player_line_effects = table_clone(PlayerLineEffects)
 local original_minion_line_effects = table_clone(MinionLineEffects)
---table.dump(original_player_line_effects, "ORIGINAL PLAYER LINE EFFECTS OWO NOTICES BULGE", 20)
---table.dump(original_minion_line_effects, "ORIGINAL MINION LINE EFFECTS OWO NOTICES BULGE", 20)
+if debug_mode_enabled then
+    table.dump(original_player_line_effects, "ORIGINAL PLAYER LINE EFFECTS OWO NOTICES BULGE", 20)
+    table.dump(original_minion_line_effects, "ORIGINAL MINION LINE EFFECTS OWO NOTICES BULGE", 20)
+end
 -- Copy Sound Effects
 mod:io_dofile("PewPew/scripts/mods/PewPew/PewPew_weapon_tables")
 mod:io_dofile("PewPew/scripts/mods/PewPew/PewPew_copied_data")
@@ -247,6 +249,7 @@ local function update_line_effects(line_effects_to_be_changed)
         PlayerLineEffects[line_effects_to_be_changed].emitters = nil
     end
     notify_if_debug("Changing line effect done")
+    if debug_mode_enabled then table.dump(PlayerLineEffects[line_effects_to_be_changed], "After changing line effect. owo notices bulge.", 20) end
 end
 
 -- ####################################################################################
