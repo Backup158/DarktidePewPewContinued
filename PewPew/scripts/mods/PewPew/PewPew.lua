@@ -187,7 +187,7 @@ local function update_line_effects(line_effects_to_be_changed)
             load_resource(original_line_effects[new_line_effects].emitters.critical_strike.vfx, function()
                 PlayerLineEffects[line_effects_to_be_changed].emitters.critical_strike = table_clone(original_line_effects[new_line_effects].emitters.critical_strike)
             end)
-        --  Fall back to default
+        --  Fall back to default line effect. It crashes without this.
         else
             load_resource(original_line_effects[new_line_effects].emitters.default.vfx, function()
                 PlayerLineEffects[line_effects_to_be_changed].emitters.critical_strike = table_clone(original_line_effects[new_line_effects].emitters.default)
