@@ -10,7 +10,7 @@ local mod = get_mod("PewPew")
 -- ####################################################################################
 -- Data
 -- ####################################################################################
-mod.version = "1.12.1"
+mod.version = "1.12.2"
 local debug_mode_enabled
 
 local MINION_LINE_EFFECTS = mod.MINION_LINE_EFFECTS
