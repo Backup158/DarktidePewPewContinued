@@ -375,7 +375,7 @@ local function update_melee_sound_effects(weapon_to_be_changed)
                 PlayerCharacterSoundEventAliases[table_name].events[weapon_to_be_changed] = loaded_package_name
             end)
         else
-            echo_if_debug("Swing Table: "..table_name.."\nSound effect for "..new_weapon.." is fucked when adding to "..weapon_to_be_changed)
+            echo_if_debug("Missing Swing Table: "..table_name.."; For "..new_weapon.." when adding to "..weapon_to_be_changed)
         end
     end
 end
