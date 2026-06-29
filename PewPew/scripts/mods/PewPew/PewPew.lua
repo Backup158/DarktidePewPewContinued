@@ -239,38 +239,6 @@ local function update_line_effects(line_effects_to_be_changed)
                 PlayerLineEffects[line_effects_to_be_changed].emitters[emitter_name] = nil
             end
         end
-        --[[
-        -- Default
-        if type(original_line_effects[new_line_effects].emitters.default) == "table" then
-            if original_line_effects[new_line_effects].emitters.default.vfx then
-                --load_resource(original_line_effects[new_line_effects].emitters.default.vfx, function()
-                --    PlayerLineEffects[line_effects_to_be_changed].emitters.default = table_clone(original_line_effects[new_line_effects].emitters.default)
-                --end)
-                load_resource(original_line_effects[new_line_effects].emitters.default.vfx, function(loaded_package_name)
-                    PlayerLineEffects[line_effects_to_be_changed].emitters.default = table_clone(original_line_effects[new_line_effects].emitters.default)
-                    PlayerLineEffects[line_effects_to_be_changed].emitters.default.vfx = loaded_package_name
-                end)
-            else
-                echo_if_debug("Default Emitter has no VFX: "..new_line_effects)
-                PlayerLineEffects[line_effects_to_be_changed].emitters.default.vfx = nil
-            end
-        else
-            PlayerLineEffects[line_effects_to_be_changed].emitters.default = nil
-        end]]
---[[
-        -- Critical Strike
-        if type(original_line_effects[new_line_effects].emitters.critical_strike) == "table" then
-            load_resource(original_line_effects[new_line_effects].emitters.critical_strike.vfx, function(loaded_package_name)
-                PlayerLineEffects[line_effects_to_be_changed].emitters.critical_strike = table_clone(original_line_effects[new_line_effects].emitters.critical_strike)
-                PlayerLineEffects[line_effects_to_be_changed].emitters.critical_strike = loaded_package_name
-            end)
-        --  Fall back to default line effect. It crashes without this.
-        else
-            load_resource(original_line_effects[new_line_effects].emitters.default.vfx, function(loaded_package_name)
-                PlayerLineEffects[line_effects_to_be_changed].emitters.critical_strike = table_clone(original_line_effects[new_line_effects].emitters.default)
-                PlayerLineEffects[line_effects_to_be_changed].emitters.critical_strike = loaded_package_name
-            end)
-        end]]
     else
         echo_if_debug("Source line effect has no Emitters: "..new_line_effects)
         PlayerLineEffects[line_effects_to_be_changed].emitters = nil
