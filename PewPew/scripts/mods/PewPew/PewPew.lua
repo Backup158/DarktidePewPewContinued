@@ -222,7 +222,7 @@ local function update_line_effects(line_effects_to_be_changed)
             if type(PlayerLineEffects[line_effects_to_be_changed].emitters[emitter_name]) == "table" then
                 -- Each emitter type is a table of tables, with each of the inside tables containing the vfx
                 -- Replace each destination with the associated source, with fallbacks
-                for k = 1, #PlayerLineEffects[line_effects_to_be_changed].emitters[emitter_name] do
+                for k = 1, #original_line_effects[new_line_effects].emitters[emitter_name] do
                     echo_if_debug("Checking Emitter: "..emitter_name.."; "..tostring(k))
                     --  Source exists
                     if original_line_effects[new_line_effects].emitters[emitter_name] and original_line_effects[new_line_effects].emitters[emitter_name][k] and original_line_effects[new_line_effects].emitters[emitter_name][k].vfx then
