@@ -1,4 +1,4 @@
-# 1.12.2 - 2026-06-29
+# 1.13.0 - 2026-06-29
 ### Changed
 - Update line effect logic to account for additional effects
     - E.g. Lasbeam to be replaced by Arc Beam. Default lasbeam emitter only has 1 entry. With the old logic, it would only copy the first arc beam effect, so it only shows the smoke. Now, it copies all 3.
