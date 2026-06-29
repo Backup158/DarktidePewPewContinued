@@ -1,8 +1,16 @@
 # 1.12.2 - 2026-06-29
 ### Changed
+- Update line effect logic to account for additional effects
+    - E.g. Lasbeam to be replaced by Arc Beam. Default lasbeam emitter only has 1 entry. With the old logic, it would only copy the first arc beam effect, so it only shows the smoke. Now, it copies all 3.
+- Line effect does not use fallbacks to original by default, allowing for nil
+    - Before, it would also default to using the original line
+    - This left lasbeams when changing to some effects, for example
+    - When this is disabled, those will not be removed
 ### Added
+- Option to enable line effect fallback, defaulting to false
 ### Removed
 ### Fixed
+- Line effects not being removed when changing effects. See the line effect fallback changes
 
 # 1.12.1 - 2026-06-29
 ### Changed
