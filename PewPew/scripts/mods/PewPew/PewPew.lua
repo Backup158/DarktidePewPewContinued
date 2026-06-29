@@ -190,10 +190,15 @@ local function update_line_effects(line_effects_to_be_changed)
                 PlayerLineEffects[line_effects_to_be_changed][effect_key] = loaded_package_name
             end)
         else 
-            if PlayerLineEffects[line_effects_to_be_changed][effect_key] then
-                PlayerLineEffects[line_effects_to_be_changed][effect_key] = original_player_line_effects[line_effects_to_be_changed][effect_key]
+            -- Falling back to Original
+            if use_line_effect_fallback then
+                if PlayerLineEffects[line_effects_to_be_changed][effect_key] then
+                    PlayerLineEffects[line_effects_to_be_changed][effect_key] = original_player_line_effects[line_effects_to_be_changed][effect_key]
+                else
+                    info_if_debug("Line Effect missing key: "..line_effects_to_be_changed.."; "..effect_key)
+                end
             else
-                info_if_debug("Line Effect missing key: "..line_effects_to_be_changed.."; "..effect_key)
+                PlayerLineEffects[line_effects_to_be_changed][effect_key] = nil
             end
         end
     end
