@@ -53,6 +53,9 @@ local add_effect_from_original_if_not_found = mod.add_effect_from_original_if_no
 -- ############################################
 mod.weapon_name_prefixes = {
 	special = "SPECIAL_SHOT_",
+	ranged_auto = "RANGED_AUTO_",
+	ranged_single = "RANGED_SINGLE_",
+	melee = "MELEE_",
 }
 
 mod.MINION_LINE_EFFECTS = {
