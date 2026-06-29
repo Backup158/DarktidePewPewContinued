@@ -4,7 +4,7 @@
 This mod is a replacer plugin for the old PewPew. I have kept the core functionality the same and simply added missing options from game updates.
 
 New Features
-- Support for:
+- Supports new weapons:
     - Traitor's Curse
         - Kantrael Mk X Heavy Laspistol
         - Agripinaa Mk XIV Quickdraw Stub Revolver
@@ -37,13 +37,9 @@ New Features
         - Branx Mk IV Arc Rifle
         - Branx Mk CV Galvanic Rifle
         - Branx Mk XI Phosphor Blast Pistol
-- Looping sounds from Force Greatswords (Grim Protocols)
-- Option to use Silence for ranged weapons
-- Options to swap Ranged Special Shot Extra sound effects
-- Options to swap Melee Weapon sound effects
 - Supports new line effects (weapon trails):
     - Options to use Minion Weapon Trails
-        - Enemy weapon trails
+        - Enemy weapon trails, with an override for the sniper beam to make it usable in first person
         - Skitarii Servo Skull lasbeam
     - No Man's Land - Hive Scum
         - Stub Pistol Bullet
@@ -52,6 +48,11 @@ New Features
         - Arc Beam
         - Galvanic Beam
         - Phosphor Beam
+- Added looping sounds from Force Greatswords (Grim Protocols)
+- Option to use Silence for ranged weapons
+- Options to swap Ranged Special Shot Extra sound effects
+- Options to swap Melee Weapon sound effects
+- Option to override weapon trails sticking to the barrel.
 - Localization
     - Updated to use names from Unlocked and Loaded (If you don't like this, I made a mod for that﻿﻿)
     - Renamed options to be read from a player's perspective instead of through the code's perspective
@@ -68,9 +69,13 @@ If you have an existing copy of PewPew, overwrite it with this one. Your setting
 
 I think that's just how the visual effects are drawn since the original weapons don't have much recoil. Don't know if there's anything I can do about that. If you don't know what I mean, look at what happens if you hipfire a boltpistol using a plasma beam.
 
+You can now force detach the beam using the mod option: Override Beam Linking --> Override: Detach Beam
+
 **Why don't the trails don't line up with my gun when I move and shoot?**
 
 This is Vanilla Darktide behavior. This effect is most noticeable with trails such as the Shotgun Slug and Plasma Beam. These are slow, single-shot weapons, so you don't normally notice this in gameplay; however, putting these effects on automatic firearms makes it very apparent.
+
+You can now force attach the beam using the mod option: Override Beam Linking --> Override: Beam Sticks to Muzzle
 
 **Why can't I change shotgun trails?**
 
