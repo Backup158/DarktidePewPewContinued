@@ -210,10 +210,6 @@ local function update_line_effects(line_effects_to_be_changed)
         local emitter_types = {"default", "critical_strike"}
         for i = 1, #emitter_types do
             local emitter_name = emitter_types[i]
-            if not PlayerLineEffects[line_effects_to_be_changed].emitters[emitter_name] then
-                PlayerLineEffects[line_effects_to_be_changed].emitters[emitter_name] = {}
-            end
-            
             if type(original_line_effects[new_line_effects].emitters[emitter_name]) == "table" then
                 -- Each emitter type is a table of tables, with each of the inside tables containing the vfx
                 local original_emitter_tables_group = original_line_effects[new_line_effects].emitters[emitter_name]
