@@ -81,7 +81,7 @@ You can now force attach the beam using the mod option: Override Beam Linking --
 
 TL;DR the way shotgun vfx are coded, the trails are not something editable by this mod
 
-PewPew operates by grabbing line_effects from a file that contains all player-related line_effects. In each weapon template (which I don't think is editable since it contains values such as ammo used per shot), the weapon calls a line_effect. This is why when you change 'Autogun Bullet' it applies to a bunch of weapons; they all call autogun_bullet from line_effect. However, shotguns just don't have this. pellet_trail isn't used anywhere in the code besides where it's defined. Shotguns still have regular bullet fx that show up when every gun is shoot, but they lack the line_effect specifically. Could be because of how Darktide handles multiple pellets, but that's just speculation.
+PewPew operates by grabbing line_effects from a file that contains all player-related line_effects. In each weapon template (which isn't editable since it contains values such as ammo used per shot), the weapon calls a `line_effect`. This is why when you change 'Autogun Bullet' it applies to a bunch of weapons; they all call `autogun_bullet` for `line_effect`. However, shotguns just don't have this. `pellet_trail` isn't used anywhere in the code besides where it's defined. Shotguns still have regular bullet fx that show up when every gun is shoot, but they lack the `line_effect` specifically. Could be because of how Darktide handles multiple pellets, but that's just speculation.
 
 **What the hell is Psyker 'Smite" supposed to be? Why are there two Smites?**
 
