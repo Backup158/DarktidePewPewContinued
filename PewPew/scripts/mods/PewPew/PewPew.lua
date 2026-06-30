@@ -13,7 +13,14 @@ local mod = get_mod("PewPew")
 mod.version = "1.15.0"
 local debug_mode_enabled
 local use_line_effect_fallback
+local use_line_effect_fallback_vfx_width
 local options_override_linking
+local settings_that_need_line_effects_refreshed = {
+    ["line_effects_override_renegade_sniper_lasbeam_width"] = true,
+    ["line_effects_override_linking"] = true,
+    ["line_effects_override_fallback_vfx"] = true,
+    ["line_effects_override_fallback_vfx_width"] = true,
+}
 
 local MINION_LINE_EFFECTS = mod.MINION_LINE_EFFECTS
 local table_contains_text = mod.table_contains_text
@@ -162,20 +169,28 @@ local function update_line_effects(line_effects_to_be_changed)
         return
     end
     
-    -- @Backup158: Assigning the new values
-    --  Values are taken from the local copy of the original line effects
-    --  If there is no new value, use the value from the default line effect
-    --      This is because enemy line effects don't have things such as width
-    --      If width is nil, the effect doesn't show up
+    -- Replacing VFX Width
+    --  if there's a vfx, it'll always replace
+    --  if there isn't, but 
     if original_line_effects[new_line_effects].vfx_width then
         --  Making an exception for scab sniper width, because that shit is literally 50 times bigger than the normal width lmfao
         --  Instead, it will use the original width at the default value
         if new_line_effects == "renegade_sniper_lasbeam" and mod:get("line_effects_override_renegade_sniper_lasbeam_width") then
-            echo_if_debug(new_line_string.." is player")
+            --echo_if_debug(new_line_string.." is player")
             PlayerLineEffects[line_effects_to_be_changed].vfx_width = original_player_line_effects[line_effects_to_be_changed].vfx_width
             -- PlayerLineEffects[line_effects_to_be_changed].vfx_width = nil -- Intentionally making it blank
         else
             PlayerLineEffects[line_effects_to_be_changed].vfx_width = original_line_effects[new_line_effects].vfx_width
+        end
+    else
+        -- At this point, we know vfx_width is nil
+        if use_line_effect_fallback_vfx_width then
+            -- Fallback to self
+            PlayerLineEffects[line_effects_to_be_changed].vfx_width = original_line_effects[line_effects_to_be_changed].vfx_width
+        else
+            -- No fallback
+            -- It has to be nil to reach this part of the code, so there's no need to do the table lookups
+            PlayerLineEffects[line_effects_to_be_changed].vfx_width = nil
         end
     end
     
@@ -405,16 +420,21 @@ end
 -- ####################################################################################
 -- Applying Mod Logic when the game runs
 -- ####################################################################################
-mod.on_all_mods_loaded = function (setting_id)
-    mod:info('PewPewPew v' .. mod.version .. ' loaded uwu nya :3')
-
+local function refresh_settings_cache()
     debug_mode_enabled = mod:get("enable_debug_mode")
     use_line_effect_fallback = mod:get("line_effects_override_fallback_vfx")
     options_override_linking = mod:get("line_effects_override_linking")
-    
+    use_line_effect_fallback_vfx_width = mod:get("line_effects_override_fallback_vfx_width")
+end
+
+local function update_all_line_effects()
     for i = 1, #line_effects_widgets do
         update_line_effects(line_effects_widgets[i].setting_id)
     end
+end
+
+local function update_all_effects()
+    update_all_line_effects()
     for i = 1, #sound_effects_widgets do
         update_ranged_automatic_sound_effects(sound_effects_widgets[i].setting_id)
     end
@@ -429,12 +449,20 @@ mod.on_all_mods_loaded = function (setting_id)
     end
 end
 
-mod.on_setting_changed = function (setting_id)
-    debug_mode_enabled = mod:get("enable_debug_mode")
-    use_line_effect_fallback = mod:get("line_effects_override_fallback_vfx")
-    options_override_linking = mod:get("line_effects_override_linking")
+mod.on_all_mods_loaded = function (setting_id)
+    mod:info('PewPewPew v' .. mod.version .. ' loaded uwu nya :3')
+    refresh_settings_cache()
+    
+    update_all_effects()
+end
 
-    if table_find_by_key(line_effects_widgets, "setting_id", setting_id) then
+mod.on_setting_changed = function (setting_id)
+    refresh_settings_cache()
+
+    -- Only updating the associated effect
+    if settings_that_need_line_effects_refreshed[setting_id] then
+        update_all_line_effects()
+    elseif table_find_by_key(line_effects_widgets, "setting_id", setting_id) then
         update_line_effects(setting_id)
     elseif table_find_by_key(sound_effects_widgets, "setting_id", setting_id) then
         update_ranged_automatic_sound_effects(setting_id)
