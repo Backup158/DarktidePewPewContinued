@@ -413,24 +413,41 @@ return {
 				type="group", 
 				sub_widgets= { 
 					{
-						setting_id = "line_effects_override_renegade_sniper_lasbeam_width",
-						type = "checkbox",
-						default_value = true,
+						setting_id = "line_effects_override_group",
+						type = "group",
+						sub_widgets = {
+							{
+								setting_id = "line_effects_override_renegade_sniper_lasbeam_width",
+								type = "checkbox",
+								default_value = true,
+							},
+							{
+								setting_id = "line_effects_override_linking",
+								type = "dropdown",
+								default_value = "default",
+								options = {
+									{ text = "line_effects_override_option_default", value = "default" },
+									{ text = "line_effects_override_option_on", value = "on" },
+									{ text = "line_effects_override_option_off", value = "off" },
+								},
+							},
+						}
 					},
 					{
-						setting_id = "line_effects_override_fallback_vfx",
-						type = "checkbox",
-						default_value = false,
-					},
-					{
-						setting_id = "line_effects_override_linking",
-						type = "dropdown",
-						default_value = "default",
-						options = {
-							{ text = "line_effects_override_option_default", value = "default" },
-							{ text = "line_effects_override_option_on", value = "on" },
-							{ text = "line_effects_override_option_off", value = "off" },
-						},
+						setting_id = "line_effects_override_fallback",
+						type = "group",
+						sub_widgets = {
+							{
+								setting_id = "line_effects_override_fallback_vfx",
+								type = "checkbox",
+								default_value = false,
+							},
+							{
+								setting_id = "line_effects_override_fallback_vfx_width",
+								type = "checkbox",
+								default_value = false,
+							},
+						}
 					},
 					{
 						setting_id = "line_effects_choices_player",
