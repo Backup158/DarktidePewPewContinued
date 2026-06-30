@@ -74,8 +74,8 @@ end
 -- Localizations
 -- ##############################
 local localizations = {
-	mod_title = { en="PewPew" },
-	mod_description = { en="Change ranged weapon sounds and projectile visual effects (Continued). PewPewPew! Also with options for melee weapons. SwishSwishSwish!" },
+	mod_title = { en="PewPew", },
+	mod_description = { en="Change ranged weapon sounds and projectile visual effects (Continued). PewPewPew! Also with options for melee weapons. SwishSwishSwish!", },
 
 	-- ######################
 	-- Widgets
@@ -83,70 +83,70 @@ local localizations = {
 	enable_debug_mode = { en = "Debug Mode", },
 	enable_debug_mode_description = { en = "Enables verbose logging for trail effect", },
 
-	line_effects_id = { en="Visual Effects" },
-	
-	line_effects_override_group = { en="Overrides" },
-	line_effects_override_renegade_sniper_lasbeam_width = { en="Override Scab Sniper Las Beam Width" },
-	line_effects_override_renegade_sniper_lasbeam_width_description = { en="The Scab Sniper Las Beam is incredibly large. When aiming down sights, it will blind you. Instead of its actual size, it now uses the size from the line effect that's being replaced." },
-	line_effects_override_linking = { en="Override Beam Linking" },
-	line_effects_override_linking_description = { en="The Link and Keep Aligned keys affect whether the trail stays linked to the barrel after shooting, making it move as the weapon moves. When turning your camera quickly, this makes the weapon beams appear at extreme angles.\nThis override chooses between keeping default behavior (copying whatever setting is there) and forcing it to a specific setting." },
-	line_effects_override_option_default = { en="Copy, Do Not Override" },
-	line_effects_override_option_on = { en="Override: Beam Sticks to Muzzle" },
-	line_effects_override_option_off = { en="Override: Detach Beam" },
-	
-	line_effects_override_fallback = { en="Line Effect Fallback" },
-	line_effects_override_fallback_description = { en="When the new line effect does not have an effect for the given situation (such as critical hits), fall back to using the original line effect's vfx.\nWhen this is Disabled, it will be set to use nothing, to match the new line effect." },
-	line_effects_override_fallback_vfx = { en="VFX Fallback" },
-	line_effects_override_fallback_vfx_width = { en="VFX Width Fallback" },
+	line_effects_id = { en="Visual Effects", },
 
-	line_effects_choices_player = { en="Change Visual Effects - Player" },
-	line_effects_choices_minion = { en="Change Visual Effects - Minion" },
-	sound_effects_id = { en="Fully Automatic Fire SFX" },
-	single_shot_sound_effects_id = { en="Single Shot SFX" },
-	special_shot_sound_effects_id = { en="Special Shot Extra SFX" },
-	special_shot_sound_effects_id_description = { en="When special ammo is used, these sounds are played on top of the original shooting sound." },
-	melee_swing_effects_id = { en="Melee Swing SFX" },
+	line_effects_override_group = { en="Overrides", },
+	line_effects_override_renegade_sniper_lasbeam_width = { en="Override Scab Sniper Las Beam Width", },
+	line_effects_override_renegade_sniper_lasbeam_width_description = { en="The Scab Sniper Las Beam is incredibly large. When aiming down sights, it will blind you. Instead of its actual size, it now uses the size from the line effect that's being replaced.", },
+	line_effects_override_linking = { en="Override Beam Linking", },
+	line_effects_override_linking_description = { en="The Link and Keep Aligned keys affect whether the trail stays linked to the barrel after shooting, making it move as the weapon moves. When turning your camera quickly, this makes the weapon beams appear at extreme angles.\nThis override chooses between keeping default behavior (copying whatever setting is there) and forcing it to a specific setting.", },
+	line_effects_override_option_default = { en="Copy, Do Not Override", },
+	line_effects_override_option_on = { en="Override: Beam Sticks to Muzzle", },
+	line_effects_override_option_off = { en="Override: Detach Beam", },
+	
+	line_effects_override_fallback = { en="Line Effect Fallback", },
+	line_effects_override_fallback_description = { en="When the new line effect does not have an effect for the given situation (such as critical hits), fall back to using the original line effect's vfx.\nWhen this is Disabled, it will be set to use nothing, to match the new line effect.", },
+	line_effects_override_fallback_vfx = { en="VFX Fallback", },
+	line_effects_override_fallback_vfx_width = { en="VFX Width Fallback", },
+
+	line_effects_choices_player = { en="Change Visual Effects - Player", },
+	line_effects_choices_minion = { en="Change Visual Effects - Minion", },
+	sound_effects_id = { en="Fully Automatic Fire SFX", },
+	single_shot_sound_effects_id = { en="Single Shot SFX", },
+	special_shot_sound_effects_id = { en="Special Shot Extra SFX", },
+	special_shot_sound_effects_id_description = { en="When special ammo is used, these sounds are played on top of the original shooting sound.", },
+	melee_swing_effects_id = { en="Melee Swing SFX", },
 
 	-- ######################
 	-- Projectile (line effect) labels
 	-- ######################
-	lasbeam = 									{ en="Las Beam: Bot Zola Laspistol" },
-	lasbeam_pistol = 							{ en="Las Beam: Mk II Laspistol" },
-	lasbeam_pistol_ads = 						{ en="Las Beam: Mk II Laspistol ADS" },
-	lasbeam_heavy_pistol = 						{ en="Las Beam: Mk X Laspistol" },
-	lasbeam_killshot = 							{ en="Las Beam: Infantry, Helbore (Uncharged)" },
-	lasbeam_elysian = 							{ en="Las Beam: Recon" },
-	lasbeam_charged = 							{ en="Las Beam: Helbore (Partially Charged)" },
-	lasbeam_bfg = 								{ en="Las Beam: Helbore (Fully Charged)" },
-	heavy_stubpistol_bullet = 					{ en="Stub Pistol Bullet" },
-	autogun_bullet = 							{ en="Autogun Bullet" },
-	heavy_stubber_bullet = 						{ en="Ogryn Heavy Stubber Bullet" },
-	needle_trail = 								{ en="Needle Trail" },
-	pellet_trail = 								{ en="Shotgun Pellet" },
-	pellet_trail_shock = 						{ en="Shotgun Special: Shock" },
-	shotgun_slug_trail = 						{ en="Shotgun Special: Slug" },
-	shotgun_incendiary_trail = 					{ en="Shotgun Special: Incendiary" },
-	ripper_trail = 								{ en="Ogryn Ripper Trail" },
-	boltshell = 								{ en="Bolt Shell" },
-	plasma_beam = 								{ en="Plasma Beam" },
-	phosphor_beam =								{ en="Phosphor Trail" },
-	arc_beam =									{ en="Arc Trail" },
-	galvanic_beam =								{ en="Galvanic Trail" },
+	lasbeam = 									{ en="Las Beam: Bot Zola Laspistol", },
+	lasbeam_pistol = 							{ en="Las Beam: Mk II Laspistol", },
+	lasbeam_pistol_ads = 						{ en="Las Beam: Mk II Laspistol ADS", },
+	lasbeam_heavy_pistol = 						{ en="Las Beam: Mk X Laspistol", },
+	lasbeam_killshot = 							{ en="Las Beam: Infantry, Helbore (Uncharged)", },
+	lasbeam_elysian = 							{ en="Las Beam: Recon", },
+	lasbeam_charged = 							{ en="Las Beam: Helbore (Partially Charged)", },
+	lasbeam_bfg = 								{ en="Las Beam: Helbore (Fully Charged)", },
+	heavy_stubpistol_bullet = 					{ en="Stub Pistol Bullet", },
+	autogun_bullet = 							{ en="Autogun Bullet", },
+	heavy_stubber_bullet = 						{ en="Ogryn Heavy Stubber Bullet", },
+	needle_trail = 								{ en="Needle Trail", },
+	pellet_trail = 								{ en="Shotgun Pellet", },
+	pellet_trail_shock = 						{ en="Shotgun Special: Shock", },
+	shotgun_slug_trail = 						{ en="Shotgun Special: Slug", },
+	shotgun_incendiary_trail = 					{ en="Shotgun Special: Incendiary", },
+	ripper_trail = 								{ en="Ogryn Ripper Trail", },
+	boltshell = 								{ en="Bolt Shell", },
+	plasma_beam = 								{ en="Plasma Beam", },
+	phosphor_beam =								{ en="Phosphor Trail", },
+	arc_beam =									{ en="Arc Trail", },
+	galvanic_beam =								{ en="Galvanic Trail", },
 
-	renegade_twin_captain_las_pistol_lasbeam = 	{ en="Scab Captain Laspistol Beam" },
-	renegade_lasbeam = 							{ en="Scab Shooter Las Beam" },
-	renegade_gunner_lasbeam = 					{ en="Scab Gunner Las Beam" },
-	renegade_sniper_lasbeam = 					{ en="Scab Sniper Las Beam" },
-	renegade_assault_lasbeam = 					{ en="Scab Stalker Las Beam" },
-	cultist_autogun_bullet = 					{ en="Dreg Autogun Bullet" },
-	renegade_heavy_stubber_bullet = 			{ en="Reaper Heavy Stubber Bullet" },
-	renegade_pellet = 							{ en="Scab Shotgunner Pellet/Slug" },
-	renegade_captain_pellet = 					{ en="Scab Captain Pellet Trail" },
-	renegade_captain_boltshell = 				{ en="Scab Captain Bolt Shell" },
-	renegade_captain_plasma_beam = 				{ en="Rodin Karnak Flaming Plasma Beam" },
-	servo_skull_lasbeam =						{ en="Las Beam: Servo Skull" },
+	renegade_twin_captain_las_pistol_lasbeam = 	{ en="Scab Captain Laspistol Beam", },
+	renegade_lasbeam = 							{ en="Scab Shooter Las Beam", },
+	renegade_gunner_lasbeam = 					{ en="Scab Gunner Las Beam", },
+	renegade_sniper_lasbeam = 					{ en="Scab Sniper Las Beam", },
+	renegade_assault_lasbeam = 					{ en="Scab Stalker Las Beam", },
+	cultist_autogun_bullet = 					{ en="Dreg Autogun Bullet", },
+	renegade_heavy_stubber_bullet = 			{ en="Reaper Heavy Stubber Bullet", },
+	renegade_pellet = 							{ en="Scab Shotgunner Pellet/Slug", },
+	renegade_captain_pellet = 					{ en="Scab Captain Pellet Trail", },
+	renegade_captain_boltshell = 				{ en="Scab Captain Bolt Shell", },
+	renegade_captain_plasma_beam = 				{ en="Rodin Karnak Flaming Plasma Beam", },
+	servo_skull_lasbeam =						{ en="Las Beam: Servo Skull", },
 
-	empty_line_effect = 						{ en="Empty" },
+	empty_line_effect = 						{ en="Empty", },
 	
 	-- ######################
 	-- Single-shot ranged weapon labels
@@ -155,46 +155,46 @@ local localizations = {
 	-- bot_lasgun_killshot = { en=Localize("loc_bot_lasgun_killshot") },
 	-- bot_laspistol_killshot = { en=Localize("loc_bot_laspistol_killshot") },
 	-- bot_zola_laspistol = { en=Localize("loc_bot_zola_laspistol") },
-	-- psyker_smite = { en="Psyker \"Smite\"" },
+	-- psyker_smite = { en="Psyker \"Smite\"", },
 
 	-- ######################
 	-- LOOPING RANGED SFX
 	-- ######################
 	arc_rifle_p1_m1_fire_auto = { en=get_full_weapon_name_localized("arc_rifle_p1_m1") },
-	weapon_autopistol_auto = { en=get_full_weapon_name_localized("autopistol_p1_m1") .. " Auto" },
-	weapon_dual_autopistols_dual_auto = { en=get_full_weapon_name_localized("dual_autopistols_p1_m1") .. " Auto" },
-	flamethrower_fire_loop = { en="Flamer Fire Loop" },
-	forcestaff_warp_fire = { en="Force Staff Warp Fire" },
-	heavy_stubber_auto = { en=get_full_weapon_name_localized("ogryn_heavystubber_p1_m1") .. " Auto" },
-	heavy_stubber_p1_m2_auto =  { en=get_full_weapon_name_localized("ogryn_heavystubber_p1_m2") .. " Auto" },
-    heavy_stubber_p1_m3_auto =  { en=get_full_weapon_name_localized("ogryn_heavystubber_p1_m3") .. " Auto" },
+	weapon_autopistol_auto = { en=get_full_weapon_name_localized("autopistol_p1_m1") .. " Auto", },
+	weapon_dual_autopistols_dual_auto = { en=get_full_weapon_name_localized("dual_autopistols_p1_m1") .. " Auto", },
+	flamethrower_fire_loop = { en="Flamer Fire Loop", },
+	forcestaff_warp_fire = { en="Force Staff Warp Fire", },
+	heavy_stubber_auto = { en=get_full_weapon_name_localized("ogryn_heavystubber_p1_m1") .. " Auto", },
+	heavy_stubber_p1_m2_auto =  { en=get_full_weapon_name_localized("ogryn_heavystubber_p1_m2") .. " Auto", },
+    heavy_stubber_p1_m3_auto =  { en=get_full_weapon_name_localized("ogryn_heavystubber_p1_m3") .. " Auto", },
 	-- ----------------
 	-- Charging FX
 	-- ----------------
 	-- 	Helbore
-	lasgun_p2_charge = { en=get_full_weapon_name_localized("lasgun_p2_m1") .. " Charge" }, -- It's the first mk, as seen in the code. ranged_charging table
-	lasgun_p2_m2_charge = { en=get_full_weapon_name_localized("lasgun_p2_m2") .. " Charge" },
-	lasgun_p2_m3_charge = { en=get_full_weapon_name_localized("lasgun_p2_m3") .. " Charge" },
+	lasgun_p2_charge = { en=get_full_weapon_name_localized("lasgun_p2_m1") .. " Charge", }, -- It's the first mk, as seen in the code. ranged_charging table
+	lasgun_p2_m2_charge = { en=get_full_weapon_name_localized("lasgun_p2_m2") .. " Charge", },
+	lasgun_p2_m3_charge = { en=get_full_weapon_name_localized("lasgun_p2_m3") .. " Charge", },
 	-- 	Psyker
 	-- 		Smite
-	psyker_chain_lightning_charge = { en="Psyker Smite (Chain Lightning) Charge" },
+	psyker_chain_lightning_charge = { en="Psyker Smite (Chain Lightning) Charge", },
 	--		Brain Burst/Rupture and staff primary
-	psyker_smite_charge = { en="Psyker \"Smite\" Charge" },
-	psyker_headpop_hands = { en="Psyker Brain Burst/Rupture Charge" },
+	psyker_smite_charge = { en="Psyker \"Smite\" Charge", },
+	psyker_headpop_hands = { en="Psyker Brain Burst/Rupture Charge", },
 	-- 		Staff
-	forcestaff_warp_fire_charge_loop = { en="Force Staff Warp Fire Charge Loop" },
-	--forcestaff_p4_charge_loop = { en="Forcestaff P4 Charge Loop" },
-	forcestaff_p4_charge_loop = { en="Voidstrike Force Staff Charge Loop" },
+	forcestaff_warp_fire_charge_loop = { en="Force Staff Warp Fire Charge Loop", },
+	--forcestaff_p4_charge_loop = { en="Forcestaff P4 Charge Loop", },
+	forcestaff_p4_charge_loop = { en="Voidstrike Force Staff Charge Loop", },
 	-- 	Plasma
-	plasmagun_charge = { en="Plasmagun Charge" },
-	weapon_plasmagun_charge_fast = { en="Plasmagun Charge Fast" },
-	weapon_plasma_mech_vent = { en="Plasma Mech Vent" },
+	plasmagun_charge = { en="Plasmagun Charge", },
+	weapon_plasmagun_charge_fast = { en="Plasmagun Charge Fast", },
+	weapon_plasma_mech_vent = { en="Plasma Mech Vent", },
 	--	Weapon Special Loop
-	thunder_hammer_powered_loop = { en="Thunder Hammer Powered Loop" },
-	force_sword_loop = { en="Force Sword Loop" },
-	force_sword_2h_loop = { en="Force Greatsword Loop" },
-	power_sword_loop = { en="Power Sword Loop" },
-	ogryn_power_maul_1h_loop = { en="Ogryn Power Maul 1H Loop" },
+	thunder_hammer_powered_loop = { en="Thunder Hammer Powered Loop", },
+	force_sword_loop = { en="Force Sword Loop", },
+	force_sword_2h_loop = { en="Force Greatsword Loop", },
+	power_sword_loop = { en="Power Sword Loop", },
+	ogryn_power_maul_1h_loop = { en="Ogryn Power Maul 1H Loop", },
 
 	-- ######################
 	-- SINGLE-SHOT RANGED SFX
@@ -233,7 +233,7 @@ local localizations = {
 	blast_pistol_single = { en=get_full_weapon_name_localized("phosphor_pistol_p1_m1") },
 	weapon_plasmagun = { en=get_full_weapon_name_localized("plasmagun_p1_m1") },
 	weapon_plasmagun_m2 = { en=get_full_weapon_name_localized("plasmagun_p1_m2") },
-	psyker_smite_fire = { en="Psyker Force Staff Primary Fire" },
+	psyker_smite_fire = { en="Psyker Force Staff Primary Fire", },
 	-- The only localization lines related to these are the talent names, so you can get uwu flashbanged
 	psyker_throw_knife = { en="Psyker "..Localize("loc_ability_psyker_blitz_throwing_knives") },
 	zealot_throw_knife = { en="Zealot "..Localize("loc_ability_zealot_throwing_knifes") },
