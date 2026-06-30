@@ -95,7 +95,7 @@ local localizations = {
 	line_effects_override_option_off = { en="Override: Detach Beam", },
 	
 	line_effects_override_fallback = { en="Line Effect Fallback", },
-	line_effects_override_fallback_description = { en="When the new line effect does not have an effect for the given situation (such as critical hits), fall back to using the original line effect's vfx.\nWhen this is Disabled, it will be set to use nothing, to match the new line effect.", },
+	line_effects_override_fallback_description = { en="When the new line effect does not have an effect for the given situation (such as critical hits), fall back to using the original line effect's effect.\nWhen this is Disabled, it will be set to use nothing, to match the new line effect.", },
 	line_effects_override_fallback_vfx = { en="VFX Fallback", },
 	line_effects_override_fallback_vfx_width = { en="VFX Width Fallback", },
 
