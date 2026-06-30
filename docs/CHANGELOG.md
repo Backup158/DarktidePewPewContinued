@@ -8,6 +8,7 @@
     - E.g. Change an override. Nothing happens until you change a line effect, then that one effect will reflect the new override settings
     - Now, changing an override setting will update all line effects, without needing a game restart
 - Reorganized line effect overrides into groups
+- Refactored settings cache and some line updates into functions, to reduce copy-pasting code
 ### Added
 - Mod option to enable `vfx_width` width
 ### Removed
