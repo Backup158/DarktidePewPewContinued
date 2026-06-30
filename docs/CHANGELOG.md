@@ -1,4 +1,17 @@
 # 1.15.0 - 2026-06-30
+### Changed
+- Vfx width NO LONGER falls back to default
+    - Now it completely copies the new effect
+    - The new mod option lets it fallback to the existing size, as it did before
+- Updated setting change logic to update all line effects when changing one of the overrides
+    - Before, it would only affect line effects changed one by one, until a game restart
+    - E.g. Change an override. Nothing happens until you change a line effect, then that one effect will reflect the new override settings
+    - Now, changing an override setting will update all line effects, without needing a game restart
+- Reorganized line effect overrides into groups
+### Added
+- Mod option to enable `vfx_width` width
+### Removed
+### Fixed
 
 # 1.14.0 - 2026-06-29
 - Added new dropdown for line effects: forced link
