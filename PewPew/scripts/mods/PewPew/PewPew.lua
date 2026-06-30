@@ -461,6 +461,7 @@ mod.on_setting_changed = function (setting_id)
 
     -- Only updating the associated effect
     if settings_that_need_line_effects_refreshed[setting_id] then
+        -- echo_if_debug("refreshing all line effects because of: "..setting_id)
         update_all_line_effects()
     elseif table_find_by_key(line_effects_widgets, "setting_id", setting_id) then
         update_line_effects(setting_id)
