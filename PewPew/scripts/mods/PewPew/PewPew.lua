@@ -10,7 +10,7 @@ local mod = get_mod("PewPew")
 -- ####################################################################################
 -- Data
 -- ####################################################################################
-mod.version = "1.13.4"
+mod.version = "1.15.0"
 local debug_mode_enabled
 local use_line_effect_fallback
 local options_override_linking

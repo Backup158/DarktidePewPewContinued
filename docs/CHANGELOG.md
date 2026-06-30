@@ -1,3 +1,5 @@
+# 1.15.0 - 2026-06-30
+
 # 1.14.0 - 2026-06-29
 - Added new dropdown for line effects: forced link
     - Default: copies effect
