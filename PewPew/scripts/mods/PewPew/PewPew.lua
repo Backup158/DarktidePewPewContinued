@@ -69,6 +69,7 @@ local original_PCSEA_melee_effects = mod.original_PCSEA_melee_effects
 -- Widget Data
 local line_effects_widgets = mod.line_effects_widgets
 local minion_line_effects_widgets = mod.minion_line_effects_widgets
+local melee_sound_effects_names_lookup = mod.melee_sound_effects_names_lookup
 local sound_effects_widgets = mod.sound_effects_widgets
 local single_shot_sound_effects_widgets = mod.single_shot_sound_effects_widgets
 local special_shot_sound_effects_widgets = mod.special_shot_sound_effects_widgets
@@ -473,7 +474,7 @@ mod.on_setting_changed = function (setting_id)
         update_single_shot_sound_effects(setting_id)
     elseif table_find_by_key(special_shot_sound_effects_widgets, "setting_id", setting_id) then
         update_special_shot_sound_effects(setting_id)
-    elseif table_find_by_key(melee_sound_effects_widgets, "setting_id", setting_id) then
+    elseif melee_sound_effects_names_lookup[setting_id] then
         update_melee_sound_effects(setting_id)
     end
 end

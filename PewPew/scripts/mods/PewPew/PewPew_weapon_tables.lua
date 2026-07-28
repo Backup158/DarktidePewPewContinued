@@ -166,7 +166,13 @@ local melee_sound_effects_names = {
 	{ text="thunderhammer_2h_p1_m2", },
 	{ text="transonic_sword_transonic_knife_p1_m1", },
 }
-for i = 1, #melee_sound_effects_names do
+local amount_of_melee_sound_effects = #melee_sound_effects_names
+local melee_sound_effects_names_lookup_copy = Script.new_map(amount_of_melee_sound_effects)
+for i = 1, amount_of_melee_sound_effects do
+	-- Completing widget values
 	melee_sound_effects_names[i].value = melee_sound_effects_names[i].text
+	-- Making faster lookup copy
+	melee_sound_effects_names_lookup_copy[melee_sound_effects_names[i].text] = true
 end
 mod.melee_sound_effects_names = melee_sound_effects_names
+mod.melee_sound_effects_names_lookup = melee_sound_effects_names_lookup_copy
