@@ -1,5 +1,7 @@
 # 1.15.1 - WIP
 - [Optimized table creation](https://dmf-docs.darkti.de/#/Fatshark-%E2%80%90-Lua-Optimizing-Guide?id=specify-the-shape-of-tables-at-creation)
+- Optimized table lookup from O(N) to O(1)
+- Refactored internal debug checks
 
 # 1.15.0 - 2026-06-30
 ### Changed
