@@ -186,7 +186,7 @@ local function update_line_effects(line_effects_to_be_changed)
         -- At this point, we know vfx_width is nil
         if use_line_effect_fallback_vfx_width then
             -- Fallback to self
-            PlayerLineEffects[line_effects_to_be_changed].vfx_width = original_line_effects[line_effects_to_be_changed].vfx_width
+            PlayerLineEffects[line_effects_to_be_changed].vfx_width = original_player_line_effects[line_effects_to_be_changed].vfx_width
         else
             -- No fallback
             -- It has to be nil to reach this part of the code, so there's no need to do the table lookups
