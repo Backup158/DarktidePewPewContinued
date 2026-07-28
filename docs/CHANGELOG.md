@@ -1,9 +1,16 @@
 # 1.15.1 - WIP
+### Changed
 - [Optimized table creation](https://dmf-docs.darkti.de/#/Fatshark-%E2%80%90-Lua-Optimizing-Guide?id=specify-the-shape-of-tables-at-creation)
 - [Optimized array access](https://dmf-docs.darkti.de/#/Fatshark-%E2%80%90-Lua-Optimizing-Guide?id=prefer-numeric-for-loops-over-ipairs-to-iterate-over-arrays)
 - [Optimized table widget insertion](https://dmf-docs.darkti.de/#/Fatshark-%E2%80%90-Lua-Optimizing-Guide?id=avoid-the-unary-length-operator-on-tables)
 - Optimized table lookup from O(N) to O(1)
 - Refactored internal debug checks
+### Added
+### Removed
+### Fixed
+- Line effect `vfx_width` fallback was checking the wrong table
+    - Before it was falling back to the new line, so not a fallback
+    - This caused an error when trying to assign a minion line effect
 
 # 1.15.0 - 2026-06-30
 ### Changed
