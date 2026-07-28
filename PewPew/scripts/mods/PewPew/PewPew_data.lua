@@ -22,6 +22,16 @@ local melee_sound_effects_names = mod.melee_sound_effects_names
 local weapon_name_prefixes = mod.weapon_name_prefixes
 
 -- ############################################
+-- Helper Functions
+-- ############################################
+local function copy_text_to_value(table_of_options)
+	-- Essentially doing value = text = "string" to use the same name for id and localization id
+	for i = 1, #table_of_options do
+		table_of_options[i].value = table_of_options[i].text
+	end
+end
+
+-- ############################################
 -- Defining Effects
 -- ############################################
 -- ######################
@@ -66,10 +76,7 @@ for i = 1, #MINION_LINE_EFFECTS do
 	local v = MINION_LINE_EFFECTS[i]
 	table_insert(LINE_EFFECTS_OPTIONS, v)
 end
--- Essentially doing value = text = "string" to use the same name for id and localization id
-for i = 1, #LINE_EFFECTS_OPTIONS do
-	LINE_EFFECTS_OPTIONS[i].value = LINE_EFFECTS_OPTIONS[i].text
-end
+copy_text_to_value(LINE_EFFECTS_OPTIONS)
 
 -- ######################
 -- Looping Ranged SFX
@@ -122,9 +129,7 @@ local LOOPING_AUTOMATIC_SOUND_EFFECTS_OPTIONS = {
 	{ text="power_sword_loop" },
 	{ text="ogryn_power_maul_1h_loop" },
 }
-for i = 1, #LOOPING_AUTOMATIC_SOUND_EFFECTS_OPTIONS do
-	LOOPING_AUTOMATIC_SOUND_EFFECTS_OPTIONS[i].value = LOOPING_AUTOMATIC_SOUND_EFFECTS_OPTIONS[i].text
-end
+copy_text_to_value(LOOPING_AUTOMATIC_SOUND_EFFECTS_OPTIONS)
 
 -- ######################
 -- Single Shot Sounds
@@ -182,9 +187,7 @@ local SINGLE_SHOT_SOUND_EFFECTS_OPTIONS = {
 	{ text="zealot_throw_knife" }, -- Blades of Faith
 }
 -- Creating another key value pair for each entry, called value
-for i = 1, #SINGLE_SHOT_SOUND_EFFECTS_OPTIONS do
-	SINGLE_SHOT_SOUND_EFFECTS_OPTIONS[i].value = SINGLE_SHOT_SOUND_EFFECTS_OPTIONS[i].text
-end
+copy_text_to_value(SINGLE_SHOT_SOUND_EFFECTS_OPTIONS)
 
 -- ######################
 -- Special Shot Sound Options
