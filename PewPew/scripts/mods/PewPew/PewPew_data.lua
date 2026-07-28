@@ -305,11 +305,17 @@ local sound_effects_widgets = {
 	{ setting_id="ogryn_heavystubber_p1_m2", default_value="heavy_stubber_p1_m2_auto" },
 	{ setting_id="ogryn_heavystubber_p1_m3", default_value="heavy_stubber_p1_m3_auto" },
 }
-for i = 1, #sound_effects_widgets do
+local amount_of_automatic_sound_effects = #sound_effects_widgets
+local sound_effects_widgets_lookup = Script.new_map(amount_of_automatic_sound_effects)
+for i = 1, amount_of_automatic_sound_effects do
+	-- Completing the widgets
 	sound_effects_widgets[i].type = "dropdown"
 	sound_effects_widgets[i].options = table_clone(LOOPING_AUTOMATIC_SOUND_EFFECTS_OPTIONS)
+	-- Creating Lookup values
+	sound_effects_widgets_lookup[sound_effects_widgets[i].setting_id] = true
 end
-mod.sound_effects_widgets = sound_effects_widgets
+mod.automatic_sound_effects_widgets = sound_effects_widgets
+mod.automatic_sound_effects_widgets_lookup = sound_effects_widgets_lookup
 -- -------------
 -- Single
 -- -------------
