@@ -51,6 +51,11 @@ local add_effect_from_original_if_not_found = mod.add_effect_from_original_if_no
 -- ############################################
 -- Data Definition
 -- ############################################
+-- ######################
+-- Weapon Prefixes
+-- ######################
+-- To avoid name collision in settings
+-- TODO: Implement this. This will reset the mod settings, so I'll call that v2.0.0
 mod.weapon_name_prefixes = {
 	special = "SPECIAL_SHOT_",
 	ranged_auto = "RANGED_AUTO_",
@@ -58,7 +63,7 @@ mod.weapon_name_prefixes = {
 	melee = "MELEE_",
 }
 
-mod.MINION_LINE_EFFECTS = {
+local MINION_LINE_EFFECTS = {
 	{ text="renegade_lasbeam" },
 	{ text="renegade_assault_lasbeam" },
 	{ text="renegade_gunner_lasbeam" },
@@ -72,7 +77,17 @@ mod.MINION_LINE_EFFECTS = {
 	{ text="renegade_captain_plasma_beam" },
 	{ text="servo_skull_lasbeam" },
 }
-add_effect_from_original_if_not_found(minion_line_effects, mod.MINION_LINE_EFFECTS)
+add_effect_from_original_if_not_found(minion_line_effects, MINION_LINE_EFFECTS)
+mod.MINION_LINE_EFFECTS = MINION_LINE_EFFECTS
+
+-- Creating a copy that makes for easy lookup. Instead of having to check each value table in O(N), the lookup table makes the key the desired value, making finding if the table contains a key O(1)
+local amount_of_minion_line_effects = #MINION_LINE_EFFECTS
+local minion_line_effects_lookup_copy = Script.new_map(amount_of_minion_line_effects)
+for i = 1, amount_of_minion_line_effects do
+	minion_line_effects_lookup_copy[MINION_LINE_EFFECTS[i]] = true
+end
+mod.MINION_LINE_EFFECTS_LOOKUP = minion_line_effects_lookup_copy
+
 
 local melee_sound_effects_names = {
 	--{ text="bot_combataxe_linesman", },
