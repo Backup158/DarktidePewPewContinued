@@ -432,6 +432,7 @@ local function refresh_settings_cache()
     use_line_effect_fallback_vfx_width = mod:get("line_effects_override_fallback_vfx_width")
 end
 
+-- @Backup158: TODO Check if it'd be more efficient to look for pairs instead of this table access
 local function update_all_line_effects()
     for i = 1, #player_line_effects_widgets do
         update_line_effects(player_line_effects_widgets[i].setting_id)
