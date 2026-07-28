@@ -35,8 +35,6 @@ local pack_man = Managers.package
 
 local tostring = tostring
 local type = type
-local pairs = pairs
-local ipairs = ipairs
 local table = table
 local table_clone = table.clone
 local table_insert = table.insert

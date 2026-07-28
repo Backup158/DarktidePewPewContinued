@@ -12,7 +12,6 @@ local table_clone = table.clone
 local table_insert = table.insert
 local table_contains = table.contains
 local pairs = pairs
-local ipairs = ipairs
 
 mod:io_dofile("PewPew/scripts/mods/PewPew/PewPew_copied_data")
 local original_PCSEA_ranged_effects = mod.original_PCSEA_ranged_effects
@@ -63,11 +62,12 @@ add_effect_from_original_if_not_found(original_player_line_effects, LINE_EFFECTS
 
 --	See @scripts/settings/effects/minion_line_effects.lua
 -- Adding enemy line effects to overall line effects table
-for _, v in ipairs(MINION_LINE_EFFECTS) do
+for i = 1, #MINION_LINE_EFFECTS do
+	local v = MINION_LINE_EFFECTS[i]
 	table_insert(LINE_EFFECTS_OPTIONS, v)
 end
 -- Essentially doing value = text = "string" to use the same name for id and localization id
-for i, option in ipairs(LINE_EFFECTS_OPTIONS) do
+for i = 1, #LINE_EFFECTS_OPTIONS do
 	LINE_EFFECTS_OPTIONS[i].value = LINE_EFFECTS_OPTIONS[i].text
 end
 
@@ -122,7 +122,7 @@ local LOOPING_AUTOMATIC_SOUND_EFFECTS_OPTIONS = {
 	{ text="power_sword_loop" },
 	{ text="ogryn_power_maul_1h_loop" },
 }
-for i, option in ipairs(LOOPING_AUTOMATIC_SOUND_EFFECTS_OPTIONS) do
+for i = 1, #LOOPING_AUTOMATIC_SOUND_EFFECTS_OPTIONS do
 	LOOPING_AUTOMATIC_SOUND_EFFECTS_OPTIONS[i].value = LOOPING_AUTOMATIC_SOUND_EFFECTS_OPTIONS[i].text
 end
 
@@ -182,7 +182,7 @@ local SINGLE_SHOT_SOUND_EFFECTS_OPTIONS = {
 	{ text="zealot_throw_knife" }, -- Blades of Faith
 }
 -- Creating another key value pair for each entry, called value
-for i, option in ipairs(SINGLE_SHOT_SOUND_EFFECTS_OPTIONS) do
+for i = 1, #SINGLE_SHOT_SOUND_EFFECTS_OPTIONS do
 	SINGLE_SHOT_SOUND_EFFECTS_OPTIONS[i].value = SINGLE_SHOT_SOUND_EFFECTS_OPTIONS[i].text
 end
 
@@ -295,7 +295,7 @@ local sound_effects_widgets = {
 	{ setting_id="ogryn_heavystubber_p1_m2", default_value="heavy_stubber_p1_m2_auto" },
 	{ setting_id="ogryn_heavystubber_p1_m3", default_value="heavy_stubber_p1_m3_auto" },
 }
-for i, _ in ipairs(sound_effects_widgets) do
+for i = 1, #sound_effects_widgets do
 	sound_effects_widgets[i].type = "dropdown"
 	sound_effects_widgets[i].options = table_clone(LOOPING_AUTOMATIC_SOUND_EFFECTS_OPTIONS)
 end
@@ -363,7 +363,7 @@ local single_shot_sound_effects_widgets = {
 	-- { setting_id="stubrevolver_p1_m3", default_value="stub_revolver_p1_m3" }, -- Unreleased
 	{ setting_id="zealot_throwing_knives", default_value="zealot_throw_knife" },
 }
-for i, _ in ipairs(single_shot_sound_effects_widgets) do
+for i = 1, #single_shot_sound_effects_widgets do
 	single_shot_sound_effects_widgets[i].type = "dropdown"
 	single_shot_sound_effects_widgets[i].options = table_clone(SINGLE_SHOT_SOUND_EFFECTS_OPTIONS)
 end

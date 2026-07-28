@@ -8,8 +8,6 @@ local mod = get_mod("PewPew")
 -- ##################
 local tostring = tostring
 local type = type
-local pairs = pairs
-local ipairs = ipairs
 local table = table
 local table_clone = table.clone
 local table_insert = table.insert
@@ -29,7 +27,8 @@ local sound_events_to_copy = {
 }
 -- 2026-07-24: 126 weapons. Ranged is probably like 70
 local original_PCSEA_ranged_effects = Script.new_map( 85 )
-for _, shoot_effect_name in ipairs(sound_events_to_copy) do
+for shoot_effect_name_iterator = 1, #sound_events_to_copy do
+    local shoot_effect_name = sound_events_to_copy[shoot_effect_name_iterator]
     original_PCSEA_ranged_effects[shoot_effect_name] = {
         events = table_clone(PlayerCharacterSoundEventAliases[shoot_effect_name].events)
     }
@@ -59,7 +58,8 @@ local swing_tables = {
     -- "melee_sticky_loop", -- sounds like something chain specific (even though force swords are here) and may crash because chain weapons are stupid???
 }
 local original_PCSEA_melee_effects = { }
-for _, swing_effect_name in ipairs(swing_tables) do
+for swing_effect_name_iterator = 1, #swing_tables do
+    local swing_effect_name = swing_tables[swing_effect_name_iterator]
     original_PCSEA_melee_effects[swing_effect_name] = {
         events = table_clone(PlayerCharacterSoundEventAliases[swing_effect_name].events)
     }
