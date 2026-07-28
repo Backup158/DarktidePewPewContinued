@@ -25,7 +25,6 @@ local settings_that_need_line_effects_refreshed = {
 
 local MINION_LINE_EFFECTS = mod.MINION_LINE_EFFECTS
 local MINION_LINE_EFFECTS_LOOKUP = mod.MINION_LINE_EFFECTS_LOOKUP
-local table_contains_text = mod.table_contains_text
 
 local Application = Application
 local app_can_get_resource = Application.can_get_resource

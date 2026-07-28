@@ -5,7 +5,6 @@ local original_player_line_effects = require("scripts/settings/effects/player_li
 
 -- Local References for Performance
 local MINION_LINE_EFFECTS = mod.MINION_LINE_EFFECTS
-local table_contains_text = mod.table_contains_text
 local add_effect_from_original_if_not_found = mod.add_effect_from_original_if_not_found
 
 local table = table
