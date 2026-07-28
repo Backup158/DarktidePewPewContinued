@@ -10,6 +10,9 @@ local mod = get_mod("PewPew")
 -- ####################################################################################
 -- Data
 -- ####################################################################################
+-- #########################################
+-- Mod Data
+-- #########################################
 mod.version = "1.15.1"
 local MODDER_DEBUG = true
 local debug_mode_enabled
@@ -26,39 +29,7 @@ local settings_that_need_line_effects_refreshed = {
 local MINION_LINE_EFFECTS = mod.MINION_LINE_EFFECTS
 local MINION_LINE_EFFECTS_LOOKUP = mod.MINION_LINE_EFFECTS_LOOKUP
 
-local Application = Application
-local app_can_get_resource = Application.can_get_resource
-local Managers = Managers
-local pack_man = Managers.package
--- local PackageManager = class("PackageManager")
--- local PackageManager_Load = PackageManager.load
-
-local tostring = tostring
-local type = type
-local table = table
-local table_clone = table.clone
-local table_insert = table.insert
-local table_find_by_key = table.find_by_key
-local table_contains = table.contains
-local string = string
-local string_find = string.find
-local string_regex_sub = string.gsub
-
--- The required files for PlayerLineEffects and MinionLineEffects each contain a declaration of a line_effects table, then returns that table
-local PlayerLineEffects = require("scripts/settings/effects/player_line_effects")
-local MinionLineEffects = require("scripts/settings/effects/minion_line_effects")
-local PlayerCharacterSoundEventAliases = require("scripts/settings/sound/player_character_sound_event_aliases")
-
--- Copy Line Effects
-local original_player_line_effects = table_clone(PlayerLineEffects)
-local original_minion_line_effects = table_clone(MinionLineEffects)
-if MODDER_DEBUG and debug_mode_enabled then
-    table.dump(original_player_line_effects, "ORIGINAL PLAYER LINE EFFECTS OWO NOTICES BULGE", 20)
-    table.dump(original_minion_line_effects, "ORIGINAL MINION LINE EFFECTS OWO NOTICES BULGE", 20)
-end
 -- Copy Sound Effects
-mod:io_dofile("PewPew/scripts/mods/PewPew/PewPew_weapon_tables")
-mod:io_dofile("PewPew/scripts/mods/PewPew/PewPew_copied_data")
 local original_PCSEA_ranged_effects = mod.original_PCSEA_ranged_effects
 local swing_tables = mod.swing_tables
 local original_PCSEA_melee_effects = mod.original_PCSEA_melee_effects
@@ -83,6 +54,43 @@ local weapon_name_prefixes = mod.weapon_name_prefixes
 mod:io_dofile("PewPew/scripts/mods/PewPew/PewPew_manual_sound_effect_digging")
 local RANGED_SHOOTING_SOUND_EFFECTS = mod.RANGED_SHOOTING_SOUND_EFFECTS
 local CHARGED_SINGLE_SHOT_SFX = mod.CHARGED_SINGLE_SHOT_SFX
+
+-- #########################################
+-- Requirements
+-- #########################################
+-- The required files for PlayerLineEffects and MinionLineEffects each contain a declaration of a line_effects table, then returns that table
+local PlayerLineEffects = require("scripts/settings/effects/player_line_effects")
+local MinionLineEffects = require("scripts/settings/effects/minion_line_effects")
+local PlayerCharacterSoundEventAliases = require("scripts/settings/sound/player_character_sound_event_aliases")
+
+-- Copy unedited Line Effects for later reference
+local original_player_line_effects = table_clone(PlayerLineEffects)
+local original_minion_line_effects = table_clone(MinionLineEffects)
+if MODDER_DEBUG and debug_mode_enabled then
+    table.dump(original_player_line_effects, "ORIGINAL PLAYER LINE EFFECTS OWO NOTICES BULGE", 20)
+    table.dump(original_minion_line_effects, "ORIGINAL MINION LINE EFFECTS OWO NOTICES BULGE", 20)
+end
+
+-- #########################################
+-- Performance
+-- #########################################
+local Application = Application
+local app_can_get_resource = Application.can_get_resource
+local Managers = Managers
+local pack_man = Managers.package
+-- local PackageManager = class("PackageManager")
+-- local PackageManager_Load = PackageManager.load
+
+local tostring = tostring
+local type = type
+local table = table
+local table_clone = table.clone
+local table_insert = table.insert
+local table_find_by_key = table.find_by_key
+local table_contains = table.contains
+local string = string
+local string_find = string.find
+local string_regex_sub = string.gsub
 
 -- ####################################################################################
 -- Helper Functions
