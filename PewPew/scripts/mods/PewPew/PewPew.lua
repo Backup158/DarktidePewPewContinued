@@ -11,7 +11,7 @@ local mod = get_mod("PewPew")
 -- Data
 -- ####################################################################################
 mod.version = "1.15.1"
-local MODDER_DEBUG = false
+local MODDER_DEBUG = true
 local debug_mode_enabled
 local use_line_effect_fallback
 local use_line_effect_fallback_vfx_width
