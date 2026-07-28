@@ -190,13 +190,16 @@ end
 -- ######################
 -- Special Shot Sound Options
 -- ######################
-local SPECIAL_SHOT_SOUND_EFFECTS_OPTIONS = {}
+local special_shot_table_length = #(original_PCSEA_ranged_effects.ranged_single_shot_special_extra.events)
+local SPECIAL_SHOT_SOUND_EFFECTS_OPTIONS = Script.new_array(special_shot_table_length)
+local special_shot_iterator = 1
 for weapon_key, sound_id in pairs(original_PCSEA_ranged_effects.ranged_single_shot_special_extra.events) do
 	local var_name = weapon_name_prefixes.special..weapon_key
-	table_insert(SPECIAL_SHOT_SOUND_EFFECTS_OPTIONS, {
+	SPECIAL_SHOT_SOUND_EFFECTS_OPTIONS[special_shot_iterator] = {
 		text = var_name,
 		value = sound_id,
-	})
+	}
+	special_shot_iterator = special_shot_iterator + 1
 end
 
 local COMBINED_SOUNDS_SINGLE_SPECIAL = table_clone(SINGLE_SHOT_SOUND_EFFECTS_OPTIONS)

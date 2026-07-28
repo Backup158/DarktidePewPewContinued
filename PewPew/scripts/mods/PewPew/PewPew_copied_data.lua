@@ -27,7 +27,8 @@ local sound_events_to_copy = {
     "ranged_single_shot_special_extra",
     -- rn it's just one but i'm keeping it like this for flexibility
 }
-local original_PCSEA_ranged_effects = {}
+-- 2026-07-24: 126 weapons. Ranged is probably like 70
+local original_PCSEA_ranged_effects = Script.new_map( 85 )
 for _, shoot_effect_name in ipairs(sound_events_to_copy) do
     original_PCSEA_ranged_effects[shoot_effect_name] = {
         events = table_clone(PlayerCharacterSoundEventAliases[shoot_effect_name].events)

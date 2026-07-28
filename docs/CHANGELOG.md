@@ -1,3 +1,6 @@
+# 1.15.1 - WIP
+- [Optimized table creation](https://dmf-docs.darkti.de/#/Fatshark-%E2%80%90-Lua-Optimizing-Guide?id=specify-the-shape-of-tables-at-creation)
+
 # 1.15.0 - 2026-06-30
 ### Changed
 - Vfx width NO LONGER falls back to default
