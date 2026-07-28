@@ -86,7 +86,7 @@ local localizations = {
 	line_effects_id = { en="Visual Effects", },
 
 	line_effects_override_group = { en="Overrides", },
-	line_effects_override_renegade_sniper_lasbeam_width = { en="Override Scab Sniper Las Beam Width", },
+	line_effects_override_renegade_sniper_lasbeam_width = { en="Override Scab Sniper Las Beam Width for Player", },
 	line_effects_override_renegade_sniper_lasbeam_width_description = { en="The Scab Sniper Las Beam is incredibly large. When aiming down sights, it will blind you. Instead of its actual size, it now uses the size from the line effect that's being replaced.", },
 	line_effects_override_linking = { en="Override Beam Linking", },
 	line_effects_override_linking_description = { en="The Link and Keep Aligned keys affect whether the trail stays linked to the barrel after shooting, making it move as the weapon moves. When turning your camera quickly, this makes the weapon beams appear at extreme angles.\nThis override chooses between keeping default behavior (copying whatever setting is there) and forcing it to a specific setting.", },
