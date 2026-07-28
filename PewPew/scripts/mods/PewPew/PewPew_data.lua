@@ -31,6 +31,24 @@ local function copy_text_to_value(table_of_options)
 	end
 end
 
+-- ######################
+-- Finish Widgets and Create Lookup Table
+-- Given a table of just options, fill it out and create a parallel table for fast lookup
+-- ######################
+local function finish_widgets_and_create_lookup(string_name_for_table, incomplete_widget_table, table_of_options)
+	local amount_of_automatic_sound_effects = #incomplete_widget_table
+	local lookup_table_for_widgets = Script.new_map(amount_of_automatic_sound_effects)
+	for i = 1, amount_of_automatic_sound_effects do
+		-- Completing the widgets
+		incomplete_widget_table[i].type = "dropdown"
+		incomplete_widget_table[i].options = table_clone(table_of_options)
+		-- Creating Lookup values
+		lookup_table_for_widgets[incomplete_widget_table[i].setting_id] = true
+	end
+	mod[string_name_for_table] = incomplete_widget_table
+	mod[string_name_for_table.."_lookup"] = lookup_table_for_widgets
+end
+
 -- ############################################
 -- Defining Effects
 -- ############################################
@@ -305,17 +323,7 @@ local sound_effects_widgets = {
 	{ setting_id="ogryn_heavystubber_p1_m2", default_value="heavy_stubber_p1_m2_auto" },
 	{ setting_id="ogryn_heavystubber_p1_m3", default_value="heavy_stubber_p1_m3_auto" },
 }
-local amount_of_automatic_sound_effects = #sound_effects_widgets
-local sound_effects_widgets_lookup = Script.new_map(amount_of_automatic_sound_effects)
-for i = 1, amount_of_automatic_sound_effects do
-	-- Completing the widgets
-	sound_effects_widgets[i].type = "dropdown"
-	sound_effects_widgets[i].options = table_clone(LOOPING_AUTOMATIC_SOUND_EFFECTS_OPTIONS)
-	-- Creating Lookup values
-	sound_effects_widgets_lookup[sound_effects_widgets[i].setting_id] = true
-end
-mod.automatic_sound_effects_widgets = sound_effects_widgets
-mod.automatic_sound_effects_widgets_lookup = sound_effects_widgets_lookup
+finish_widgets_and_create_lookup("automatic_sound_effects_widgets", sound_effects_widgets, LOOPING_AUTOMATIC_SOUND_EFFECTS_OPTIONS)
 -- -------------
 -- Single
 -- -------------
@@ -379,26 +387,30 @@ local single_shot_sound_effects_widgets = {
 	-- { setting_id="stubrevolver_p1_m3", default_value="stub_revolver_p1_m3" }, -- Unreleased
 	{ setting_id="zealot_throwing_knives", default_value="zealot_throw_knife" },
 }
-for i = 1, #single_shot_sound_effects_widgets do
-	single_shot_sound_effects_widgets[i].type = "dropdown"
-	single_shot_sound_effects_widgets[i].options = table_clone(SINGLE_SHOT_SOUND_EFFECTS_OPTIONS)
-end
-mod.single_shot_sound_effects_widgets = single_shot_sound_effects_widgets
+finish_widgets_and_create_lookup("single_shot_sound_effects_widgets", single_shot_sound_effects_widgets, SINGLE_SHOT_SOUND_EFFECTS_OPTIONS)
 -- -------------
 -- Special
 -- -------------
-local special_shot_sound_effects_widgets = {
-}
+local amount_of_special_shot_effects = #(original_PCSEA_ranged_effects.ranged_single_shot_special_extra.events)
+local special_shot_sound_effects_widgets = Script.new_map(amount_of_special_shot_effects)
+local special_shot_sound_effects_widgets_lookup = Script.new_map(amount_of_special_shot_effects)
+local special_shot_iterator = 1
 for weapon_key, sound_id in pairs(original_PCSEA_ranged_effects.ranged_single_shot_special_extra.events) do
+	-- Creating Widget
 	local var_name = weapon_name_prefixes.special..weapon_key
-	table_insert(special_shot_sound_effects_widgets, {
+	special_shot_sound_effects_widgets[special_shot_iterator] = {
 		setting_id = var_name,
 		default_value = sound_id,
 		type = "dropdown",
 		options = table_clone(COMBINED_SOUNDS_SINGLE_SPECIAL)
-	})
+	}
+	special_shot_iterator = special_shot_iterator + 1
+
+	-- Making lookup
+	special_shot_sound_effects_widgets_lookup[var_name] = true
 end
 mod.special_shot_sound_effects_widgets = special_shot_sound_effects_widgets
+mod.special_shot_sound_effects_widgets_lookup = special_shot_sound_effects_widgets_lookup
 -- -------------
 -- Melee
 -- -------------

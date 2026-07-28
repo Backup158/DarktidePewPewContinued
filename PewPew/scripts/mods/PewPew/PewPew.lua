@@ -68,12 +68,14 @@ local player_line_effects_widgets = mod.player_line_effects_widgets
 local player_line_effects_widgets_lookup = mod.player_line_effects_widgets_lookup
 local minion_line_effects_widgets = mod.minion_line_effects_widgets
 local minion_line_effects_widgets_lookup = mod.minion_line_effects_widgets_lookup
-local melee_sound_effects_names_lookup = mod.melee_sound_effects_names_lookup
 local automatic_sound_effects_widgets = mod.automatic_sound_effects_widgets
 local automatic_sound_effects_widgets_lookup = mod.automatic_sound_effects_widgets_lookup
 local single_shot_sound_effects_widgets = mod.single_shot_sound_effects_widgets
+local single_shot_sound_effects_widgets_lookup = mod.single_shot_sound_effects_widgets_lookup
 local special_shot_sound_effects_widgets = mod.special_shot_sound_effects_widgets
+local special_shot_sound_effects_widgets_lookup = mod.special_shot_sound_effects_widgets_lookup
 local melee_sound_effects_widgets = mod.melee_sound_effects_widgets
+local melee_sound_effects_names_lookup = mod.melee_sound_effects_names_lookup
 
 local weapon_name_prefixes = mod.weapon_name_prefixes
 
@@ -470,9 +472,9 @@ mod.on_setting_changed = function (setting_id)
         update_line_effects(setting_id)
     elseif automatic_sound_effects_widgets_lookup[setting_id] then
         update_ranged_automatic_sound_effects(setting_id)
-    elseif table_find_by_key(single_shot_sound_effects_widgets, "setting_id", setting_id) then
+    elseif single_shot_sound_effects_widgets_lookup[setting_id] then
         update_single_shot_sound_effects(setting_id)
-    elseif table_find_by_key(special_shot_sound_effects_widgets, "setting_id", setting_id) then
+    elseif special_shot_sound_effects_widgets_lookup[setting_id] then
         update_special_shot_sound_effects(setting_id)
     elseif melee_sound_effects_names_lookup[setting_id] then
         update_melee_sound_effects(setting_id)
