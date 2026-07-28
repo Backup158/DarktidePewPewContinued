@@ -63,6 +63,9 @@ mod.weapon_name_prefixes = {
 	melee = "MELEE_",
 }
 
+-- ######################
+-- Line Effects - Minion
+-- ######################
 local MINION_LINE_EFFECTS = {
 	{ text="renegade_lasbeam" },
 	{ text="renegade_assault_lasbeam" },
@@ -88,7 +91,9 @@ for i = 1, amount_of_minion_line_effects do
 end
 mod.MINION_LINE_EFFECTS_LOOKUP = minion_line_effects_lookup_copy
 
-
+-- ######################
+-- Melee Sound
+-- ######################
 local melee_sound_effects_names = {
 	--{ text="bot_combataxe_linesman", },
 	--{ text="bot_combatsword_linesman_p1", },
