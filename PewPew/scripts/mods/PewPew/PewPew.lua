@@ -146,8 +146,8 @@ local function update_line_effects(line_effects_to_be_changed)
 
     local changed_effect_is_minion = MINION_LINE_EFFECTS_LOOKUP[new_line_effects]
     -- Makes a local copy of the original effects for faster access
+    --  Never actually changing any of its values, so pass by reference is fine
     local original_line_effects
-    --  Not used as a destination (?) for assignment, so pass by reference is fine
     if changed_effect_is_minion then
         original_line_effects = original_minion_line_effects
         if debug_mode_enabled then mod:notify(new_line_string.." is a fuck!") end
