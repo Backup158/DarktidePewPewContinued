@@ -387,14 +387,16 @@ mod.special_shot_sound_effects_widgets = special_shot_sound_effects_widgets
 -- Melee
 -- -------------
 -- From the list of all melee weapons in PewPwe_weapon_tables.lua
-local melee_sound_effects_widgets = { }
+local melee_sound_effects_widgets = Script.new_map(#melee_sound_effects_names)
+local melee_sound_effects_widget_iterator = 1
 for _, weapon_table in pairs(melee_sound_effects_names) do
-	melee_sound_effects_widgets[#melee_sound_effects_widgets + 1] = {
+	melee_sound_effects_widgets[melee_sound_effects_widget_iterator] = {
 		setting_id = weapon_table.text,
 		default_value = weapon_table.value,
 		type = "dropdown",
 		options = table_clone(melee_sound_effects_names),
 	}
+	melee_sound_effects_widget_iterator = melee_sound_effects_widget_iterator + 1
 end
 mod.melee_sound_effects_widgets = melee_sound_effects_widgets
 
