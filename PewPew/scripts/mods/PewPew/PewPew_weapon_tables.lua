@@ -84,7 +84,7 @@ mod.MINION_LINE_EFFECTS = MINION_LINE_EFFECTS
 local amount_of_minion_line_effects = #MINION_LINE_EFFECTS
 local minion_line_effects_lookup_copy = Script.new_map(amount_of_minion_line_effects)
 for i = 1, amount_of_minion_line_effects do
-	minion_line_effects_lookup_copy[MINION_LINE_EFFECTS[i]] = true
+	minion_line_effects_lookup_copy[MINION_LINE_EFFECTS[i].text] = true
 end
 mod.MINION_LINE_EFFECTS_LOOKUP = minion_line_effects_lookup_copy
 
