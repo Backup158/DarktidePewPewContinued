@@ -166,7 +166,7 @@ local melee_sound_effects_names = {
 	{ text="thunderhammer_2h_p1_m2", },
 	{ text="transonic_sword_transonic_knife_p1_m1", },
 }
-for i, _ in ipairs(melee_sound_effects_names) do
+for i = 1, #melee_sound_effects_names do
 	melee_sound_effects_names[i].value = melee_sound_effects_names[i].text
 end
 mod.melee_sound_effects_names = melee_sound_effects_names
