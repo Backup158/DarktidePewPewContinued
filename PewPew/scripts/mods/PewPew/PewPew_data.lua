@@ -258,13 +258,20 @@ local line_effects_widgets = {
 	},
 }
 for key, _ in pairs(line_effects_widgets) do
-	for i = 1, #line_effects_widgets[key] do
+	local amount_of_line_effects_for_this_key = #line_effects_widgets[key]
+	local line_effects_widget_lookup = Script.new_map(amount_of_line_effects_for_this_key)
+	for i = 1, amount_of_line_effects_for_this_key do
+		-- Completing each widget
 		line_effects_widgets[key][i].type = "dropdown"
 		line_effects_widgets[key][i].default_value = line_effects_widgets[key][i].setting_id
 		line_effects_widgets[key][i].options = table_clone(LINE_EFFECTS_OPTIONS)
+		-- Creating lookup table
+		line_effects_widget_lookup[line_effects_widgets[key][i].setting_id] = true
 	end
+	-- Copying lookup table to global
+	mod[key.."_line_effects_widgets_lookup"] = table_clone(line_effects_widget_lookup)
 end
-mod.line_effects_widgets = line_effects_widgets.player
+mod.player_line_effects_widgets = line_effects_widgets.player
 mod.minion_line_effects_widgets = line_effects_widgets.minion
 
 -- ######################

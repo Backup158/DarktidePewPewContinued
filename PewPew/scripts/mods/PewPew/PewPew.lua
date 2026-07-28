@@ -64,8 +64,10 @@ local swing_tables = mod.swing_tables
 local original_PCSEA_melee_effects = mod.original_PCSEA_melee_effects
 
 -- Widget Data
-local line_effects_widgets = mod.line_effects_widgets
+local player_line_effects_widgets = mod.player_line_effects_widgets
+local player_line_effects_widgets_lookup = mod.player_line_effects_widgets_lookup
 local minion_line_effects_widgets = mod.minion_line_effects_widgets
+local minion_line_effects_widgets_lookup = mod.minion_line_effects_widgets_lookup
 local melee_sound_effects_names_lookup = mod.melee_sound_effects_names_lookup
 local sound_effects_widgets = mod.sound_effects_widgets
 local single_shot_sound_effects_widgets = mod.single_shot_sound_effects_widgets
@@ -428,8 +430,8 @@ local function refresh_settings_cache()
 end
 
 local function update_all_line_effects()
-    for i = 1, #line_effects_widgets do
-        update_line_effects(line_effects_widgets[i].setting_id)
+    for i = 1, #player_line_effects_widgets do
+        update_line_effects(player_line_effects_widgets[i].setting_id)
     end
 end
 
@@ -463,7 +465,7 @@ mod.on_setting_changed = function (setting_id)
     if settings_that_need_line_effects_refreshed[setting_id] then
         -- echo_if_debug("refreshing all line effects because of: "..setting_id)
         update_all_line_effects()
-    elseif table_find_by_key(line_effects_widgets, "setting_id", setting_id) then
+    elseif player_line_effects_widgets_lookup[setting_id] then
         update_line_effects(setting_id)
     elseif table_find_by_key(sound_effects_widgets, "setting_id", setting_id) then
         update_ranged_automatic_sound_effects(setting_id)
