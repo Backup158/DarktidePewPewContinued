@@ -1,4 +1,4 @@
-# 1.15.1 - WIP
+# 1.16.0 - WIP
 ### Changed
 - [Optimized table creation](https://dmf-docs.darkti.de/#/Fatshark-%E2%80%90-Lua-Optimizing-Guide?id=specify-the-shape-of-tables-at-creation)
 - [Optimized array access](https://dmf-docs.darkti.de/#/Fatshark-%E2%80%90-Lua-Optimizing-Guide?id=prefer-numeric-for-loops-over-ipairs-to-iterate-over-arrays)
@@ -6,6 +6,7 @@
 - Optimized table lookup from O(N) to O(1)
 - Refactored internal debug checks
 ### Added
+- Options to swap NPC (minion) line effects
 ### Removed
 ### Fixed
 - Line effect `vfx_width` fallback was checking the wrong table

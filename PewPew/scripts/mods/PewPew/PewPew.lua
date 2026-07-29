@@ -50,7 +50,7 @@ end
 -- #########################################
 -- Mod Data
 -- #########################################
-mod.version = "1.15.1"
+mod.version = "1.16.0"
 local MODDER_DEBUG = true
 local debug_mode_enabled
 local use_line_effect_fallback
