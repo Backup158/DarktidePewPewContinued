@@ -111,7 +111,7 @@ local localizations = {
 		en = "The Link and Keep Aligned keys affect whether the trail stays linked to the barrel after shooting, making it move as the weapon moves. When turning your camera quickly, this makes the weapon beams appear at extreme angles.\nThis override chooses between keeping default behavior (copying whatever setting is there) and forcing it to a specific setting.", 
 	},
 	line_effects_override_linking_minion = { 
-		en = "Override Beam Linking (NPC)", 
+		en = "[Not Working] Override Beam Linking (NPC)", 
 	},
 	line_effects_override_option_default = { 
 		en = "Copy, Do Not Override", 
