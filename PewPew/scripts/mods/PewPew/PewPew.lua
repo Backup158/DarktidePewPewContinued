@@ -489,6 +489,9 @@ local function update_all_line_effects()
     for i = 1, #player_line_effects_widgets do
         update_line_effects(player_line_effects_widgets[i].setting_id)
     end
+    for i = 1, #minion_line_effects_widgets do
+        update_line_effects(minion_line_effects_widgets[i].setting_id)
+    end
 end
 
 local function update_all_effects()

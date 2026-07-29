@@ -497,13 +497,11 @@ return {
 						type = "group",
 						sub_widgets = line_effects_widgets.player
 					},
-					--[[
 					{
 						setting_id = "line_effects_choices_minion",
 						type = "group",
 						sub_widgets = line_effects_widgets.minion
 					},
-					]]
 				}
 			},
 			{ 
