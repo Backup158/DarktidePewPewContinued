@@ -524,7 +524,7 @@ mod.on_setting_changed = function (setting_id)
     if settings_that_need_line_effects_refreshed[setting_id] then
         -- echo_if_debug("refreshing all line effects because of: "..setting_id)
         update_all_line_effects()
-    elseif player_line_effects_widgets_lookup[setting_id] then
+    elseif player_line_effects_widgets_lookup[setting_id] or minion_line_effects_widgets_lookup[setting_id] then
         update_line_effects(setting_id)
     elseif automatic_sound_effects_widgets_lookup[setting_id] then
         update_ranged_automatic_sound_effects(setting_id)
