@@ -463,6 +463,17 @@ return {
 									{ text = "line_effects_override_option_off", value = "off" },
 								},
 							},
+							{
+								setting_id = "line_effects_override_linking_minion",
+								type = "dropdown",
+								tooltip = "line_effects_override_linking_description",
+								default_value = "default",
+								options = {
+									{ text = "line_effects_override_option_default", value = "default" },
+									{ text = "line_effects_override_option_on", value = "on" },
+									{ text = "line_effects_override_option_off", value = "off" },
+								},
+							},
 						}
 					},
 					{

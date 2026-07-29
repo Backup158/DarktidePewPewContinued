@@ -55,7 +55,7 @@ local MODDER_DEBUG = true
 local debug_mode_enabled
 local use_line_effect_fallback
 local use_line_effect_fallback_vfx_width
-local options_override_linking
+local options_override_linking, options_override_linking_player, options_override_linking_minion
 local settings_that_need_line_effects_refreshed = {
     ["line_effects_override_renegade_sniper_lasbeam_width"] = true,
     ["line_effects_override_linking"] = true,
@@ -151,6 +151,9 @@ end
 --      Which likely means these are immutable by mods
 -- ####################################################################################
 local function update_line_effects(line_effects_to_be_changed)
+    -- ----------------
+    -- Identifying which files get changed
+    -- ----------------
     -- Get name of new effect we want to replace the current one with
     local new_line_effects = mod:get(line_effects_to_be_changed)
     local new_line_string = tostring(new_line_effects)
@@ -158,22 +161,26 @@ local function update_line_effects(line_effects_to_be_changed)
     local changed_effect_is_minion = MINION_LINE_EFFECTS_LOOKUP[new_line_effects]
     -- Makes a local copy of the original effects for faster access
     --  Never actually changing any of its values, so pass by reference is fine
-    local original_line_effects
+    local copy_of_original_line_effects_file_for_new_effect
     if changed_effect_is_minion then
-        original_line_effects = original_minion_line_effects
+        copy_of_original_line_effects_file_for_new_effect = original_minion_line_effects
         if debug_mode_enabled then mod:notify(new_line_string.." is a fuck!") end
     else
-        original_line_effects = original_player_line_effects
+        copy_of_original_line_effects_file_for_new_effect = original_player_line_effects
         if debug_mode_enabled then mod:notify(new_line_string.." is player") end
     end
 
     -- Figuring out which file to edit
     local current_effect_is_minion = MINION_LINE_EFFECTS_LOOKUP[line_effects_to_be_changed]
-    local line_effects_file_to_change
+    local line_effects_file_to_change, copy_of_original_line_effects_file_for_current_effect
     if current_effect_is_minion then
         line_effects_file_to_change = MinionLineEffects
+        copy_of_original_line_effects_file_for_current_effect = original_minion_line_effects
+        options_override_linking = options_override_linking_minion
     else
         line_effects_file_to_change = PlayerLineEffects
+        copy_of_original_line_effects_file_for_current_effect = original_player_line_effects
+        options_override_linking = options_override_linking_player
     end
 
     -- ----------------
@@ -194,21 +201,21 @@ local function update_line_effects(line_effects_to_be_changed)
     -- Replacing VFX Width
     --  if there's a vfx, it'll always replace
     --  if there isn't, but 
-    if original_line_effects[new_line_effects].vfx_width then
+    if copy_of_original_line_effects_file_for_new_effect[new_line_effects].vfx_width then
         --  Making an exception for scab sniper width, because that shit is literally 50 times bigger than the normal width lmfao
         --  Instead, it will use the original width at the default value
         if new_line_effects == "renegade_sniper_lasbeam" and mod:get("line_effects_override_renegade_sniper_lasbeam_width") then
             --echo_if_debug(new_line_string.." is player")
-            line_effects_file_to_change[line_effects_to_be_changed].vfx_width = original_player_line_effects[line_effects_to_be_changed].vfx_width
+            line_effects_file_to_change[line_effects_to_be_changed].vfx_width = copy_of_original_line_effects_file_for_current_effect[line_effects_to_be_changed].vfx_width
             -- line_effects_file_to_change[line_effects_to_be_changed].vfx_width = nil -- Intentionally making it blank
         else
-            line_effects_file_to_change[line_effects_to_be_changed].vfx_width = original_line_effects[new_line_effects].vfx_width
+            line_effects_file_to_change[line_effects_to_be_changed].vfx_width = copy_of_original_line_effects_file_for_new_effect[new_line_effects].vfx_width
         end
     else
         -- At this point, we know vfx_width is nil
         if use_line_effect_fallback_vfx_width then
             -- Fallback to self
-            line_effects_file_to_change[line_effects_to_be_changed].vfx_width = original_player_line_effects[line_effects_to_be_changed].vfx_width
+            line_effects_file_to_change[line_effects_to_be_changed].vfx_width = copy_of_original_line_effects_file_for_current_effect[line_effects_to_be_changed].vfx_width
         else
             -- No fallback
             -- It has to be nil to reach this part of the code, so there's no need to do the table lookups
@@ -217,8 +224,8 @@ local function update_line_effects(line_effects_to_be_changed)
     end
     
     if options_override_linking == "default" then
-        line_effects_file_to_change[line_effects_to_be_changed].keep_aligned = original_line_effects[new_line_effects].keep_aligned
-        line_effects_file_to_change[line_effects_to_be_changed].link = original_line_effects[new_line_effects].link
+        line_effects_file_to_change[line_effects_to_be_changed].keep_aligned = copy_of_original_line_effects_file_for_new_effect[new_line_effects].keep_aligned
+        line_effects_file_to_change[line_effects_to_be_changed].link = copy_of_original_line_effects_file_for_new_effect[new_line_effects].link
     elseif options_override_linking == "on" then
         line_effects_file_to_change[line_effects_to_be_changed].keep_aligned = true
         line_effects_file_to_change[line_effects_to_be_changed].link = true
@@ -234,15 +241,15 @@ local function update_line_effects(line_effects_to_be_changed)
     local sound_event_keys = { "vfx", "sfx", "vfx_crit", }
     for i = 1, #sound_event_keys do
         local effect_key = sound_event_keys[i]
-        if original_line_effects[new_line_effects][effect_key] then
-            load_resource(original_line_effects[new_line_effects][effect_key], function (loaded_package_name)
+        if copy_of_original_line_effects_file_for_new_effect[new_line_effects][effect_key] then
+            load_resource(copy_of_original_line_effects_file_for_new_effect[new_line_effects][effect_key], function (loaded_package_name)
                 line_effects_file_to_change[line_effects_to_be_changed][effect_key] = loaded_package_name
             end)
         else 
             -- Falling back to Original
             if use_line_effect_fallback then
                 if line_effects_file_to_change[line_effects_to_be_changed][effect_key] then
-                    line_effects_file_to_change[line_effects_to_be_changed][effect_key] = original_player_line_effects[line_effects_to_be_changed][effect_key]
+                    line_effects_file_to_change[line_effects_to_be_changed][effect_key] = copy_of_original_line_effects_file_for_current_effect[line_effects_to_be_changed][effect_key]
                 else
                     info_if_debug("Line Effect missing key: "..line_effects_to_be_changed.."; "..effect_key)
                 end
@@ -254,13 +261,13 @@ local function update_line_effects(line_effects_to_be_changed)
 
     -- Some of these tables may not exist
     --  Handles moving vfx table
-    if type(original_line_effects[new_line_effects].moving_sfx) == "table" then
-        line_effects_file_to_change[line_effects_to_be_changed].moving_sfx = table_clone(original_line_effects[new_line_effects].moving_sfx)
+    if type(copy_of_original_line_effects_file_for_new_effect[new_line_effects].moving_sfx) == "table" then
+        line_effects_file_to_change[line_effects_to_be_changed].moving_sfx = table_clone(copy_of_original_line_effects_file_for_new_effect[new_line_effects].moving_sfx)
     else
         line_effects_file_to_change[line_effects_to_be_changed].moving_sfx = nil
     end
     --  Emitters
-    if type(original_line_effects[new_line_effects].emitters) == "table" then
+    if type(copy_of_original_line_effects_file_for_new_effect[new_line_effects].emitters) == "table" then
         if not line_effects_file_to_change[line_effects_to_be_changed].emitters then
             line_effects_file_to_change[line_effects_to_be_changed].emitters = {}
         end
@@ -276,16 +283,16 @@ local function update_line_effects(line_effects_to_be_changed)
                 line_effects_file_to_change[line_effects_to_be_changed].emitters[emitter_name] = {}
                 -- Replace each destination with the associated source, with fallbacks
                 --  Destination does not have this emitter (crit), but has default, so fallback
-                if not original_line_effects[new_line_effects].emitters[emitter_name_source] and original_line_effects[new_line_effects].emitters["default"] then
+                if not copy_of_original_line_effects_file_for_new_effect[new_line_effects].emitters[emitter_name_source] and copy_of_original_line_effects_file_for_new_effect[new_line_effects].emitters["default"] then
                     emitter_name_source  = "default"
                 end
                 -- Copy all emitters from source
-                for amount_of_source_emitters = 1, #original_line_effects[new_line_effects].emitters[emitter_name_source] do
+                for amount_of_source_emitters = 1, #copy_of_original_line_effects_file_for_new_effect[new_line_effects].emitters[emitter_name_source] do
                     echo_if_debug("Checking Emitter: "..emitter_name.."; "..tostring(emitter_name_source))
                     --  Source exists
-                    if original_line_effects[new_line_effects].emitters[emitter_name_source] and original_line_effects[new_line_effects].emitters[emitter_name_source][amount_of_source_emitters] and original_line_effects[new_line_effects].emitters[emitter_name_source][amount_of_source_emitters].vfx then
-                        load_resource(original_line_effects[new_line_effects].emitters[emitter_name_source][amount_of_source_emitters].vfx, function(loaded_package_name)
-                            line_effects_file_to_change[line_effects_to_be_changed].emitters[emitter_name][amount_of_source_emitters] = table_clone(original_line_effects[new_line_effects].emitters[emitter_name_source][amount_of_source_emitters])
+                    if copy_of_original_line_effects_file_for_new_effect[new_line_effects].emitters[emitter_name_source] and copy_of_original_line_effects_file_for_new_effect[new_line_effects].emitters[emitter_name_source][amount_of_source_emitters] and copy_of_original_line_effects_file_for_new_effect[new_line_effects].emitters[emitter_name_source][amount_of_source_emitters].vfx then
+                        load_resource(copy_of_original_line_effects_file_for_new_effect[new_line_effects].emitters[emitter_name_source][amount_of_source_emitters].vfx, function(loaded_package_name)
+                            line_effects_file_to_change[line_effects_to_be_changed].emitters[emitter_name][amount_of_source_emitters] = table_clone(copy_of_original_line_effects_file_for_new_effect[new_line_effects].emitters[emitter_name_source][amount_of_source_emitters])
                         end)
                     else
                         echo_if_debug("Source line effect has no Emitters for key: "..emitter_name.."; "..new_line_effects)
@@ -321,12 +328,12 @@ local function update_minion_line_effects(line_effects_to_be_changed)
     local changed_effect_is_minion = MINION_LINE_EFFECTS_LOOKUP[new_line_effects]
     -- Makes a local copy of the original effects for faster access
     --  Never actually changing any of its values, so pass by reference is fine
-    local original_line_effects
+    local copy_of_original_line_effects_file_for_new_effect
     if changed_effect_is_minion then
-        original_line_effects = original_minion_line_effects
+        copy_of_original_line_effects_file_for_new_effect = original_minion_line_effects
         if debug_mode_enabled then mod:notify(new_line_string.." is a fuck!") end
     else
-        original_line_effects = original_player_line_effects
+        copy_of_original_line_effects_file_for_new_effect = original_player_line_effects
         if debug_mode_enabled then mod:notify(new_line_string.." is player") end
     end
 end
@@ -472,7 +479,8 @@ end
 local function refresh_settings_cache()
     debug_mode_enabled = mod:get("enable_debug_mode")
     use_line_effect_fallback = mod:get("line_effects_override_fallback_vfx")
-    options_override_linking = mod:get("line_effects_override_linking")
+    options_override_linking_player = mod:get("line_effects_override_linking")
+    options_override_linking_minion = mod:get("line_effects_override_linking_minion")
     use_line_effect_fallback_vfx_width = mod:get("line_effects_override_fallback_vfx_width")
 end
 
