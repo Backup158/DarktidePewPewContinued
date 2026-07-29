@@ -51,7 +51,7 @@ end
 -- Mod Data
 -- #########################################
 mod.version = "1.16.0"
-local MODDER_DEBUG = true
+local MODDER_DEBUG = false
 local debug_mode_enabled
 local use_line_effect_fallback
 local use_line_effect_fallback_vfx_width
