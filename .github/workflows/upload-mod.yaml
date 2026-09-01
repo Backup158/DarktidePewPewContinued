@@ -28,6 +28,6 @@ jobs:
           filename: PewPewPewSwishSwishSwish.zip
           display_name: "PewPewPewSwishSwishSwish"
           description: "https://backup158.github.io/DarktidePewPewContinued/CHANGELOG"
-          changelog: "https://backup158.github.io/DarktidePewPewContinued/CHANGELOG"
+          # changelog: "https://backup158.github.io/DarktidePewPewContinued/CHANGELOG"
           version: ${{ github.event.release.tag_name || github.event.inputs.version }}
           update_mod_version: true
