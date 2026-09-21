@@ -50,7 +50,6 @@ end
 -- #########################################
 -- Mod Data
 -- #########################################
-mod.version = "1.16.0"
 local MODDER_DEBUG = false
 local debug_mode_enabled
 local use_line_effect_fallback
@@ -510,14 +509,13 @@ local function update_all_effects()
     end
 end
 
-mod.on_all_mods_loaded = function (setting_id)
-    mod:info('PewPewPew v' .. mod.version .. ' loaded uwu nya :3')
+mod.on_all_mods_loaded = function()
     refresh_settings_cache()
     
     update_all_effects()
 end
 
-mod.on_setting_changed = function (setting_id)
+mod.on_setting_changed = function(setting_id)
     refresh_settings_cache()
 
     -- Only updating the associated effect

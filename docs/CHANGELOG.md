@@ -1,4 +1,11 @@
-# 1.16.0 - WIP
+# ?
+### Developer
+- Removed version logging
+    - DMF does this natively now
+    - The only purpose was to make sure users had this mod updated, and if the DMF logging is not in the log, I think it's safe to assume they just need to update everything
+    - Makes it less tedious to maintain multiple version numbers
+
+# 1.16.0 - 2026-07-29
 ### Changed
 - [Optimized table creation](https://dmf-docs.darkti.de/#/Fatshark-%E2%80%90-Lua-Optimizing-Guide?id=specify-the-shape-of-tables-at-creation)
 - [Optimized array access](https://dmf-docs.darkti.de/#/Fatshark-%E2%80%90-Lua-Optimizing-Guide?id=prefer-numeric-for-loops-over-ipairs-to-iterate-over-arrays)
