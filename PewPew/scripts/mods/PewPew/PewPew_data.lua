@@ -219,7 +219,7 @@ for weapon_key, sound_id in pairs(original_PCSEA_ranged_effects.ranged_single_sh
 	local var_name = weapon_name_prefixes.special..weapon_key
 	SPECIAL_SHOT_SOUND_EFFECTS_OPTIONS[special_shot_iterator] = {
 		text = var_name,
-		value = sound_id,
+		value = var_name,
 	}
 	special_shot_iterator = special_shot_iterator + 1
 end
@@ -410,7 +410,7 @@ for weapon_key, sound_id in pairs(original_PCSEA_ranged_effects.ranged_single_sh
 	local var_name = weapon_name_prefixes.special..weapon_key
 	special_shot_sound_effects_widgets[special_shot_iterator] = {
 		setting_id = var_name,
-		default_value = sound_id,
+		default_value = var_name,
 		type = "dropdown",
 		options = table_clone(COMBINED_SOUNDS_SINGLE_SPECIAL)
 	}

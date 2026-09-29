@@ -431,10 +431,21 @@ end
 -- #####################
 -- Special
 -- These ARE in the PCEA events table!
+-- In the table these are stored as
+--      weapon_id = sound_event
+--      sound_event is not always unique
 -- #####################
 local function update_special_shot_sound_effects(weapon_to_be_changed)
-    local new_weapon_sounds = prepend_wwise_if_not_found(mod:get(weapon_to_be_changed))
     local actual_weapon_name = string_regex_sub(weapon_to_be_changed, weapon_name_prefixes.special, "")
+    local option_selected = mod:get(weapon_to_be_changed)
+    local new_weapon_sounds
+    -- If is a special shot
+    if string_find(option_selected, weapon_name_prefixes.special) then
+        local new_weapon_to_grab_from = string_regex_sub(option_selected, weapon_name_prefixes.special, "")
+        new_weapon_sounds = PlayerCharacterSoundEventAliases.ranged_single_shot_special_extra.events[new_weapon_to_grab_from]
+    else
+        new_weapon_sounds = prepend_wwise_if_not_found(option_selected)
+    end
 
     load_resource(new_weapon_sounds, function (loaded_package_name)
         PlayerCharacterSoundEventAliases.ranged_single_shot_special_extra.events[actual_weapon_name] = loaded_package_name

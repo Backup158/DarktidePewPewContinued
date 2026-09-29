@@ -1,4 +1,5 @@
 # 1.17.0 - 2026-09-29 - Depths of the Damned
+*Update requires settings to be redone for Special Shot options!*
 ## Added
 - New weapons and marks
     - Huntsman's Shotgun: `shotgun_p3_m1`
