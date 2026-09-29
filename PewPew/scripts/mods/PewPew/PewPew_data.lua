@@ -401,9 +401,8 @@ finish_widgets_and_create_lookup("single_shot_sound_effects_widgets", single_sho
 -- -------------
 -- Special
 -- -------------
-local amount_of_special_shot_effects = #(original_PCSEA_ranged_effects.ranged_single_shot_special_extra.events)
-local special_shot_sound_effects_widgets = Script.new_map(amount_of_special_shot_effects)
-local special_shot_sound_effects_widgets_lookup = Script.new_map(amount_of_special_shot_effects)
+local special_shot_sound_effects_widgets = Script.new_map(special_shot_table_length)
+local special_shot_sound_effects_widgets_lookup = Script.new_map(special_shot_table_length)
 local special_shot_iterator = 1
 for weapon_key, sound_id in pairs(original_PCSEA_ranged_effects.ranged_single_shot_special_extra.events) do
 	-- Creating Widget
