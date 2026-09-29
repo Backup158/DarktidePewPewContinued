@@ -486,6 +486,9 @@ local localizations = {
 	weapon_plasmagun_m2 = { 
 		en = get_full_weapon_name_localized("plasmagun_p1_m2") 
 	},
+	ogryn_thumper_p2_m1 = { 
+		en = get_full_weapon_name_localized("ogryn_thumper_p1_m3") 
+	},
 	psyker_smite_fire = { 
 		en = "Psyker Force Staff Primary Fire", 
 	},
