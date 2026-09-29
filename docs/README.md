@@ -37,6 +37,15 @@ New Features
         - Branx Mk IV Arc Rifle
         - Branx Mk CV Galvanic Rifle
         - Branx Mk XI Phosphor Blast Pistol
+    - Depths of the Damned (1.13.0)
+        - New Weapons
+            - Huntsman's Shotgun: `shotgun_p3_m1`
+            - Ogryn Cruncher: `ogryn_hammer_2h_p1_m1`
+            - Thugshot: `ogryn_thumper_p1_m3`
+        - New Marks
+            - Gromm Mk I Battle Maul and Mk V Slab Shield: `ogryn_powermaul_slabshield_p1_m2`
+            - Crusher Krourk MK VII: `powermaul_2h_p1_m2`
+            - Double-Barrelled Shotgun Krouk Mk IV: `shotgun_p2_m3`
 - Supports new line effects (weapon trails):
     - Options to use Minion Weapon Trails
         - Enemy weapon trails, with an override for the sniper beam to make it usable in first person

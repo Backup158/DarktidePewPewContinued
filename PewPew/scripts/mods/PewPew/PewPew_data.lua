@@ -368,16 +368,24 @@ local single_shot_sound_effects_widgets = {
 	{ setting_id="ogryn_rippergun_p1_m3", default_value="weapon_rippergun" },
 	{ setting_id="ogryn_thumper_p1_m1", default_value="ogryn_thumper_p1_m1" },
 	{ setting_id="ogryn_thumper_p1_m2", default_value="ogryn_thumper_p1_m2" },
-	-- { setting_id="ogryn_thumper_p1_m3", default_value="ogryn_thumper_p1_m3" }, -- Unreleased
+	-- 		Thugshot
+	{ setting_id="ogryn_thumper_p1_m3", default_value="ogryn_thumper_p2_m1" }, -- Bro what
 	{ setting_id="phosphor_pistol_p1_m1", default_value="blast_pistol_single" },
 	{ setting_id="plasmagun_p1_m1", default_value="weapon_plasmagun" },
 	{ setting_id="plasmagun_p1_m2", default_value="weapon_plasmagun_m2" },
 	-- { setting_id="psyker_smite", default_value="psyker_smite_fire" }, -- I don't think this changes anything
 	{ setting_id="psyker_throwing_knives", default_value="psyker_throw_knife" },
+	-- Combat Shotgun
 	{ setting_id="shotgun_p1_m1", default_value="combat_weapon_shotgun" },
 	{ setting_id="shotgun_p1_m2", default_value="shotgun_p1_m2" },
 	{ setting_id="shotgun_p1_m3", default_value="shotgun_p1_m3" },
+	-- Double Barrel
 	{ setting_id="shotgun_p2_m1", default_value="shotgun_p2_m1" },
+	--  m2 is skipped because go die
+	{ setting_id="shotgun_p2_m3", default_value="shotgun_p2_m1" },
+	-- Huntsman's Shotgun
+	{ setting_id="shotgun_p3_m1", default_value="shotgun_p3_m1" },
+	-- Exterminator Shotgun
 	{ setting_id="shotgun_p4_m1", default_value="shotgun_p4_m1" },
 	{ setting_id="shotgun_p4_m2", default_value="shotgun_p4_m1" },
 	--{ setting_id="shotgun_p4_m3", default_value="shotgun_p4_m1" },

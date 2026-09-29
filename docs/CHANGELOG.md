@@ -1,5 +1,17 @@
-# ?
-### Developer
+# 1.17.0 - 2026-09-29 - Depths of the Damned
+## Added
+- New weapons and marks
+    - Huntsman's Shotgun: `shotgun_p3_m1`
+    - Ogryn Cruncher: `ogryn_hammer_2h_p1_m1`
+    - Thugshot: `ogryn_thumper_p1_m3`
+    - Gromm Mk I Battle Maul and Mk V Slab Shield: `ogryn_powermaul_slabshield_p1_m2`
+    - Crusher Krourk MK VII: `powermaul_2h_p1_m2`
+    - Double-Barrelled Shotgun Krouk Mk IV: `shotgun_p2_m3`
+## Fixed
+- Error from localization of Zealot Throwing Knives
+    - It is no longer in WeaponTemplates, so it does not need the name patched
+    - The name is now added normally
+## Developer
 - Removed version logging
     - DMF does this natively now
     - The only purpose was to make sure users had this mod updated, and if the DMF logging is not in the log, I think it's safe to assume they just need to update everything

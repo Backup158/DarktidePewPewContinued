@@ -1,7 +1,7 @@
 {
   "name": "PewPewPewSwishSwishSwish",
-  "description": "Allows you to change weapon SFX and VFX.",
-  "version": "1.16.0",
+  "description": "Allows you to change ranged/melee weapon SFX and VFX.",
+  "version": "1.17.0",
   "author": "tinybike - Backup158",
   "homepage": "https://www.nexusmods.com/warhammer40kdarktide/mods/477",
   "source": "https://github.com/Backup158/DarktidePewPewContinued"

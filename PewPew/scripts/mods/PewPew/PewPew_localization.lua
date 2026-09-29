@@ -453,9 +453,14 @@ local localizations = {
 	},
 	-- The only localization lines related to these are the talent names, so you can get uwu flashbanged
 	psyker_throw_knife = { 
-		en = "Psyker "..Localize("loc_ability_psyker_blitz_throwing_knives") },
+		en = "Psyker "..Localize("loc_ability_psyker_blitz_throwing_knives") 
+	},
 	zealot_throw_knife = { 
-		en = "Zealot "..Localize("loc_ability_zealot_throwing_knifes") },
+		en = "Zealot "..Localize("loc_ability_zealot_throwing_knifes") 
+	},
+	zealot_throwing_knives = { 
+		en = "Zealot "..Localize("loc_ability_zealot_throwing_knifes") 
+	},
 }
 
 -- ######################
@@ -480,7 +485,6 @@ localizations["forcestaff_p3_m1"]["en"] = localizations["forcestaff_p3_m1"]["en"
 localizations["psyker_chain_lightning"]["en"] = "Psyker Smite (Chain Lightning)"
 -- 	I'm just using the skill names
 localizations["psyker_throwing_knives"]["en"] = "Psyker "..Localize("loc_ability_psyker_blitz_throwing_knives")
-localizations["zealot_throwing_knives"]["en"] = "Zealot "..Localize("loc_ability_zealot_throwing_knifes")
 -- Semi Automatics
 localizations["forcestaff_p1_m1"]["en"] = localizations["forcestaff_p1_m1"]["en"].." Primary Fire"
 -- -------------
