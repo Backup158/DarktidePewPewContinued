@@ -273,13 +273,17 @@ local localizations = {
 	-- Single-shot ranged weapon labels
 	-- ######################
 	--[[ bot_autogun_killshot = { 
-		en = Localize("loc_bot_autogun_killshot") },
+		en = Localize("loc_bot_autogun_killshot") 
+	},
 	bot_lasgun_killshot = { 
-		en = Localize("loc_bot_lasgun_killshot") },
+		en = Localize("loc_bot_lasgun_killshot") 
+	},
 	bot_laspistol_killshot = { 
-		en = Localize("loc_bot_laspistol_killshot") },
+		en = Localize("loc_bot_laspistol_killshot") 
+	},
 	bot_zola_laspistol = { 
-		en = Localize("loc_bot_zola_laspistol") },
+		en = Localize("loc_bot_zola_laspistol") 
+	},
 	psyker_smite = { 
 		en = "Psyker \"Smite\"", 
 	},
@@ -289,7 +293,8 @@ local localizations = {
 	-- LOOPING RANGED SFX
 	-- ######################
 	arc_rifle_p1_m1_fire_auto = { 
-		en = get_full_weapon_name_localized("arc_rifle_p1_m1") },
+		en = get_full_weapon_name_localized("arc_rifle_p1_m1") 
+	},
 	weapon_autopistol_auto = { 
 		en = get_full_weapon_name_localized("autopistol_p1_m1") .. " Auto", 
 	},
@@ -380,74 +385,107 @@ local localizations = {
 	-- ######################
 	-- Silence! quote from Arbitrator
 	weapon_silence = { 
-		en = Localize("loc_adamant_female_c__response_for_friendly_fire_from_adamant_to_ogryn_02") },
+		en = Localize("loc_adamant_female_c__response_for_friendly_fire_from_adamant_to_ogryn_02") 
+	},
 	arc_rifle_p1_m1_fire_single = { 
-		en = get_full_weapon_name_localized("arc_rifle_p1_m1") }, -- It's actually auto
+		en = get_full_weapon_name_localized("arc_rifle_p1_m1") 
+	}, -- It's actually auto
 	weapon_autopistol = { 
-		en = get_full_weapon_name_localized("autopistol_p1_m1") },
+		en = get_full_weapon_name_localized("autopistol_p1_m1") 
+	},
 	weapon_dual_autopistols = { 
-		en = get_full_weapon_name_localized("dual_autopistols_p1_m1") },
+		en = get_full_weapon_name_localized("dual_autopistols_p1_m1") 
+	},
 	dual_stubpistols_p1_m1_single = { 
-		en = get_full_weapon_name_localized("dual_stubpistols_p1_m1") },
+		en = get_full_weapon_name_localized("dual_stubpistols_p1_m1") 
+	},
 	autogun_p3_m1_single = { 
-		en = get_full_weapon_name_localized("autogun_p3_m1") },
+		en = get_full_weapon_name_localized("autogun_p3_m1") 
+	},
 	autogun_p3_m2_single = { 
-		en = get_full_weapon_name_localized("autogun_p3_m2") },
+		en = get_full_weapon_name_localized("autogun_p3_m2") 
+	},
 	autogun_p3_m3_single = { 
-		en = get_full_weapon_name_localized("autogun_p3_m3") },
+		en = get_full_weapon_name_localized("autogun_p3_m3") 
+	},
 	weapon_bolter = { 
-		en = get_full_weapon_name_localized("bolter_p1_m1") },
+		en = get_full_weapon_name_localized("bolter_p1_m1") 
+	},
 	weapon_bolter_m2 = { 
-		en = get_full_weapon_name_localized("bolter_p1_m2") },
+		en = get_full_weapon_name_localized("bolter_p1_m2") 
+	},
 	bolt_pistol_p1_m1_single = { 
-		en = get_full_weapon_name_localized("boltpistol_p1_m1") },
+		en = get_full_weapon_name_localized("boltpistol_p1_m1") 
+	},
 	bolt_pistol_m2_single = { 
-		en = get_full_weapon_name_localized("boltpistol_p1_m2") },
+		en = get_full_weapon_name_localized("boltpistol_p1_m2") 
+	},
 	weapon_galvanic_rifle = { 
-		en = get_full_weapon_name_localized("galvanic_rifle_p1_m1") },
+		en = get_full_weapon_name_localized("galvanic_rifle_p1_m1") 
+	},
 	weapon_lasgun_p1_m1 = { 
-		en = get_full_weapon_name_localized("lasgun_p1_m1") },
+		en = get_full_weapon_name_localized("lasgun_p1_m1") 
+	},
 	weapon_lasgun_p1_m2 = { 
-		en = get_full_weapon_name_localized("lasgun_p1_m2") },
+		en = get_full_weapon_name_localized("lasgun_p1_m2") 
+	},
 	weapon_lasgun_p1_m3 = { 
-		en = get_full_weapon_name_localized("lasgun_p1_m3") },
+		en = get_full_weapon_name_localized("lasgun_p1_m3") 
+	},
 	weapon_laspistol = { 
-		en = get_full_weapon_name_localized("laspistol_p1_m1") },
+		en = get_full_weapon_name_localized("laspistol_p1_m1") 
+	},
 	missile_launcher = { 
-		en = Localize("loc_talent_broker_blitz_missile_launcher") }, -- WHY DOESN'T THIS WORK
+		en = Localize("loc_talent_broker_blitz_missile_launcher") 
+	}, -- WHY DOESN'T THIS WORK
 	outlaw_missile_launcher_fire = { 
-		en = Localize("loc_talent_broker_blitz_missile_launcher") },
+		en = Localize("loc_talent_broker_blitz_missile_launcher") 
+	},
 	weapon_needle_pistol = { 
-		en = get_full_weapon_name_localized("needlepistol_p1_m1") },
+		en = get_full_weapon_name_localized("needlepistol_p1_m1") 
+	},
 	weapon_rippergun = { 
-		en = get_full_weapon_name_localized("ogryn_rippergun_p1_m1") },
+		en = get_full_weapon_name_localized("ogryn_rippergun_p1_m1") 
+	},
 	ogryn_gauntlet_fire = { 
-		en = get_full_weapon_name_localized("ogryn_gauntlet_p1_m1") },
+		en = get_full_weapon_name_localized("ogryn_gauntlet_p1_m1") 
+	},
 	heavy_stubber_p2_m1_punch_first = { 
-		en = get_full_weapon_name_localized("ogryn_heavystubber_p2_m1") },
+		en = get_full_weapon_name_localized("ogryn_heavystubber_p2_m1") 
+	},
 	heavy_stubber_p2_m2_punch_first = { 
-		en = get_full_weapon_name_localized("ogryn_heavystubber_p2_m2") },
+		en = get_full_weapon_name_localized("ogryn_heavystubber_p2_m2") 
+	},
 	heavy_stubber_p2_m3_punch_first = { 
-		en = get_full_weapon_name_localized("ogryn_heavystubber_p2_m3") },
+		en = get_full_weapon_name_localized("ogryn_heavystubber_p2_m3") 
+	},
 	combat_weapon_shotgun = { 
-		en = get_full_weapon_name_localized("shotgun_p1_m1") },
+		en = get_full_weapon_name_localized("shotgun_p1_m1") 
+	},
 	shotpistol_p1_m1 = { 
-		en = get_full_weapon_name_localized("shotpistol_shield_p1_m1") },
+		en = get_full_weapon_name_localized("shotpistol_shield_p1_m1") 
+	},
 	--[[
 	-- For some reason this shows up as 'Chambered'
 	stub_revolver = { 
-		en = Localize("loc_stub_revolver") }, 
+		en = Localize("loc_stub_revolver") 
+	}, 
 	]]
 	stub_revolver = { 
-		en = get_full_weapon_name_localized("stubrevolver_p1_m1") },
+		en = get_full_weapon_name_localized("stubrevolver_p1_m1") 
+	},
 	stub_revolver_p1_m2 = { 
-		en = get_full_weapon_name_localized("stubrevolver_p1_m2") },
+		en = get_full_weapon_name_localized("stubrevolver_p1_m2") 
+	},
 	blast_pistol_single = { 
-		en = get_full_weapon_name_localized("phosphor_pistol_p1_m1") },
+		en = get_full_weapon_name_localized("phosphor_pistol_p1_m1") 
+	},
 	weapon_plasmagun = { 
-		en = get_full_weapon_name_localized("plasmagun_p1_m1") },
+		en = get_full_weapon_name_localized("plasmagun_p1_m1") 
+	},
 	weapon_plasmagun_m2 = { 
-		en = get_full_weapon_name_localized("plasmagun_p1_m2") },
+		en = get_full_weapon_name_localized("plasmagun_p1_m2") 
+	},
 	psyker_smite_fire = { 
 		en = "Psyker Force Staff Primary Fire", 
 	},
