@@ -187,6 +187,8 @@ local SINGLE_SHOT_SOUND_EFFECTS_OPTIONS = {
 	{ text="shotgun_p1_m2" },
 	{ text="shotgun_p1_m3" },
 	{ text="shotgun_p2_m1" },
+	{ text="shotgun_p2_m3" }, -- skips m2 bc die
+	{ text="shotgun_p3_m1" },
 	{ text="shotgun_p4_m1" },
 	--{ text="shotgun_p4_m2" }, -- Uses the same sound as shotgun_p4_m1 so there's no sound (so it becomes silent)
 	--{ text="shotgun_p4_m3" },
@@ -201,6 +203,7 @@ local SINGLE_SHOT_SOUND_EFFECTS_OPTIONS = {
 	{ text="heavy_stubber_p2_m3_punch_first" },
 	{ text="ogryn_thumper_p1_m1" },
 	{ text="ogryn_thumper_p1_m2" },
+	{ text="ogryn_thumper_p1_m3" },
 	{ text="weapon_rippergun" }, -- ogryn_rippergun_p1_m1
 	{ text="zealot_throw_knife" }, -- Blades of Faith
 }
